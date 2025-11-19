@@ -1,9 +1,49 @@
-import Link from "next/link";
+"use client";
+
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import profile from "@/data/profile";
 
 const Hero = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [1, 1, 0.2, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [1, 1, 0.9, 0.85]);
+  const y = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 0, -20, -50]);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <section className="relative overflow-hidden rounded-[36px] border border-white/5 bg-[#161117]/95 p-10 text-white shadow-[0_35px_120px_rgba(5,2,8,0.65)]">
+    <motion.section
+      ref={sectionRef}
+      id="home"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      style={{
+        opacity,
+        scale,
+        y,
+      }}
+      className="relative overflow-hidden rounded-[36px] border border-white/5 bg-[#161117]/95 p-10 text-white shadow-[0_35px_120px_rgba(5,2,8,0.65)] will-change-transform"
+    >
       <div className="absolute inset-0">
         <div className="absolute -left-8 top-0 h-48 w-48 rounded-full bg-[#7b5dff]/40 blur-[80px]" />
         <div className="absolute bottom-0 right-0 h-60 w-60 rounded-full bg-[#af8cff]/30 blur-[100px]" />
@@ -35,21 +75,21 @@ const Hero = () => {
           <span>Tech</span>
         </div>
         <div className="flex flex-wrap gap-4">
-          <Link
-            href="/experience"
-            className="rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.4em] text-[#1a0f14]"
+          <button
+            onClick={() => scrollToSection("experience")}
+            className="rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.4em] text-[#1a0f14] transition-transform hover:scale-105"
           >
             see my work
-          </Link>
-          <Link
-            href="/contact"
-            className="rounded-full border border-white/50 px-6 py-3 text-sm font-semibold uppercase tracking-[0.4em] text-white hover:border-white"
+          </button>
+          <button
+            onClick={() => scrollToSection("contact")}
+            className="rounded-full border border-white/50 px-6 py-3 text-sm font-semibold uppercase tracking-[0.4em] text-white transition-all hover:border-white hover:bg-white/5"
           >
             get in touch
-          </Link>
+          </button>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Section from "@/components/Section";
 import profile from "@/data/profile";
 
@@ -8,10 +11,15 @@ const Projects = () => {
     <Section id="projects" title="Projects">
       {hasProjects ? (
         <div className="space-y-6">
-          {profile.projects.map((project) => (
-            <article
+          {profile.projects.map((project, index) => (
+            <motion.article
               key={project.title}
-              className="rounded-2xl border border-white/10 bg-black/20 p-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.02, x: 5 }}
+              className="rounded-2xl border border-white/10 bg-black/20 p-4 transition-shadow hover:shadow-[0_10px_40px_rgba(123,93,255,0.15)]"
             >
               <h3 className="text-lg font-semibold text-white">
                 {project.title}
@@ -31,13 +39,27 @@ const Projects = () => {
                   ))}
                 </div>
               )}
-            </article>
+            </motion.article>
           ))}
         </div>
       ) : (
-        <p className="text-base text-white/70">
-          Projects coming soon. Stay tuned.
-        </p>
+        <div className="flex flex-col items-center justify-center py-12 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-8"
+          >
+            <div className="mb-4 flex justify-center">
+              <span className="text-6xl">🚀</span>
+            </div>
+            <p className="text-lg font-semibold text-white">Projects Coming Soon</p>
+            <p className="mt-2 text-sm text-white/60">
+              Exciting robotics and mechatronics projects are on the way. Stay tuned!
+            </p>
+          </motion.div>
+        </div>
       )}
     </Section>
   );

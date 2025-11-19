@@ -1,13 +1,25 @@
+import About from "@/components/About";
 import Achievements from "@/components/Achievements";
+import Contact from "@/components/Contact";
+import Experience from "@/components/Experience";
 import Hero from "@/components/Hero";
 import Highlights from "@/components/Highlights";
+import Projects from "@/components/Projects";
+import Skills from "@/components/Skills";
+import Volunteering from "@/components/Volunteering";
 
 const HomePage = () => {
   return (
     <>
       <Hero />
       <Highlights />
+      <About />
+      <Skills />
+      <Experience />
+      <Volunteering />
       <Achievements />
+      <Projects />
+      <Contact />
     </>
   );
 };

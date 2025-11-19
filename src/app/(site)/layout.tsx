@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import Layout from "@/components/Layout";
-import PageTransition from "@/components/PageTransition";
-import Sidebar from "@/components/Sidebar";
+import Navbar from "@/components/Navbar";
 import { SHOW_PROJECTS_PAGE } from "@/config/site";
 import profile from "@/data/profile";
 
@@ -11,8 +10,8 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
   );
 
   return (
-    <Layout sidebar={<Sidebar navItems={navItems} />}>
-      <PageTransition>{children}</PageTransition>
+    <Layout navbar={<Navbar navItems={navItems} />}>
+      {children}
     </Layout>
   );
 }

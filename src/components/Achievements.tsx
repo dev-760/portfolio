@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Section from "@/components/Section";
 import profile from "@/data/profile";
 
@@ -8,9 +11,14 @@ const Achievements = () => {
       title="Achievements"
       contentClassName="divide-y divide-white/10"
     >
-      {profile.sections.achievements.map((achievement) => (
-        <article
+      {profile.sections.achievements.map((achievement, index) => (
+        <motion.article
           key={achievement.title}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          whileHover={{ x: 5 }}
           className="flex flex-col gap-1 py-4 text-sm text-white/80 first:pt-0 last:pb-0"
         >
           <div className="flex items-center justify-between">
@@ -24,7 +32,7 @@ const Achievements = () => {
           {achievement.details && (
             <p className="text-white/60">{achievement.details}</p>
           )}
-        </article>
+        </motion.article>
       ))}
     </Section>
   );

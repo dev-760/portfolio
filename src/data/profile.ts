@@ -120,8 +120,8 @@ export const profile: Profile = {
     { id: "home", label: "Home", href: "/" },
     { id: "about", label: "About", href: "/about" },
     { id: "experience", label: "Experience", href: "/experience" },
+    { id: "projects", label: "Projects", href: "/projects" },
     { id: "contact", label: "Contact", href: "/contact" },
-    { id: "projects", label: "Projects", href: "/projects", enabled: false },
   ],
   sections: {
     about: [
@@ -208,11 +208,31 @@ export const profile: Profile = {
       "Interested in collaborating, discussing robotics, or exploring mechatronics projects? Feel free to reach out.",
   },
   projects: [
-    // {
-    //   title: "Autonomous Drone Navigation",
-    //   description: "Coming soon...",
-    //   technologies: ["Python", "ROS", "Computer Vision"],
-    // },
+    {
+      title: "Oman Robotics Olympiad 2021–2022",
+      description: "Advanced to the final round of the regional robotics competition, demonstrating creative problem-solving and technical excellence in autonomous robot design and programming.",
+      technologies: ["Robotics", "Programming", "Mechanical Design", "Problem Solving"],
+    },
+    {
+      title: "Robotics and AI Competition 2021–2022",
+      description: "Competed in the final round of the regional AI and robotics challenge, building intelligent systems that combine mechanical design with autonomous control algorithms.",
+      technologies: ["Artificial Intelligence", "Robotics", "Python", "Control Systems"],
+    },
+    {
+      title: "Oman Science Festival Drone Competition 2022",
+      description: "Showcased custom drone navigation and control skills at the national science festival, competing in precision flight challenges and demonstrating advanced piloting techniques.",
+      technologies: ["Drone Technology", "Flight Control", "Navigation Systems", "Real-time Control"],
+    },
+    {
+      title: "Custom Robotics & Mechatronics Builds",
+      description: "Designed and built 6+ robotics projects including custom drones, autonomous devices, and intelligent control systems, exploring the intersection of mechanics, electronics, and software.",
+      technologies: ["CAD Design", "3D Prototyping", "Electrical Assembly", "Mechanical Assembly"],
+    },
+    {
+      title: "STEM Education & Community Workshops",
+      description: "Facilitated 8+ robotics and STEM programs, introducing young learners to engineering concepts through hands-on workshops, mentorship sessions, and community engagement initiatives.",
+      technologies: ["Workshop Facilitation", "Mentorship", "Educational Content", "Community Engagement"],
+    },
   ],
 };
 
