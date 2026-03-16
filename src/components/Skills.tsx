@@ -35,9 +35,6 @@ const Skills = () => {
                 className="flex items-center justify-between px-4 py-3 text-sm text-white/80 transition-colors"
               >
                 <span>{item}</span>
-                <span className="text-[0.65rem] uppercase tracking-[0.5em] text-white/30">
-                  Focus
-                </span>
               </motion.li>
             ))}
           </ul>

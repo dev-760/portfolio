@@ -77,7 +77,7 @@ export const profile: Profile = {
   title: "Cybersecurity Enthusiast",
   location: "Casablanca, Morocco",
   tagline:
-    "Cybersecurity is not something I stumbled into, it is something I was drawn to by genuine curiosity and a fascination with how systems work and, more importantly, how they can be broken.",
+    "Driven by a genuine curiosity for how complex systems operate and a relentless fascination with discovering how they can be broken.",
   contact: {
     email: "dev760@outlook.com",
     phone: "+212 779 898 873",
@@ -114,16 +114,16 @@ export const profile: Profile = {
         "Building a foundation independently through platforms like Hack The Box and TryHackMe. Driven by experimentation and solving real-world problems.",
     },
     {
-      label: "Blue Team",
-      value: "100% TPR",
+      label: "Blue Team Operations",
+      value: "Flawless Triage",
       description:
-        "Executing foundational incident response and alert triage scenarios, maintaining a 100% true positive rate in identifying active threats.",
+        "Executed foundational incident response and alert triage, achieving and sustaining a flawless 100% True Positive Rate (TPR) in the identification and analysis of active threats.",
     },
     {
       label: "Robotics & AI",
       value: "National Level",
       description:
-        "National-level competitor designing autonomous systems, proving that complex engineering challenges demand resilient, multi-disciplinary thinking.",
+        "National level competitor designing autonomous systems, driven by resilient and multi disciplinary thinking.",
     },
   ],
   navigation: [
@@ -135,8 +135,8 @@ export const profile: Profile = {
   ],
   sections: {
     about: [
-      "Cybersecurity is not something I stumbled into — it is something I was drawn to by genuine curiosity and a fascination with how systems work and, more importantly, how they can be broken. Offensive security in particular captivates me: the mindset it requires, the creativity involved, and the real-world impact it has.",
-      "I have spent time outside of formal education building that foundation independently, working through platforms like Hack The Box and TryHackMe not because I had to, but because I wanted to. That self-driven approach — experimenting, getting things wrong, and figuring out why — is how I learn best.",
+      "Cybersecurity is not something I stumbled into, it is something I was drawn to by genuine curiosity and a fascination with how systems work and, more importantly, how they can be broken. Offensive security in particular captivates me: the mindset it requires, the creativity involved, and the real-world impact it has.",
+      "I have spent time outside of formal education building that foundation independently, working through platforms like Hack The Box and TryHackMe not because I had to, but because I wanted to. That self-driven approach experimenting, getting things wrong, and figuring out why is how I learn best.",
       "I have also competed at national level in robotics and AI, which taught me that technical problems rarely have a single clean solution.",
       "I am applying to university to take that curiosity further, gain the depth and structure that independent study cannot fully provide, and work toward a career in offensive security where I can do what I find genuinely meaningful.",
     ],
@@ -149,13 +149,13 @@ export const profile: Profile = {
         category: "Technical Skills",
         items: [
           "Linux & Windows Environments",
-          "Network Infrastructure (TCP/IP)",
+          "Network Infrastructure",
           "Defensive Security Operations",
-          "Offensive Security Principles",
-          "Threat Analysis",
+          "Offensive Security Operations",
+          "Threat Analysis & Intelligence",
           "Applied AI Security",
           "Autonomous Systems & Robotics",
-          "Drone Control Systems",
+          "Drone Systems",
         ],
       },
       {
@@ -163,9 +163,9 @@ export const profile: Profile = {
         items: [
           "Autonomous Learning",
           "Critical Problem Solving",
-          "Resilient Team Collaboration",
-          "Effective Leadership",
-          "Methodical Precision",
+          "Team Collaboration",
+          "Effective Leadership & Decision Making",
+          "Methodical Precision & Attention to Detail",
           "Intercultural Communication",
         ],
       },
