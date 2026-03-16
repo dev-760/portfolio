@@ -77,7 +77,7 @@ export const profile: Profile = {
   title: "Cybersecurity Enthusiast",
   location: "Casablanca, Morocco",
   tagline:
-    "Cybersecurity is not something I stumbled into — it is something I was drawn to by genuine curiosity and a fascination with how systems work and, more importantly, how they can be broken.",
+    "Cybersecurity is not something I stumbled into, it is something I was drawn to by genuine curiosity and a fascination with how systems work and, more importantly, how they can be broken.",
   contact: {
     email: "dev760@outlook.com",
     phone: "+212 779 898 873",
@@ -117,13 +117,13 @@ export const profile: Profile = {
       label: "Blue Team",
       value: "100% TPR",
       description:
-        "Completed first Blue Team scenarios and foundations with a 100% true positive rate in alert triage.",
+        "Executing foundational incident response and alert triage scenarios, maintaining a 100% true positive rate in identifying active threats.",
     },
     {
       label: "Robotics & AI",
       value: "National Level",
       description:
-        "Competed at the national level in robotics and AI, learning that technical problems rarely have a single clean solution.",
+        "National-level competitor designing autonomous systems, proving that complex engineering challenges demand resilient, multi-disciplinary thinking.",
     },
   ],
   navigation: [
@@ -229,8 +229,8 @@ export const profile: Profile = {
     {
       title: "NextLab (nxtscan)",
       link: "https://github.com/dev-760/nxtscan",
-      description: "An open-source web security scanner featuring AI-powered remediation (Llama 3), continuous monitoring, real-time alerts, and executive bilingual PDF reports. Built to enforce standards like Moroccan CNDP authorization checks on public pages.",
-      technologies: ["Next.js", "FastAPI", "Celery", "Supabase", "Redis", "Security Scanner", "AI Remediation"],
+      description: "An open-source web security scanner featuring AI-powered remediation (Llama 3), continuous monitoring, real-time alerts, and executive bilingual PDF reports.",
+      technologies: ["Vulnerability Scanning", "Threat Detection", "AI", "Python", "Shodan"],
     },
   ],
 };
