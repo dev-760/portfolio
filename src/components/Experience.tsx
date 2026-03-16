@@ -10,11 +10,11 @@ const Experience = () => {
         {experience.map((exp, index) => (
           <div key={index} className="space-y-4">
             <div className="space-y-1">
-              <div className="flex justify-between items-baseline gap-4">
-                <p className="text-2xl font-semibold text-white">
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4">
+                <p className="text-xl sm:text-2xl font-semibold text-white">
                   {exp.role}
                 </p>
-                <p className="text-sm text-white/60 shrink-0">
+                <p className="text-xs sm:text-sm text-white/60 shrink-0">
                   {exp.dates}
                 </p>
               </div>

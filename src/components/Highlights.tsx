@@ -34,7 +34,7 @@ const Highlights = () => {
     <motion.section
       ref={sectionRef}
       style={{ opacity, scale, y }}
-      className="grid gap-6 rounded-[32px] border border-white/10 bg-[#151019]/70 p-8 shadow-[0_20px_70px_rgba(4,0,10,0.5)] backdrop-blur will-change-transform lg:grid-cols-3"
+      className="grid gap-6 rounded-[24px] sm:rounded-[32px] border border-white/10 bg-[#151019]/70 p-6 sm:p-8 shadow-[0_20px_70px_rgba(4,0,10,0.5)] backdrop-blur text-white will-change-transform md:grid-cols-3"
     >
       {profile.homeHighlights.map((highlight, index) => (
         <motion.article

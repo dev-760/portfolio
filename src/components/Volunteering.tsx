@@ -10,7 +10,7 @@ const Volunteering = () => {
         <p className="text-xs uppercase tracking-[0.5em] text-white/40">
           {volunteering.organization}
         </p>
-        <p className="text-2xl font-semibold text-white">
+        <p className="text-xl sm:text-2xl font-semibold text-white">
           {volunteering.role}
         </p>
         <p className="text-sm text-white/60">{volunteering.dates}</p>

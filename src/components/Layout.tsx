@@ -14,8 +14,8 @@ const Layout = ({ navbar, children }: LayoutProps) => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.08),_transparent_60%)]" />
       </div>
       {navbar}
-      <div className="relative mx-auto max-w-6xl px-6 pt-28 pb-[60vh]">
-        <main className="space-y-10">{children}</main>
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-24 sm:pt-28 pb-32 sm:pb-[60vh]">
+        <main className="space-y-6 sm:space-y-10">{children}</main>
       </div>
     </div>
   );

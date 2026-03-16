@@ -21,11 +21,11 @@ const Achievements = () => {
           whileHover={{ x: 5 }}
           className="flex flex-col gap-1 py-4 text-sm text-white/80 first:pt-0 last:pb-0"
         >
-          <div className="flex items-center justify-between">
+          <div className="flex items-start sm:items-center justify-between gap-4">
             <h3 className="text-base font-semibold text-white">
               {achievement.title}
             </h3>
-            <span className="text-[0.6rem] uppercase tracking-[0.5em] text-white/30">
+            <span className="text-[0.6rem] uppercase tracking-[0.5em] text-white/30 shrink-0">
               Honor
             </span>
           </div>

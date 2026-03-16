@@ -42,7 +42,7 @@ const Hero = () => {
         scale,
         y,
       }}
-      className="relative overflow-hidden rounded-[36px] border border-white/5 bg-[#161117]/95 p-10 text-white shadow-[0_35px_120px_rgba(5,2,8,0.65)] will-change-transform"
+      className="relative overflow-hidden rounded-[24px] sm:rounded-[36px] border border-white/5 bg-[#161117]/95 p-6 sm:p-10 text-white shadow-[0_35px_120px_rgba(5,2,8,0.65)] will-change-transform"
     >
       <div className="absolute inset-0 z-0">
         {/* Subtle Tech Grid Background */}
@@ -81,7 +81,7 @@ const Hero = () => {
           </div>
           <span>Portfolio</span>
         </div>
-        <div className="text-[clamp(3rem,8vw,6rem)] font-black uppercase leading-[0.9] tracking-[0.15em] text-white">
+        <div className="text-[clamp(2.5rem,8vw,6rem)] font-black uppercase leading-[0.9] tracking-[0.1em] sm:tracking-[0.15em] text-white">
           {profile.name.split(" ").map((part) => (
             <span key={part} className="block">
               {part}
@@ -98,10 +98,10 @@ const Hero = () => {
           <span>·</span>
           <span>Tech</span>
         </div>
-        <div className="relative z-10 flex flex-wrap gap-4 mt-4">
+        <div className="relative z-10 flex flex-col sm:flex-row flex-wrap gap-4 mt-4">
           <button
             onClick={() => scrollToSection("experience")}
-            className="group relative overflow-hidden rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.4em] text-[#1a0f14] transition-all hover:scale-105"
+            className="group w-full sm:w-auto relative overflow-hidden rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.4em] text-[#1a0f14] transition-all hover:scale-105"
           >
             <span className="relative z-10">see my work</span>
             <div className="absolute inset-0 z-0 h-full w-full bg-gradient-to-r from-white via-[#e2d5ff] to-white opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -109,7 +109,7 @@ const Hero = () => {
           </button>
           <button
             onClick={() => scrollToSection("contact")}
-            className="rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold uppercase tracking-[0.4em] text-white backdrop-blur-md transition-all hover:border-white/50 hover:bg-white/10"
+            className="w-full sm:w-auto rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold uppercase tracking-[0.4em] text-white backdrop-blur-md transition-all hover:border-white/50 hover:bg-white/10 text-center"
           >
             get in touch
           </button>

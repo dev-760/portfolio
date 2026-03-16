@@ -54,7 +54,7 @@ const Section = ({
         scale,
         y,
       }}
-      className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[#151019]/90 p-8 text-white shadow-[0_25px_90px_rgba(4,0,10,0.55)] will-change-transform"
+      className="relative overflow-hidden rounded-[24px] sm:rounded-[32px] border border-white/10 bg-[#151019]/90 p-6 sm:p-8 text-white shadow-[0_25px_90px_rgba(4,0,10,0.55)] will-change-transform"
     >
       <motion.div
         className="pointer-events-none absolute -right-10 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-[#7b5dff]/15 blur-[120px]"
