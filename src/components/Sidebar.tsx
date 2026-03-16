@@ -87,17 +87,17 @@ const Sidebar = ({ navItems }: SidebarProps) => {
         >
           {profile.contact.email}
         </a>
-        {profile.links
-          .filter((link) => link.label.toLowerCase() === "linkedin")
-          .map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="block font-semibold text-white underline decoration-white/20 underline-offset-4 hover:decoration-white/60"
-            >
-              LinkedIn
-            </a>
-          ))}
+        {profile.links.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block font-semibold text-white underline decoration-white/20 underline-offset-4 hover:decoration-white/60"
+          >
+            {link.label}
+          </a>
+        ))}
       </div>
     </div>
   );

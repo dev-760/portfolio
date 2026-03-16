@@ -12,6 +12,7 @@ export type SkillCategory = {
 
 export type TimelineEntry = {
   organization: string;
+  organizationLink?: string;
   role: string;
   dates: string;
   location?: string;
@@ -26,6 +27,7 @@ export type Achievement = {
 
 export type Project = {
   title: string;
+  link?: string;
   description: string;
   technologies: string[];
 };
@@ -57,9 +59,13 @@ export type Profile = {
   navigation: NavItem[];
   sections: {
     about: string[];
+    education: {
+      degree: string;
+      details: string;
+    };
     skills: SkillCategory[];
     volunteering: TimelineEntry;
-    experience: TimelineEntry;
+    experience: TimelineEntry[];
     achievements: Achievement[];
     contactMessage: string;
   };
@@ -68,13 +74,13 @@ export type Profile = {
 
 export const profile: Profile = {
   name: "Hassan Karasu",
-  title: "Aspiring Mechatronics Engineer",
+  title: "Cybersecurity Enthusiast",
   location: "Casablanca, Morocco",
   tagline:
-    "Aspiring mechatronics engineer passionate about robotics, drones, and intelligent systems. I explore the intersection of mechanics, electronics, and code to build meaningful solutions.",
+    "Cybersecurity is not something I stumbled into — it is something I was drawn to by genuine curiosity and a fascination with how systems work and, more importantly, how they can be broken.",
   contact: {
-    email: "h770694e@gmail.com",
-    phone: "+212 779898873",
+    email: "dev760@outlook.com",
+    phone: "+212 779 898 873",
   },
   languages: [
     {
@@ -88,32 +94,36 @@ export const profile: Profile = {
   ],
   links: [
     {
-      label: "Email",
-      href: "mailto:h770694e@gmail.com",
+      label: "GitHub",
+      href: "https://github.com/dev-760",
     },
     {
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/hassan-karasu-a7485336b",
+      href: "https://linkedin.com/in/hassan-karasu",
+    },
+    {
+      label: "Portfolio",
+      href: "https://hassankarasu.vercel.app",
     },
   ],
   homeHighlights: [
     {
-      label: "Robotics & Mechatronics",
-      value: "6+ builds",
+      label: "Offensive Security",
+      value: "HTB & THM",
       description:
-        "Hands-on experience designing custom drones, autonomous devices, and intelligent control systems.",
+        "Building a foundation independently through platforms like Hack The Box and TryHackMe. Driven by experimentation and solving real-world problems.",
     },
     {
-      label: "Community Impact",
-      value: "8+ programs",
+      label: "Blue Team",
+      value: "100% TPR",
       description:
-        "Workshops, volunteering, and mentorship that introduce robotics and STEM thinking to young learners.",
+        "Completed first Blue Team scenarios and foundations with a 100% true positive rate in alert triage.",
     },
     {
-      label: "Competitions",
-      value: "Regional finalist",
+      label: "Robotics & AI",
+      value: "National Level",
       description:
-        "Recognized across Oman robotics challenges for creative solutions and resilient prototyping.",
+        "Competed at the national level in robotics and AI, learning that technical problems rarely have a single clean solution.",
     },
   ],
   navigation: [
@@ -125,113 +135,102 @@ export const profile: Profile = {
   ],
   sections: {
     about: [
-      "I am an aspiring Mechatronics Engineer driven by curiosity, creativity, and a strong desire to build systems that blend mechanics, electronics, and intelligent control. Ever since I was introduced to robotics and drone systems, I’ve been fascinated by how machines can learn, adapt, and solve real-world problems.",
-      "My journey combines technical experimentation, hands-on robotics challenges, and meaningful community involvement. Whether I’m assembling mechanical components, planning a team project, mentoring youth, or navigating a drone in competition, I aim to learn deeply and create real impact.",
-      "I value teamwork, responsibility, and continuous improvement. I’m passionate about exploring new technologies and contributing to engineering projects that push boundaries and empower communities.",
+      "Cybersecurity is not something I stumbled into — it is something I was drawn to by genuine curiosity and a fascination with how systems work and, more importantly, how they can be broken. Offensive security in particular captivates me: the mindset it requires, the creativity involved, and the real-world impact it has.",
+      "I have spent time outside of formal education building that foundation independently, working through platforms like Hack The Box and TryHackMe not because I had to, but because I wanted to. That self-driven approach — experimenting, getting things wrong, and figuring out why — is how I learn best.",
+      "I have also competed at national level in robotics and AI, which taught me that technical problems rarely have a single clean solution.",
+      "I am applying to university to take that curiosity further, gain the depth and structure that independent study cannot fully provide, and work toward a career in offensive security where I can do what I find genuinely meaningful.",
     ],
+    education: {
+      degree: "2nd Year Baccalaureate – In Progress",
+      details: "Physical Sciences, English Track · Morocco · Expected 2026",
+    },
     skills: [
       {
-        category: "Programming & Technical",
+        category: "Technical Skills",
         items: [
-          "Python Programming",
-          "Technical Setup & Equipment Configuration",
-          "CAD Software (3D Design & Prototyping)",
+          "Linux & Windows Environments",
+          "Network Infrastructure (TCP/IP)",
+          "Defensive Security Operations",
+          "Offensive Security Principles",
+          "Threat Analysis",
+          "Applied AI Security",
+          "Autonomous Systems & Robotics",
+          "Drone Control Systems",
         ],
       },
       {
-        category: "Robotics & Engineering",
+        category: "Soft Skills",
         items: [
-          "Drone Navigation & Control",
-          "Mechanical Design & Assembly",
-          "Electrical Design & Assembly",
-          "Troubleshooting & Optimization",
-          "Real-Time Problem Solving",
-        ],
-      },
-      {
-        category: "Project & Team Skills",
-        items: [
-          "Project Planning",
-          "Team Collaboration & Management",
-          "Communication",
-          "Event & Workshop Facilitation",
-          "Content Strategy",
+          "Autonomous Learning",
+          "Critical Problem Solving",
+          "Resilient Team Collaboration",
+          "Effective Leadership",
+          "Methodical Precision",
+          "Intercultural Communication",
         ],
       },
     ],
     volunteering: {
-      organization: "Motatawi3 Program – MJCC (وزارة الشباب والثقافة والتواصل)",
-      role: "Social Services Volunteer",
-      dates: "Jul 2024 – Aug 2024 (2 months)",
+      organization: "Motatawi3 Program – Ministry of Youth, Culture & Communication, Morocco",
+      role: "Volunteer",
+      dates: "Jul – Aug 2024",
       bullets: [
-        "Participated in a nationwide youth-focused initiative aimed at empowering communities and expanding access to educational and social development programs.",
-        "Assisted in planning and facilitating workshops, mentorship sessions, and awareness campaigns in underserved areas.",
-        "Collaborated with local organizations and volunteers to promote civic responsibility, essential skills, and youth leadership.",
-        "Engaged directly with young learners, providing support in creative thinking, learning activities, and early career exploration.",
+        "Facilitated workshops, mentorship sessions, and awareness campaigns in underserved communities",
+        "Promoted youth leadership and civic responsibility alongside local organisations",
+        "Supported young learners in creative thinking and early career exploration",
       ],
-      closing:
-        "This experience strengthened my sense of responsibility and showed me how engineering, education, and community service can work together to create change.",
+      closing: "",
     },
-    experience: {
-      organization: "EL25 Studio Production",
-      role: "Trainee",
-      dates: "Jul 2023 – Sep 2023 (3 months)",
-      location: "Casablanca, Morocco",
-      bullets: [
-        "Worked in a fast-paced media production environment, supporting content creation for brands and digital influencers.",
-        "Contributed to concept development, scriptwriting, and planning visual content.",
-        "Assisted with camera setup, lighting, and on-set coordination.",
-        "Helped review footage, support editing workflows, and maintain visual continuity.",
-        "Collaborated with creative directors and technical teams under tight deadlines.",
-      ],
-      closing:
-        "This experience improved my creative communication, teamwork under pressure, and understanding of how technical precision applies in different industries—including engineering storytelling.",
-    },
+    experience: [
+      {
+        organization: "hassankarasu.vercel.app",
+        organizationLink: "https://hassankarasu.vercel.app",
+        role: "Independent Visual & Technical Practice",
+        dates: "2024 – Present",
+        bullets: [
+          "Conceived, designed, and deployed a bilingual (Arabic/English) visual art portfolio as a fully independent project. The work explores photography through the lens of observation, transitional space, and atmosphere — themes that mirror the kind of careful, methodical attention that technical disciplines demand. Building and shipping the site end-to-end — from concept to deployment on Vercel — reflects the same instinct that drives my interest in security: understanding systems deeply enough to make something real with them.",
+        ],
+        closing: "",
+      },
+      {
+        organization: "EL25 Studio",
+        role: "Production Trainee",
+        dates: "Jul – Sep 2023",
+        location: "Casablanca, Morocco",
+        bullets: [
+          "Supported content production for brands and digital influencers in a fast-paced environment",
+          "Contributed to scriptwriting, concept development, and visual planning",
+          "Developed technical precision, teamwork under pressure, and cross-functional communication",
+        ],
+        closing: "",
+      },
+    ],
     achievements: [
       {
-        title: "Oman Robotics Olympiad 2021–2022 – Final Round",
+        title: "Oman Robotics Olympiad – Final Round",
         details:
-          "Organized by the General Directorate of Education in North Al Batinah, Luwa Center for Science & Innovation.",
+          "Luwa Center for Science & Innovation · 2021–2022. Organised by the General Directorate of Education, North Al Batinah.",
       },
       {
-        title:
-          "Robotics and Artificial Intelligence Competition 2021–2022 – Final Round",
+        title: "Robotics & AI Competition – Final Round",
         details:
-          "Organized by the General Directorate of Education in North Al Batinah, Luwa Center for Science & Innovation.",
+          "Luwa Center for Science & Innovation · 2021–2022. National-level AI and robotics competition, final round.",
       },
       {
-        title: "Oman Science Festival – 3rd Edition (Drone Competitions), 2022",
-        details: "Drone competitions spotlight during the national science festival.",
+        title: "Oman Science Festival – Drone Competition",
+        details:
+          "3rd National Edition · 2022. Selected to compete in drone operations at the national science festival.",
       },
     ],
     contactMessage:
-      "Interested in collaborating, discussing robotics, or exploring mechatronics projects? Feel free to reach out.",
+      "Interested in discussing cybersecurity, offensive security projects, or potential opportunities? Feel free to reach out.",
   },
   projects: [
     {
-      title: "Oman Robotics Olympiad 2021–2022",
-      description: "Advanced to the final round of the regional robotics competition, demonstrating creative problem-solving and technical excellence in autonomous robot design and programming.",
-      technologies: ["Robotics", "Programming", "Mechanical Design", "Problem Solving"],
-    },
-    {
-      title: "Robotics and AI Competition 2021–2022",
-      description: "Competed in the final round of the regional AI and robotics challenge, building intelligent systems that combine mechanical design with autonomous control algorithms.",
-      technologies: ["Artificial Intelligence", "Robotics", "Python", "Control Systems"],
-    },
-    {
-      title: "Oman Science Festival Drone Competition 2022",
-      description: "Showcased custom drone navigation and control skills at the national science festival, competing in precision flight challenges and demonstrating advanced piloting techniques.",
-      technologies: ["Drone Technology", "Flight Control", "Navigation Systems", "Real-time Control"],
-    },
-    {
-      title: "Custom Robotics & Mechatronics Builds",
-      description: "Designed and built 6+ robotics projects including custom drones, autonomous devices, and intelligent control systems, exploring the intersection of mechanics, electronics, and software.",
-      technologies: ["CAD Design", "3D Prototyping", "Electrical Assembly", "Mechanical Assembly"],
-    },
-    {
-      title: "STEM Education & Community Workshops",
-      description: "Facilitated 8+ robotics and STEM programs, introducing young learners to engineering concepts through hands-on workshops, mentorship sessions, and community engagement initiatives.",
-      technologies: ["Workshop Facilitation", "Mentorship", "Educational Content", "Community Engagement"],
+      title: "NextLab (nxtscan)",
+      link: "https://github.com/dev-760/nxtscan",
+      description: "An open-source web security scanner featuring AI-powered remediation (Llama 3), continuous monitoring, real-time alerts, and executive bilingual PDF reports. Built to enforce standards like Moroccan CNDP authorization checks on public pages.",
+      technologies: ["Next.js", "FastAPI", "Celery", "Supabase", "Redis", "Security Scanner", "AI Remediation"],
     },
   ],
 };

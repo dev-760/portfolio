@@ -22,7 +22,13 @@ const Projects = () => {
               className="rounded-2xl border border-white/10 bg-black/20 p-4 transition-shadow hover:shadow-[0_10px_40px_rgba(123,93,255,0.15)]"
             >
               <h3 className="text-lg font-semibold text-white">
-                {project.title}
+                {project.link ? (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:underline transition-all underline-offset-4 decoration-white/40 hover:decoration-white">
+                    {project.title} ↗
+                  </a>
+                ) : (
+                  project.title
+                )}
               </h3>
               <p className="mt-2 text-sm text-white/70">
                 {project.description}
