@@ -227,6 +227,12 @@ export const profile: Profile = {
   },
   projects: [
     {
+      title: "CTF",
+      link: "https://github.com/dev-760/CTF",
+      description: "A beginner-friendly Capture The Flag environment repository.",
+      technologies: ["CTF", "Security", "Shell"],
+    },
+    {
       title: "NextLab (nxtscan)",
       link: "https://github.com/dev-760/nxtscan",
       description: "An open-source web security scanner featuring AI-powered remediation (Llama 3), continuous monitoring, real-time alerts, and executive bilingual PDF reports.",

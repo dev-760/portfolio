@@ -90,13 +90,13 @@ const Hero = () => {
         </div>
         <p className="max-w-2xl text-lg text-white/80">{profile.tagline}</p>
         <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.5em] text-white/60">
-          <span>Robotics</span>
+          <span>Offensive Security</span>
           <span>·</span>
-          <span>Mechatronics</span>
+          <span>Blue Team</span>
           <span>·</span>
-          <span>Community</span>
+          <span>Threat Analysis</span>
           <span>·</span>
-          <span>Tech</span>
+          <span>CTF</span>
         </div>
         <div className="relative z-10 flex flex-col sm:flex-row flex-wrap gap-4 mt-4">
           <button
