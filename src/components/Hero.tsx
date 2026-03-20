@@ -110,13 +110,9 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.5em] text-white/60"
         >
-          <span>Offensive Security</span>
+          <span>Red Team Operations</span>
           <span>·</span>
-          <span>Blue Team</span>
-          <span>·</span>
-          <span>Threat Analysis</span>
-          <span>·</span>
-          <span>CTF</span>
+          <span>Blue Team Operations</span>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -144,59 +140,7 @@ const Hero = () => {
           </motion.button>
 
         </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-wrap items-center gap-3 pt-2"
-        >
-          <span className="text-xs text-white/50 uppercase tracking-[0.3em] font-medium">
-            Share:
-          </span>
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              const url = window.location.href;
-              window.open(
-                `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=Check%20out%20this%20amazing%20cybersecurity%20portfolio%20by%20${encodeURIComponent(profile.name)}`,
-                "_blank"
-              );
-            }}
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all text-white text-sm"
-            title="Share on Twitter"
-          >
-            𝕏
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              const url = window.location.href;
-              window.open(
-                `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-                "_blank"
-              );
-            }}
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all text-white text-sm"
-            title="Share on LinkedIn"
-          >
-            in
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              const url = window.location.href;
-              navigator.clipboard.writeText(url);
-              alert("Portfolio link copied!");
-            }}
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all text-white text-sm"
-            title="Copy portfolio link"
-          >
-            🔗
-          </motion.button>
-        </motion.div>
+
       </div>
     </motion.section>
   );

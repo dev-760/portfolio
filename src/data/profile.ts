@@ -103,7 +103,7 @@ export const profile: Profile = {
     },
     {
       label: "Portfolio",
-      href: "https://hassankarasu.vercel.app",
+      href: "https://hasankarasu.me",
     },
   ],
   homeHighlights: [
@@ -187,8 +187,8 @@ export const profile: Profile = {
     },
     experience: [
       {
-        organization: "hassankarasu.vercel.app",
-        organizationLink: "https://hassankarasu.vercel.app",
+        organization: "hasankarasu.me",
+        organizationLink: "https://hasankarasu.me",
         role: "Independent Visual & Technical Practice",
         dates: "2024 – Present",
         bullets: [

@@ -69,18 +69,8 @@ const Navbar = ({ navItems }: NavbarProps) => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
               onClick={() => scrollToSection("home")}
-              className="flex items-center gap-3 text-left"
+              className="text-left"
             >
-              <div className="flex items-center gap-2">
-                <span className="h-4 w-6 rounded-md bg-white/80" />
-                <span className="h-4 w-4 rounded-full border border-white/40" />
-              </div>
-              <div className="hidden sm:block">
-                <p className="text-xs uppercase tracking-[0.35em] text-white/60">
-                  {profile.location}
-                </p>
-                <p className="text-lg font-semibold text-white">{profile.title}</p>
-              </div>
             </motion.button>
 
             {/* Desktop Navigation Items */}
@@ -162,7 +152,7 @@ const Navbar = ({ navItems }: NavbarProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-20 left-0 right-0 z-40 mx-6 rounded-2xl border border-white/10 bg-[#120d16]/98 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.5)] backdrop-blur-xl md:hidden"
+            className="fixed top-20 left-0 right-0 z-40 mx-6 rounded-lg border border-white/6 bg-gradient-to-b from-[#16101f]/95 to-[#0f0a15]/85 p-4 shadow-[0_24px_80px_rgba(139,111,247,0.12)] backdrop-blur-xl md:hidden"
           >
             <ul className="space-y-2">
               {navItems.map((item, index) => {
@@ -179,11 +169,11 @@ const Navbar = ({ navItems }: NavbarProps) => {
                     <button
                       onClick={() => !isDisabled && scrollToSection(item.id)}
                       disabled={isDisabled}
-                      className={`w-full rounded-xl px-4 py-3 text-left text-sm font-medium uppercase tracking-[0.2em] transition-all ${isDisabled
+                      className={`w-full rounded-md px-4 py-3 text-left text-sm font-semibold uppercase tracking-[0.2em] transition-all ${isDisabled
                         ? "cursor-not-allowed text-white/20 line-through"
                         : isActive
-                          ? "bg-white/10 text-white"
-                          : "text-white/70 hover:bg-white/5 hover:text-white"
+                          ? "bg-gradient-to-r from-white/12 to-white/6 text-white border border-white/8"
+                          : "text-white/70 hover:bg-white/[0.06] hover:text-white hover:border-white/8 border border-transparent"
                         }`}
                     >
                       {item.label}
