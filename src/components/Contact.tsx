@@ -51,6 +51,11 @@ const Contact = () => {
       showToast("Failed to send message", "error");
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  return (
+    <Section id="contact" title="Contact">
       <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
         <div className="space-y-4">
           <p className="text-lg text-white/80">
@@ -191,7 +196,7 @@ const Contact = () => {
           </div>
         </motion.form>
       </div>
-    </Section >
+    </Section>
   );
 };
 
