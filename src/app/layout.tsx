@@ -17,6 +17,26 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: `${profile.name} | ${profile.title}`,
   description: profile.tagline,
+  keywords: [
+    "Cybersecurity",
+    "Offensive Security",
+    "Blue Team",
+    "Threat Analysis",
+    "CTF",
+    "Robotics",
+    "AI",
+    profile.name,
+  ],
+  authors: [{ name: profile.name }],
+  creator: profile.name,
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: profile.links.find(l => l.label === "Portfolio")?.href,
+    title: `${profile.name} | ${profile.title}`,
+    description: profile.tagline,
+    siteName: profile.name,
+  },
 };
 
 export default function RootLayout({

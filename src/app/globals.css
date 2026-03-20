@@ -48,3 +48,52 @@ html {
   background: rgba(123, 93, 255, 0.4);
   color: #fff;
 }
+
+/* Print Styles */
+@media print {
+
+  /* Hide elements that shouldn't print */
+  nav,
+  [class*="ScrollToTop"],
+  [class*="CommandPalette"],
+  [class*="MouseGlow"],
+  [class*="Toast"],
+  button[title="Scroll to top"],
+  .no-print {
+    display: none !important;
+  }
+
+  /* Optimize for print */
+  html {
+    scroll-padding-top: 0;
+  }
+
+  body {
+    background: white;
+    color: #000;
+  }
+
+  section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Better typography for print */
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  /* Footer margin */
+  footer {
+    margin-top: 2rem;
+    border-top: 1px solid #ccc;
+    padding-top: 1rem;
+  }
+}

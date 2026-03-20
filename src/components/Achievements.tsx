@@ -9,29 +9,36 @@ const Achievements = () => {
     <Section
       id="achievements"
       title="Achievements"
-      contentClassName="divide-y divide-white/10"
+      contentClassName="grid gap-4 lg:grid-cols-2"
     >
       {profile.sections.achievements.map((achievement, index) => (
         <motion.article
           key={achievement.title}
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: index * 0.1 }}
-          whileHover={{ x: 5 }}
-          className="flex flex-col gap-1 py-4 text-sm text-white/80 first:pt-0 last:pb-0"
+          whileHover={{ y: -5, scale: 1.02 }}
+          className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-white/[0.01] p-5 transition-all duration-300 hover:border-white/20 hover:shadow-[0_15px_50px_rgba(123,93,255,0.12)]"
         >
-          <div className="flex items-start sm:items-center justify-between gap-4">
-            <h3 className="text-base font-semibold text-white">
-              {achievement.title}
-            </h3>
-            <span className="text-[0.6rem] uppercase tracking-[0.5em] text-white/30 shrink-0">
-              Honor
-            </span>
+          {/* Gradient overlay on hover */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#7b5dff]/0 to-[#af8cff]/0 group-hover:from-[#7b5dff]/5 group-hover:to-[#af8cff]/5 transition-all duration-300 pointer-events-none" />
+
+          <div className="relative space-y-2">
+            <div className="flex items-start gap-3">
+              <span className="text-xl shrink-0 mt-0.5">⭐</span>
+              <div className="flex-1">
+                <h3 className="text-base font-semibold text-white group-hover:text-[#af8cff] transition-colors leading-tight">
+                  {achievement.title}
+                </h3>
+              </div>
+            </div>
+            {achievement.details && (
+              <p className="text-sm text-white/70 group-hover:text-white/80 transition-colors pl-8 leading-relaxed">
+                {achievement.details}
+              </p>
+            )}
           </div>
-          {achievement.details && (
-            <p className="text-white/60">{achievement.details}</p>
-          )}
         </motion.article>
       ))}
     </Section>

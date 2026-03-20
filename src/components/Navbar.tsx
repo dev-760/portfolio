@@ -56,11 +56,10 @@ const Navbar = ({ navItems }: NavbarProps) => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
             ? "bg-[#120d16]/95 shadow-[0_10px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl"
             : "bg-transparent"
-        }`}
+          }`}
       >
         <div className="mx-auto max-w-6xl px-6 py-4">
           <div className="flex items-center justify-between">
@@ -90,6 +89,8 @@ const Navbar = ({ navItems }: NavbarProps) => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
               className="hidden items-center gap-1 rounded-full border border-white/10 bg-black/30 p-2 backdrop-blur-lg md:flex"
+              role="navigation"
+              aria-label="Main navigation"
             >
               {navItems.map((item, index) => {
                 const isDisabled = item.enabled === false;
@@ -105,13 +106,12 @@ const Navbar = ({ navItems }: NavbarProps) => {
                     <button
                       onClick={() => !isDisabled && scrollToSection(item.id)}
                       disabled={isDisabled}
-                      className={`relative rounded-full px-4 py-2 text-sm font-medium uppercase tracking-[0.2em] transition-all ${
-                        isDisabled
+                      className={`relative rounded-full px-4 py-2 text-sm font-medium uppercase tracking-[0.2em] transition-all ${isDisabled
                           ? "cursor-not-allowed text-white/20 line-through"
                           : isActive
                             ? "text-white"
                             : "text-white/60 hover:text-white/90"
-                      }`}
+                        }`}
                     >
                       {isActive && (
                         <motion.span
@@ -179,13 +179,12 @@ const Navbar = ({ navItems }: NavbarProps) => {
                     <button
                       onClick={() => !isDisabled && scrollToSection(item.id)}
                       disabled={isDisabled}
-                      className={`w-full rounded-xl px-4 py-3 text-left text-sm font-medium uppercase tracking-[0.2em] transition-all ${
-                        isDisabled
+                      className={`w-full rounded-xl px-4 py-3 text-left text-sm font-medium uppercase tracking-[0.2em] transition-all ${isDisabled
                           ? "cursor-not-allowed text-white/20 line-through"
                           : isActive
                             ? "bg-white/10 text-white"
                             : "text-white/70 hover:bg-white/5 hover:text-white"
-                      }`}
+                        }`}
                     >
                       {item.label}
                     </button>
