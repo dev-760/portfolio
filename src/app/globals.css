@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050208;
-  --foreground: #f6f1ff;
+  --background: #07040d;
+  --foreground: #faf8ff;
+  --accent: #8b6ff7;
+  --accent-light: #b8a3ff;
+  --card-bg: #16101f;
+  --border-color: rgba(255, 255, 255, 0.06);
 }
 
 @theme inline {
@@ -13,17 +17,19 @@
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(160deg, #07040d 0%, #0d0915 40%, #0a050f 100%);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  line-height: 1.7;
+  line-height: 1.65;
   min-height: 100vh;
+  letter-spacing: 0.25px;
+  font-weight: 450;
 }
 
 html {
   scroll-behavior: smooth;
-  background: var(--background);
+  background: linear-gradient(160deg, #07040d 0%, #0d0915 40%, #0a050f 100%);
 }
 
 /* Smooth scroll with padding for fixed navbar */
@@ -45,8 +51,98 @@ html {
 }
 
 ::selection {
-  background: rgba(123, 93, 255, 0.4);
+  background: rgba(123, 93, 255, 0.5);
   color: #fff;
+}
+
+/* Button Styles */
+button,
+a[role="button"] {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Link Styles */
+a {
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-light);
+}
+
+/* Heading Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  letter-spacing: -0.6px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  background: linear-gradient(130deg, #faf8ff 0%, #b8a3ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  font-size: 1.875rem;
+  line-height: 1.25;
+  background: linear-gradient(130deg, #faf8ff 0%, #b8a3ff 50%, #faf8ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.35;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(139, 111, 247, 0.4) 0%, rgba(184, 163, 255, 0.3) 100%);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(139, 111, 247, 0.6) 0%, rgba(184, 163, 255, 0.5) 100%);
+  background-clip: padding-box;
+}
+
+/* Premium glass morphism effect */
+.glass-effect {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Premium gradient text */
+.gradient-text {
+  background: linear-gradient(130deg, #faf8ff 0%, #b8a3ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Print Styles */

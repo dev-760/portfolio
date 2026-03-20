@@ -54,11 +54,11 @@ const Section = ({
         scale,
         y,
       }}
-      className="relative overflow-hidden rounded-[24px] sm:rounded-[32px] border border-white/10 bg-[#151019]/90 p-6 sm:p-8 text-white shadow-[0_25px_90px_rgba(4,0,10,0.55)] will-change-transform"
+      className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/6 bg-gradient-to-br from-[#16101f]/80 via-[#1a1425]/60 to-[#0f0a15]/80 p-8 sm:p-10 text-white shadow-[0_24px_80px_rgba(139,111,247,0.12),inset_0_1px_1px_rgba(255,255,255,0.04)] will-change-transform backdrop-blur"
     >
       <motion.div
-        className="pointer-events-none absolute -right-10 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-[#7b5dff]/15 blur-[120px]"
-        style={{ opacity: useTransform(opacity, [0, 1], [0, 0.5]) }}
+        className="pointer-events-none absolute -right-10 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#8b6ff7]/15 to-[#b8a3ff]/5 blur-[120px]"
+        style={{ opacity: useTransform(opacity, [0, 1], [0, 0.4]) }}
       />
       <motion.header
         initial={{ opacity: 0, x: -20 }}

@@ -57,8 +57,8 @@ const Navbar = ({ navItems }: NavbarProps) => {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-            ? "bg-[#120d16]/95 shadow-[0_10px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl"
-            : "bg-transparent"
+          ? "bg-gradient-to-b from-[#07040d]/90 to-[#07040d]/70 shadow-[0_12px_48px_rgba(139,111,247,0.15)] backdrop-blur-xl border-b border-white/6"
+          : "bg-transparent"
           }`}
       >
         <div className="mx-auto max-w-6xl px-6 py-4">
@@ -88,7 +88,7 @@ const Navbar = ({ navItems }: NavbarProps) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="hidden items-center gap-1 rounded-full border border-white/10 bg-black/30 p-2 backdrop-blur-lg md:flex"
+              className="hidden items-center gap-1 rounded-lg border border-white/6 bg-white/[0.04] p-1 backdrop-blur-lg md:flex"
               role="navigation"
               aria-label="Main navigation"
             >
@@ -106,17 +106,17 @@ const Navbar = ({ navItems }: NavbarProps) => {
                     <button
                       onClick={() => !isDisabled && scrollToSection(item.id)}
                       disabled={isDisabled}
-                      className={`relative rounded-full px-4 py-2 text-sm font-medium uppercase tracking-[0.2em] transition-all ${isDisabled
-                          ? "cursor-not-allowed text-white/20 line-through"
-                          : isActive
-                            ? "text-white"
-                            : "text-white/60 hover:text-white/90"
+                      className={`relative rounded-md px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] transition-all ${isDisabled
+                        ? "cursor-not-allowed text-white/20 line-through"
+                        : isActive
+                          ? "text-white"
+                          : "text-white/70 hover:text-white"
                         }`}
                     >
                       {isActive && (
                         <motion.span
                           layoutId="activeSection"
-                          className="absolute inset-0 rounded-full bg-white/10 shadow-inner"
+                          className="absolute inset-0 rounded-md bg-gradient-to-r from-white/12 to-white/6 border border-white/8"
                           transition={{ type: "spring", stiffness: 380, damping: 30 }}
                         />
                       )}
@@ -133,7 +133,7 @@ const Navbar = ({ navItems }: NavbarProps) => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="flex flex-col gap-1.5 rounded-lg border border-white/10 bg-black/30 p-2.5 backdrop-blur-lg md:hidden"
+              className="flex flex-col gap-1.5 rounded-lg border border-white/8 bg-white/[0.02] p-2.5 backdrop-blur-lg md:hidden hover:bg-white/[0.05] transition-colors"
               aria-label="Toggle menu"
             >
               <motion.span
@@ -180,10 +180,10 @@ const Navbar = ({ navItems }: NavbarProps) => {
                       onClick={() => !isDisabled && scrollToSection(item.id)}
                       disabled={isDisabled}
                       className={`w-full rounded-xl px-4 py-3 text-left text-sm font-medium uppercase tracking-[0.2em] transition-all ${isDisabled
-                          ? "cursor-not-allowed text-white/20 line-through"
-                          : isActive
-                            ? "bg-white/10 text-white"
-                            : "text-white/70 hover:bg-white/5 hover:text-white"
+                        ? "cursor-not-allowed text-white/20 line-through"
+                        : isActive
+                          ? "bg-white/10 text-white"
+                          : "text-white/70 hover:bg-white/5 hover:text-white"
                         }`}
                     >
                       {item.label}

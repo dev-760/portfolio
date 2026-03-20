@@ -19,10 +19,10 @@ const Projects = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-white/[0.01] p-6 backdrop-blur transition-all duration-300 hover:border-white/20 hover:shadow-[0_20px_60px_rgba(123,93,255,0.15)]"
+              className="group relative overflow-hidden rounded-2xl border border-white/6 bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-white/[0.01] p-7 backdrop-blur transition-all duration-300 hover:border-white/10 hover:shadow-[0_24px_72px_rgba(139,111,247,0.18)]"
             >
               {/* Gradient overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#7b5dff]/0 to-[#af8cff]/0 group-hover:from-[#7b5dff]/5 group-hover:to-[#af8cff]/5 transition-all duration-300 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#8b6ff7]/0 to-[#b8a3ff]/0 group-hover:from-[#8b6ff7]/8 group-hover:to-[#b8a3ff]/4 transition-all duration-300 pointer-events-none" />
 
               <div className="relative space-y-4">
                 <div className="flex items-start justify-between gap-4">

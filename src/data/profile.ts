@@ -129,7 +129,11 @@ export const profile: Profile = {
   navigation: [
     { id: "home", label: "Home", href: "/" },
     { id: "about", label: "About", href: "/about" },
+    { id: "skills", label: "Skills", href: "/skills" },
     { id: "experience", label: "Experience", href: "/experience" },
+    { id: "volunteering", label: "Volunteering", href: "/volunteering" },
+    { id: "certifications", label: "Certifications", href: "/certifications" },
+    { id: "achievements", label: "Achievements", href: "/achievements" },
     { id: "projects", label: "Projects", href: "/projects" },
     { id: "contact", label: "Contact", href: "/contact" },
   ],

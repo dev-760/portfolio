@@ -14,11 +14,12 @@ type LayoutProps = {
 
 const Layout = ({ navbar, children }: LayoutProps) => {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#050208] text-white">
+    <div className="relative min-h-screen overflow-hidden bg-[#07040d] text-white">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 left-10 h-64 w-64 rounded-full bg-[#7b5dff]/20 blur-[160px]" />
-        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-[#ff8fb3]/5 blur-[220px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.08),_transparent_60%)]" />
+        <div className="absolute -top-40 left-10 h-72 w-72 rounded-full bg-gradient-to-br from-[#8b6ff7]/20 to-[#b8a3ff]/5 blur-[140px]" />
+        <div className="absolute -bottom-20 -right-20 h-96 w-96 rounded-full bg-gradient-to-tl from-[#8b6ff7]/10 to-[#b8a3ff]/5 blur-[180px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_rgba(139,111,247,0.08),_transparent_75%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,_rgba(184,163,255,0.05),_transparent_70%)]" />
       </div>
 
       <ScrollProgress />

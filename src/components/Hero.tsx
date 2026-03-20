@@ -30,24 +30,7 @@ const Hero = () => {
     }
   };
 
-  const downloadCV = () => {
-    // Create a new CV file or replace this with your CV URL
-    const cvUrl = "/cv.pdf"; // Update this path when you add your CV
-    const link = document.createElement("a");
-    link.href = cvUrl;
-    link.download = `${profile.name.replace(/\s+/g, '-')}-CV.pdf`;
-    // Only attempt download if file exists
-    fetch(cvUrl)
-      .then(res => {
-        if (res.ok) {
-          link.click();
-        }
-      })
-      .catch(() => {
-        // CV not available yet
-        alert("CV will be available soon!");
-      });
-  };
+
 
   return (
     <motion.section
@@ -155,19 +138,11 @@ const Hero = () => {
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => scrollToSection("contact")}
-            className="w-full sm:w-auto rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold uppercase tracking-[0.4em] text-white backdrop-blur-md transition-all hover:border-white/50 hover:bg-white/10 text-center"
+            className="w-full sm:w-auto rounded-lg border border-white/10 bg-gradient-to-br from-white/[0.12] to-white/[0.04] px-7 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white backdrop-blur-lg transition-all hover:from-white/[0.16] hover:to-white/[0.08] hover:border-white/15 hover:shadow-[0_12px_40px_rgba(139,111,247,0.2)] text-center"
           >
             get in touch
           </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={downloadCV}
-            className="w-full sm:w-auto rounded-full border border-[#7b5dff]/50 bg-[#7b5dff]/10 px-6 py-3 text-sm font-semibold uppercase tracking-[0.4em] text-[#af8cff] backdrop-blur-md transition-all hover:border-[#af8cff]/70 hover:bg-[#af8cff]/15 text-center"
-            title="Download CV (coming soon)"
-          >
-            📄 download CV
-          </motion.button>
+
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 10 }}

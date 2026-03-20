@@ -7,7 +7,6 @@ import Hero from "@/components/Hero";
 import Highlights from "@/components/Highlights";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
-import Stats from "@/components/Stats";
 import Volunteering from "@/components/Volunteering";
 
 const HomePage = () => {
@@ -15,7 +14,6 @@ const HomePage = () => {
     <>
       <Hero />
       <Highlights />
-      <Stats />
       <About />
       <Skills />
       <Experience />
