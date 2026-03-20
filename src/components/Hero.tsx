@@ -222,6 +222,7 @@ const Hero = () => {
             🔗
           </motion.button>
         </motion.div>
+      </div>
     </motion.section>
   );
 };
