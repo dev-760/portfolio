@@ -21,7 +21,7 @@ const Education = () => {
 
         <div className="relative space-y-4">
           <div className="flex items-start gap-3">
-            <span className="text-2xl shrink-0">🎓</span>
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-gradient-to-br from-[#7b5dff]/20 to-[#af8cff]/10 text-xs font-medium text-white/60">ED</span>
             <div className="flex-1">
               <p className="text-lg font-semibold text-white group-hover:text-[#af8cff] transition-colors">
                 {education.degree}
@@ -36,8 +36,8 @@ const Education = () => {
           </div>
 
           <div className="pt-2 text-xs text-white/50 space-y-1">
-            <p>📚 Focus: Physical Sciences, English Track</p>
-            <p>🌟 Expected Graduation: 2026</p>
+            <p>Focus: Physical Sciences, English Track</p>
+            <p>Expected Graduation: 2026</p>
           </div>
         </div>
       </motion.div>

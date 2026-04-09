@@ -43,6 +43,7 @@ export type Profile = {
   title: string;
   location: string;
   tagline: string;
+  personalStatement: string;
   contact: {
     email: string;
     phone: string;
@@ -54,6 +55,7 @@ export type Profile = {
   links: {
     label: string;
     href: string;
+    icon?: string;
   }[];
   homeHighlights: Highlight[];
   navigation: NavItem[];
@@ -64,7 +66,6 @@ export type Profile = {
       details: string;
     };
     skills: SkillCategory[];
-    volunteering: TimelineEntry;
     experience: TimelineEntry[];
     achievements: Achievement[];
     contactMessage: string;
@@ -74,12 +75,14 @@ export type Profile = {
 
 export const profile: Profile = {
   name: "Hassan Karasu",
-  title: "Cybersecurity Enthusiast",
+  title: "Cognitive Science & Artificial Intelligence",
   location: "Casablanca, Morocco",
   tagline:
-    "Driven by a genuine curiosity for how complex systems operate and a relentless fascination with discovering how they can be broken.",
+    "Driven by a genuine curiosity for how minds work — human and artificial — and what it means for intelligence to emerge, perceive, and understand.",
+  personalStatement:
+    "My work exists at the intersection of computational logic and cognitive theory. I am dedicated to exploring how artificial systems can be informed by the biological complexities of the human mind. With a background in competitive robotics and a self-directed focus on cognitive psychology, I aim to build and analyze systems that don't just process data, but simulate the nuanced ways in which intelligence perceives and interacts with the world. My goal is to contribute to the next generation of AI by grounding technical development in a deep understanding of cognitive architecture.",
   contact: {
-    email: "dev760@outlook.com",
+    email: "me@hassankarasu.dev",
     phone: "+212 779 898 873",
   },
   languages: [
@@ -96,53 +99,54 @@ export const profile: Profile = {
     {
       label: "GitHub",
       href: "https://github.com/dev-760",
+      icon: "github",
     },
     {
       label: "LinkedIn",
-      href: "https://linkedin.com/in/hassan-karasu",
+      href: "https://linkedin.com/in/hassan-karasu-a7485336b",
+      icon: "linkedin",
     },
     {
-      label: "Portfolio",
-      href: "https://hasankarasu.me",
+      label: "Instagram",
+      href: "https://instagram.com/v6.i6_",
+      icon: "instagram",
     },
   ],
   homeHighlights: [
     {
-      label: "Offensive Security",
-      value: "HTB & THM",
+      label: "Cognitive Science",
+      value: "Research Focus",
       description:
-        "Building a foundation independently through platforms like Hack The Box and TryHackMe. Driven by experimentation and solving real-world problems.",
-    },
-    {
-      label: "Blue Team Operations",
-      value: "Flawless Triage",
-      description:
-        "Executed foundational incident response and alert triage, achieving and sustaining a flawless 100% True Positive Rate (TPR) in the identification and analysis of active threats.",
+        "Exploring how intelligence emerges, how minds perceive, process, fail, and make meaning — bridging human cognition and AI systems.",
     },
     {
       label: "Robotics & AI",
       value: "National Level",
       description:
-        "National level competitor designing autonomous systems, driven by resilient and multi disciplinary thinking.",
+        "National level competitor designing autonomous systems. Complex problems rarely have one clean solution — that's what makes them worth solving.",
+    },
+    {
+      label: "Observation & Perception",
+      value: "Parallel Practice",
+      description:
+        "Maintaining a parallel practice in observation and spatial awareness — careful seeing and careful thinking are the same thing expressed differently.",
     },
   ],
   navigation: [
     { id: "home", label: "Home", href: "/" },
     { id: "about", label: "About", href: "/about" },
+    { id: "statement", label: "Statement", href: "/statement" },
     { id: "skills", label: "Skills", href: "/skills" },
     { id: "experience", label: "Experience", href: "/experience" },
-    { id: "volunteering", label: "Volunteering", href: "/volunteering" },
-    { id: "certifications", label: "Certifications", href: "/certifications" },
-    { id: "achievements", label: "Achievements", href: "/achievements" },
     { id: "projects", label: "Projects", href: "/projects" },
     { id: "contact", label: "Contact", href: "/contact" },
   ],
   sections: {
     about: [
-      "Cybersecurity is not something I stumbled into, it is something I was drawn to by genuine curiosity and a fascination with how systems work and, more importantly, how they can be broken. Offensive security in particular captivates me: the mindset it requires, the creativity involved, and the real-world impact it has.",
-      "I have spent time outside of formal education building that foundation independently, working through platforms like Hack The Box and TryHackMe not because I had to, but because I wanted to. That self-driven approach experimenting, getting things wrong, and figuring out why is how I learn best.",
-      "I have also competed at national level in robotics and AI, which taught me that technical problems rarely have a single clean solution.",
-      "I am applying to university to take that curiosity further, gain the depth and structure that independent study cannot fully provide, and work toward a career in offensive security where I can do what I find genuinely meaningful.",
+      "I've always been drawn to understanding things at their root — not just how they work on the surface, but what's actually happening underneath.",
+      "That instinct led me toward artificial intelligence and cognitive science: the formal study of how intelligence emerges, how minds perceive, process, fail, and make meaning. I find the overlap between human cognition and AI systems genuinely fascinating — particularly where the two diverge in ways that reveal something important about both.",
+      "Outside of that, I compete at national level in robotics and AI, which taught me early that complex problems rarely have one clean solution. I also maintain a parallel practice in observation and spatial awareness — because I think careful seeing and careful thinking are the same thing expressed differently.",
+      "I'm currently pursuing university study in Cognitive Science or Psychology with an AI focus, building my understanding independently, and thinking seriously about where human and artificial intelligence are heading together.",
     ],
     education: {
       degree: "2nd Year Baccalaureate – In Progress",
@@ -150,49 +154,48 @@ export const profile: Profile = {
     },
     skills: [
       {
-        category: "Technical Skills",
+        category: "AI & Logic",
         items: [
-          "Linux & Windows Environments",
-          "Network Infrastructure",
-          "Defensive Security Operations",
-          "Offensive Security Operations",
-          "Threat Analysis & Intelligence",
-          "Applied AI Security",
-          "Autonomous Systems & Robotics",
-          "Drone Systems",
+          "Machine Learning Fundamentals",
+          "Neural Network Concepts",
+          "Cognitive Modeling",
         ],
       },
       {
-        category: "Soft Skills",
+        category: "Systems & Robotics",
         items: [
-          "Autonomous Learning",
-          "Critical Problem Solving",
-          "Team Collaboration",
-          "Effective Leadership & Decision Making",
-          "Methodical Precision & Attention to Detail",
-          "Intercultural Communication",
+          "Autonomous Navigation",
+          "Drone Systems (PX4/ArduPilot)",
+          "Robotics Kinematics",
+        ],
+      },
+      {
+        category: "Development",
+        items: [
+          "Python (Scientific Stack)",
+          "Linux Environments",
+          "Shell Scripting",
+          "Git Version Control",
+        ],
+      },
+      {
+        category: "Infrastructure",
+        items: [
+          "Network Architecture",
+          "System Optimization",
+          "Deployment Pipelines (Vercel/Cloud)",
         ],
       },
     ],
-    volunteering: {
-      organization: "Motatawi3 Program – Ministry of Youth, Culture & Communication, Morocco",
-      role: "Volunteer",
-      dates: "Jul – Aug 2024",
-      bullets: [
-        "Facilitated workshops, mentorship sessions, and awareness campaigns in underserved communities",
-        "Promoted youth leadership and civic responsibility alongside local organisations",
-        "Supported young learners in creative thinking and early career exploration",
-      ],
-      closing: "",
-    },
     experience: [
       {
-        organization: "hasankarasu.me",
-        organizationLink: "https://hasankarasu.me",
-        role: "Independent Visual & Technical Practice",
+        organization: "Independent Research",
+        role: "AI & Cognitive Systems",
         dates: "2024 – Present",
         bullets: [
-          "Conceived, designed, and deployed a bilingual (Arabic/English) visual art portfolio as a fully independent project. The work explores photography through the lens of observation, transitional space, and atmosphere — themes that mirror the kind of careful, methodical attention that technical disciplines demand. Building and shipping the site end-to-end — from concept to deployment on Vercel — reflects the same instinct that drives my interest in security: understanding systems deeply enough to make something real with them.",
+          "Conducting independent research on cognitive frameworks and autonomous system architecture",
+          "Exploring the intersection of human cognition and artificial intelligence systems",
+          "Building understanding of how intelligence emerges, perceives, and understands across biological and artificial substrates",
         ],
         closing: "",
       },
@@ -227,22 +230,9 @@ export const profile: Profile = {
       },
     ],
     contactMessage:
-      "Interested in discussing cybersecurity, offensive security projects, or potential opportunities? Feel free to reach out.",
+      "Interested in discussing cognitive science, AI research, or potential collaboration? Feel free to reach out.",
   },
-  projects: [
-    {
-      title: "CTF",
-      link: "https://github.com/dev-760/CTF",
-      description: "A beginner-friendly Capture The Flag environment repository.",
-      technologies: ["CTF", "Security", "Shell"],
-    },
-    {
-      title: "NextLab (nxtscan)",
-      link: "https://github.com/dev-760/nxtscan",
-      description: "An open-source web security scanner featuring AI-powered remediation (Llama 3), continuous monitoring, real-time alerts, and executive bilingual PDF reports.",
-      technologies: ["Vulnerability Scanning", "Threat Detection", "AI", "Python", "Shodan"],
-    },
-  ],
+  projects: [],
 };
 
 export default profile;

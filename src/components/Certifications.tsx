@@ -44,7 +44,7 @@ const Certifications = () => {
                         {/* Badge */}
                         <div className="absolute top-4 right-4">
                             <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70 group-hover:bg-white/15 transition-colors">
-                                {index < 2 ? "🔄 Active" : "✓ Complete"}
+                                {index < 2 ? "Active" : "Complete"}
                             </span>
                         </div>
 

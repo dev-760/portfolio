@@ -5,10 +5,7 @@ import Section from "@/components/Section";
 import profile from "@/data/profile";
 
 const Skills = () => {
-  const skillIcons: Record<string, string> = {
-    "Technical Skills": "⚙️",
-    "Soft Skills": "🎯",
-  };
+
 
   return (
     <Section
@@ -25,8 +22,8 @@ const Skills = () => {
           transition={{ duration: 0.5, delay: groupIndex * 0.1 }}
           className="overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-r from-white/[0.03] to-white/[0.01] hover:border-white/20 transition-all duration-300"
         >
-          <div className="border-b border-white/10 px-4 py-3 text-xs uppercase tracking-[0.4em] text-white/50 font-medium flex items-center gap-2 bg-gradient-to-r from-white/5 to-transparent">
-            <span>{skillIcons[group.category] || "✨"}</span>
+          <div className="border-b border-white/10 px-4 py-3 text-xs uppercase tracking-[0.4em] text-white/50 font-medium flex items-center gap-2.5 bg-gradient-to-r from-white/5 to-transparent">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#7b5dff]" />
             {group.category}
           </div>
           <ul className="divide-y divide-white/5">

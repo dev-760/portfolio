@@ -8,7 +8,7 @@ const Stats = () => {
         {
             value: "5+",
             label: "Years Cybersecurity Interest",
-            icon: "🔒",
+            icon: "◆",
         },
         {
             value: "100%",
@@ -18,12 +18,12 @@ const Stats = () => {
         {
             value: "2",
             label: "Open Source Projects",
-            icon: "⚡",
+            icon: "◇",
         },
         {
             value: "3",
             label: "National-Level Competitions",
-            icon: "🏆",
+            icon: "△",
         },
     ];
 

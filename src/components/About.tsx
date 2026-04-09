@@ -31,7 +31,7 @@ const About = () => {
         >
           <div className="space-y-3">
             <p className="text-xs uppercase tracking-[0.5em] text-white/50 font-medium">
-              🌐 Languages
+              Languages
             </p>
             <ul className="space-y-2">
               {profile.languages.map((language) => (
@@ -56,7 +56,7 @@ const About = () => {
 
           <div className="border-t border-white/10 group-hover:border-white/20 transition-colors pt-4">
             <p className="text-xs uppercase tracking-[0.5em] text-white/50 font-medium mb-3">
-              📍 Currently in
+              Currently in
             </p>
             <motion.p
               whileHover={{ scale: 1.05 }}

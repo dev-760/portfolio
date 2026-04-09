@@ -22,7 +22,7 @@ const Volunteering = () => {
         <div className="relative space-y-4">
           <div className="space-y-2">
             <p className="text-xs uppercase tracking-[0.5em] text-white/50 font-medium">
-              🤝 Organization
+              Organization
             </p>
             <p className="text-white/90">
               {volunteering.organizationLink ? (

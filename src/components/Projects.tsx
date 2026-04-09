@@ -77,11 +77,11 @@ const Projects = () => {
             className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-8"
           >
             <div className="mb-4 flex justify-center">
-              <span className="text-6xl">🚀</span>
+              <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-[#7b5dff]/20 to-[#af8cff]/10 text-2xl font-light text-white/60">⟡</span>
             </div>
-            <p className="text-lg font-semibold text-white">Projects Coming Soon</p>
+            <p className="text-lg font-semibold text-white">Project Documentation Coming Soon</p>
             <p className="mt-2 text-sm text-white/60">
-              Exciting projects are on the way. Stay tuned!
+              Currently documenting independent research on cognitive frameworks and autonomous system architecture.
             </p>
           </motion.div>
         </div>

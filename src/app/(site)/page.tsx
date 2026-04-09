@@ -1,13 +1,11 @@
 import About from "@/components/About";
-import Achievements from "@/components/Achievements";
-import Certifications from "@/components/Certifications";
 import Contact from "@/components/Contact";
 import Experience from "@/components/Experience";
 import Hero from "@/components/Hero";
 import Highlights from "@/components/Highlights";
+import PersonalStatement from "@/components/PersonalStatement";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
-import Volunteering from "@/components/Volunteering";
 
 const HomePage = () => {
   return (
@@ -15,11 +13,9 @@ const HomePage = () => {
       <Hero />
       <Highlights />
       <About />
+      <PersonalStatement />
       <Skills />
       <Experience />
-      <Volunteering />
-      <Certifications />
-      <Achievements />
       <Projects />
       <Contact />
     </>

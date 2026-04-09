@@ -30,8 +30,6 @@ const Hero = () => {
     }
   };
 
-
-
   return (
     <motion.section
       ref={sectionRef}
@@ -96,24 +94,36 @@ const Hero = () => {
             </motion.span>
           ))}
         </div>
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-2xl text-lg text-white/80"
-        >
-          {profile.tagline}
-        </motion.p>
+
+        {/* Tagline Pills */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.5em] text-white/60"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-wrap items-center gap-3"
         >
-          <span>Red Team Operations</span>
-          <span>·</span>
-          <span>Blue Team Operations</span>
+          {["Cognitive Science", "Artificial Intelligence"].map((pill, index) => (
+            <motion.span
+              key={pill}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.25 + index * 0.1 }}
+              className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.06] px-4 py-1.5 text-xs uppercase tracking-[0.4em] text-white/70 backdrop-blur-sm hover:bg-white/[0.1] hover:border-white/20 hover:text-white/90 transition-all duration-300"
+            >
+              {pill}
+            </motion.span>
+          ))}
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="max-w-2xl text-lg text-white/80 leading-relaxed"
+        >
+          {profile.tagline}
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -123,10 +133,10 @@ const Hero = () => {
           <motion.button
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => scrollToSection("experience")}
+            onClick={() => scrollToSection("about")}
             className="group w-full sm:w-auto relative overflow-hidden rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.4em] text-[#1a0f14] transition-all"
           >
-            <span className="relative z-10">see my work</span>
+            <span className="relative z-10">explore my work</span>
             <div className="absolute inset-0 z-0 h-full w-full bg-gradient-to-r from-white via-[#e2d5ff] to-white opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             <div className="absolute inset-0 z-0 bg-white shadow-[0_0_20px_rgba(255,255,255,0.4)] opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
           </motion.button>

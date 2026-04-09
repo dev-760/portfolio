@@ -104,14 +104,6 @@ const Footer = () => {
                                     Email
                                 </a>
                             </li>
-                            <li>
-                                <a
-                                    href={`tel:${profile.contact.phone.replace(/\s+/g, "")}`}
-                                    className="transition-colors hover:text-white"
-                                >
-                                    Phone
-                                </a>
-                            </li>
                         </ul>
                     </motion.div>
                 </div>
