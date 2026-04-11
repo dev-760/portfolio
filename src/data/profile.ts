@@ -67,6 +67,7 @@ export type Profile = {
     };
     skills: SkillCategory[];
     experience: TimelineEntry[];
+    volunteering: TimelineEntry;
     achievements: Achievement[];
     contactMessage: string;
   };
@@ -212,6 +213,17 @@ export const profile: Profile = {
         closing: "",
       },
     ],
+    volunteering: {
+      organization: "Community Technology Initiatives",
+      role: "Volunteer Mentor",
+      dates: "2023 – Present",
+      bullets: [
+        "Mentoring students in introductory robotics and problem-solving fundamentals",
+        "Supporting hands-on workshops focused on safe experimentation and teamwork",
+        "Helping organize small local events to make STEM learning more accessible",
+      ],
+      closing: "Committed to using technology education as a practical path to opportunity.",
+    },
     achievements: [
       {
         title: "Oman Robotics Olympiad – Final Round",
