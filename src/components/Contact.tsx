@@ -41,7 +41,7 @@ const Contact = () => {
 
       showToast("Message sent successfully!", "success");
       setFormData({ name: "", email: "", message: "" });
-    } catch (error) {
+    } catch {
       showToast("Failed to send message", "error");
     } finally {
       setSubmitting(false);

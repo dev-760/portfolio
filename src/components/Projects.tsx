@@ -9,6 +9,9 @@ const Projects = () => {
 
   return (
     <Section id="projects" title="Projects">
+      <p className="text-sm sm:text-base text-white/70 leading-relaxed max-w-3xl mb-6">
+        Software I build to solve problems I encounter — from personal tools and productivity systems to AI-powered applications and business automation.
+      </p>
       {hasProjects ? (
         <div className="grid gap-6 lg:grid-cols-2">
           {profile.projects.map((project, index) => (
@@ -80,8 +83,8 @@ const Projects = () => {
               <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-[#7b5dff]/20 to-[#af8cff]/10 text-2xl font-light text-white/60">⟡</span>
             </div>
             <p className="text-lg font-semibold text-white">Project Documentation Coming Soon</p>
-            <p className="mt-2 text-sm text-white/60">
-              Currently documenting independent research on cognitive frameworks and autonomous system architecture.
+            <p className="mt-2 text-sm text-white/60 max-w-md mx-auto">
+              Software I build to solve problems I encounter — from personal tools and productivity systems to AI-powered applications and business automation.
             </p>
           </motion.div>
         </div>

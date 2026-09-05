@@ -15,26 +15,43 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hassankarasu.dev"),
   title: `${profile.name} | ${profile.title}`,
   description: profile.tagline,
   keywords: [
-    "Cognitive Science",
+    "Software Builder",
+    "Business Administration",
+    "Software Development",
     "Artificial Intelligence",
-    "Machine Learning",
-    "Neural Networks",
-    "Cognitive Modeling",
-    "Robotics",
-    "AI Research",
+    "Automation",
+    "Workflow Automation",
+    "AI Tools",
+    "Business & Technology",
     profile.name,
   ],
   authors: [{ name: profile.name }],
   creator: profile.name,
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
+    url: "https://hassankarasu.dev",
     title: `${profile.name} | ${profile.title}`,
     description: profile.tagline,
     siteName: profile.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${profile.name} | ${profile.title}`,
+    description: profile.tagline,
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

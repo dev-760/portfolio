@@ -34,11 +34,6 @@ const Education = () => {
               {education.details}
             </p>
           </div>
-
-          <div className="pt-2 text-xs text-white/50 space-y-1">
-            <p>Focus: Physical Sciences, English Track</p>
-            <p>Expected Graduation: 2026</p>
-          </div>
         </div>
       </motion.div>
     </Section>

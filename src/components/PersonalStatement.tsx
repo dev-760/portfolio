@@ -37,7 +37,7 @@ const PersonalStatement = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg sm:text-xl text-white/85 leading-[1.8] font-light tracking-wide group-hover:text-white/95 transition-colors duration-300"
+            className="text-lg sm:text-xl text-white/85 leading-[1.8] font-light tracking-wide group-hover:text-white/95 transition-colors duration-300 whitespace-pre-line"
           >
             {profile.personalStatement}
           </motion.p>

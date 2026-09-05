@@ -95,6 +95,16 @@ const Hero = () => {
           ))}
         </div>
 
+        {/* Professional Title */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.18 }}
+          className="text-sm sm:text-base font-semibold tracking-[0.2em] uppercase text-[#b8a3ff]"
+        >
+          {profile.title}
+        </motion.p>
+
         {/* Tagline Pills */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -102,7 +112,7 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-wrap items-center gap-3"
         >
-          {["Cognitive Science", "Artificial Intelligence"].map((pill, index) => (
+          {["Software", "AI & Automation", "Business"].map((pill, index) => (
             <motion.span
               key={pill}
               initial={{ opacity: 0, scale: 0.8 }}

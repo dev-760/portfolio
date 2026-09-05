@@ -2,6 +2,7 @@ import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 import Education from "@/components/Education";
 import Volunteering from "@/components/Volunteering";
+import Achievements from "@/components/Achievements";
 
 const ExperiencePage = () => {
   return (
@@ -9,6 +10,7 @@ const ExperiencePage = () => {
       <Experience />
       <Education />
       <Skills />
+      <Achievements />
       <Volunteering />
     </div>
   );

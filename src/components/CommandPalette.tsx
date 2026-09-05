@@ -2,13 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 import profile from "@/data/profile";
 
 const CommandPalette = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [search, setSearch] = useState("");
-    const router = useRouter();
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -33,7 +31,11 @@ const CommandPalette = () => {
             category: "Navigation",
             action: () => {
                 const element = document.getElementById(item.id);
-                element?.scrollIntoView({ behavior: "smooth" });
+                if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                } else {
+                    window.location.href = item.id === "home" ? "/" : `/#${item.id}`;
+                }
                 setIsOpen(false);
             },
         })),

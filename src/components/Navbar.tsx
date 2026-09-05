@@ -46,6 +46,9 @@ const Navbar = ({ navItems }: NavbarProps) => {
         behavior: "smooth",
       });
       setIsMobileMenuOpen(false);
+    } else {
+      setIsMobileMenuOpen(false);
+      window.location.href = id === "home" ? "/" : `/#${id}`;
     }
   };
 

@@ -1,40 +1,16 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import profile from "@/data/profile";
 
 const Highlights = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  const opacity = useTransform(
-    scrollYProgress,
-    [0, 0.3, 0.5, 0.7, 1],
-    [0, 0.3, 1, 0.3, 0]
-  );
-
-  const scale = useTransform(
-    scrollYProgress,
-    [0, 0.3, 0.5, 0.7, 1],
-    [0.85, 0.9, 1, 0.9, 0.85]
-  );
-
-  const y = useTransform(
-    scrollYProgress,
-    [0, 0.3, 0.5, 0.7, 1],
-    [50, 20, 0, -20, -50]
-  );
-
   return (
     <motion.section
-      ref={sectionRef}
-      style={{ opacity, scale, y }}
-      className="grid gap-6 rounded-2xl sm:rounded-3xl border border-white/6 bg-gradient-to-br from-[#16101f]/80 via-[#1a1425]/60 to-[#0f0a15]/80 p-8 sm:p-10 shadow-[0_24px_80px_rgba(139,111,247,0.12),inset_0_1px_1px_rgba(255,255,255,0.04)] text-white will-change-transform md:grid-cols-3 backdrop-blur"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="grid gap-6 rounded-2xl sm:rounded-3xl border border-white/6 bg-gradient-to-br from-[#16101f]/80 via-[#1a1425]/60 to-[#0f0a15]/80 p-8 sm:p-10 shadow-[0_24px_80px_rgba(139,111,247,0.12),inset_0_1px_1px_rgba(255,255,255,0.04)] text-white md:grid-cols-3 backdrop-blur"
     >
       {profile.homeHighlights.map((highlight, index) => (
         <motion.article

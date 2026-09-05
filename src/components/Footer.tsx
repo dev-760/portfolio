@@ -28,7 +28,8 @@ const Footer = () => {
                             <span className="h-4 w-5 rounded-md bg-white/70" />
                             <span className="h-4 w-3 rounded-full border border-white/50" />
                         </div>
-                        <p className="text-sm font-medium text-white">{profile.name}</p>
+                        <p className="text-sm font-semibold text-white">{profile.name}</p>
+                        <p className="text-xs text-[#b8a3ff] font-medium">{profile.title}</p>
                         <p className="text-xs text-white/50">{profile.location}</p>
                     </motion.div>
 
