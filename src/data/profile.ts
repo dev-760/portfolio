@@ -266,45 +266,11 @@ export const profile: Profile = {
   },
   projects: [
     {
-      title: "Budgetly Sync — Offline-First Personal Finance Platform",
-      link: "https://github.com/dev-760/Budgetly-Sync",
+      title: "Budgetly — Offline-First Personal Finance Platform",
+      link: "https://github.com/dev-760/Budgetly",
       description:
         "A modern, offline-first personal finance application built for students with zero-latency local tracking, budget insights, and automatic background cloud synchronization.",
-      technologies: ["TypeScript", "Next.js", "Prisma", "PostgreSQL", "Zustand", "Tailwind CSS"],
-    },
-    {
-      title: "NextLab (nxtscan) — AI-Powered Web Security Scanner",
-      link: "https://github.com/dev-760/nxtscan",
-      description:
-        "An open-source web security scanner featuring AI-powered remediation (Llama 3), continuous monitoring, real-time alerts, and executive bilingual PDF reports.",
-      technologies: ["Python", "Linux", "FastAPI", "Next.js", "AI Remediation", "Celery", "Supabase", "Redis"],
-    },
-    {
-      title: "FlowCraft AI — Workflow Automation Engine",
-      link: "https://github.com/dev-760",
-      description:
-        "An automated workflow engine designed to eliminate repetitive operational tasks. Integrates document processing pipelines with LLMs to automate categorization, structured data extraction, and executive reporting.",
-      technologies: ["Next.js", "TypeScript", "OpenAI API", "Tailwind CSS", "Node.js"],
-    },
-    {
-      title: "Mytho — Latent Reasoning Neural Architecture",
-      link: "https://github.com/dev-760/Mytho",
-      description:
-        "A recurrent latent reasoning model architecture featuring Adaptive Computation Time (ACT), Multi-Latent Attention, dynamic Mixture of Experts (MoE), and verifier heads.",
-      technologies: ["Python", "Machine Learning", "PyTorch", "CUDA", "Transformers", "Linux"],
-    },
-    {
-      title: "Autonomous Drone Navigation & Control Systems",
-      description:
-        "Autonomous flight control algorithms, obstacle avoidance systems, and custom drone prototyping developed for national science and robotics competitions.",
-      technologies: ["Robotics", "Autonomous Systems", "Computer Vision", "Python", "Linux"],
-    },
-    {
-      title: "CTF — Security Challenge Environment",
-      link: "https://github.com/dev-760/CTF",
-      description:
-        "A beginner-friendly Capture The Flag environment repository and hands-on Linux security exercises.",
-      technologies: ["Security", "Linux", "Shell Scripting", "CTF"],
+      technologies: ["TypeScript", "React Native", "Expo", "SQLite", "Zustand", "Tailwind CSS"],
     },
   ],
 };
