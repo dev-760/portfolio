@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   creator: profile.name,
   icons: {
     icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", type: "image/x-icon" },
     ],
   },
   openGraph: {
@@ -43,6 +43,7 @@ export const metadata: Metadata = {
     title: `${profile.name} | ${profile.title}`,
     description: profile.tagline,
     siteName: profile.name,
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Hassan Karasu — Portfolio" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -66,6 +67,33 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} bg-[#050208] text-white antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfilePage",
+              mainEntity: {
+                "@type": "Person",
+                name: profile.name,
+                jobTitle: profile.title,
+                url: "https://hassankarasu.dev",
+                sameAs: profile.links.map((link) => link.href),
+                knowsAbout: [
+                  "Software Development",
+                  "AI",
+                  "Automation",
+                  "Business Administration",
+                ],
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Casablanca",
+                  addressCountry: "MA",
+                },
+              },
+            }),
+          }}
+        />
         {children}
         <Analytics />
       </body>

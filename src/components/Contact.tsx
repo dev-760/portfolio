@@ -10,7 +10,6 @@ const Contact = () => {
   const year = new Date().getUTCFullYear();
   const [copied, setCopied] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [submitting, setSubmitting] = useState(false);
 
   const handleCopyEmail = async () => {
     try {
@@ -32,20 +31,8 @@ const Contact = () => {
       return;
     }
 
-    setSubmitting(true);
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      const mailtoLink = `mailto:${profile.contact.email}?subject=From ${formData.name}&body=${encodeURIComponent(formData.message)}`;
-      window.location.href = mailtoLink;
-
-      showToast("Message sent successfully!", "success");
-      setFormData({ name: "", email: "", message: "" });
-    } catch {
-      showToast("Failed to send message", "error");
-    } finally {
-      setSubmitting(false);
-    }
+    const mailtoLink = `mailto:${profile.contact.email}?subject=From ${formData.name}&body=${encodeURIComponent(formData.message)}`;
+    window.location.href = mailtoLink;
   };
 
   return (
@@ -194,12 +181,11 @@ const Contact = () => {
             </label>
             <motion.button
               type="submit"
-              disabled={submitting}
-              whileHover={{ scale: submitting ? 1 : 1.01 }}
-              whileTap={{ scale: submitting ? 1 : 0.99 }}
-              className="w-full rounded-lg bg-white/[0.08] border border-white/[0.08] px-4 py-2.5 text-[11px] font-medium uppercase tracking-[0.3em] text-white/80 transition-all duration-200 hover:bg-white/[0.12] hover:text-white hover:border-white/[0.12] disabled:opacity-40 disabled:cursor-not-allowed"
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
+              className="w-full rounded-lg bg-white/[0.08] border border-white/[0.08] px-4 py-2.5 text-[11px] font-medium uppercase tracking-[0.3em] text-white/80 transition-all duration-200 hover:bg-white/[0.12] hover:text-white hover:border-white/[0.12]"
             >
-              {submitting ? "Sending..." : "Send Message"}
+              Open Email Client
             </motion.button>
           </div>
         </motion.form>

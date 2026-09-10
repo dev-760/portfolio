@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import profile from "@/data/profile";
+import { scrollToSection } from "@/utils/scroll";
 
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -15,20 +16,6 @@ const Hero = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [1, 1, 0.2, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [1, 1, 0.9, 0.85]);
   const y = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 0, -20, -50]);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
 
   return (
     <motion.section
