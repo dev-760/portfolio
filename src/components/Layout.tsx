@@ -3,7 +3,6 @@ import ScrollToTop from "@/components/ScrollToTop";
 import ScrollProgress from "@/components/ScrollProgress";
 import CommandPalette from "@/components/CommandPalette";
 import KeyboardShortcuts from "@/components/KeyboardShortcuts";
-import MouseGlow from "@/components/MouseGlow";
 import Toast from "@/components/Toast";
 import Footer from "@/components/Footer";
 
@@ -14,25 +13,38 @@ type LayoutProps = {
 
 const Layout = ({ navbar, children }: LayoutProps) => {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#07040d] text-white">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 left-10 h-72 w-72 rounded-full bg-gradient-to-br from-[#8b6ff7]/20 to-[#b8a3ff]/5 blur-[140px]" />
-        <div className="absolute -bottom-20 -right-20 h-96 w-96 rounded-full bg-gradient-to-tl from-[#8b6ff7]/10 to-[#b8a3ff]/5 blur-[180px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_rgba(139,111,247,0.08),_transparent_75%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,_rgba(184,163,255,0.05),_transparent_70%)]" />
-      </div>
+    <div className="min-h-screen bg-[#f8f9ff] text-[#191c21] selection:bg-[#ffddb7] selection:text-[#191c21] relative flex flex-col justify-between overflow-x-hidden">
+      {/* Ambient background illumination */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-15%,rgba(194,132,42,0.06),rgba(255,255,255,0))] opacity-90"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed bottom-0 right-0 z-0 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,rgba(72,94,137,0.035),rgba(255,255,255,0))] blur-3xl"
+      />
 
       <ScrollProgress />
-      <MouseGlow />
       <CommandPalette />
       <KeyboardShortcuts />
       <Toast />
 
-      {navbar}
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-24 sm:pt-28 pb-32 sm:pb-0">
-        <main className="space-y-6 sm:space-y-10">{children}</main>
+      <div className="relative z-10 w-full flex-1 flex flex-col justify-between">
+        <div>
+          {navbar}
+
+          <main
+            id="main-content"
+            tabIndex={-1}
+            className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-20 space-y-10 sm:space-y-14 outline-none"
+          >
+            {children}
+          </main>
+        </div>
+
+        <Footer />
       </div>
-      <Footer />
+
       <ScrollToTop />
     </div>
   );

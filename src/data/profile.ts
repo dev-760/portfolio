@@ -38,6 +38,13 @@ export type Highlight = {
   description: string;
 };
 
+export type EducationItem = {
+  institution: string;
+  degree: string;
+  field?: string;
+  details: string;
+};
+
 export type Profile = {
   name: string;
   title: string;
@@ -61,27 +68,24 @@ export type Profile = {
   navigation: NavItem[];
   sections: {
     about: string[];
-    education: {
-      degree: string;
-      details: string;
-    };
+    education: EducationItem[];
     skills: SkillCategory[];
     experience: TimelineEntry[];
     volunteering: TimelineEntry;
     achievements: Achievement[];
     contactMessage: string;
+    projectsMessage?: string;
   };
   projects: Project[];
 };
 
 export const profile: Profile = {
   name: "Hassan Karasu",
-  title: "Software Builder | Business Administration Student",
+  title: "Business Administration Student",
   location: "Casablanca, Morocco",
-  tagline:
-    "I build software around problems I encounter — combining technology, AI, and business thinking to create practical tools, automate workflows, and make everyday work more efficient.",
+  tagline: "Solving practical business problems with AI and automation.",
   personalStatement:
-    "My work sits at the intersection of business, software, artificial intelligence, and automation.\n\nAs a Business Administration student and independent software builder, I'm interested in understanding practical problems and turning them into useful systems.\n\nI enjoy building tools that solve problems I encounter, experimenting with AI to improve workflows, and exploring how technology can make everyday work more efficient.\n\nMy goal is to continue developing both sides of that equation: understanding the business problem and having the technical ability to build the solution.",
+    "My work sits at the intersection of business, artificial intelligence, and automation.\n\nAs a Business Administration student, I'm interested in understanding practical problems and turning them into useful systems by leveraging AI.\n\nI enjoy solving problems I encounter, experimenting with AI to improve workflows, and exploring how technology can make everyday work more efficient.\n\nMy goal is to continue developing both sides of that equation: understanding the business problem and having the ability to implement AI solutions.",
   contact: {
     email: "me@hassankarasu.dev",
     phone: "+212 779 898 873",
@@ -93,7 +97,7 @@ export const profile: Profile = {
     },
     {
       name: "Arabic",
-      level: "Native or Bilingual",
+      level: "Native",
     },
   ],
   links: [
@@ -115,22 +119,22 @@ export const profile: Profile = {
   ],
   homeHighlights: [
     {
-      label: "Software",
-      value: "Software Building",
+      label: "AI Solutions",
+      value: "AI & Tools Integration",
       description:
-        "Building practical applications and tools around real problems, from personal utilities to business-oriented software.",
+        "Building practical workflows and tools around real problems, using AI to turn concepts into functional systems without traditional coding.",
     },
     {
       label: "Automation",
-      value: "AI & Automation",
+      value: "Workflow Efficiency",
       description:
-        "Using AI, automation, and modern software tools to simplify workflows, reduce repetitive work, and improve productivity.",
+        "Using AI, automation, and modern low-code tools to simplify processes, reduce repetitive work, and improve productivity.",
     },
     {
       label: "Application",
-      value: "Business & Technology",
+      value: "Business Strategy",
       description:
-        "Exploring how software and AI can be applied to real business problems, operations, and everyday work.",
+        "Exploring how emerging tech and AI can be applied directly to real business operations and everyday problem-solving.",
     },
   ],
   navigation: [
@@ -145,17 +149,27 @@ export const profile: Profile = {
   sections: {
     about: [
       "I like solving problems by building things.",
-      "I'm currently studying Business Administration, while my interests sit at the intersection of business and technology — particularly software, artificial intelligence, automation, and productivity.",
+      "I'm currently studying Business Administration, while my interests sit at the intersection of business and technology — particularly artificial intelligence, automation, and productivity.",
       "When I encounter a problem that can be solved with a tool, I prefer to build it.",
       "That might mean creating a personal finance application, automating a repetitive workflow, connecting different services, or using AI to make a process faster and more useful.",
       "I enjoy taking an idea from a simple problem to a working solution — figuring out what needs to be built, designing the system, implementing it, and improving it through use.",
-      "My focus is increasingly on the space between business problems and technical solutions: understanding how something works, identifying what can be improved, and building software that makes a practical difference.",
-      "I'm currently developing my understanding of business while continuing to build software, experiment with AI, and explore new ways technology can improve how people and businesses work.",
+      "My focus is increasingly on the space between business problems and technical solutions: understanding how something works, identifying what can be improved, and building systems that makes a practical difference.",
+      "I'm currently developing my understanding of business while continuing to build AI tools, experiment with AI, and explore new ways technology can improve how people and businesses work.",
     ],
-    education: {
-      degree: "Business Administration – Student",
-      details: "Morocco · In Progress",
-    },
+    education: [
+      {
+        institution: "FSJES Aïn Chock",
+        degree: "Licence in Business Administration",
+        field: "First-year student",
+        details: "Morocco · In Progress",
+      },
+      {
+        institution: "Prince Moulay Abdellah High School",
+        degree: "Baccalaureate",
+        field: "Physical Science - English Option",
+        details: "2026",
+      },
+    ],
     skills: [
       {
         category: "AI & Automation",
@@ -169,14 +183,14 @@ export const profile: Profile = {
         ],
       },
       {
-        category: "Software & Development",
+        category: "Systems & Architecture",
         items: [
           "Web Application Development",
           "API Integration",
           "Database Fundamentals",
           "Git & GitHub",
           "Cloud Deployment",
-          "Software Architecture",
+          "Systems Architecture",
         ],
       },
       {
@@ -206,10 +220,10 @@ export const profile: Profile = {
     experience: [
       {
         organization: "Independent",
-        role: "Software Builder",
+        role: "AI Solutions Builder",
         dates: "2024 – Present",
         bullets: [
-          "Identify repetitive, inefficient, or underserved problems and turn them into software solutions",
+          "Identify repetitive, inefficient, or underserved problems and turn them into functional solutions",
           "Build web applications and practical tools from concept to deployment",
           "Integrate AI into applications and workflows where it provides practical value",
           "Design automated workflows that reduce repetitive work and improve efficiency",
@@ -217,7 +231,7 @@ export const profile: Profile = {
           "Manage projects independently, from defining the problem and designing the solution to implementation and iteration",
         ],
         closing:
-          "I build software around problems I encounter — from personal productivity tools to practical business applications.",
+          "I build systems around problems I encounter — from personal productivity tools to practical business applications.",
       },
       {
         organization: "EL25 Studio",
@@ -263,16 +277,26 @@ export const profile: Profile = {
     ],
     contactMessage:
       "Interested in building something, automating a workflow, or exploring how AI can solve a business problem? Feel free to reach out.",
+    projectsMessage:
+      "Systems I build to solve problems I encounter — from personal tools and productivity systems to AI-powered applications and business automation.",
   },
   projects: [
     {
       title: "Budgetly — Offline-First Personal Finance Platform",
-      link: "https://github.com/dev-760/Budgetly",
+      link: "https://github.com/dev-760",
       description:
         "A modern, offline-first personal finance application built for students with zero-latency local tracking, budget insights, and automatic background cloud synchronization.",
-      technologies: ["TypeScript", "React Native", "Expo", "SQLite", "Zustand", "Tailwind CSS"],
+      technologies: [
+        "TypeScript",
+        "React Native",
+        "Expo",
+        "SQLite",
+        "Zustand",
+        "Tailwind CSS",
+      ],
     },
   ],
 };
 
 export default profile;
+

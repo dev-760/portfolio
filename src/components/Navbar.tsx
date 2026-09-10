@@ -1,13 +1,56 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import profile, { type NavItem } from "@/data/profile";
 import { scrollToSection } from "@/utils/scroll";
-import { SocialIcon } from "@/components/icons/SocialIcon";
 
 type NavbarProps = {
   navItems: NavItem[];
+};
+
+const UiverseButton = () => {
+  const defaultText = "ONLINE  ";
+  const hoverText = "HIRE ME!";
+  
+  return (
+    <div className="relative overflow-hidden rounded-full bg-[#f2f3fa] border border-[#e2e4ec] flex items-center justify-between p-0.5 pl-2.5 gap-1.5 group transition-all duration-300 hover:bg-[#845400] hover:border-[#845400] shadow-2xs">
+      <p className="relative flex font-mono text-[9px] font-bold tracking-widest text-[#845400] h-3 overflow-hidden">
+        {/* Original text sliding up */}
+        <span className="flex">
+          {defaultText.split("").map((char, i) => (
+            <span 
+              key={i} 
+              className="inline-block transition-transform duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:-translate-y-4"
+              style={{ transitionDelay: `${i * 30}ms` }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
+        </span>
+        {/* Easter egg text sliding in from bottom */}
+        <span className="absolute left-0 top-3 flex text-white">
+          {hoverText.split("").map((char, i) => (
+            <span 
+              key={`clone-${i}`}
+              className="inline-block transition-transform duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:-translate-y-3"
+              style={{ transitionDelay: `${i * 30}ms` }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
+        </span>
+      </p>
+
+      <div className="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-white flex items-center justify-center relative overflow-hidden text-[#845400] border border-[#e2e4ec] group-hover:border-transparent">
+        <svg viewBox="0 0 14 15" fill="none" className="w-2 sm:w-2.5 transition-transform duration-300 group-hover:translate-x-4">
+          <path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"></path>
+        </svg>
+        <svg viewBox="0 0 14 15" fill="none" className="w-2 sm:w-2.5 absolute -left-4 transition-transform duration-300 group-hover:translate-x-4">
+          <path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"></path>
+        </svg>
+      </div>
+    </div>
+  );
 };
 
 const Navbar = ({ navItems }: NavbarProps) => {
@@ -16,26 +59,19 @@ const Navbar = ({ navItems }: NavbarProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    let ticking = false;
     const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
 
-          const sections = navItems.filter((item) => item.enabled !== false);
-          for (const item of sections) {
-            const element = document.getElementById(item.id);
-            if (element) {
-              const rect = element.getBoundingClientRect();
-              if (rect.top <= 150 && rect.bottom >= 150) {
-                setActiveSection(item.id);
-                break;
-              }
-            }
+      const sections = navItems.filter((item) => item.enabled !== false);
+      for (const item of sections) {
+        const element = document.getElementById(item.id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 160 && rect.bottom >= 100) {
+            setActiveSection(item.id);
+            break;
           }
-          ticking = false;
-        });
-        ticking = true;
+        }
       }
     };
 
@@ -43,214 +79,133 @@ const Navbar = ({ navItems }: NavbarProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [navItems]);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isMobileMenuOpen]);
+
   const handleScrollToSection = (id: string) => {
     scrollToSection(id, () => setIsMobileMenuOpen(false));
   };
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      <nav
+        aria-label="Main Navigation"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
           isScrolled
-            ? "bg-[#07040d]/80 shadow-[0_1px_0_rgba(255,255,255,0.04),0_16px_48px_rgba(0,0,0,0.4)] backdrop-blur-2xl"
-            : "bg-transparent"
+            ? "bg-[#f8f9ff]/90 backdrop-blur-md border-b border-[#e2e4ec] shadow-xs"
+            : "bg-[#f8f9ff]/60 backdrop-blur-sm border-b border-[#e2e4ec]/50"
         }`}
       >
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex h-16 items-center justify-between">
-            {/* Brand */}
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between gap-4">
+            {/* Brand Logo */}
+            <button
               onClick={() => handleScrollToSection("home")}
-              className="group flex items-center gap-3"
+              className="flex items-center gap-2 text-left group"
+              aria-label={`${profile.name} — Home`}
             >
-              <span className="text-sm font-semibold tracking-[0.15em] text-white/90 uppercase group-hover:text-white transition-colors">
-                {profile.name.split(" ")[0]}
+              <UiverseButton />
+              <span className="font-sans font-bold text-sm sm:text-base tracking-tight text-[#191c21] group-hover:text-[#845400] transition-colors">
+                {profile.name}
               </span>
-              <span className="h-px w-4 bg-white/20 group-hover:w-6 group-hover:bg-white/40 transition-all duration-300" />
-              <span className="text-[10px] font-medium tracking-[0.3em] text-white/40 uppercase group-hover:text-white/60 transition-colors">
-                Portfolio
-              </span>
-            </motion.button>
+            </button>
 
-            {/* Desktop Navigation */}
-            <motion.ul
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="hidden items-center gap-0.5 md:flex"
-              role="navigation"
-              aria-label="Main navigation"
-            >
-              {navItems.map((item, index) => {
+            {/* Desktop Navigation Links (Original Data Only) */}
+            <ul className="hidden md:flex items-center gap-1 bg-white/80 border border-[#e2e4ec] p-1 rounded-full shadow-xs">
+              {navItems.map((item) => {
                 const isDisabled = item.enabled === false;
                 const isActive = activeSection === item.id;
 
                 return (
-                  <motion.li
-                    key={item.id}
-                    initial={{ opacity: 0, y: -8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.35 + index * 0.04 }}
-                  >
+                  <li key={item.id}>
                     <button
                       onClick={() => !isDisabled && handleScrollToSection(item.id)}
                       disabled={isDisabled}
-                      className={`relative px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] transition-all duration-200 rounded-md ${
+                      className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-150 cursor-pointer ${
                         isDisabled
-                          ? "cursor-not-allowed text-white/15"
+                          ? "cursor-not-allowed opacity-30"
                           : isActive
-                            ? "text-white"
-                            : "text-white/50 hover:text-white/80"
+                          ? "bg-[#191c21] text-white font-semibold shadow-xs"
+                          : "text-[#514537] hover:text-[#191c21] hover:bg-[#f2f3fa]"
                       }`}
                     >
-                      {isActive && (
-                        <motion.span
-                          layoutId="navActive"
-                          className="absolute inset-0 rounded-md bg-white/[0.08] border border-white/[0.06]"
-                          transition={{ type: "spring", stiffness: 400, damping: 32 }}
-                        />
-                      )}
-                      <span className="relative z-10">{item.label}</span>
+                      {item.label}
                     </button>
-                  </motion.li>
+                  </li>
                 );
               })}
-            </motion.ul>
-
-            {/* Social Links — Desktop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="hidden items-center gap-3 md:flex"
-            >
-              {profile.links.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/30 hover:text-white/80 transition-colors duration-200"
-                  title={link.label}
-                >
-                  <SocialIcon name={link.icon || link.label.toLowerCase()} />
-                </a>
-              ))}
-            </motion.div>
+            </ul>
 
             {/* Mobile Menu Button */}
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="flex h-9 w-9 flex-col items-center justify-center gap-[5px] rounded-md md:hidden hover:bg-white/[0.04] transition-colors"
-              aria-label="Toggle menu"
-            >
-              <motion.span
-                animate={{
-                  rotate: isMobileMenuOpen ? 45 : 0,
-                  y: isMobileMenuOpen ? 7 : 0,
-                  width: isMobileMenuOpen ? 18 : 16,
-                }}
-                className="h-[1.5px] w-4 bg-white/70 transition-all origin-center"
-              />
-              <motion.span
-                animate={{ opacity: isMobileMenuOpen ? 0 : 1, scaleX: isMobileMenuOpen ? 0 : 1 }}
-                className="h-[1.5px] w-4 bg-white/70 transition-all"
-              />
-              <motion.span
-                animate={{
-                  rotate: isMobileMenuOpen ? -45 : 0,
-                  y: isMobileMenuOpen ? -7 : 0,
-                  width: isMobileMenuOpen ? 18 : 12,
-                }}
-                className="h-[1.5px] w-3 bg-white/70 transition-all origin-center self-end"
-              />
-            </motion.button>
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMobileMenuOpen}
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#e2e4ec] bg-white text-[#191c21] hover:bg-[#f2f3fa] transition-colors cursor-pointer shadow-2xs"
+              >
+                {isMobileMenuOpen ? (
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
         </div>
-      </motion.nav>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
+        {/* Mobile Navigation Drawer */}
         {isMobileMenuOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm md:hidden"
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
+          <div className="md:hidden border-b border-[#e2e4ec] bg-[#f8f9ff] px-4 py-4 space-y-2 animate-in fade-in slide-in-from-top-2 duration-150 shadow-sm">
+            <ul className="space-y-1">
+              {navItems.map((item) => {
+                const isDisabled = item.enabled === false;
+                const isActive = activeSection === item.id;
 
-            {/* Menu Panel */}
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed top-[68px] left-4 right-4 z-50 overflow-hidden rounded-xl border border-white/[0.06] bg-[#0d0a14]/95 shadow-[0_24px_80px_rgba(0,0,0,0.5)] backdrop-blur-2xl md:hidden"
-            >
-              <ul className="p-2">
-                {navItems.map((item, index) => {
-                  const isDisabled = item.enabled === false;
-                  const isActive = activeSection === item.id;
-
-                  return (
-                    <motion.li
-                      key={item.id}
-                      initial={{ opacity: 0, x: -12 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.04 }}
+                return (
+                  <li key={item.id}>
+                    <button
+                      onClick={() => !isDisabled && handleScrollToSection(item.id)}
+                      disabled={isDisabled}
+                      className={`w-full flex items-center justify-between px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
+                        isDisabled
+                          ? "opacity-30 cursor-not-allowed"
+                          : isActive
+                          ? "bg-white text-[#845400] font-semibold border border-[#e2e4ec]"
+                          : "text-[#514537] hover:bg-white hover:text-[#191c21]"
+                      }`}
                     >
-                      <button
-                        onClick={() => !isDisabled && handleScrollToSection(item.id)}
-                        disabled={isDisabled}
-                        className={`w-full rounded-lg px-4 py-3 text-left text-sm font-medium tracking-[0.1em] transition-all ${
-                          isDisabled
-                            ? "cursor-not-allowed text-white/15"
-                            : isActive
-                              ? "bg-white/[0.06] text-white"
-                              : "text-white/60 hover:bg-white/[0.03] hover:text-white/90"
-                        }`}
-                      >
-                        {item.label}
-                      </button>
-                    </motion.li>
-                  );
-                })}
-              </ul>
+                      <span>{item.label}</span>
+                      {isActive && <span className="h-1.5 w-1.5 rounded-full bg-[#c2842a]" />}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
 
-              {/* Mobile Social Links */}
-              <div className="border-t border-white/[0.06] px-6 py-4">
-                <div className="flex items-center gap-5">
-                  {profile.links.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/30 hover:text-white/70 transition-colors"
-                      title={link.label}
-                    >
-                      <SocialIcon name={link.icon || link.label.toLowerCase()} />
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </>
+            <div className="pt-2 border-t border-[#e2e4ec] flex items-center justify-between text-xs text-[#514537] px-2">
+              <span>{profile.location}</span>
+              <a
+                href={`mailto:${profile.contact.email}`}
+                className="font-medium text-[#845400] hover:underline"
+              >
+                {profile.contact.email}
+              </a>
+            </div>
+          </div>
         )}
-      </AnimatePresence>
+      </nav>
     </>
   );
 };

@@ -1,89 +1,109 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Section from "@/components/Section";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import SlidingCard from "@/components/SlidingCard";
 import profile from "@/data/profile";
 
-const Experience = () => {
+type ExperienceProps = {
+  showLink?: boolean;
+};
+
+const Experience = ({ showLink = true }: ExperienceProps) => {
   const experience = profile.sections.experience;
+  const pathname = usePathname();
+  const shouldShowLink =
+    showLink &&
+    pathname !== "/education" &&
+    !pathname.startsWith("/education") &&
+    pathname !== "/experience" &&
+    !pathname.startsWith("/experience");
 
   return (
-    <Section id="experience" title="Experience">
-      <div className="space-y-8">
-        {experience.map((exp, index) => (
-          <motion.article
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            whileHover={{ y: -6, scale: 1.02 }}
-            className="group relative overflow-hidden rounded-2xl border border-white/6 bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-white/[0.01] p-7 backdrop-blur transition-all duration-300 hover:border-white/10 hover:shadow-[0_24px_72px_rgba(139,111,247,0.18)]"
-          >
-            {/* Gradient overlay on hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#8b6ff7]/0 to-[#b8a3ff]/0 group-hover:from-[#8b6ff7]/8 group-hover:to-[#b8a3ff]/4 transition-all duration-300 pointer-events-none" />
+    <SlidingCard
+      id="experience"
+      eyebrow="Career & Deliverables"
+      title="Experience"
+      subtitle="Hands-on software building, AI automation, and production experience."
+    >
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 items-stretch">
+          {experience.map((exp) => (
+            <article
+              key={`${exp.role}-${exp.organization}`}
+              className="rounded-2xl border border-[#e2e4ec] bg-[#fbfbfe] p-5 sm:p-6 lg:p-7 shadow-2xs hover:shadow-xs transition-all duration-200 flex flex-col justify-between"
+            >
+              <div>
+                {/* Header: Role, Org, and Dates */}
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 border-b border-[#e2e4ec] pb-4 mb-4">
+                  <div>
+                    <h3 className="font-sans text-lg sm:text-xl font-bold text-[#191c21]">
+                      {exp.role}
+                    </h3>
+                    <div className="flex flex-wrap items-center gap-2 mt-1 text-sm">
+                      {exp.organizationLink ? (
+                        <a
+                          href={exp.organizationLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-semibold text-[#845400] hover:underline"
+                        >
+                          {exp.organization}
+                        </a>
+                      ) : (
+                        <span className="font-semibold text-[#845400]">{exp.organization}</span>
+                      )}
+                      {exp.location && (
+                        <span className="text-xs text-[#514537]">
+                          · {exp.location}
+                        </span>
+                      )}
+                    </div>
+                  </div>
 
-            <div className="relative space-y-4">
-              <div className="space-y-1">
-                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4">
-                  <p className="text-xl sm:text-2xl font-semibold text-white group-hover:text-[#af8cff] transition-colors">
-                    {exp.role}
-                  </p>
-                  <p className="text-xs sm:text-sm text-white/60 shrink-0 font-medium">
+                  {/* Dates Badge */}
+                  <span className="rounded-full bg-white px-3.5 py-1 text-xs font-mono font-medium text-[#514537] border border-[#e2e4ec]/70 shrink-0 w-fit shadow-2xs">
                     {exp.dates}
-                  </p>
+                  </span>
                 </div>
-                <p className="text-sm text-white/60">
-                  {exp.organizationLink ? (
-                    <a
-                      href={exp.organizationLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-white hover:underline transition-colors"
-                    >
-                      {exp.organization}
-                    </a>
-                  ) : (
-                    exp.organization
-                  )}
-                  {exp.location ? ` · ${exp.location}` : ""}
-                </p>
-              </div>
 
-              {exp.bullets.length === 1 ? (
-                <div className="border-t border-white/10 pt-4 group-hover:border-white/20 transition-colors">
-                  <p className="text-sm text-white/75 leading-relaxed">
-                    {exp.bullets[0]}
-                  </p>
-                </div>
-              ) : (
-                <ul className="space-y-3 border-t border-white/10 pt-4 group-hover:border-white/20 transition-colors">
+                {/* Bullets */}
+                <ul className="space-y-2.5">
                   {exp.bullets.map((bullet, i) => (
-                    <motion.li
+                    <li
                       key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 + i * 0.05 }}
-                      className="flex gap-3 text-sm text-white/75 group-hover:text-white/85 transition-colors"
+                      className="flex items-start gap-2.5 text-xs sm:text-sm text-[#514537] leading-relaxed"
                     >
-                      <span className="mt-1 inline-flex h-2 w-3 shrink-0 rounded-full bg-[#7b5dff]/60 group-hover:bg-[#af8cff]/80" />
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#c2842a] shrink-0" aria-hidden="true" />
                       <span>{bullet}</span>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
-              )}
+              </div>
 
+              {/* Closing Callout if present */}
               {exp.closing && (
-                <p className="text-sm font-semibold text-white/80 group-hover:text-white transition-colors">
+                <div className="mt-5 rounded-xl border border-[#e2e4ec] bg-white p-3.5 text-xs sm:text-sm font-medium text-[#191c21] italic border-l-4 border-l-[#c2842a] shadow-2xs">
                   {exp.closing}
-                </p>
+                </div>
               )}
-            </div>
-          </motion.article>
-        ))}
+            </article>
+          ))}
+        </div>
+
+        {shouldShowLink && (
+          <div className="pt-2 flex justify-end">
+            <Link
+              href="/education"
+              className="inline-flex items-center gap-2 rounded-xl border border-[#e2e4ec] bg-white px-4 py-2 text-xs sm:text-sm font-semibold text-[#845400] hover:text-[#191c21] hover:border-[#845400]/40 hover:-translate-y-0.5 shadow-2xs hover:shadow-xs transition-all"
+            >
+              <span>View formal education</span>
+              <span>→</span>
+            </Link>
+          </div>
+        )}
       </div>
-    </Section>
+    </SlidingCard>
   );
 };
 

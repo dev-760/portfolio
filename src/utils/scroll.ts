@@ -3,10 +3,10 @@ export const scrollToSection = (id: string, callback?: () => void) => {
   if (element) {
     const offset = 80;
     const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - offset;
+    const offsetPosition = elementPosition + window.scrollY - offset;
 
     window.scrollTo({
-      top: offsetPosition,
+      top: Math.max(0, offsetPosition),
       behavior: "smooth",
     });
     if (callback) callback();

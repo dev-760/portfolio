@@ -1,155 +1,115 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 import profile from "@/data/profile";
 import { scrollToSection } from "@/utils/scroll";
 
 const Hero = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"]
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [1, 1, 0.2, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [1, 1, 0.9, 0.85]);
-  const y = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 0, -20, -50]);
 
   return (
-    <motion.section
-      ref={sectionRef}
+    <header
       id="home"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      style={{
-        opacity,
-        scale,
-        y,
-      }}
-      className="relative overflow-hidden rounded-[24px] sm:rounded-[36px] border border-white/5 bg-[#161117]/95 p-6 sm:p-10 text-white shadow-[0_35px_120px_rgba(5,2,8,0.65)] will-change-transform"
+      className="w-full scroll-mt-24"
     >
-      <div className="absolute inset-0 z-0">
-        {/* Subtle Tech Grid Background */}
+      <div className="relative rounded-3xl border border-[#e2e4ec] bg-gradient-to-b from-white via-white to-[#fbfbfe] p-6 sm:p-8 lg:p-10 shadow-xs hover:shadow-md hover:border-[#845400]/20 transition-all duration-300 overflow-hidden min-h-[calc(100dvh-9rem)] flex flex-col justify-between">
+        {/* Subtle Ambient Background Highlights */}
         <div
-          className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-[#ffddb7]/25 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-[#b6ccfe]/20 blur-3xl"
         />
 
-        {/* Animated Glow Orbs */}
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-            x: [0, 20, 0],
-            y: [0, -20, 0]
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -left-8 top-0 h-64 w-64 rounded-full bg-[#7b5dff]/40 blur-[80px]"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.4, 0.2],
-            x: [0, -30, 0],
-            y: [0, 30, 0]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-[#af8cff]/30 blur-[100px]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-black/80" />
-      </div>
-      <div className="relative flex flex-col gap-8">
-        <div className="flex items-center justify-between text-xs uppercase tracking-[0.6em] text-white/50">
-          <div className="flex items-center gap-2">
-            <span className="h-3 w-5 rounded-md bg-white/70" />
-            <span className="h-3 w-3 rounded-full border border-white/50" />
+        {/* Top Status Strip */}
+        <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 border-b border-[#e2e4ec]/70 pb-4">
+          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-50/80 px-3.5 py-1 text-xs font-semibold text-emerald-800 shadow-2xs backdrop-blur-xs">
+            <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>Available for Projects</span>
           </div>
-          <span>Portfolio</span>
-        </div>
-        <div className="text-[clamp(2.5rem,8vw,6rem)] font-black uppercase leading-[0.9] tracking-[0.1em] sm:tracking-[0.15em] text-white">
-          {profile.name.split(" ").map((part) => (
-            <motion.span
-              key={part}
-              className="block"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+
+          <div className="flex items-center gap-1.5 text-xs font-medium text-[#514537]">
+            <svg
+              className="h-3.5 w-3.5 text-[#845400]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              aria-hidden="true"
             >
-              {part}
-            </motion.span>
-          ))}
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg>
+            <span>{profile.location}</span>
+          </div>
         </div>
 
-        {/* Professional Title */}
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.18 }}
-          className="text-sm sm:text-base font-semibold tracking-[0.2em] uppercase text-[#b8a3ff]"
-        >
-          {profile.title}
-        </motion.p>
+        {/* Main Content Area */}
+        <div className="relative z-10 space-y-6 sm:space-y-8 my-auto py-6 sm:py-8 max-w-3xl">
+          <div className="space-y-3 sm:space-y-4">
+            <h1 className="font-sans text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#191c21] leading-[1.08]">
+              {profile.name}
+            </h1>
+            <p className="font-sans text-xl sm:text-2xl font-semibold text-[#845400] tracking-tight">
+              {profile.title}
+            </p>
+            <p className="font-sans text-base sm:text-lg lg:text-xl text-[#514537] leading-relaxed pt-1">
+              {profile.tagline}
+            </p>
+          </div>
 
-        {/* Tagline Pills */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap items-center gap-3"
-        >
-          {["Software", "AI & Automation", "Business"].map((pill, index) => (
-            <motion.span
-              key={pill}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.25 + index * 0.1 }}
-              className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.06] px-4 py-1.5 text-xs uppercase tracking-[0.4em] text-white/70 backdrop-blur-sm hover:bg-white/[0.1] hover:border-white/20 hover:text-white/90 transition-all duration-300"
+          {/* Actions Suite */}
+          <div className="pt-2 flex flex-wrap items-center gap-3.5">
+            {/* Primary CTA */}
+            <button
+              onClick={() => scrollToSection("projects")}
+              className="inline-flex items-center gap-2 rounded-xl bg-[#191c21] px-6 py-3.5 text-sm font-semibold text-white shadow-xs hover:bg-[#845400] hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-200 cursor-pointer"
             >
-              {pill}
-            </motion.span>
-          ))}
-        </motion.div>
+              <span>Explore Projects</span>
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
 
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.35 }}
-          className="max-w-2xl text-lg text-white/80 leading-relaxed"
-        >
-          {profile.tagline}
-        </motion.p>
+            {/* Secondary CTA */}
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="inline-flex items-center gap-2 rounded-xl border border-[#e2e4ec] bg-white px-6 py-3.5 text-sm font-semibold text-[#191c21] shadow-2xs hover:bg-[#f2f3fa] hover:border-[#837565]/40 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-200 cursor-pointer"
+            >
+              <span>Get in Touch</span>
+            </button>
+          </div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="relative z-10 flex flex-col sm:flex-row flex-wrap gap-4 mt-4"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => scrollToSection("about")}
-            className="group w-full sm:w-auto relative overflow-hidden rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.4em] text-[#1a0f14] transition-all"
+
+        {/* Bottom Card Strip with Scroll Cue */}
+        <div className="relative z-10 flex items-center justify-end pt-4 border-t border-[#e2e4ec]/60 text-xs text-[#514537]">
+          <button
+            onClick={() => scrollToSection("highlights")}
+            className="inline-flex items-center gap-1.5 font-semibold text-[#845400] hover:text-[#191c21] transition-colors cursor-pointer group"
           >
-            <span className="relative z-10">explore my work</span>
-            <div className="absolute inset-0 z-0 h-full w-full bg-gradient-to-r from-white via-[#e2d5ff] to-white opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            <div className="absolute inset-0 z-0 bg-white shadow-[0_0_20px_rgba(255,255,255,0.4)] opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => scrollToSection("contact")}
-            className="w-full sm:w-auto rounded-lg border border-white/10 bg-gradient-to-br from-white/[0.12] to-white/[0.04] px-7 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white backdrop-blur-lg transition-all hover:from-white/[0.16] hover:to-white/[0.08] hover:border-white/15 hover:shadow-[0_12px_40px_rgba(139,111,247,0.2)] text-center"
-          >
-            get in touch
-          </motion.button>
-
-        </motion.div>
-
+            <span>Scroll down to explore</span>
+            <svg
+              className="h-3.5 w-3.5 group-hover:translate-y-0.5 transition-transform"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
       </div>
-    </motion.section>
+    </header>
   );
 };
 

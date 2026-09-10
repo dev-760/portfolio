@@ -1,195 +1,148 @@
 @import "tailwindcss";
 
 :root {
-  --background: #07040d;
-  --foreground: #faf8ff;
-  --accent: #8b6ff7;
-  --accent-light: #b8a3ff;
-  --card-bg: #16101f;
-  --border-color: rgba(255, 255, 255, 0.06);
+  /* Surface Canvas & Containers */
+  --surface: #f8f9ff;
+  --surface-dim: #e6e8ef;
+  --surface-card: #ffffff;
+  --surface-container-low: #f2f3fa;
+  --surface-container: #ecedf5;
+  --surface-container-high: #e6e8ef;
+  
+  /* Text & Ink Tokens */
+  --on-surface: #191c21;
+  --on-surface-variant: #514537;
+  --text-muted: #6b7280;
+
+  /* Accent Strokes */
+  --primary: #845400;
+  --primary-container: #c2842a;
+  --primary-tint: #fff8f0;
+  --secondary: #485e89;
+  --secondary-tint: #f0f4fd;
+  --tertiary: #00658e;
+  
+  /* Borders */
+  --border: #e2e4ec;
+  --border-strong: #d0d3de;
+  --outline-variant: #d6c4b1;
+  --error: #ba1a1a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--surface);
+  --color-foreground: var(--on-surface);
+  --font-serif: "Newsreader", "Times New Roman", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", Menlo, Consolas, Monaco, monospace;
+}
+
+/* Base Document Styling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  background-color: var(--surface);
+  color: var(--on-surface);
 }
 
 body {
-  background: linear-gradient(160deg, #07040d 0%, #0d0915 40%, #0a050f 100%);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  background-color: var(--surface);
+  color: var(--on-surface);
+  font-family: var(--font-sans), sans-serif;
   line-height: 1.65;
   min-height: 100vh;
-  letter-spacing: 0.25px;
-  font-weight: 450;
-}
-
-html {
-  scroll-behavior: smooth;
-  background: linear-gradient(160deg, #07040d 0%, #0d0915 40%, #0a050f 100%);
-}
-
-/* Smooth scroll with padding for fixed navbar */
-html {
-  scroll-padding-top: 100px;
-}
-
-/* Performance optimizations for animations */
-* {
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Enable GPU acceleration for animated elements */
-[class*="motion-"] {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
-
+/* Elegant Text Selection */
 ::selection {
-  background: rgba(123, 93, 255, 0.5);
-  color: #fff;
+  background: #ffddb7;
+  color: #191c21;
 }
 
-/* Button Styles */
+/* Precision Focus Visible (WCAG 2.2 AA / AAA compliant) */
+:focus-visible {
+  outline: 2px solid var(--primary-container);
+  outline-offset: 2px;
+}
+
+/* Skip to Content Utility */
+.skip-to-content {
+  position: fixed;
+  top: -100px;
+  left: 1.5rem;
+  z-index: 100;
+  padding: 0.6rem 1.2rem;
+  background: var(--on-surface);
+  color: #ffffff;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  transition: top 0.2s ease;
+}
+
+.skip-to-content:focus {
+  top: 1.5rem;
+}
+
+/* Buttons and Clickables */
 button,
-a[role="button"] {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+a,
+[role="button"] {
+  touch-action: manipulation;
+  cursor: pointer;
 }
 
-button:active {
-  transform: scale(0.98);
+button:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
-/* Link Styles */
-a {
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: var(--accent-light);
-}
-
-/* Heading Styles */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 700;
-  letter-spacing: -0.6px;
-}
-
-h1 {
-  font-size: 2.5rem;
-  line-height: 1.1;
-  background: linear-gradient(130deg, #faf8ff 0%, #b8a3ff 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-h2 {
-  font-size: 1.875rem;
-  line-height: 1.25;
-  background: linear-gradient(130deg, #faf8ff 0%, #b8a3ff 50%, #faf8ff 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-h3 {
-  font-size: 1.5rem;
-  line-height: 1.35;
-}
-
-/* Scrollbar Styling */
+/* Minimal Modern Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(139, 111, 247, 0.4) 0%, rgba(184, 163, 255, 0.3) 100%);
-  border-radius: 5px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
+  background: #d8dae1;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(139, 111, 247, 0.6) 0%, rgba(184, 163, 255, 0.5) 100%);
-  background-clip: padding-box;
+  background: #bec2cb;
 }
 
-/* Premium glass morphism effect */
-.glass-effect {
-  backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* Premium gradient text */
-.gradient-text {
-  background: linear-gradient(130deg, #faf8ff 0%, #b8a3ff 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Print Styles */
 @media print {
-
-  /* Hide elements that shouldn't print */
-  nav,
-  [class*="ScrollToTop"],
-  [class*="CommandPalette"],
-  [class*="MouseGlow"],
-  [class*="Toast"],
-  button[title="Scroll to top"],
-  .no-print {
-    display: none !important;
-  }
-
-  /* Optimize for print */
-  html {
-    scroll-padding-top: 0;
-  }
-
   body {
     background: white;
-    color: #000;
+    color: black;
   }
-
-  section {
-    page-break-inside: avoid;
-    break-inside: avoid;
-  }
-
-  /* Better typography for print */
-  h1,
-  h2,
-  h3 {
-    page-break-after: avoid;
-    break-after: avoid;
-  }
-
-  a {
-    text-decoration: underline;
-  }
-
-  /* Footer margin */
-  footer {
-    margin-top: 2rem;
-    border-top: 1px solid #ccc;
-    padding-top: 1rem;
+  nav, footer, .no-print {
+    display: none !important;
   }
 }

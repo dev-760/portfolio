@@ -1,73 +1,104 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Section from "@/components/Section";
+import SlidingCard from "@/components/SlidingCard";
 import profile from "@/data/profile";
 
 const About = () => {
   return (
-    <Section id="about" title="About">
-      <div className="flex flex-col gap-6 lg:flex-row">
-        <div className="flex-1 space-y-4">
+    <SlidingCard
+      id="about"
+      eyebrow="Background & Study"
+      title="About"
+      subtitle="Study, engineering, and the intersection of business and technology."
+    >
+      <div className="grid gap-8 lg:grid-cols-12 items-start">
+        {/* Narrative Prose Column (8 cols on desktop) */}
+        <div className="lg:col-span-8 space-y-4 text-sm sm:text-base text-[#514537] leading-relaxed">
           {profile.sections.about.map((paragraph, index) => (
-            <motion.p
-              key={paragraph}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-white/80 leading-relaxed hover:text-white transition-colors"
+            <p
+              key={index}
+              className={
+                index === 0
+                  ? "text-xl sm:text-2xl font-bold text-[#191c21] tracking-tight leading-snug pb-1 border-b border-[#e2e4ec]/60"
+                  : "text-[#514537]"
+              }
             >
               {paragraph}
-            </motion.p>
+            </p>
           ))}
         </div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="group flex flex-col gap-4 rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] p-6 text-sm text-white/70 hover:border-white/20 transition-all duration-300 hover:shadow-[0_15px_50px_rgba(123,93,255,0.1)]"
-        >
-          <div className="space-y-3">
-            <p className="text-xs uppercase tracking-[0.5em] text-white/50 font-medium">
+
+        {/* Info Sidebar (4 cols on desktop) */}
+        <aside className="lg:col-span-4 space-y-4">
+          {/* Languages Card */}
+          <div className="rounded-2xl border border-[#e2e4ec] bg-[#fbfbfe] p-5 sm:p-6 shadow-2xs space-y-3">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[#845400]">
               Languages
-            </p>
-            <ul className="space-y-2">
-              {profile.languages.map((language) => (
-                <motion.li
-                  key={language.name}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="flex items-center gap-2 group/lang"
+            </h3>
+            <ul className="space-y-2.5">
+              {profile.languages.map((lang) => (
+                <li
+                  key={lang.name}
+                  className="flex items-center justify-between text-xs sm:text-sm"
                 >
-                  <span className="block h-1.5 w-1.5 rounded-full bg-white/40 group-hover/lang:bg-[#7b5dff] transition-colors" />
-                  <div>
-                    <span className="font-semibold text-white group-hover/lang:text-[#af8cff] transition-colors">
-                      {language.name}
-                    </span>{" "}
-                    <span className="text-xs text-white/50">– {language.level}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#c2842a]" />
+                    <span className="font-semibold text-[#191c21]">{lang.name}</span>
                   </div>
-                </motion.li>
+                  <span className="rounded-full bg-white px-2.5 py-0.5 text-xs font-medium text-[#514537] border border-[#e2e4ec]/70 shadow-2xs">
+                    {lang.level}
+                  </span>
+                </li>
               ))}
             </ul>
           </div>
 
-          <div className="border-t border-white/10 group-hover:border-white/20 transition-colors pt-4">
-            <p className="text-xs uppercase tracking-[0.5em] text-white/50 font-medium mb-3">
-              Currently in
-            </p>
-            <motion.p
-              whileHover={{ scale: 1.05 }}
-              className="text-lg font-semibold text-white"
-            >
-              {profile.location}
-            </motion.p>
+          {/* Location Card */}
+          <div className="rounded-2xl border border-[#e2e4ec] bg-[#fbfbfe] p-5 sm:p-6 shadow-2xs space-y-2">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[#845400]">
+              Location
+            </h3>
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#191c21]">
+              <svg
+                className="h-4 w-4 text-[#845400] shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+              <span>{profile.location}</span>
+            </div>
           </div>
-        </motion.div>
+
+          {/* Contact Direct Link */}
+          <div className="rounded-2xl border border-[#e2e4ec] bg-[#fbfbfe] p-5 sm:p-6 shadow-2xs space-y-2">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[#845400]">
+              Direct Inquiry
+            </h3>
+            <p className="text-xs text-[#514537] leading-relaxed">
+              Have an architecture or software project to discuss?
+            </p>
+            <a
+              href={`mailto:${profile.contact.email}`}
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#845400] hover:underline"
+            >
+              <span>{profile.contact.email}</span>
+              <span>→</span>
+            </a>
+          </div>
+        </aside>
       </div>
-    </Section>
+    </SlidingCard>
   );
 };
 

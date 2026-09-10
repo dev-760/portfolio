@@ -1,42 +1,68 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Section from "@/components/Section";
+import SlidingCard from "@/components/SlidingCard";
 import profile from "@/data/profile";
 
 const Education = () => {
   const education = profile.sections.education;
 
   return (
-    <Section id="education" title="Education">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-white/[0.01] p-6 backdrop-blur transition-all duration-300 hover:border-white/20 hover:shadow-[0_20px_60px_rgba(123,93,255,0.1)]"
-      >
-        {/* Gradient overlay on hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#7b5dff]/0 to-[#af8cff]/0 group-hover:from-[#7b5dff]/5 group-hover:to-[#af8cff]/5 transition-all duration-300 pointer-events-none" />
+    <SlidingCard
+      id="education"
+      eyebrow="Academic Studies & Background"
+      title="Education"
+      subtitle="Academic studies and business administration foundation."
+    >
+      <div className="space-y-6">
+        {education.map((item) => (
+          <article
+            key={`${item.degree}-${item.institution}`}
+            className="rounded-2xl border border-[#e2e4ec] bg-[#fbfbfe] p-5 sm:p-7 shadow-xs hover:shadow-md transition-all duration-200"
+          >
+            <div className="flex items-start gap-4 sm:gap-5">
+              {/* Graduation Icon */}
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#f2f3fa] text-[#845400] border border-[#e2e4ec]">
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                >
+                  <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                  <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                </svg>
+              </div>
 
-        <div className="relative space-y-4">
-          <div className="flex items-start gap-3">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-gradient-to-br from-[#7b5dff]/20 to-[#af8cff]/10 text-xs font-medium text-white/60">ED</span>
-            <div className="flex-1">
-              <p className="text-lg font-semibold text-white group-hover:text-[#af8cff] transition-colors">
-                {education.degree}
-              </p>
+              {/* Education Info */}
+              <div className="space-y-2 flex-1">
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 border-b border-[#e2e4ec] pb-3">
+                  <div>
+                    <h3 className="font-sans text-xl font-bold text-[#191c21]">
+                      {item.degree}
+                    </h3>
+                    <p className="font-sans text-base font-semibold text-[#845400] mt-0.5">
+                      {item.institution}
+                    </p>
+                  </div>
+
+                  {item.details && (
+                    <span className="rounded-full bg-[#f2f3fa] px-3.5 py-1 text-xs font-mono font-medium text-[#514537] border border-[#e2e4ec]/60 shrink-0 w-fit">
+                      {item.details}
+                    </span>
+                  )}
+                </div>
+
+                {item.field && (
+                  <p className="text-sm font-medium text-[#514537] pt-1">
+                    {item.field}
+                  </p>
+                )}
+              </div>
             </div>
-          </div>
-
-          <div className="border-l-2 border-[#7b5dff]/40 group-hover:border-[#af8cff]/60 transition-colors pl-4">
-            <p className="text-sm text-white/70 group-hover:text-white/80 transition-colors leading-relaxed">
-              {education.details}
-            </p>
-          </div>
-        </div>
-      </motion.div>
-    </Section>
+          </article>
+        ))}
+      </div>
+    </SlidingCard>
   );
 };
 

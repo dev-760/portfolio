@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import profile from "@/data/profile";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
@@ -19,7 +14,7 @@ export const metadata: Metadata = {
   title: `${profile.name} | ${profile.title}`,
   description: profile.tagline,
   keywords: [
-    "Software Builder",
+    "AI Operator",
     "Business Administration",
     "Software Development",
     "Artificial Intelligence",
@@ -43,12 +38,14 @@ export const metadata: Metadata = {
     title: `${profile.name} | ${profile.title}`,
     description: profile.tagline,
     siteName: profile.name,
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Hassan Karasu — Portfolio" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${profile.name} | ${profile.title}`,
     description: profile.tagline,
+  },
+  alternates: {
+    canonical: "/",
   },
   robots: {
     index: true,
@@ -62,11 +59,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="bg-[#050208]">
+    <html lang="en" suppressHydrationWarning className={`bg-[#f8f9ff] text-[#191c21] ${plusJakartaSans.variable}`}>
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} bg-[#050208] text-white antialiased`}
+        className={`bg-[#f8f9ff] text-[#191c21] font-sans antialiased min-h-screen selection:bg-[#ffddb7] selection:text-[#191c21]`}
       >
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
