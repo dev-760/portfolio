@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="100%" height="100%">
+  <!-- Background (set fill to "none" if you need transparency) -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <g transform="translate(100, 150)">
+    <!-- Blue Diamond Icon -->
+    <path d="M 0,-54 L 54,0 L 0,54 L -54,0 Z" fill="#0047FF" />
+
+    <!-- Inner White Triangle -->
+    <polygon points="0,-30 26,0 -26,0" fill="#ffffff" />
+
+    <!-- Brandmark Typography -->
+    <text 
+      x="88" 
+      y="22" 
+      fill="#111111" 
+      font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" 
+      font-size="82" 
+      font-weight="800" 
+      letter-spacing="-1.5">Hassan Karasu</text>
+  </g>
+</svg>

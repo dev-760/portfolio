@@ -1,17 +1,20 @@
 import type { ReactNode } from "react";
-import Layout from "@/components/Layout";
-import Navbar from "@/components/Navbar";
-import { SHOW_PROJECTS_PAGE } from "@/config/site";
-import profile from "@/data/profile";
+import { Analytics } from "@vercel/analytics/react";
+import { Navbar } from "@/components/Navbar";
+import { StructuredData } from "@/components/StructuredData";
+import { generateSiteMetadata } from "@/lib/metadata";
+
+export const metadata = generateSiteMetadata();
 
 export default function SiteLayout({ children }: { children: ReactNode }) {
-  const navItems = profile.navigation.map((item) =>
-    item.id === "projects" ? { ...item, enabled: SHOW_PROJECTS_PAGE } : item,
-  );
-
   return (
-    <Layout navbar={<Navbar navItems={navItems} />}>
-      {children}
-    </Layout>
+    <>
+      <StructuredData />
+      <Analytics />
+      <Navbar />
+      <main id="main-content" className="min-h-screen">
+        {children}
+      </main>
+    </>
   );
 }

@@ -92,12 +92,16 @@ export const profile: Profile = {
   },
   languages: [
     {
+      name: "Arabic",
+      level: "Native",
+    },
+    {
       name: "English",
       level: "Full Professional",
     },
     {
-      name: "Arabic",
-      level: "Native",
+      name: "French",
+      level: "Working Proficiency",
     },
   ],
   links: [

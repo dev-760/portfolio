@@ -1,213 +1,174 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import profile, { type NavItem } from "@/data/profile";
-import { scrollToSection } from "@/utils/scroll";
+import { useState, useCallback, memo, useEffect } from "react";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { clsx } from "clsx";
 
-type NavbarProps = {
-  navItems: NavItem[];
-};
+const navLinks = [
+  { name: "Work", href: "#work" },
+  { name: "About", href: "/about" },
+  { name: "Skills", href: "/skills" },
+  { name: "Writing", href: "/blog" },
+  { name: "Contact", href: "#contact" },
+];
 
-const UiverseButton = () => {
-  const defaultText = "ONLINE  ";
-  const hoverText = "HIRE ME!";
-  
-  return (
-    <div className="relative overflow-hidden rounded-full bg-[#f2f3fa] border border-[#e2e4ec] flex items-center justify-between p-0.5 pl-2.5 gap-1.5 group transition-all duration-300 hover:bg-[#845400] hover:border-[#845400] shadow-2xs">
-      <p className="relative flex font-mono text-[9px] font-bold tracking-widest text-[#845400] h-3 overflow-hidden">
-        {/* Original text sliding up */}
-        <span className="flex">
-          {defaultText.split("").map((char, i) => (
-            <span 
-              key={i} 
-              className="inline-block transition-transform duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:-translate-y-4"
-              style={{ transitionDelay: `${i * 30}ms` }}
-            >
-              {char === " " ? "\u00A0" : char}
-            </span>
-          ))}
-        </span>
-        {/* Easter egg text sliding in from bottom */}
-        <span className="absolute left-0 top-3 flex text-white">
-          {hoverText.split("").map((char, i) => (
-            <span 
-              key={`clone-${i}`}
-              className="inline-block transition-transform duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:-translate-y-3"
-              style={{ transitionDelay: `${i * 30}ms` }}
-            >
-              {char === " " ? "\u00A0" : char}
-            </span>
-          ))}
-        </span>
-      </p>
+const NavLink = memo(({ link }: { link: typeof navLinks[0] }) => (
+  <Link
+    href={link.href}
+    className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all duration-200 relative group"
+  >
+    {link.name}
+    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
+  </Link>
+));
 
-      <div className="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-white flex items-center justify-center relative overflow-hidden text-[#845400] border border-[#e2e4ec] group-hover:border-transparent">
-        <svg viewBox="0 0 14 15" fill="none" className="w-2 sm:w-2.5 transition-transform duration-300 group-hover:translate-x-4">
-          <path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"></path>
-        </svg>
-        <svg viewBox="0 0 14 15" fill="none" className="w-2 sm:w-2.5 absolute -left-4 transition-transform duration-300 group-hover:translate-x-4">
-          <path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"></path>
-        </svg>
-      </div>
-    </div>
-  );
-};
+NavLink.displayName = "NavLink";
 
-const Navbar = ({ navItems }: NavbarProps) => {
-  const [activeSection, setActiveSection] = useState("home");
+export function Navbar() {
+  const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 20);
+  });
+
+  const toggleMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen((prev) => !prev);
+  }, []);
+
+  const closeMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(false);
+  }, []);
+
+  // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-
-      const sections = navItems.filter((item) => item.enabled !== false);
-      for (const item of sections) {
-        const element = document.getElementById(item.id);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 160 && rect.bottom >= 100) {
-            setActiveSection(item.id);
-            break;
-          }
-        }
-      }
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
     };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [navItems]);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isMobileMenuOpen) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isMobileMenuOpen]);
 
-  const handleScrollToSection = (id: string) => {
-    scrollToSection(id, () => setIsMobileMenuOpen(false));
-  };
-
   return (
-    <>
-      <nav
-        aria-label="Main Navigation"
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-          isScrolled
-            ? "bg-[#f8f9ff]/90 backdrop-blur-md border-b border-[#e2e4ec] shadow-xs"
-            : "bg-[#f8f9ff]/60 backdrop-blur-sm border-b border-[#e2e4ec]/50"
-        }`}
-      >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between gap-4">
-            {/* Brand Logo */}
-            <button
-              onClick={() => handleScrollToSection("home")}
-              className="flex items-center gap-2 text-left group"
-              aria-label={`${profile.name} — Home`}
+    <motion.header
+      className={clsx(
+        "sticky top-0 z-50 transition-all duration-300",
+        isScrolled
+          ? "bg-surface/95 backdrop-blur-lg border-b border-outline-variant/50 shadow-sm"
+          : "bg-surface/90 backdrop-blur-md border-b border-outline-variant/30"
+      )}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3 group">
+          <motion.div
+            whileHover={{ rotate: 90, scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-4 h-4 sm:w-5 sm:h-5 text-primary"
+          >
+            <svg className="h-full w-full" fill="none" viewBox="0 0 48 48">
+              <path
+                clipRule="evenodd"
+                d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z"
+                fill="currentColor"
+                fillRule="evenodd"
+              />
+            </svg>
+          </motion.div>
+          <span className="text-sm sm:text-base font-bold tracking-tight text-on-surface">
+            Hassan Karasu
+          </span>
+        </Link>
+
+        {/* Desktop Nav */}
+        <nav className="hidden lg:flex items-center gap-8" aria-label="Main navigation">
+          {navLinks.map((link) => (
+            <NavLink key={link.name} link={link} />
+          ))}
+        </nav>
+
+        {/* CTA & Mobile Toggle */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Link
+            href="#contact"
+            className="hidden sm:inline-flex bg-primary hover:bg-secondary text-on-primary text-xs font-semibold uppercase tracking-wider px-4 py-2.5 rounded transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
+          >
+            Let's Talk
+          </Link>
+          
+          <button
+            className="flex size-10 sm:size-9 items-center justify-center rounded-lg md:hidden bg-surface-container hover:bg-surface-container-high transition-colors"
+            onClick={toggleMobileMenu}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
+          >
+            <motion.span
+              animate={{ rotate: isMobileMenuOpen ? 180 : 0 }}
+              transition={{ duration: 0.2 }}
+              className="material-symbols-outlined text-on-surface"
             >
-              <UiverseButton />
-              <span className="font-sans font-bold text-sm sm:text-base tracking-tight text-[#191c21] group-hover:text-[#845400] transition-colors">
-                {profile.name}
-              </span>
-            </button>
-
-            {/* Desktop Navigation Links (Original Data Only) */}
-            <ul className="hidden md:flex items-center gap-1 bg-white/80 border border-[#e2e4ec] p-1 rounded-full shadow-xs">
-              {navItems.map((item) => {
-                const isDisabled = item.enabled === false;
-                const isActive = activeSection === item.id;
-
-                return (
-                  <li key={item.id}>
-                    <button
-                      onClick={() => !isDisabled && handleScrollToSection(item.id)}
-                      disabled={isDisabled}
-                      className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-150 cursor-pointer ${
-                        isDisabled
-                          ? "cursor-not-allowed opacity-30"
-                          : isActive
-                          ? "bg-[#191c21] text-white font-semibold shadow-xs"
-                          : "text-[#514537] hover:text-[#191c21] hover:bg-[#f2f3fa]"
-                      }`}
-                    >
-                      {item.label}
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center">
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-                aria-expanded={isMobileMenuOpen}
-                className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#e2e4ec] bg-white text-[#191c21] hover:bg-[#f2f3fa] transition-colors cursor-pointer shadow-2xs"
-              >
-                {isMobileMenuOpen ? (
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                ) : (
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                )}
-              </button>
-            </div>
-          </div>
+              {isMobileMenuOpen ? "close" : "menu"}
+            </motion.span>
+          </button>
         </div>
+      </div>
 
-        {/* Mobile Navigation Drawer */}
+      {/* Mobile Menu Dropdown */}
+      <AnimatePresence>
         {isMobileMenuOpen && (
-          <div className="md:hidden border-b border-[#e2e4ec] bg-[#f8f9ff] px-4 py-4 space-y-2 animate-in fade-in slide-in-from-top-2 duration-150 shadow-sm">
-            <ul className="space-y-1">
-              {navItems.map((item) => {
-                const isDisabled = item.enabled === false;
-                const isActive = activeSection === item.id;
-
-                return (
-                  <li key={item.id}>
-                    <button
-                      onClick={() => !isDisabled && handleScrollToSection(item.id)}
-                      disabled={isDisabled}
-                      className={`w-full flex items-center justify-between px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        isDisabled
-                          ? "opacity-30 cursor-not-allowed"
-                          : isActive
-                          ? "bg-white text-[#845400] font-semibold border border-[#e2e4ec]"
-                          : "text-[#514537] hover:bg-white hover:text-[#191c21]"
-                      }`}
-                    >
-                      <span>{item.label}</span>
-                      {isActive && <span className="h-1.5 w-1.5 rounded-full bg-[#c2842a]" />}
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-
-            <div className="pt-2 border-t border-[#e2e4ec] flex items-center justify-between text-xs text-[#514537] px-2">
-              <span>{profile.location}</span>
-              <a
-                href={`mailto:${profile.contact.email}`}
-                className="font-medium text-[#845400] hover:underline"
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="lg:hidden border-b border-outline-variant bg-surface/95 backdrop-blur-lg overflow-hidden"
+            role="menu"
+          >
+            <div className="px-4 py-6 space-y-4">
+              {navLinks.map((link, index) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                >
+                  <Link
+                    href={link.href}
+                    onClick={closeMobileMenu}
+                    className="block text-base font-medium text-on-surface-variant hover:text-primary transition-colors py-2 px-3 rounded-lg hover:bg-surface-container"
+                    role="menuitem"
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.25 }}
+                className="pt-4 border-t border-outline-variant/30"
               >
-                {profile.contact.email}
-              </a>
+                <Link
+                  href="#contact"
+                  onClick={closeMobileMenu}
+                  className="inline-flex w-full items-center justify-center rounded-lg bg-primary-container hover:bg-primary text-on-primary text-sm font-semibold uppercase tracking-wider py-3 shadow-sm transition-all"
+                  role="menuitem"
+                >
+                  Let's Talk
+                </Link>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         )}
-      </nav>
-    </>
+      </AnimatePresence>
+    </motion.header>
   );
-};
-
-export default Navbar;
+}

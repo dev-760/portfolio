@@ -20,12 +20,16 @@ const KeyboardShortcuts = () => {
       {/* Floating Shortcut Trigger Button */}
       <button
         onClick={() => setIsOpen(true)}
-        aria-label="View keyboard shortcuts"
-        title="Keyboard shortcuts"
-        className="fixed bottom-6 left-6 z-40 hidden sm:flex items-center gap-2 rounded-full bg-white border border-[#e2e4ec] hover:border-[#845400]/40 hover:bg-[#f2f3fa] text-[#514537] hover:text-[#191c21] px-3.5 py-1.5 text-xs font-medium cursor-pointer transition-all shadow-xs"
+        aria-label="Status or Shortcuts"
+        title="Status"
+        className="fixed bottom-6 left-6 z-40 hidden sm:flex items-center gap-2 rounded-full bg-[#f8f9fc] border border-[#e2e4ec] hover:border-[#845400]/40 hover:bg-[#f2f3fa] text-[#845400] pl-3.5 pr-1.5 py-1.5 text-[10px] font-bold tracking-widest cursor-pointer transition-all shadow-xs"
       >
-        <span className="font-semibold text-[#845400]">[?]</span>
-        <span>Shortcuts</span>
+        <span>ONLINE</span>
+        <div className="flex h-5 w-5 items-center justify-center rounded-full bg-white border border-[#e2e4ec] shadow-sm">
+          <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+          </svg>
+        </div>
       </button>
 
       <AnimatePresence>

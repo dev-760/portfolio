@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Transparent Background (add a rect here if you need a white fill) -->
+  <g transform="translate(256, 256)">
+    <!-- Outer Diamond -->
+    <polygon points="0,-160 160,0 0,160 -160,0" fill="#0047FF" />
+
+    <!-- Inner Triangle Cutout -->
+    <polygon points="0,-88 78,6 -78,6" fill="#ffffff" />
+  </g>
+</svg>
