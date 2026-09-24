@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 
 export default function BlogPageContent() {
@@ -22,7 +21,7 @@ export default function BlogPageContent() {
 <div className="pt-10 pb-6 px-4">
 <p className="text-primary text-xs font-semibold tracking-widest uppercase mb-2">06 — BLOG &amp; WRITING</p>
 <h1 className="text-on-surface text-4xl md:text-5xl font-bold leading-[1.15] tracking-tight pb-4">
-              Ideas, observations,<br className="hidden sm:inline" />and things I'm learning.
+              Ideas, observations,<br className="hidden sm:inline" />and things I&apos;m learning.
             </h1>
 <p className="text-on-surface-variant text-base md:text-lg font-normal leading-relaxed max-w-2xl">
               A collection of notes, ideas, experiments, and lessons from my journey through business administration, systems design, and continuous learning.

@@ -101,7 +101,7 @@ export function Navbar() {
             href="#contact"
             className="hidden sm:inline-flex bg-primary hover:bg-secondary text-on-primary text-xs font-semibold uppercase tracking-wider px-4 py-2.5 rounded transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
           >
-            Let's Talk
+            Let&apos;s Talk
           </Link>
           
           <button
@@ -162,7 +162,7 @@ export function Navbar() {
                   className="inline-flex w-full items-center justify-center rounded-lg bg-primary-container hover:bg-primary text-on-primary text-sm font-semibold uppercase tracking-wider py-3 shadow-sm transition-all"
                   role="menuitem"
                 >
-                  Let's Talk
+                  Let&apos;s Talk
                 </Link>
               </motion.div>
             </div>

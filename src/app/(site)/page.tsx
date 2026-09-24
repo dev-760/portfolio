@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-import Link from "next/link";
-import { Navbar } from "@/components/Navbar";
 
 export default function Home() {
   return (
@@ -31,7 +29,7 @@ export default function Home() {
 <span className="text-lg leading-none">→</span>
 </a>
 <a className="inline-flex items-center gap-2 bg-surface-container hover:bg-surface-container-high text-on-surface border border-outline-variant/60 px-6 py-3.5 rounded font-semibold text-sm transition-all" href="#contact">
-<span className="">Let's Talk</span>
+<span className="">Let&apos;s Talk</span>
 </a>
 </div>
 </div>
@@ -56,7 +54,7 @@ export default function Home() {
 {/*  Left (60% / 7 cols)  */}
 <div className="lg:col-span-7">
 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-on-surface leading-[1.2]">
-            “I'm Hassan, a Business Administration student interested in understanding how <span className="text-primary underline decoration-outline-variant decoration-1 underline-offset-8">people</span>, <span className="text-primary underline decoration-outline-variant decoration-1 underline-offset-8">processes</span>, and <span className="text-primary underline decoration-outline-variant decoration-1 underline-offset-8">systems</span> work together.”
+            “I&apos;m Hassan, a Business Administration student interested in understanding how <span className="text-primary underline decoration-outline-variant decoration-1 underline-offset-8">people</span>, <span className="text-primary underline decoration-outline-variant decoration-1 underline-offset-8">processes</span>, and <span className="text-primary underline decoration-outline-variant decoration-1 underline-offset-8">systems</span> work together.”
           </h2>
 </div>
 {/*  Thin Divider & Right (40% / 5 cols)  */}

@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-import Link from "next/link";
-import { Navbar } from "@/components/Navbar";
 
 export default function AdminPageContent() {
   return (
@@ -104,7 +102,7 @@ export default function AdminPageContent() {
 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-outline-variant/60">
 <div>
 <h1 className="text-2xl font-bold tracking-tight text-on-surface">Dashboard</h1>
-<p className="text-xs md:text-sm text-on-surface-variant mt-0.5">Good morning, Hassan. Here's what's happening with your site.</p>
+<p className="text-xs md:text-sm text-on-surface-variant mt-0.5">Good morning, Hassan. Here's what&apos;s happening with your site.</p>
 </div>
 <div className="flex items-center gap-2">
 <span className="text-[11px] font-mono text-outline">Last deployed: 14m ago by git:main</span>
@@ -488,7 +486,7 @@ export default function AdminPageContent() {
 </div>
 <div>
 <label className="block text-[11px] font-semibold text-outline mb-1 uppercase tracking-wide">Observation Notes</label>
-<textarea className="w-full p-2.5 text-xs bg-surface-container-low text-on-surface border border-outline-variant rounded focus:outline-none focus:border-primary font-mono placeholder:text-outline resize-none leading-relaxed" placeholder="Draft a new observation, fleeting thought, or structure an outline..." rows={6}>Notice how friction isn't always negative: deliberate friction in the review pipeline prevents hasty publishing and forces structural synthesis.
+<textarea className="w-full p-2.5 text-xs bg-surface-container-low text-on-surface border border-outline-variant rounded focus:outline-none focus:border-primary font-mono placeholder:text-outline resize-none leading-relaxed" placeholder="Draft a new observation, fleeting thought, or structure an outline..." rows={6}>Notice how friction isn&apos;t always negative: deliberate friction in the review pipeline prevents hasty publishing and forces structural synthesis.
 
 Core hypothesis:
 1. Fast iteration on drafts
