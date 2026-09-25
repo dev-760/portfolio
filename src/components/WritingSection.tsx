@@ -237,8 +237,6 @@ const noteArticles: ArticleItem[] = [
   },
 ];
 
-const allArticles: ArticleItem[] = [featuredEssay, ...noteArticles];
-
 const categories = [
   { key: "all", label: "ALL DISCIPLINES", count: 4, icon: "dashboard" },
   { key: "operations", label: "OPERATIONS", count: 1, icon: "precision_manufacturing" },
