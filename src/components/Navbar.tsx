@@ -160,7 +160,7 @@ export function Navbar() {
 
           {/* Desktop Nav with GooeyNav from React Bits */}
           <nav className="hidden lg:flex items-center" aria-label="Main navigation">
-            <div className="rounded-full bg-slate-900/90 dark:bg-slate-950/80 border border-slate-700/50 shadow-md backdrop-blur-md px-3.5 py-1">
+            <div className="rounded-full bg-slate-200/70 dark:bg-slate-900/80 border border-slate-300/80 dark:border-slate-800/80 shadow-2xs dark:shadow-md backdrop-blur-md px-3 py-1 transition-colors duration-200">
               <GooeyNav
                 items={gooeyNavItems}
                 particleCount={15}

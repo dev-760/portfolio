@@ -26,11 +26,36 @@
     1
   );
 
-  /* Gooey Nav Particle Brand Colors */
-  --color-1: #0047FF;
+  /* Nav Theme Variables - Light Mode */
+  --nav-track-color: #475569;
+  --nav-track-hover: #0F172A;
+  --nav-active-bg: #FFFFFF;
+  --nav-active-text: #0F172A;
+  --nav-active-border: rgba(15, 23, 42, 0.08);
+  --nav-active-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 1px 2px -1px rgba(15, 23, 42, 0.06);
+
+  /* Gooey Nav Particle Brand Colors (Light mode: rich brand blues) */
+  --color-1: #0369A1;
   --color-2: #0284C7;
   --color-3: #38BDF8;
-  --color-4: #60A5FA;
+  --color-4: #0F172A;
+}
+
+.dark,
+:where(.dark, .dark *) {
+  /* Nav Theme Variables - Dark Mode */
+  --nav-track-color: #94A3B8;
+  --nav-track-hover: #F8FAFC;
+  --nav-active-bg: #1E293B;
+  --nav-active-text: #38BDF8;
+  --nav-active-border: rgba(255, 255, 255, 0.12);
+  --nav-active-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
+
+  /* Gooey Nav Particle Brand Colors (Dark mode: glowing cyan/sky blues) */
+  --color-1: #38BDF8;
+  --color-2: #0284C7;
+  --color-3: #60A5FA;
+  --color-4: #0EA5E9;
 }
 
 .gooey-nav-container {
@@ -64,14 +89,14 @@
     color 0.25s ease,
     box-shadow 0.25s ease;
   box-shadow: 0 0 0.5px 1.5px transparent;
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--nav-track-color);
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.02em;
 }
 
 .gooey-nav-container nav ul li:hover {
-  color: #ffffff;
+  color: var(--nav-track-hover);
 }
 
 .gooey-nav-container nav ul li a {
@@ -85,6 +110,11 @@
 }
 
 .gooey-nav-container nav ul li:focus-within:has(:focus-visible) {
+  box-shadow: 0 0 0.5px 1.5px #0284c7;
+}
+
+.dark .gooey-nav-container nav ul li:focus-within:has(:focus-visible),
+:where(.dark, .dark *) .gooey-nav-container nav ul li:focus-within:has(:focus-visible) {
   box-shadow: 0 0 0.5px 1.5px #38bdf8;
 }
 
@@ -109,18 +139,31 @@
               height 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Clean text rendered on top of the active white pill */
+/* Clean text rendered on top of the active pill */
 .gooey-nav-container .effect.text {
   display: flex !important;
   align-items: center;
   justify-content: center;
-  color: #0F172A !important;
+  color: var(--nav-active-text) !important;
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   z-index: 10;
   pointer-events: none;
   white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+.gooey-nav-container .effect.text::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 100vw;
+  border: 1px solid var(--nav-active-border);
+  box-shadow: var(--nav-active-shadow);
+  pointer-events: none;
+  z-index: -1;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 /* SVG-based Gooey Filter: Clean alpha thresholding with ZERO black background artifacts */
@@ -134,9 +177,10 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: white;
+  background: var(--nav-active-bg);
   border-radius: 100vw;
   z-index: -1;
+  transition: background-color 0.25s ease;
 }
 
 .particle,
