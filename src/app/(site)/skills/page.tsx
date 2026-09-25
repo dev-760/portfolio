@@ -1,5 +1,5 @@
-import SkillsPageContent from "./page-content";
+import RedirectToSection from "@/components/RedirectToSection";
 
 export default function SkillsPage() {
-  return <SkillsPageContent />;
+  return <RedirectToSection sectionId="skills" />;
 }

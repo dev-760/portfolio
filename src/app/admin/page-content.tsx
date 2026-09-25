@@ -88,7 +88,7 @@ export default function AdminPageContent() {
 </a>
 <div className="pt-2 px-3 text-[10px] text-outline flex items-center justify-between">
 <span className="font-mono">Karasu CMS v1.4</span>
-<span className="inline-flex items-center text-emerald-700 font-mono">● Sync'd</span>
+<span className="inline-flex items-center text-emerald-700 font-mono">● Sync&apos;d</span>
 </div>
 </div>
 </aside>
@@ -102,7 +102,7 @@ export default function AdminPageContent() {
 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-outline-variant/60">
 <div>
 <h1 className="text-2xl font-bold tracking-tight text-on-surface">Dashboard</h1>
-<p className="text-xs md:text-sm text-on-surface-variant mt-0.5">Good morning, Hassan. Here's what&apos;s happening with your site.</p>
+<p className="text-xs md:text-sm text-on-surface-variant mt-0.5">Good morning, Hassan. Here&apos;s what&apos;s happening with your site.</p>
 </div>
 <div className="flex items-center gap-2">
 <span className="text-[11px] font-mono text-outline">Last deployed: 14m ago by git:main</span>

@@ -16,6 +16,8 @@ export type TimelineEntry = {
   role: string;
   dates: string;
   location?: string;
+  tagline?: string;
+  skillTags?: string[];
   bullets: string[];
   closing: string;
 };
@@ -23,6 +25,7 @@ export type TimelineEntry = {
 export type Achievement = {
   title: string;
   details?: string;
+  dates?: string;
 };
 
 export type Project = {
@@ -72,6 +75,7 @@ export type Profile = {
     skills: SkillCategory[];
     experience: TimelineEntry[];
     volunteering: TimelineEntry;
+    achievementsIntro?: string;
     achievements: Achievement[];
     contactMessage: string;
     projectsMessage?: string;
@@ -83,9 +87,9 @@ export const profile: Profile = {
   name: "Hassan Karasu",
   title: "Business Administration Student",
   location: "Casablanca, Morocco",
-  tagline: "Solving practical business problems with AI and automation.",
+  tagline: "First-year Business Administration student at FSJES Aïn Chock, passionate about management, accounting, and practical execution.",
   personalStatement:
-    "My work sits at the intersection of business, artificial intelligence, and automation.\n\nAs a Business Administration student, I'm interested in understanding practical problems and turning them into useful systems by leveraging AI.\n\nI enjoy solving problems I encounter, experimenting with AI to improve workflows, and exploring how technology can make everyday work more efficient.\n\nMy goal is to continue developing both sides of that equation: understanding the business problem and having the ability to implement AI solutions.",
+    "I am an undergraduate student pursuing a Licence in Business Administration at FSJES Aïn Chock, Université Hassan II de Casablanca.\n\nMy studies focus on building strong foundations across management principles, general accounting, micro and macroeconomics, quantitative methods, and business law.\n\nAlongside my academic coursework, I have hands-on experience in production logistics and coordination from EL25 Studio, as well as community engagement through the national Motatawi3 volunteer program.\n\nI am driven by a practical mindset: understanding how organizations work, analyzing figures with precision, and using modern tools like spreadsheets and digital workflows to solve real operational problems.",
   contact: {
     email: "me@hassankarasu.dev",
     phone: "+212 779 898 873",
@@ -106,200 +110,148 @@ export const profile: Profile = {
   ],
   links: [
     {
-      label: "GitHub",
-      href: "https://github.com/dev-760",
-      icon: "github",
-    },
-    {
       label: "LinkedIn",
       href: "https://linkedin.com/in/hassan-karasu-a7485336b",
       icon: "linkedin",
     },
-    {
-      label: "Instagram",
-      href: "https://instagram.com/v6.i6_",
-      icon: "instagram",
-    },
   ],
   homeHighlights: [
     {
-      label: "AI Solutions",
-      value: "AI & Tools Integration",
+      label: "Academic Foundation",
+      value: "Management & Economics",
       description:
-        "Building practical workflows and tools around real problems, using AI to turn concepts into functional systems without traditional coding.",
+        "Building core competencies in microeconomics, organizational theory, general accounting, and quantitative methods at FSJES Aïn Chock.",
     },
     {
-      label: "Automation",
-      value: "Workflow Efficiency",
+      label: "Financial & Quantitative",
+      value: "Accounting & Analysis",
       description:
-        "Using AI, automation, and modern low-code tools to simplify processes, reduce repetitive work, and improve productivity.",
+        "Mastering general accounting (comptabilité générale), cost analysis, descriptive statistics, and financial modeling in Excel.",
     },
     {
-      label: "Application",
-      value: "Business Strategy",
+      label: "Operational Experience",
+      value: "Production & Coordination",
       description:
-        "Exploring how emerging tech and AI can be applied directly to real business operations and everyday problem-solving.",
+        "Real-world logistics, vendor management, and schedule delivery gained through hands-on traineeship at EL25 Studio.",
     },
   ],
   navigation: [
     { id: "home", label: "Home", href: "/#home" },
     { id: "about", label: "About", href: "/#about" },
-    { id: "statement", label: "Statement", href: "/#statement" },
+    { id: "work", label: "Work", href: "/#work" },
     { id: "skills", label: "Skills", href: "/#skills" },
     { id: "experience", label: "Experience", href: "/#experience" },
-    { id: "projects", label: "Projects", href: "/#projects" },
+    { id: "writing", label: "Writing", href: "/#writing" },
     { id: "contact", label: "Contact", href: "/#contact" },
   ],
   sections: {
     about: [
-      "I like solving problems by building things.",
-      "I'm currently studying Business Administration, while my interests sit at the intersection of business and technology — particularly artificial intelligence, automation, and productivity.",
-      "When I encounter a problem that can be solved with a tool, I prefer to build it.",
-      "That might mean creating a personal finance application, automating a repetitive workflow, connecting different services, or using AI to make a process faster and more useful.",
-      "I enjoy taking an idea from a simple problem to a working solution — figuring out what needs to be built, designing the system, implementing it, and improving it through use.",
-      "My focus is increasingly on the space between business problems and technical solutions: understanding how something works, identifying what can be improved, and building systems that makes a practical difference.",
-      "I'm currently developing my understanding of business while continuing to build AI tools, experiment with AI, and explore new ways technology can improve how people and businesses work.",
+      "I am a first-year student pursuing a Licence in Business Administration at the Faculté des Sciences Juridiques, Économiques et Sociales (FSJES) Aïn Chock, Université Hassan II de Casablanca.",
+      "My academic program covers the essential pillars of modern commerce: management principles, general accounting, micro and macroeconomics, mathematics for economics, statistics, and business law.",
+      "Before starting university, I completed my Baccalaureate in Physical Science (English Option) at Prince Moulay Abdellah High School, which gave me strong quantitative discipline and fluency in English.",
+      "Outside the lecture hall, I have worked as a Production Trainee at EL25 Studio in Casablanca, coordinating logistics, call sheets, and client deliverables for commercial video shoots under tight deadlines.",
+      "I also volunteered with the national Motatawi3 youth empowerment program under the Ministry of Youth, Culture and Communication, organizing community workshops and mentoring local youth.",
+      "I enjoy combining academic business concepts with practical tools like Microsoft Excel, digital organization systems, and structured workflows to solve real-world problems.",
     ],
     education: [
       {
-        institution: "FSJES Aïn Chock",
+        institution: "Faculté des Sciences Juridiques, Économiques et Sociales (FSJES) Aïn Chock",
         degree: "Licence in Business Administration",
         field: "First-year student",
-        details: "Morocco · In Progress",
+        details: "Université Hassan II de Casablanca · In Progress",
       },
       {
         institution: "Prince Moulay Abdellah High School",
-        degree: "Baccalaureate",
-        field: "Physical Science - English Option",
+        degree: "Baccalaureate in Physical Science (English Option)",
         details: "2026",
       },
     ],
     skills: [
       {
-        category: "AI & Automation",
+        category: "Management & Business",
         items: [
-          "AI Tools & Platforms",
-          "AI-Assisted Development",
-          "Business Process Automation",
-          "AI Workflow Design",
-          "AI Integration",
-          "Prompt Engineering",
+          "Principles of Management",
+          "Organization Theory",
+          "Operational Logistics",
+          "Human Resource Basics",
+          "Business Law Fundamentals",
+          "Project Coordination",
         ],
       },
       {
-        category: "Systems & Architecture",
+        category: "Accounting & Finance",
         items: [
-          "Web Application Development",
-          "API Integration",
-          "Database Fundamentals",
-          "Git & GitHub",
-          "Cloud Deployment",
-          "Systems Architecture",
+          "Comptabilité Générale (General Accounting)",
+          "Cost Analysis (Comptabilité Analytique)",
+          "Descriptive Statistics",
+          "Mathematics for Economics",
+          "Personal Budgeting & Expense Tracking",
+          "Financial Reporting Basics",
         ],
       },
       {
-        category: "Business & Productivity",
+        category: "Productivity & Software",
         items: [
-          "Microsoft 365",
-          "Excel",
-          "Word",
-          "PowerPoint",
-          "Business Analysis",
-          "Process Optimization",
-          "Workflow Design",
+          "Microsoft Excel (Formulas, Tables, Modeling)",
+          "Microsoft PowerPoint (Presentations)",
+          "Microsoft Word (Reports & Documentation)",
+          "Google Workspace",
+          "Notion & Digital Workspaces",
+          "Digital Skills & Collaboration Tools",
         ],
       },
       {
-        category: "Problem Solving",
+        category: "Analytical & Professional Skills",
         items: [
-          "Systems Thinking",
-          "Analytical Thinking",
-          "Process Improvement",
-          "Technical Problem Solving",
-          "Research & Independent Learning",
-          "Attention to Detail",
+          "Quantitative Problem Solving",
+          "Attention to Detail & Accuracy",
+          "Schedule & Deadline Management",
+          "Team Collaboration",
+          "Public Speaking & Debating",
+          "Independent Research",
         ],
       },
     ],
     experience: [
       {
-        organization: "Independent",
-        role: "AI Solutions Builder",
-        dates: "2024 – Present",
-        bullets: [
-          "Identify repetitive, inefficient, or underserved problems and turn them into functional solutions",
-          "Build web applications and practical tools from concept to deployment",
-          "Integrate AI into applications and workflows where it provides practical value",
-          "Design automated workflows that reduce repetitive work and improve efficiency",
-          "Experiment with emerging AI tools and technologies to discover useful applications for business",
-          "Manage projects independently, from defining the problem and designing the solution to implementation and iteration",
-        ],
-        closing:
-          "I build systems around problems I encounter — from personal productivity tools to practical business applications.",
-      },
-      {
         organization: "EL25 Studio",
         role: "Production Trainee",
         dates: "Jul – Sep 2023",
         location: "Casablanca, Morocco",
+        tagline: "Commercial content production for brands and digital influencers.",
         bullets: [
-          "Supported content production for brands and digital creators in a fast-paced environment",
-          "Contributed to scriptwriting, concept development, and visual planning",
-          "Worked across creative and production tasks while managing deadlines and changing requirements",
-          "Developed practical experience in communication, organization, teamwork, and execution under pressure",
+          /* TODO: across [X] shoots */
+          "Supported pre-production, on-set logistics, and post-production prep for digital ads, branded videos, and influencer campaigns",
+          "Contributed to concept development, scriptwriting, and visual planning tailored to each client's brand identity and audience",
+          "Assisted with camera and lighting setup and coordinated on set with creative directors, technical crew, and clients",
+          "Helped with footage review, editing preparation, and continuity checks",
+          "Delivered under tight timelines using a four-phase workflow: Idea → Plan → Produce → Deliver",
         ],
-        closing: "",
+        closing:
+          "Production taught me to manage moving parts, vendors, and deadlines, the same discipline I now bring to scoping and delivering automation projects.",
       },
     ],
     volunteering: {
-      organization: "Community Technology Initiatives",
-      role: "Volunteer Mentor",
-      dates: "2023 – Present",
+      organization: "Ministry of Youth, Culture and Communication (MJCC)",
+      role: "Volunteer, Motatawi3 Program",
+      dates: "Jul – Aug 2024",
+      skillTags: ["Mentorship", "Youth Education"],
       bullets: [
-        "Mentoring students in introductory robotics and problem-solving fundamentals",
-        "Supporting hands-on workshops focused on safe experimentation and teamwork",
-        "Helping organize small local events to make STEM learning more accessible",
+        "Took part in a national volunteer initiative for youth empowerment and community outreach",
+        "Helped plan and run workshops, mentorship activities, and awareness campaigns in underserved communities",
+        "Worked with local organizations and volunteers to deliver programs on civic responsibility and skill development",
+        /* TODO: [reached ~X young people] */
+        "Supported youth in learning, creative thinking, and career exploration",
       ],
-      closing: "Committed to using technology education as a practical path to opportunity.",
+      closing: "",
     },
-    achievements: [
-      {
-        title: "Oman Robotics Olympiad – Final Round",
-        details:
-          "Luwa Center for Science & Innovation · 2021–2022. Organised by the General Directorate of Education, North Al Batinah.",
-      },
-      {
-        title: "Robotics & AI Competition – Final Round",
-        details:
-          "Luwa Center for Science & Innovation · 2021–2022. National-level AI and robotics competition, final round.",
-      },
-      {
-        title: "Oman Science Festival – Drone Competition",
-        details:
-          "3rd National Edition · 2022. Selected to compete in drone operations at the national science festival.",
-      },
-    ],
+    achievements: [],
     contactMessage:
-      "Interested in building something, automating a workflow, or exploring how AI can solve a business problem? Feel free to reach out.",
+      "Open to business administration internships, project inquiries, and academic or professional collaborations. Feel free to get in touch.",
     projectsMessage:
-      "Systems I build to solve problems I encounter — from personal tools and productivity systems to AI-powered applications and business automation.",
+      "Practical tools and applications built to solve everyday student and operational problems.",
   },
-  projects: [
-    {
-      title: "Budgetly — Offline-First Personal Finance Platform",
-      link: "https://github.com/dev-760",
-      description:
-        "A modern, offline-first personal finance application built for students with zero-latency local tracking, budget insights, and automatic background cloud synchronization.",
-      technologies: [
-        "TypeScript",
-        "React Native",
-        "Expo",
-        "SQLite",
-        "Zustand",
-        "Tailwind CSS",
-      ],
-    },
-  ],
+  projects: [],
 };
 
 export default profile;

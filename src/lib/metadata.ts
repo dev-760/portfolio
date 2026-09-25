@@ -3,6 +3,7 @@ import profile from "@/data/profile";
 
 export function generateSiteMetadata(): Metadata {
   return {
+    metadataBase: new URL("https://hassankarasu.dev"),
     title: {
       default: profile.name,
       template: `%s | ${profile.name}`,
@@ -10,10 +11,11 @@ export function generateSiteMetadata(): Metadata {
     description: profile.tagline,
     keywords: [
       "Business Administration",
-      "AI Solutions",
-      "Automation",
-      "Systems Thinking",
-      "Web Development",
+      "FSJES Aïn Chock",
+      "Université Hassan II de Casablanca",
+      "Management",
+      "Accounting",
+      "Economics",
       "Productivity",
       profile.location,
     ],
@@ -31,6 +33,11 @@ export function generateSiteMetadata(): Metadata {
       card: "summary_large_image",
       title: profile.name,
       description: profile.tagline,
+    },
+    icons: {
+      icon: "/favicon.ico",
+      shortcut: "/favicon.ico",
+      apple: "/icon.svg",
     },
   };
 }

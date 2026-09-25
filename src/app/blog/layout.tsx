@@ -1,5 +1,5 @@
 import { generatePageMetadata } from "@/lib/metadata";
-import BlogPageContent from "./page-content";
+import RedirectToSection from "@/components/RedirectToSection";
 
 export const metadata = generatePageMetadata(
   "Blog & Writing",
@@ -8,5 +8,5 @@ export const metadata = generatePageMetadata(
 );
 
 export default function BlogLayout() {
-  return <BlogPageContent />;
+  return <RedirectToSection sectionId="writing" />;
 }

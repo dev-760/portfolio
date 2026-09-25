@@ -8,8 +8,15 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: ["/api/", "/admin/", "/_next/", "/static/"],
+      },
+      {
+        userAgent: "Googlebot",
+        allow: "/",
+        disallow: ["/api/", "/admin/"],
       },
     ],
     sitemap: "https://hassankarasu.dev/sitemap.xml",
+    host: "https://hassankarasu.dev",
   };
 }

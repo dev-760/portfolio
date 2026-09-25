@@ -1,5 +1,5 @@
-import BlogPageContent from "./page-content";
+import RedirectToSection from "@/components/RedirectToSection";
 
 export default function BlogPage() {
-  return <BlogPageContent />;
+  return <RedirectToSection sectionId="writing" />;
 }

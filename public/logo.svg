@@ -1,22 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="100%" height="100%">
-  <!-- Background (set fill to "none" if you need transparency) -->
-  <rect width="100%" height="100%" fill="#ffffff" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" width="100%" height="100%">
+  <style>
+    .brand-text { fill: #0F172A; }
+    @media (prefers-color-scheme: dark) {
+      .brand-text { fill: #FFFFFF; }
+    }
+  </style>
 
-  <g transform="translate(100, 150)">
-    <!-- Blue Diamond Icon -->
-    <path d="M 0,-54 L 54,0 L 0,54 L -54,0 Z" fill="#0047FF" />
+  <!-- Icon based on public/icon.svg -->
+  <g transform="translate(42, 40) scale(0.2)">
+    <!-- Outer Diamond -->
+    <polygon points="0,-160 160,0 0,160 -160,0" fill="#0047FF" />
 
-    <!-- Inner White Triangle -->
-    <polygon points="0,-30 26,0 -26,0" fill="#ffffff" />
-
-    <!-- Brandmark Typography -->
-    <text 
-      x="88" 
-      y="22" 
-      fill="#111111" 
-      font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" 
-      font-size="82" 
-      font-weight="800" 
-      letter-spacing="-1.5">Hassan Karasu</text>
+    <!-- Inner Triangle Cutout -->
+    <polygon points="0,-88 78,6 -78,6" fill="#ffffff" />
   </g>
+
+  <!-- Brand Typography in Times New Roman -->
+  <text 
+    class="brand-text"
+    x="86" 
+    y="52" 
+    font-family="'Times New Roman', Times, 'Liberation Serif', serif" 
+    font-size="40" 
+    font-weight="700" 
+    letter-spacing="-0.2">Hassan Karasu</text>
 </svg>

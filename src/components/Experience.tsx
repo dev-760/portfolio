@@ -59,6 +59,11 @@ const Experience = ({ showLink = true }: ExperienceProps) => {
                         </span>
                       )}
                     </div>
+                    {exp.tagline && (
+                      <p className="text-xs text-[#514537] italic mt-1">
+                        {exp.tagline}
+                      </p>
+                    )}
                   </div>
 
                   {/* Dates Badge */}

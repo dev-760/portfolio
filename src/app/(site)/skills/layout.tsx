@@ -1,5 +1,5 @@
 import { generatePageMetadata } from "@/lib/metadata";
-import SkillsPageContent from "./page-content";
+import RedirectToSection from "@/components/RedirectToSection";
 
 export const metadata = generatePageMetadata(
   "Skills & Experience",
@@ -8,5 +8,5 @@ export const metadata = generatePageMetadata(
 );
 
 export default function SkillsLayout() {
-  return <SkillsPageContent />;
+  return <RedirectToSection sectionId="skills" />;
 }
