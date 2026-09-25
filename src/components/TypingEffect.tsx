@@ -17,7 +17,7 @@ export function TypingEffect({
   className = "",
   typingSpeed = 120,
   deletingSpeed = 50,
-  pauseDuration = 10000, // At least 10 seconds per word
+  pauseDuration = 5000, // Stay for 5 seconds before changing
 }: TypingEffectProps) {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");

@@ -78,6 +78,7 @@ export default function Home() {
                 First-year Business Administration student at FSJES Aïn Chock, exploring how <TypingEffect 
                   words={["management principles", "accounting & finance", "practical execution"]} 
                   className="text-primary font-semibold"
+                  pauseDuration={5000}
                 /> create real value.
               </motion.p>
             </div>
