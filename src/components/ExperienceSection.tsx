@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@/components/icons/Icon";
 import { MOTION_EASINGS, MOTION_DURATIONS } from "@/motion/tokens";
 
-// TODO: across [X] shoots
 const deliverables = [
   "Supported pre-production, on-set logistics, and post-production prep for digital ads, branded videos, and influencer campaigns",
   "Contributed to concept development, scriptwriting, and visual planning tailored to each client's brand identity and audience",
@@ -18,7 +17,6 @@ const volunteeringBullets = [
   "Took part in a national volunteer initiative for youth empowerment and community outreach",
   "Helped plan and run workshops, mentorship activities, and awareness campaigns in underserved communities",
   "Worked with local organizations and volunteers to deliver programs on civic responsibility and skill development",
-  // TODO: [reached ~X young people]
   "Supported youth in learning, creative thinking, and career exploration",
 ];
 

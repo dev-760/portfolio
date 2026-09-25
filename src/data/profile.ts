@@ -215,7 +215,6 @@ export const profile: Profile = {
         location: "Casablanca, Morocco",
         tagline: "Commercial content production for brands and digital influencers.",
         bullets: [
-          /* TODO: across [X] shoots */
           "Supported pre-production, on-set logistics, and post-production prep for digital ads, branded videos, and influencer campaigns",
           "Contributed to concept development, scriptwriting, and visual planning tailored to each client's brand identity and audience",
           "Assisted with camera and lighting setup and coordinated on set with creative directors, technical crew, and clients",
@@ -235,7 +234,6 @@ export const profile: Profile = {
         "Took part in a national volunteer initiative for youth empowerment and community outreach",
         "Helped plan and run workshops, mentorship activities, and awareness campaigns in underserved communities",
         "Worked with local organizations and volunteers to deliver programs on civic responsibility and skill development",
-        /* TODO: [reached ~X young people] */
         "Supported youth in learning, creative thinking, and career exploration",
       ],
       closing: "",

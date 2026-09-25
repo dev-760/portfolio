@@ -107,7 +107,7 @@ const noteArticles: ArticleItem[] = [
       "Collaborative diagnostic interviews build trust and guarantee buy-in for future changes.",
     ],
     academicContext:
-      "Coursework Reflection: Operations & Process Management, Mundiapolis University.",
+      "Coursework Reflection: Operations & Process Management, FSJES Aïn Chock.",
     sections: [
       {
         heading: "The Disconnect Between Theory and the Floor",
@@ -765,7 +765,7 @@ export function WritingSection() {
                       <span>·</span>
                       <span>Business Administration Student</span>
                       <span>·</span>
-                      <span>Mundiapolis University</span>
+                      <span>FSJES Aïn Chock</span>
                     </div>
                   </div>
 
