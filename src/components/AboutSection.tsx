@@ -256,10 +256,6 @@ export function AboutSection() {
                         <span className="font-medium text-on-surface">English</span>
                         <span className="text-outline text-[11px]">Full Professional</span>
                       </div>
-                      <div className="flex justify-between items-center text-xs">
-                        <span className="font-medium text-on-surface">French</span>
-                        <span className="text-outline text-[11px]">Working Proficiency</span>
-                      </div>
                     </dd>
                   </div>
 

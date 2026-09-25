@@ -103,10 +103,6 @@ export const profile: Profile = {
       name: "English",
       level: "Full Professional",
     },
-    {
-      name: "French",
-      level: "Working Proficiency",
-    },
   ],
   links: [
     {
