@@ -281,24 +281,6 @@ export function AboutSection() {
                       </div>
                     </dd>
                   </div>
-
-                  <div className="flex flex-col gap-1.5 pt-1">
-                    <dt className="text-[10px] font-semibold uppercase tracking-wider text-outline">Networks</dt>
-                    <dd className="flex flex-col gap-2 pt-1">
-                      <a
-                        className="flex items-center justify-between p-2 rounded bg-surface-container-low hover:bg-surface-container transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                        href="https://linkedin.com/in/hassan-karasu-a7485336b"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        <span className="flex items-center gap-2 text-xs font-medium text-on-surface">
-                          <Icon name="share" size={14} className="text-outline group-hover:text-primary transition-colors" />
-                          LinkedIn
-                        </span>
-                        <Icon name="arrow_outward" size={13} className="text-outline group-hover:translate-x-0.5 transition-transform" />
-                      </a>
-                    </dd>
-                  </div>
                 </dl>
               </div>
             </motion.div>

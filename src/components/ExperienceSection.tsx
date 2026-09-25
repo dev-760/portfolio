@@ -23,40 +23,8 @@ const volunteeringBullets = [
 ];
 
 
-const methodologyPhases = [
-  {
-    phase: "PHASE 01",
-    name: "IDEA",
-    icon: "lightbulb",
-    desc: "Creative briefing, conceptualization, and structured hypothesis formulation.",
-    callout: "Translating open-ended client visions into defined specs.",
-  },
-  {
-    phase: "PHASE 02",
-    name: "PLAN",
-    icon: "calendar_month",
-    desc: "Shotlists, schedule sequencing, asset allocation, and vendor alignment.",
-    callout: "Contingency buffers built into every production day.",
-  },
-  {
-    phase: "PHASE 03",
-    name: "PRODUCE",
-    icon: "videocam",
-    desc: "Live on-set orchestration, real-time problem triage, and capture discipline.",
-    callout: "High-cadence teamwork across dynamic stage environments.",
-  },
-  {
-    phase: "PHASE 04",
-    name: "DELIVER",
-    icon: "task_alt",
-    desc: "Post-production handoff, version control, signoff packaging, and review.",
-    callout: "Precision file structure ensuring frictionless client handoff.",
-  },
-];
-
 export function ExperienceSection() {
   const [isDeliverablesExpanded, setIsDeliverablesExpanded] = useState(true);
-  const [hoveredPhase, setHoveredPhase] = useState<number | null>(null);
 
   return (
     <section className="py-20 lg:py-24 border-b border-outline-variant/40 bg-surface-container-low scroll-mt-16" id="experience">
@@ -192,72 +160,7 @@ export function ExperienceSection() {
         </motion.div>
 
         {/* ========================================================
-            PART 2: Operational Methodology (4-Phase Sequential Pipeline)
-            ======================================================== */}
-        <div className="pt-6">
-          <div className="flex items-center justify-between pb-6">
-            <div className="flex items-center gap-2">
-              <Icon name="account_tree" size={18} className="text-primary" />
-              <h3 className="text-xs font-bold uppercase tracking-wider text-on-surface">
-                Operational Methodology
-              </h3>
-            </div>
-            <span className="text-xs text-outline font-mono">Sequential Framework</span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
-            {methodologyPhases.map((item, index) => {
-              const isHovered = hoveredPhase === index;
-              return (
-                <motion.div
-                  key={item.phase}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-30px" }}
-                  transition={{ delay: index * 0.08, duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
-                  onMouseEnter={() => setHoveredPhase(index)}
-                  onMouseLeave={() => setHoveredPhase(null)}
-                  className="bg-surface-container-lowest border border-outline-variant/50 rounded p-5 relative flex flex-col justify-between hover:border-primary transition-all duration-200 group shadow-2xs"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="font-mono text-[11px] font-bold text-outline group-hover:text-primary transition-colors">
-                        {item.phase}
-                      </span>
-                      <motion.div
-                        animate={{ rotate: isHovered ? 8 : 0, scale: isHovered ? 1.1 : 1 }}
-                        transition={{ duration: 0.2 }}
-                        className="text-outline-variant group-hover:text-primary transition-colors inline-flex items-center"
-                      >
-                        <Icon name={item.icon} size={18} />
-                      </motion.div>
-                    </div>
-
-                    <h4 className="text-xl font-bold text-on-surface tracking-tight group-hover:text-primary transition-colors">
-                      {item.name}
-                    </h4>
-
-                    <p className="text-xs text-on-surface-variant mt-2 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-
-                  <div className="mt-4 pt-3 border-t border-surface-container">
-                    <span className="text-[10px] font-mono uppercase text-secondary font-semibold">
-                      Key Standard:
-                    </span>
-                    <p className="text-[11px] text-on-surface-variant mt-0.5 leading-snug">
-                      {item.callout}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* ========================================================
-            PART 3: Volunteering Card
+            PART 2: Volunteering Card
             ======================================================== */}
         <div className="pt-6">
           <div className="flex items-center justify-between pb-6">
