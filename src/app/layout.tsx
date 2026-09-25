@@ -18,64 +18,28 @@ const poppins = Poppins({
   display: "swap",
 });
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Hassan Karasu",
-  "jobTitle": "Business Administration Student",
-  "url": "https://hassankarasu.dev",
-  "sameAs": [
-    "https://linkedin.com/in/hassan-karasu-a7485336b"
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Casablanca",
-    "addressCountry": "Morocco"
-  },
-  "alumniOf": {
-    "@type": "CollegeOrUniversity",
-    "name": "Faculté des Sciences Juridiques, Économiques et Sociales (FSJES) Aïn Chock",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Casablanca",
-      "addressCountry": "Morocco"
-    }
-  },
-  "knowsAbout": [
-    "Business Administration",
-    "Systems Thinking",
-    "Financial Analysis",
-    "Process Improvement",
-    "Operational Strategy",
-    "Automation",
-    "Web Development"
-  ],
-  "description": "Business Administration student specializing in systems thinking, business strategy, and operational analysis. Expert in process improvement, financial modeling, and digital automation solutions."
-};
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://hassankarasu.dev"),
   title: {
-    default: "Hassan Karasu — Business Administration & Systems Strategy | Casablanca, Morocco",
+    default: "Hassan Karasu — Business Administration & Strategy",
     template: "%s | Hassan Karasu",
   },
-  description: "Business Administration student at FSJES Aïn Chock, Casablanca specializing in systems thinking, business strategy, and operational analysis. Expert in process improvement, financial modeling, and digital automation solutions.",
+  description: "Business Administration student at FSJES Aïn Chock, Casablanca. Exploring management principles, accounting rigor, and systems-driven execution.",
   keywords: [
     "Business Administration",
     "Systems Thinking",
     "Business Strategy",
     "Process Improvement",
     "Financial Analysis",
+    "Accounting",
     "Operational Efficiency",
     "Casablanca",
     "Morocco",
     "FSJES Aïn Chock",
-    "Business Student",
-    "Automation",
-    "Productivity Systems",
-    "Organizational Design"
+    "Production Coordination",
+    "Hassan Karasu"
   ],
-  authors: [{ name: "Hassan Karasu" }],
+  authors: [{ name: "Hassan Karasu", url: "https://hassankarasu.dev" }],
   creator: "Hassan Karasu",
   publisher: "Hassan Karasu",
   alternates: {
@@ -84,22 +48,24 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Hassan Karasu — Business Administration & Systems Strategy",
-    description: "Business Administration student specializing in systems thinking, business strategy, and operational analysis. Transforming complex business challenges into streamlined solutions.",
-    siteName: "Hassan Karasu Portfolio",
+    url: "https://hassankarasu.dev/",
+    title: "Hassan Karasu — Business Administration & Strategy",
+    description: "Business Administration student at FSJES Aïn Chock, Casablanca. Exploring management principles, accounting rigor, and systems-driven execution.",
+    siteName: "Hassan Karasu",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Hassan Karasu - Business Administration & Systems Strategy",
+        alt: "Hassan Karasu — Business Administration & Strategy",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hassan Karasu — Business Administration & Systems Strategy",
-    description: "Business Administration student specializing in systems thinking, business strategy, and operational analysis.",
+    title: "Hassan Karasu — Business Administration & Strategy",
+    description: "Business Administration student at FSJES Aïn Chock, Casablanca. Exploring management principles, accounting rigor, and systems-driven execution.",
+    images: ["/og-image.png"],
     creator: "@hassankarasu",
   },
   robots: {
@@ -117,9 +83,6 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/icon.svg",
-  },
-  other: {
-    "application/ld+json": JSON.stringify(structuredData),
   },
 };
 
