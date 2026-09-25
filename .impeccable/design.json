@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-25T16:15:00Z",
+  "title": "Design System: Hassan Karasu Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "Midnight Slate", "canonical": "#0F172A", "tonalRamp": ["#020617", "#0F172A", "#1E293B", "#334155", "#475569", "#64748B", "#94A3B8", "#F8FAFC"] },
+      "primary-container": { "role": "primary", "displayName": "Deep Sky Blue", "canonical": "#0369A1", "tonalRamp": ["#082F49", "#075985", "#0369A1", "#0284C7", "#38BDF8", "#7DD3FC", "#BAE6FD", "#F0F9FF"] },
+      "surface": { "role": "neutral", "displayName": "Off-White Paper", "canonical": "#F8FAFC", "tonalRamp": ["#020617", "#0F172A", "#1E293B", "#475569", "#94A3B8", "#CBD5E1", "#F1F5F9", "#FFFFFF"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline and major editorial statements." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings." },
+      "body": { "displayName": "Body", "purpose": "Editorial monographs, bio paragraphs, and descriptive text." }
+    },
+    "shadows": [
+      { "name": "shadow-xs", "value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)", "purpose": "Card resting state." },
+      { "name": "shadow-sm", "value": "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)", "purpose": "Hover and elevated states." }
+    ],
+    "motion": [
+      { "name": "ease-system", "value": "cubic-bezier(0.22, 0.8, 0.2, 1)", "purpose": "Major section transitions and fluid reveals." },
+      { "name": "ease-sharp", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Snappy micro-interactions, icons, and buttons." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary action button used for dispatching messages, opening articles, and CTAs.",
+      "html": "<button class=\"ds-btn-primary\">SEND MESSAGE</button>",
+      "css": ".ds-btn-primary { background: #0F172A; color: #FFFFFF; padding: 12px 24px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; border: none; border-radius: 12px; cursor: pointer; transition: background 0.2s, transform 0.2s; } .ds-btn-primary:hover { background: #334155; transform: translateY(-1px); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Disciplined Analyst's Ledger",
+    "overview": "The visual world of Hassan Karasu's portfolio embodies the quiet confidence, intellectual rigor, and empirical precision of modern business administration.",
+    "keyCharacteristics": [
+      "Deep Navy and Sky Blue palette signaling institutional discipline and clear direction.",
+      "Open Sans and Poppins pairing delivering clean legibility and balanced authority.",
+      "Tactile, single-elevation surfaces with soft diffuse borders over harsh drop shadows.",
+      "Smooth spring-driven scroll tracking with cohesive easing across all interactive surfaces."
+    ],
+    "rules": [
+      { "name": "The Single Elevation Rule", "body": "Surfaces declare elevation once through either a subtle 1px border or a soft diffuse shadow.", "section": "elevation" },
+      { "name": "The No-Gradient-Text Rule", "body": "Text emphasis is communicated purely through font weight, scale, and semantic tinting.", "section": "colors" }
+    ],
+    "dos": [
+      "Do maintain a minimum contrast ratio of 4.5:1 on all body text and 3:1 on large headings.",
+      "Do align tabular figures and dates using tabular numerals.",
+      "Do allow section headings to speak on their own without redundant kicker labels."
+    ],
+    "donts": [
+      "Don't use multi-color gradient text clipping.",
+      "Don't add decorative colored left borders (border-l-4) to simulate callout boxes.",
+      "Don't use monospace typography as a costume for standard form labels or navigation."
+    ]
+  }
+}

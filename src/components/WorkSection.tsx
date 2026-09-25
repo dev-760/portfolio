@@ -114,14 +114,15 @@ const PillarCard: React.FC<{ pillar: PillarItem; index: number }> = ({ pillar, i
               <motion.span
                 animate={{
                   scale: isHovered ? [1, 1.4, 1] : 1,
-                  backgroundColor: isHovered ? "#3157ff" : "#003ae4",
                 }}
                 transition={{
                   delay: isHovered ? itemIdx * 0.06 : 0,
                   duration: 0.22,
                   ease: MOTION_EASINGS.sharp,
                 }}
-                className="w-1 h-1 rounded-full bg-primary inline-block"
+                className={`w-1.5 h-1.5 rounded-full inline-block transition-colors duration-200 ${
+                  isHovered ? "bg-accent" : "bg-primary"
+                }`}
               />
               <span
                 className={`transition-colors duration-200 ${
@@ -151,10 +152,7 @@ export function WorkSection() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
             >
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-outline">
-                02 — WORK &amp; CORE PILLARS
-              </span>
-              <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-on-surface mt-2">
+              <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-on-surface">
                 Core Academic &amp; Practical Disciplines
               </h2>
             </motion.div>

@@ -54,16 +54,18 @@
   --color-ring-dark: #38BDF8;
   --color-surface-dark: #0F172A;
   --color-surface-container-dark: #1E293B;
-  --color-surface-container-low-dark: #1E293B;
-  --color-surface-container-lowest-dark: #0F172A;
+  --color-surface-container-low-dark: #172033;
+  --color-surface-container-lowest-dark: #0B1120;
   --color-on-surface-dark: #F8FAFC;
-  --color-on-surface-variant-dark: #94A3B8;
-  --color-outline-dark: #64748B;
+  --color-on-surface-variant-dark: #CBD5E1;
+  --color-outline-dark: #94A3B8;
   --color-outline-variant-dark: #334155;
   
-  /* Typography - Poppins/Open Sans */
+  /* Typography - Poppins/Open Sans & Scales */
   --font-sans: "Open Sans", sans-serif;
   --font-display: "Poppins", sans-serif;
+  --text-body-lg: 1.125rem;
+  --text-body-md: 1rem;
   
   /* Custom Border Radii - More modern */
   --radius-default: 0.25rem;
@@ -106,10 +108,33 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-outline-variant) var(--color-surface-container);
   }
 
   body {
-    @apply bg-surface text-on-surface antialiased font-sans selection:bg-primary-container selection:text-white;
+    @apply bg-surface text-on-surface antialiased font-sans;
+    caret-color: var(--color-primary);
+  }
+
+  ::selection {
+    background-color: #E0F2FE;
+    color: #0369A1;
+  }
+
+  .dark ::selection {
+    background-color: #38BDF8;
+    color: #0F172A;
+  }
+
+  a {
+    text-underline-offset: 4px;
+  }
+
+  .font-mono,
+  [data-tabular] {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
   }
   
   /* Dark mode styles */

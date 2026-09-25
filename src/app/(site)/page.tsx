@@ -52,7 +52,7 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-                <span className="text-label-uppercase text-primary font-bold uppercase tracking-[0.14em]">
+                <span className="text-xs text-primary font-bold uppercase tracking-[0.14em]">
                   BUSINESS ADMINISTRATION STUDENT
                 </span>
               </motion.div>

@@ -329,10 +329,7 @@ export function WritingSection() {
             className="space-y-2"
           >
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-outline">
-                05 — WRITING &amp; MONOGRAPHS
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-primary-fixed text-on-primary-fixed uppercase tracking-wider">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-primary-fixed text-on-primary-fixed uppercase tracking-wider">
                 <span className="size-1.5 rounded-full bg-primary animate-pulse" />
                 Peer-Reviewed Coursework
               </span>
@@ -401,8 +398,8 @@ export function WritingSection() {
               </div>
 
               {/* Core Thesis Highlight Quote Box */}
-              <div className="p-4 sm:p-5 rounded-xl bg-surface-container/60 border-l-4 border-primary text-on-surface text-sm sm:text-[15px] italic leading-relaxed">
-                <span className="text-xs font-bold not-italic uppercase tracking-wider text-primary font-mono block mb-1">
+              <div className="p-4 sm:p-5 rounded-xl bg-surface-container/80 border border-primary/25 text-on-surface text-sm sm:text-[15px] italic leading-relaxed shadow-2xs">
+                <span className="text-xs font-bold not-italic uppercase tracking-wider text-primary font-sans block mb-1">
                   Core Thesis:
                 </span>
                 &ldquo;{featuredEssay.thesis}&rdquo;
@@ -770,8 +767,8 @@ export function WritingSection() {
                   </div>
 
                   {/* Core Thesis / Abstract */}
-                  <div className="p-4 sm:p-5 rounded-xl bg-surface-container/60 border-l-4 border-primary">
-                    <span className="text-xs font-bold uppercase tracking-wider text-primary font-mono block mb-1">
+                  <div className="p-4 sm:p-5 rounded-xl bg-surface-container/80 border border-primary/25 shadow-2xs">
+                    <span className="text-xs font-bold uppercase tracking-wider text-primary font-sans block mb-1">
                       Thesis Statement:
                     </span>
                     <p className="text-sm sm:text-base italic text-on-surface leading-relaxed">

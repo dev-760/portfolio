@@ -90,9 +90,6 @@ export function ContactSection() {
             className="space-y-2"
           >
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-outline">
-                06 — CONTACT &amp; COLLABORATION
-              </span>
               <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25 uppercase tracking-wider">
                 <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 Available for Internships
@@ -306,7 +303,7 @@ export function ContactSection() {
                   <form onSubmit={handleSubmitMessage} className="space-y-5">
                     {/* Inquiry Reason Selector Pills */}
                     <div>
-                      <label className="text-xs font-mono font-semibold uppercase tracking-wider text-outline block mb-2">
+                      <label className="text-xs font-sans font-semibold uppercase tracking-wider text-on-surface-variant block mb-2">
                         Reason for Inquiry
                       </label>
                       <div className="flex flex-wrap gap-2">
@@ -333,7 +330,7 @@ export function ContactSection() {
                     {/* Name & Email Fields */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="text-xs font-mono uppercase tracking-wider text-outline block mb-1.5">
+                        <label className="text-xs font-sans font-semibold uppercase tracking-wider text-on-surface-variant block mb-1.5">
                           Your Name <span className="text-destructive">*</span>
                         </label>
                         <input
@@ -347,7 +344,7 @@ export function ContactSection() {
                       </div>
 
                       <div>
-                        <label className="text-xs font-mono uppercase tracking-wider text-outline block mb-1.5">
+                        <label className="text-xs font-sans font-semibold uppercase tracking-wider text-on-surface-variant block mb-1.5">
                           Your Email <span className="text-destructive">*</span>
                         </label>
                         <input
@@ -363,7 +360,7 @@ export function ContactSection() {
 
                     {/* Message Body */}
                     <div>
-                      <label className="text-xs font-mono uppercase tracking-wider text-outline block mb-1.5">
+                      <label className="text-xs font-sans font-semibold uppercase tracking-wider text-on-surface-variant block mb-1.5">
                         Message Details <span className="text-destructive">*</span>
                       </label>
                       <textarea
@@ -438,7 +435,7 @@ export function ContactSection() {
             </div>
 
             {/* Quick Navigation Directory */}
-            <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-mono uppercase tracking-wider text-outline" aria-label="Footer navigation">
+            <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-medium text-on-surface-variant" aria-label="Footer navigation">
               <a href="#home" className="hover:text-primary transition-colors">Home</a>
               <a href="#about" className="hover:text-primary transition-colors">About</a>
               <a href="#work" className="hover:text-primary transition-colors">Work</a>

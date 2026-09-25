@@ -36,10 +36,7 @@ export function ExperienceSection() {
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
           >
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-outline">
-              04 — PRODUCTION &amp; OPERATIONS
-            </span>
-            <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-on-surface mt-2">
+            <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-on-surface">
               Hands-on Production Stakes
             </h2>
           </motion.div>

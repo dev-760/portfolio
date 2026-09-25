@@ -112,19 +112,6 @@ export function AboutSection() {
             PART 1: Editorial Introduction Statement
             ======================================================== */}
         <div>
-          {/* Section Indicator */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: MOTION_DURATIONS.fast + 0.1, ease: MOTION_EASINGS.sharp }}
-            className="pb-8"
-          >
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-outline">
-              01 — NARRATIVE &amp; FORMATION
-            </span>
-          </motion.div>
-
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Headline */}
             <motion.div
@@ -209,9 +196,9 @@ export function AboutSection() {
                 <p>
                   Beyond academics, working as a Production Trainee at <span className="font-medium text-on-surface">EL25 Studio</span> taught me how to manage real client deadlines, logistical coordination, and on-set workflows under pressure. Additionally, participating in the national <span className="font-medium text-on-surface">Motatawi3</span> volunteer initiative helped me develop communication and teamwork skills.
                 </p>
-                <p className="italic text-on-surface border-l-2 border-primary pl-4 py-2 bg-surface-container-low/70 rounded-r text-sm sm:text-[15px]">
+                <blockquote className="italic text-on-surface p-4 rounded-xl bg-surface-container-low/80 border border-outline-variant/40 text-sm sm:text-[15px] leading-relaxed">
                   “Sound business practice starts with understanding the figures and the people behind them, followed by consistent, disciplined execution.”
-                </p>
+                </blockquote>
               </div>
             </motion.div>
 
@@ -292,10 +279,7 @@ export function AboutSection() {
             ======================================================== */}
         <div className="pt-10 border-t border-outline-variant/30">
           <div className="pb-8">
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-outline">
-              ACADEMIC FORMATION
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-on-surface tracking-tight mt-1">
+            <h2 className="text-2xl sm:text-3xl font-bold text-on-surface tracking-tight">
               Education &amp; Quantitative Foundation
             </h2>
             <p className="text-sm text-on-surface-variant max-w-2xl mt-2 leading-relaxed">
@@ -311,15 +295,12 @@ export function AboutSection() {
         <div className="pt-10 border-t border-outline-variant/30">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
             <div>
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-outline">
-                METHODOLOGY &amp; CULTURE
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-on-surface tracking-tight mt-1">
+              <h2 className="text-2xl sm:text-3xl font-bold text-on-surface tracking-tight">
                 Operating Principles
               </h2>
             </div>
-            <p className="text-xs text-outline font-mono">
-              3 GUIDING PRINCIPLES
+            <p className="text-xs text-outline font-medium">
+              3 Guiding Principles
             </p>
           </div>
 

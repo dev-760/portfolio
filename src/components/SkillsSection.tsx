@@ -109,10 +109,7 @@ export function SkillsSection() {
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
           >
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-outline">
-              03 — CAPABILITIES &amp; TOOLS
-            </span>
-            <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-on-surface mt-2">
+            <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-on-surface">
               Tools for Thinking, Organizing, and Solving
             </h2>
           </motion.div>

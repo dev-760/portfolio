@@ -50,16 +50,16 @@ const Toast = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="pointer-events-auto flex items-center justify-between gap-3 rounded-2xl border border-[#e2e4ec] bg-white p-3.5 text-sm shadow-lg text-[#191c21]"
+            className="pointer-events-auto flex items-center justify-between gap-3 rounded-2xl border border-outline-variant/60 bg-surface-container-lowest p-3.5 text-sm shadow-lg text-on-surface"
           >
             <div className="flex items-center gap-2.5">
               <span
                 className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${
                   toast.type === "success"
-                    ? "bg-emerald-50 text-emerald-600"
+                    ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400"
                     : toast.type === "error"
-                    ? "bg-rose-50 text-rose-600"
-                    : "bg-blue-50 text-blue-600"
+                    ? "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400"
+                    : "bg-sky-50 dark:bg-sky-950/40 text-sky-600 dark:text-sky-400"
                 }`}
               >
                 {toast.type === "success" ? (
@@ -76,12 +76,12 @@ const Toast = () => {
                   </svg>
                 )}
               </span>
-              <span className="font-medium text-xs sm:text-sm text-[#191c21]">{toast.message}</span>
+              <span className="font-medium text-xs sm:text-sm text-on-surface">{toast.message}</span>
             </div>
 
             <button
               onClick={() => dismissToast(toast.id)}
-              className="text-[#837565] hover:text-[#191c21] p-1 cursor-pointer shrink-0 rounded-md"
+              className="text-outline hover:text-on-surface p-1 cursor-pointer shrink-0 rounded-md transition-colors"
               aria-label="Dismiss notification"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
