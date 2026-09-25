@@ -10,7 +10,6 @@ import { WritingSection } from "@/components/WritingSection";
 import { ContactSection } from "@/components/ContactSection";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 import { TypingEffect } from "@/components/TypingEffect";
-import { Icon } from "@/components/icons/Icon";
 import { MOTION_EASINGS, MOTION_DURATIONS } from "@/motion/tokens";
 
 export default function Home() {
@@ -82,17 +81,6 @@ export default function Home() {
                 /> create real value.
               </motion.p>
             </div>
-
-            {/* Bottom Status Strip */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.65, duration: MOTION_DURATIONS.standard }}
-              className="pt-12 lg:pt-8 flex items-center gap-2 text-xs text-outline font-medium tracking-tight border-t border-outline-variant/30 mt-8"
-            >
-              <Icon name="location_on" size={15} className="text-primary" />
-              <span>Based in Casablanca, Morocco</span>
-            </motion.div>
           </div>
         </div>
       </section>
