@@ -80,6 +80,7 @@ export function Navbar() {
   }, [isMobileMenuOpen]);
 
   const sectionToIndex: Record<string, number> = {
+    home: 0,
     about: 0,
     work: 1,
     pillars: 1,
@@ -160,17 +161,12 @@ export function Navbar() {
 
           {/* Desktop Nav with GooeyNav from React Bits */}
           <nav className="hidden lg:flex items-center" aria-label="Main navigation">
-            <div className="rounded-full bg-slate-200/70 dark:bg-slate-900/80 border border-slate-300/80 dark:border-slate-800/80 shadow-2xs dark:shadow-md backdrop-blur-md px-3 py-1 transition-colors duration-200">
+            <div className="rounded-full bg-slate-200/70 dark:bg-slate-900/80 border border-slate-300/80 dark:border-slate-800/80 shadow-2xs dark:shadow-md backdrop-blur-md px-3 py-1 transition-colors duration-200 overflow-hidden">
               <GooeyNav
                 items={gooeyNavItems}
-                particleCount={15}
-                particleDistances={[90, 10]}
-                particleR={100}
+                particleCount={0}
                 initialActiveIndex={0}
                 activeIndex={activeGooeyIndex}
-                animationTime={600}
-                timeVariance={300}
-                colors={[1, 2, 3, 1, 2, 3, 1, 4]}
                 onItemClick={handleGooeyClick}
               />
             </div>

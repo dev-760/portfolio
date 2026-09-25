@@ -49,11 +49,11 @@ const createParticle = (
 
 export const GooeyNav = ({
   items,
-  animationTime = 600,
-  particleCount = 15,
-  particleDistances = [90, 10],
-  particleR = 100,
-  timeVariance = 300,
+  animationTime = 400,
+  particleCount = 0,
+  particleDistances = [15, 5],
+  particleR = 60,
+  timeVariance = 150,
   colors = [1, 2, 3, 1, 2, 3, 1, 4],
   initialActiveIndex = 0,
   activeIndex: activeIndexProp,
@@ -62,11 +62,12 @@ export const GooeyNav = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLUListElement>(null);
   const filterRef = useRef<HTMLSpanElement>(null);
-  const textRef = useRef<HTMLSpanElement>(null);
   const [internalActiveIndex, setInternalActiveIndex] = useState(initialActiveIndex);
   const activeIndex = activeIndexProp !== undefined ? activeIndexProp : internalActiveIndex;
 
   const makeParticles = useCallback((element: HTMLElement) => {
+    if (particleCount <= 0) return;
+
     const d = particleDistances;
     const r = particleR;
     const bubbleTime = animationTime * 2 + timeVariance;
@@ -75,9 +76,8 @@ export const GooeyNav = ({
     for (let i = 0; i < particleCount; i++) {
       const t = animationTime * 2 + noise(timeVariance * 2);
       const p = createParticle(i, t, d, r, particleCount, colors);
-      element.classList.remove('active');
 
-      setTimeout(() => {
+      const timerId = window.setTimeout(() => {
         const particle = document.createElement('span');
         const point = document.createElement('span');
         particle.classList.add('particle');
@@ -87,28 +87,31 @@ export const GooeyNav = ({
         particle.style.setProperty('--end-y', `${p.end[1]}px`);
         particle.style.setProperty('--time', `${p.time}ms`);
         particle.style.setProperty('--scale', `${p.scale}`);
-        particle.style.setProperty('--color', `var(--color-${p.color}, white)`);
+        particle.style.setProperty('--color', `var(--color-${p.color}, currentColor)`);
         particle.style.setProperty('--rotate', `${p.rotate}deg`);
 
         point.classList.add('point');
         particle.appendChild(point);
         element.appendChild(particle);
-        requestAnimationFrame(() => {
-          element.classList.add('active');
-        });
-        setTimeout(() => {
+
+        window.setTimeout(() => {
           try {
-            element.removeChild(particle);
+            if (element.contains(particle)) {
+              element.removeChild(particle);
+            }
           } catch {
-            // Do nothing
+            // Ignore removal errors
           }
         }, t);
-      }, 30);
+      }, 20);
+
+      // Clean up timer on unmount
+      return () => clearTimeout(timerId);
     }
   }, [animationTime, colors, particleCount, particleDistances, particleR, timeVariance]);
 
   const updateEffectPosition = useCallback((element: HTMLElement) => {
-    if (!containerRef.current || !filterRef.current || !textRef.current) return;
+    if (!containerRef.current || !filterRef.current) return;
     const containerRect = containerRef.current.getBoundingClientRect();
     const pos = element.getBoundingClientRect();
 
@@ -119,37 +122,24 @@ export const GooeyNav = ({
       height: `${pos.height}px`
     };
     Object.assign(filterRef.current.style, styles);
-    Object.assign(textRef.current.style, styles);
-    textRef.current.innerText = element.innerText;
   }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, index: number) => {
-    const target = e.currentTarget;
-    const liEl = (target.tagName === 'LI' ? target : target.closest('li')) as HTMLElement | null;
-
     if (onItemClick) {
       onItemClick(e, items[index], index);
     }
 
-    if (activeIndex === index) return;
-
     setInternalActiveIndex(index);
+
+    const target = e.currentTarget;
+    const liEl = (target.tagName === 'LI' ? target : target.closest('li')) as HTMLElement | null;
     if (liEl) {
       updateEffectPosition(liEl);
     }
 
-    if (filterRef.current) {
-      const particles = filterRef.current.querySelectorAll('.particle');
-      particles.forEach(p => filterRef.current?.removeChild(p));
-    }
-
-    if (textRef.current) {
-      textRef.current.classList.remove('active');
-      void textRef.current.offsetWidth;
-      textRef.current.classList.add('active');
-    }
-
-    if (filterRef.current) {
+    if (filterRef.current && particleCount > 0) {
+      const existingParticles = filterRef.current.querySelectorAll('.particle');
+      existingParticles.forEach(p => p.remove());
       makeParticles(filterRef.current);
     }
   };
@@ -168,13 +158,12 @@ export const GooeyNav = ({
       const activeLi = lis?.[activeIndex] as HTMLElement | undefined;
       if (activeLi) {
         updateEffectPosition(activeLi);
-        textRef.current?.classList.add('active');
       }
     };
 
     update();
     const raf = requestAnimationFrame(update);
-    const timer = setTimeout(update, 60);
+    const timer = setTimeout(update, 50);
 
     const resizeObserver = new ResizeObserver(() => {
       update();
@@ -190,36 +179,40 @@ export const GooeyNav = ({
 
   return (
     <div className="gooey-nav-container" ref={containerRef}>
-      <nav>
+      <nav aria-label="Desktop Navigation">
         <ul ref={navRef}>
-          {items.map((item, index) => (
-            <li key={index} className={activeIndex === index ? 'active' : ''}>
-              <a
-                href={item.href}
-                onClick={e => handleClick(e, index)}
-                onKeyDown={e => handleKeyDown(e, index)}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
+          {items.map((item, index) => {
+            const isActive = activeIndex === index;
+            return (
+              <li key={index} className={isActive ? 'active' : ''}>
+                <a
+                  href={item.href}
+                  onClick={e => handleClick(e, index)}
+                  onKeyDown={e => handleKeyDown(e, index)}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </nav>
-      <span className="effect filter" ref={filterRef} />
-      <span className="effect text" ref={textRef} />
+      {/* Sliding active pill indicator behind links */}
+      <span className="effect filter" ref={filterRef} aria-hidden="true" />
 
-      {/* SVG Gooey Filter - Alpha-channel thresholding, zero background artifacts */}
+      {/* SVG Gooey Filter - Alpha-channel thresholding */}
       <svg
         style={{ position: 'absolute', width: 0, height: 0, pointerEvents: 'none' }}
         aria-hidden="true"
       >
         <defs>
           <filter id="gooey-nav-filter">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
             <feColorMatrix
               in="blur"
               mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
               result="goo"
             />
             <feBlend in="SourceGraphic" in2="goo" />
