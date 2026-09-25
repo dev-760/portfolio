@@ -10,6 +10,7 @@ import { WritingSection } from "@/components/WritingSection";
 import { ContactSection } from "@/components/ContactSection";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 import { TypingEffect } from "@/components/TypingEffect";
+import { Icon } from "@/components/icons/Icon";
 import { MOTION_EASINGS, MOTION_DURATIONS } from "@/motion/tokens";
 
 export default function Home() {
@@ -81,6 +82,40 @@ export default function Home() {
                   pauseDuration={5000}
                 /> create real value.
               </motion.p>
+
+              {/* 4. Action Affordances: Direct Correspondence & CV */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.54, duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
+                className="flex flex-wrap items-center gap-3 pt-2"
+              >
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 bg-primary hover:bg-secondary text-on-primary text-xs font-semibold uppercase tracking-wider transition-all shadow-xs hover:shadow-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                >
+                  <Icon name="mail" size={15} />
+                  <span>Direct Correspondence</span>
+                </a>
+
+                <a
+                  href="#work"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 bg-surface-container hover:bg-surface-container-high border border-outline-variant text-on-surface text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                >
+                  <Icon name="checklist" size={15} />
+                  <span>Explore Pillars</span>
+                </a>
+
+                <button
+                  type="button"
+                  onClick={() => window.print()}
+                  className="inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 bg-surface-container-low hover:bg-surface-container border border-outline-variant/60 text-secondary text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  title="Print / Save Academic CV"
+                >
+                  <Icon name="article" size={15} />
+                  <span>Curriculum Vitae</span>
+                </button>
+              </motion.div>
             </div>
           </div>
         </div>

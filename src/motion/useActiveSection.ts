@@ -23,6 +23,7 @@ export function useActiveSection(sectionIds: string[], defaultSection: string = 
         if (scrollPosition < 80 && sectionIds.length > 0) {
           setActiveSection(sectionIds[0]);
           ticking = false;
+
           return;
         }
 
@@ -30,6 +31,7 @@ export function useActiveSection(sectionIds: string[], defaultSection: string = 
         if (scrollPosition + windowHeight >= documentHeight - 60 && sectionIds.length > 0) {
           setActiveSection(sectionIds[sectionIds.length - 1]);
           ticking = false;
+
           return;
         }
 
@@ -40,8 +42,10 @@ export function useActiveSection(sectionIds: string[], defaultSection: string = 
         for (let i = sectionIds.length - 1; i >= 0; i--) {
           const id = sectionIds[i];
           const element = document.getElementById(id);
+
           if (element) {
             const rect = element.getBoundingClientRect();
+
             if (rect.top <= headerOffset + 60) {
               currentSection = id;
               break;
@@ -65,6 +69,7 @@ export function useActiveSection(sectionIds: string[], defaultSection: string = 
     // Support direct hash navigation
     const handleHash = () => {
       const hash = window.location.hash.replace("#", "");
+
       if (hash && sectionIds.includes(hash)) {
         setActiveSection(hash);
       }

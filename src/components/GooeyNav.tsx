@@ -25,6 +25,7 @@ const noise = (n = 1) => n / 2 - Math.random() * n;
 
 const getXY = (distance: number, pointIndex: number, totalPoints: number): [number, number] => {
   const angle = ((360 + noise(8)) / totalPoints) * pointIndex * (Math.PI / 180);
+
   return [distance * Math.cos(angle), distance * Math.sin(angle)];
 };
 
@@ -37,6 +38,7 @@ const createParticle = (
   colors: number[]
 ) => {
   const rotate = noise(r / 10);
+
   return {
     start: getXY(d[0], particleCount - i, particleCount),
     end: getXY(d[1] + noise(7), particleCount - i, particleCount),
@@ -121,6 +123,7 @@ export const GooeyNav = ({
       width: `${pos.width}px`,
       height: `${pos.height}px`
     };
+
     Object.assign(filterRef.current.style, styles);
   }, []);
 
@@ -132,7 +135,8 @@ export const GooeyNav = ({
     setInternalActiveIndex(index);
 
     const target = e.currentTarget;
-    const liEl = (target.tagName === 'LI' ? target : target.closest('li')) as HTMLElement | null;
+    const liEl = target.closest('li');
+
     if (liEl) {
       updateEffectPosition(liEl);
     }
@@ -144,20 +148,35 @@ export const GooeyNav = ({
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement>, index: number) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement>) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      handleClick(e as unknown as React.MouseEvent<HTMLAnchorElement>, index);
+      e.currentTarget.click();
     }
   };
 
   useEffect(() => {
     if (!navRef.current || !containerRef.current) return;
+
     const update = () => {
+      if (!filterRef.current) return;
+
+      if (activeIndex < 0) {
+        filterRef.current.style.opacity = '0';
+        filterRef.current.style.visibility = 'hidden';
+        return;
+      }
+
       const lis = navRef.current?.querySelectorAll('li');
-      const activeLi = lis?.[activeIndex] as HTMLElement | undefined;
+      const activeLi = lis?.item(activeIndex);
+
       if (activeLi) {
         updateEffectPosition(activeLi);
+        filterRef.current.style.opacity = '1';
+        filterRef.current.style.visibility = 'visible';
+      } else {
+        filterRef.current.style.opacity = '0';
+        filterRef.current.style.visibility = 'hidden';
       }
     };
 
@@ -170,6 +189,7 @@ export const GooeyNav = ({
     });
 
     resizeObserver.observe(containerRef.current);
+
     return () => {
       cancelAnimationFrame(raf);
       clearTimeout(timer);
@@ -183,12 +203,13 @@ export const GooeyNav = ({
         <ul ref={navRef}>
           {items.map((item, index) => {
             const isActive = activeIndex === index;
+
             return (
               <li key={index} className={isActive ? 'active' : ''}>
                 <a
                   href={item.href}
                   onClick={e => handleClick(e, index)}
-                  onKeyDown={e => handleKeyDown(e, index)}
+                  onKeyDown={handleKeyDown}
                   aria-current={isActive ? 'page' : undefined}
                 >
                   {item.label}

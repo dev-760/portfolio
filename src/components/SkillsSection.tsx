@@ -154,6 +154,7 @@ export function SkillsSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4" id="problem-solving-accordion" role="region" aria-label="Problem solving skills accordion">
             {problemSolvingSkills.map((skill, index) => {
               const isExpanded = expandedIds.includes(skill.id);
+
               return (
                 <motion.div
                   key={skill.id}
@@ -183,7 +184,7 @@ export function SkillsSection() {
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className="text-[10px] font-mono text-outline uppercase hidden sm:inline">
+                      <span className="text-[11px] font-mono text-outline uppercase hidden sm:inline">
                         {skill.metric}
                       </span>
                       <motion.div
@@ -208,7 +209,7 @@ export function SkillsSection() {
                         transition={{ duration: 0.25, ease: MOTION_EASINGS.system }}
                         className="overflow-hidden"
                       >
-                        <div className="mt-3 pt-3 border-t border-surface-container text-xs leading-relaxed text-on-surface-variant bg-surface-container-low/60 p-3 rounded">
+                        <div className="mt-3 pt-3 border-t border-surface-container text-xs leading-relaxed text-on-surface-variant bg-surface-container-low/60 p-3 rounded-lg">
                           {skill.description}
                         </div>
                       </motion.div>
@@ -242,14 +243,14 @@ export function SkillsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{ delay: index * 0.08, duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
-                className="bg-surface-container-lowest border border-outline-variant/40 rounded p-5 flex flex-col justify-between hover:border-primary/50 transition-colors shadow-2xs group"
+                className="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-5 flex flex-col justify-between hover:border-primary/50 transition-colors shadow-2xs group"
               >
                 <div>
                   <div className="flex items-center justify-between pb-2.5">
                     <h4 className="font-semibold text-sm text-on-surface group-hover:text-primary transition-colors">
                       {stack.title}
                     </h4>
-                    <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed">
+                    <span className="text-[11px] font-mono font-medium px-2 py-0.5 rounded-md bg-primary-fixed text-on-primary-fixed">
                       {stack.badge}
                     </span>
                   </div>

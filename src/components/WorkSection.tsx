@@ -56,7 +56,7 @@ const PillarCard: React.FC<{ pillar: PillarItem; index: number }> = ({ pillar, i
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative bg-surface-container-lowest p-8 rounded border transition-colors duration-300 flex flex-col justify-between h-full border-outline-variant/50 hover:border-primary/70 shadow-xs"
+      className="group relative bg-surface-container-lowest p-8 rounded-xl border transition-colors duration-300 flex flex-col justify-between h-full border-outline-variant/50 hover:border-primary/70 shadow-xs"
     >
       <div>
         {/* Top Header: Metadata Number & Icon */}

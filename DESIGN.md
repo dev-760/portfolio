@@ -31,16 +31,36 @@ typography:
     fontWeight: 700
     lineHeight: 1.2
     letterSpacing: "-0.02em"
+  title:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "1.25rem"
+    fontWeight: 700
+    lineHeight: 1.3
+    letterSpacing: "-0.015em"
   body:
     fontFamily: "Open Sans, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.6
     letterSpacing: "normal"
+  label:
+    fontFamily: "Open Sans, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: "0.05em"
+  caption:
+    fontFamily: "Open Sans, sans-serif"
+    fontSize: "0.6875rem"
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: "0.06em"
 rounded:
-  default: "4px"
-  lg: "8px"
+  sm: "6px"
+  default: "8px"
+  lg: "10px"
   xl: "12px"
+  2xl: "16px"
   full: "9999px"
 spacing:
   xs: "8px"
@@ -113,8 +133,9 @@ The palette is anchored in deep midnight slate, crisp atmospheric neutrals, and 
 - **Display** (800 weight, clamp(2.25rem, 5vw, 3.75rem), 1.08 line-height): Hero headline and major editorial statements.
 - **Headline** (700 weight, 1.875rem–2.5rem, 1.2 line-height): Section titles that speak with direct clarity.
 - **Title** (600–700 weight, 1.25rem–1.5rem, 1.3 line-height): Card headers, milestone roles, and monograph titles.
-- **Body** (400 weight, 1rem, 1.6 line-height): Narrative bios and essay paragraphs with optimal 65–75ch line length.
-- **Label** (600 weight, 0.75rem–0.8125rem, uppercase with 0.05–0.14em tracking): Category tags, coordinates, and metadata.
+- **Body** (400 weight, 1rem / 16px, 1.6 line-height): Narrative bios and essay paragraphs with optimal 65–75ch line length.
+- **Label** (600 weight, 0.75rem / 12px, uppercase with 0.05–0.14em tracking): Category tags, coordinates, and section metadata.
+- **Caption / Micro** (600 weight, 0.6875rem / 11px, tabular numerals, 0.06em tracking): Status badges, filter tags, and dense tabular metadata. Minimum functional text floor.
 
 ### Named Rules
 **The Heading Authority Rule.** Headings speak for themselves without repetitive numbering or kicker tags placed above them.

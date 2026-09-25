@@ -34,6 +34,7 @@ export function TypingEffect({
         timer = setTimeout(() => {
           const nextText = currentWord.slice(0, currentText.length + 1);
           setCurrentText(nextText);
+
           if (nextText.length === currentWord.length) {
             setPhase("pausing");
           }
@@ -49,6 +50,7 @@ export function TypingEffect({
         timer = setTimeout(() => {
           const nextText = currentWord.slice(0, currentText.length - 1);
           setCurrentText(nextText);
+
           if (nextText.length === 0) {
             setPhase("typing");
             setCurrentWordIndex((prev) => (prev + 1) % words.length);

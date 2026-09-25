@@ -249,31 +249,55 @@ export function WritingSection() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [activeModalArticle, setActiveModalArticle] = useState<ArticleItem | null>(null);
-  const [newsletterEmail, setNewsletterEmail] = useState("");
-  const [isSubscribed, setIsSubscribed] = useState(false);
   const [hoveredArticle, setHoveredArticle] = useState<string | null>(null);
+
+  const handleOpenArticle = useCallback((article: ArticleItem) => {
+    setActiveModalArticle(article);
+    window.history.pushState({ modalOpen: true, slug: article.slug }, "", `#essay-${article.slug}`);
+  }, []);
+
+  const handleCloseModal = useCallback(() => {
+    setActiveModalArticle(null);
+    if (window.location.hash.startsWith("#essay-")) {
+      window.history.pushState(null, "", "#writing");
+    }
+  }, []);
 
   // Keyboard accessibility: Escape closes modal
   useEffect(() => {
     if (!activeModalArticle) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setActiveModalArticle(null);
+        handleCloseModal();
       }
     };
+
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
+
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [activeModalArticle]);
+  }, [activeModalArticle, handleCloseModal]);
+
+  // Sync browser back button with modal state
+  useEffect(() => {
+    const handlePopState = () => {
+      setActiveModalArticle(null);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
   // Filter and search
   const filteredNoteArticles = useMemo(() => {
     return noteArticles.filter((item) => {
       const matchesCategory = selectedCategory === "all" || item.category === selectedCategory;
       const query = searchQuery.trim().toLowerCase();
+
       if (!query) return matchesCategory;
 
       const matchesText =
@@ -286,13 +310,10 @@ export function WritingSection() {
     });
   }, [selectedCategory, searchQuery]);
 
-  const handleOpenArticle = useCallback((article: ArticleItem) => {
-    setActiveModalArticle(article);
-  }, []);
-
   const handleCopyArticleLink = useCallback((article: ArticleItem, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     const url = `${window.location.origin}/#writing-${article.slug}`;
+
     if (navigator.clipboard) {
       navigator.clipboard.writeText(url).then(() => {
         showToast("Monograph link copied to clipboard!", "success");
@@ -301,15 +322,6 @@ export function WritingSection() {
       showToast("Link copied: " + url, "info");
     }
   }, []);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (newsletterEmail.trim()) {
-      setIsSubscribed(true);
-      showToast("Subscribed! You will receive future academic dispatches.", "success");
-      setNewsletterEmail("");
-    }
-  };
 
   return (
     <section
@@ -329,7 +341,7 @@ export function WritingSection() {
             className="space-y-2"
           >
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-primary-fixed text-on-primary-fixed uppercase tracking-wider">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-primary-fixed text-on-primary-fixed uppercase tracking-wider">
                 <span className="size-1.5 rounded-full bg-primary animate-pulse" />
                 Peer-Reviewed Coursework
               </span>
@@ -379,7 +391,7 @@ export function WritingSection() {
                   <Icon name="sparkles" size={13} />
                   FEATURED ESSAY
                 </span>
-                <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/20 uppercase tracking-wider">
+                <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-md bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/20 uppercase tracking-wider">
                   {featuredEssay.categoryLabel}
                 </span>
                 <span className="text-outline text-xs font-mono">
@@ -398,7 +410,7 @@ export function WritingSection() {
               </div>
 
               {/* Core Thesis Highlight Quote Box */}
-              <div className="p-4 sm:p-5 rounded-xl bg-surface-container/80 border border-primary/25 text-on-surface text-sm sm:text-[15px] italic leading-relaxed shadow-2xs">
+              <div className="p-4 sm:p-5 rounded-xl bg-surface-container/80 border border-primary/25 text-on-surface text-sm sm:text-base italic leading-relaxed shadow-2xs">
                 <span className="text-xs font-bold not-italic uppercase tracking-wider text-primary font-sans block mb-1">
                   Core Thesis:
                 </span>
@@ -493,6 +505,7 @@ export function WritingSection() {
           >
             {categories.map((cat) => {
               const isActive = selectedCategory === cat.key;
+
               return (
                 <button
                   key={cat.key}
@@ -545,6 +558,7 @@ export function WritingSection() {
             <AnimatePresence>
               {filteredNoteArticles.map((article) => {
                 const isHovered = hoveredArticle === article.id;
+
                 return (
                   <motion.article
                     key={article.id}
@@ -585,7 +599,7 @@ export function WritingSection() {
                         {article.tags.slice(0, 3).map((tag) => (
                           <span
                             key={tag}
-                            className="px-2 py-0.5 rounded text-[10px] font-mono bg-surface-container text-on-surface-variant"
+                            className="px-2 py-0.5 rounded-md text-[11px] font-mono bg-surface-container text-on-surface-variant"
                           >
                             #{tag}
                           </span>
@@ -605,7 +619,7 @@ export function WritingSection() {
                           <Icon name="arrow_forward" size={14} />
                         </motion.div>
                       </span>
-                      <span className="text-[10px] font-mono text-outline uppercase tracking-wider">
+                      <span className="text-[11px] font-mono text-outline uppercase tracking-wider">
                         STUDENT NOTE
                       </span>
                     </div>
@@ -617,75 +631,49 @@ export function WritingSection() {
         </div>
 
         {/* ========================================================
-            PART 3: NEWSLETTER & FUTURE DISPATCHES
+            PART 3: ACADEMIC EXCHANGE & MONOGRAPH CORRESPONDENCE
             ======================================================== */}
         <div className="pt-6">
-          <div className="p-8 sm:p-10 bg-surface-container border border-outline-variant/50 rounded-2xl relative overflow-hidden">
-            {/* Subtle glow circle */}
-            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-primary/5 rounded-full blur-2xl pointer-events-none" />
-
+          <div className="p-8 sm:p-10 bg-surface-container-lowest border border-outline-variant/60 rounded-xl relative overflow-hidden shadow-xs">
             <div className="max-w-2xl relative">
               <div className="flex items-center gap-2 mb-2 text-primary font-semibold text-xs tracking-wider uppercase font-mono">
                 <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
                 <Icon name="mail" size={15} />
-                <span>DISPATCHES &amp; ACADEMIC NOTES</span>
+                <span>ACADEMIC CORRESPONDENCE &amp; MONOGRAPHS</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-on-surface mb-2">
-                Subscribe to future monographs
+              <h3 className="text-2xl sm:text-3xl font-bold text-on-surface mb-2 tracking-tight">
+                Engage with these research notes
               </h3>
               <p className="text-on-surface-variant text-sm mb-6 leading-relaxed">
-                Receive occasional reflections on business administration, student productivity, quantitative coursework, and lessons learned from projects. Zero spam, unsubscribe anytime.
+                Interested in discussing coursework methodology, operational case studies, or receiving future student monographs? Reach out directly via the verified correspondence channels.
               </p>
 
-              {isSubscribed ? (
-                <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-sm font-semibold flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2">
-                    <Icon name="verified" size={18} />
-                    <span>You are subscribed. Welcome to future dispatches!</span>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setIsSubscribed(false)}
-                    className="text-xs underline cursor-pointer text-emerald-700 dark:text-emerald-400"
-                  >
-                    Add another email
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
-                  <div className="relative flex-1">
-                    <Icon
-                      name="mail"
-                      size={16}
-                      className="absolute left-3.5 top-1/2 -translate-y-1/2 text-outline pointer-events-none"
-                    />
-                    <input
-                      type="email"
-                      required
-                      value={newsletterEmail}
-                      onChange={(e) => setNewsletterEmail(e.target.value)}
-                      placeholder="Enter your email for academic notes"
-                      className="w-full pl-10 pr-4 py-3 bg-surface-container-lowest border border-outline-variant rounded-xl text-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="px-6 py-3 bg-primary hover:bg-secondary text-on-primary text-xs font-semibold uppercase tracking-wider rounded-xl transition-colors whitespace-nowrap cursor-pointer shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                  >
-                    Subscribe
-                  </button>
-                </form>
-              )}
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="#contact"
+                  className="px-6 py-3 bg-primary hover:bg-secondary text-on-primary text-xs font-semibold uppercase tracking-wider rounded-lg transition-colors whitespace-nowrap cursor-pointer shadow-xs inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                >
+                  <Icon name="mail" size={15} />
+                  <span>Direct Correspondence</span>
+                </a>
+                <a
+                  href="https://linkedin.com/in/hassan-karasu-a7485336b"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-3 bg-surface-container hover:bg-surface-container-high border border-outline-variant text-on-surface text-xs font-semibold uppercase tracking-wider rounded-lg transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                >
+                  <Icon name="share" size={15} />
+                  <span>Connect on LinkedIn</span>
+                </a>
+              </div>
 
-              <div className="mt-5 flex flex-wrap items-center gap-4 text-xs text-outline font-medium">
-                <span className="flex items-center gap-1.5">
-                  <Icon name="verified_user" size={14} />
-                  Zero spam, unsubscribe anytime
+              <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-outline font-medium">
+                <span className="flex items-center gap-1.5 font-mono">
+                  <Icon name="school" size={14} />
+                  FSJES Aïn Chock Research Track
                 </span>
                 <span>•</span>
-                <span>Quarterly curated dispatches</span>
-                <span>•</span>
-                <span>Casablanca, Morocco</span>
+                <span className="font-mono">Casablanca, Morocco</span>
               </div>
             </div>
           </div>
@@ -701,7 +689,7 @@ export function WritingSection() {
               role="dialog"
               aria-modal="true"
               aria-labelledby="modal-article-title"
-              onClick={() => setActiveModalArticle(null)}
+              onClick={handleCloseModal}
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 16 }}
@@ -715,7 +703,7 @@ export function WritingSection() {
                 <div className="flex items-center justify-between px-6 py-4 border-b border-outline-variant/40 bg-surface-container/60 shrink-0">
                   <div className="flex items-center gap-2">
                     <span
-                      className={`px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold uppercase tracking-wider border ${activeModalArticle.categoryBadgeClass}`}
+                      className={`px-2.5 py-0.5 rounded-md text-[11px] font-mono font-semibold uppercase tracking-wider border ${activeModalArticle.categoryBadgeClass}`}
                     >
                       {activeModalArticle.categoryLabel}
                     </span>
@@ -736,7 +724,7 @@ export function WritingSection() {
                     </button>
                     <button
                       type="button"
-                      onClick={() => setActiveModalArticle(null)}
+                      onClick={handleCloseModal}
                       className="p-2 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container transition-colors cursor-pointer"
                       title="Close (Esc)"
                       aria-label="Close reader"

@@ -48,10 +48,12 @@ export function Navbar() {
       e.preventDefault();
       const targetId = href.substring(1);
       const targetElement = document.getElementById(targetId);
+
       if (targetElement) {
         targetElement.scrollIntoView({ behavior: "smooth" });
         window.history.pushState(null, "", href);
       }
+
       setIsMobileMenuOpen(false);
     }
   }, []);
@@ -63,6 +65,7 @@ export function Navbar() {
     } else {
       document.body.style.overflow = "";
     }
+
     return () => {
       document.body.style.overflow = "";
     };
@@ -75,21 +78,35 @@ export function Navbar() {
         setIsMobileMenuOpen(false);
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
+
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isMobileMenuOpen]);
 
-  const sectionToIndex: Record<string, number> = {
-    home: 0,
-    about: 0,
-    work: 1,
-    pillars: 1,
-    skills: 2,
-    experience: 3,
-    writing: 4,
-    contact: 5,
+  const getSectionIndex = (section: string): number => {
+    switch (section) {
+      case "home":
+        return -1;
+      case "about":
+        return 0;
+      case "work":
+      case "pillars":
+        return 1;
+      case "skills":
+        return 2;
+      case "experience":
+        return 3;
+      case "writing":
+        return 4;
+      case "contact":
+        return 5;
+      default:
+        return -1;
+    }
   };
-  const activeGooeyIndex = sectionToIndex[activeSection] ?? 0;
+
+  const activeGooeyIndex = getSectionIndex(activeSection);
 
   const handleGooeyClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, item: GooeyNavItem) => {
@@ -101,8 +118,11 @@ export function Navbar() {
   // Determine active item based on single-page active section
   const getIsActive = (linkName: string) => {
     const key = linkName.toLowerCase();
+
     if (key === activeSection) return true;
+
     if (key === "work" && (activeSection === "work" || activeSection === "pillars")) return true;
+
     return false;
   };
 
@@ -110,7 +130,7 @@ export function Navbar() {
     <>
       {/* Top Reading & Scroll Telemetry Progress Line */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-accent via-secondary to-primary z-[60] origin-left pointer-events-none"
+        className="fixed top-0 left-0 right-0 h-[2.5px] bg-sky-600 dark:bg-sky-400 z-[60] origin-left pointer-events-none"
         style={{ scaleX: scrollYProgress }}
         aria-hidden="true"
       />
@@ -223,6 +243,7 @@ export function Navbar() {
                 
                 {navLinks.map((link, index) => {
                   const isActive = getIsActive(link.name);
+
                   return (
                     <motion.a
                       key={link.name}

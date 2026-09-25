@@ -11,6 +11,7 @@ export function generatePageMetadata(
       ? path
       : `${path}/`
     : "/";
+
   const url = `https://hassankarasu.dev${normalizedPath}`;
 
   return {

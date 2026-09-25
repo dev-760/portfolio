@@ -15,7 +15,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as Theme | null;
+    const storedTheme = localStorage.getItem("theme");
+    const savedTheme: Theme | null = storedTheme === "light" || storedTheme === "dark" ? storedTheme : null;
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const resolvedTheme = savedTheme || (prefersDark ? "dark" : "light");
     
@@ -51,8 +52,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
 export function useTheme() {
   const context = useContext(ThemeContext);
+
   if (context === undefined) {
     throw new Error("useTheme must be used within a ThemeProvider");
   }
+
   return context;
 }

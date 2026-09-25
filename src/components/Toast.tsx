@@ -5,6 +5,17 @@ import { useState, useEffect } from "react";
 
 export type ToastType = "success" | "error" | "info";
 
+interface ToastDetail {
+  message: string;
+  type?: ToastType;
+}
+
+declare global {
+  interface WindowEventMap {
+    "show-toast": CustomEvent<ToastDetail>;
+  }
+}
+
 interface ToastItem {
   id: string;
   message: string;
@@ -15,7 +26,7 @@ const Toast = () => {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
 
   useEffect(() => {
-    const handleToast = (event: CustomEvent) => {
+    const handleToast = (event: CustomEvent<ToastDetail>) => {
       const { message, type } = event.detail;
       const id = Date.now().toString() + Math.random().toString(36).substring(2, 5);
 
@@ -26,8 +37,9 @@ const Toast = () => {
       }, 3500);
     };
 
-    window.addEventListener("show-toast", handleToast as EventListener);
-    return () => window.removeEventListener("show-toast", handleToast as EventListener);
+    window.addEventListener("show-toast", handleToast);
+
+    return () => window.removeEventListener("show-toast", handleToast);
   }, []);
 
   const dismissToast = (id: string) => {

@@ -59,12 +59,12 @@ export function ExperienceSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
-          className="bg-surface-container-lowest border border-outline-variant/50 rounded-lg p-6 sm:p-8 lg:p-10 shadow-xs"
+          className="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-6 sm:p-8 lg:p-10 shadow-xs"
         >
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 border-b border-surface-container pb-6">
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold bg-primary-fixed text-on-primary-fixed uppercase tracking-wider">
+                <span className="px-2.5 py-0.5 rounded-md text-[11px] font-mono font-semibold bg-primary-fixed text-on-primary-fixed uppercase tracking-wider">
                   Production Trainee
                 </span>
                 <span className="text-xs text-on-surface-variant font-medium">· On-Site</span>
@@ -88,25 +88,17 @@ export function ExperienceSection() {
 
           {/* Scope and Deliverables Section */}
           <div className="mt-6">
-            <div
+            <button
+              type="button"
               onClick={() => setIsDeliverablesExpanded(!isDeliverablesExpanded)}
-              className="flex items-center justify-between cursor-pointer py-1 select-none"
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  setIsDeliverablesExpanded(!isDeliverablesExpanded);
-                }
-              }}
+              className="w-full flex items-center justify-between cursor-pointer py-1.5 select-none text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
+              aria-expanded={isDeliverablesExpanded}
             >
-              <span className="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-1.5">
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-1.5 font-mono">
                 <Icon name="list_alt" size={16} className="text-secondary" />
                 Key Scope &amp; Deliverables
               </span>
-              <button
-                type="button"
-                className="flex items-center gap-1 text-xs text-outline font-medium hover:text-primary transition-colors focus:outline-none cursor-pointer"
-              >
+              <div className="flex items-center gap-1 text-xs text-outline font-medium hover:text-primary transition-colors">
                 <span>{isDeliverablesExpanded ? "Collapse scope" : "Expand scope"}</span>
                 <motion.div
                   animate={{ rotate: isDeliverablesExpanded ? 180 : 0 }}
@@ -115,8 +107,8 @@ export function ExperienceSection() {
                 >
                   <Icon name="expand_more" size={16} />
                 </motion.div>
-              </button>
-            </div>
+              </div>
+            </button>
 
             <AnimatePresence initial={false}>
               {isDeliverablesExpanded && (
@@ -131,7 +123,7 @@ export function ExperienceSection() {
                     {deliverables.map((bullet, idx) => (
                       <div
                         key={idx}
-                        className="flex items-start gap-3 p-4 rounded bg-surface-container-low/70 border border-outline-variant/30"
+                        className="flex items-start gap-3 p-4 rounded-lg bg-surface-container-low/70 border border-outline-variant/30"
                       >
                         <Icon name="check_circle" size={16} className="text-primary mt-0.5 shrink-0" />
                         <p className="text-xs leading-relaxed text-on-surface">
@@ -173,12 +165,12 @@ export function ExperienceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
-            className="bg-surface-container-lowest border border-outline-variant/50 rounded-lg p-6 sm:p-8 lg:p-10 shadow-xs"
+            className="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-6 sm:p-8 lg:p-10 shadow-xs"
           >
             <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 border-b border-surface-container pb-6">
               <div>
                 <div className="flex flex-wrap items-center gap-2 mb-2">
-                  <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold bg-primary-fixed text-on-primary-fixed uppercase tracking-wider">
+                  <span className="px-2.5 py-0.5 rounded-md text-[11px] font-mono font-semibold bg-primary-fixed text-on-primary-fixed uppercase tracking-wider">
                     Volunteer
                   </span>
                   <span className="text-xs text-on-surface-variant font-medium">· Motatawi3 Program</span>
@@ -188,17 +180,17 @@ export function ExperienceSection() {
                 </h3>
                 {/* Skill tags */}
                 <div className="flex flex-wrap items-center gap-2 pt-2">
-                  <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-medium bg-surface-container text-on-surface-variant border border-outline-variant/30">
+                  <span className="px-2.5 py-0.5 rounded-md text-[11px] font-mono font-medium bg-surface-container text-on-surface-variant border border-outline-variant/30">
                     Mentorship
                   </span>
-                  <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-medium bg-surface-container text-on-surface-variant border border-outline-variant/30">
+                  <span className="px-2.5 py-0.5 rounded-md text-[11px] font-mono font-medium bg-surface-container text-on-surface-variant border border-outline-variant/30">
                     Youth Education
                   </span>
                 </div>
               </div>
 
               <div className="text-left md:text-right">
-                <span className="inline-block px-3 py-1 bg-surface-container text-on-surface-variant font-mono text-xs rounded font-medium">
+                <span className="inline-block px-3 py-1 bg-surface-container text-on-surface-variant font-mono text-xs rounded-md font-medium">
                   Jul — Aug 2024
                 </span>
               </div>
@@ -209,7 +201,7 @@ export function ExperienceSection() {
               {volunteeringBullets.map((bullet, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-3 p-4 rounded bg-surface-container-low/70 border border-outline-variant/30"
+                  className="flex items-start gap-3 p-4 rounded-lg bg-surface-container-low/70 border border-outline-variant/30"
                 >
                   <Icon name="check_circle" size={16} className="text-primary mt-0.5 shrink-0" />
                   <p className="text-xs leading-relaxed text-on-surface">

@@ -86,6 +86,7 @@ export function SystemTimeline({
           {/* Render Milestones */}
           {milestones.map((item, index) => {
             const milestoneThreshold = index / Math.max(1, milestones.length - 1);
+
             return (
               <TimelineNodeItem
                 key={item.id}
@@ -146,7 +147,7 @@ function TimelineNodeItem({
       <div className="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-6 sm:p-7 hover:border-primary/50 transition-all duration-300 shadow-2xs hover:shadow-xs relative overflow-hidden group/card">
         {/* Subtle Ambient Top Accent on Active Card */}
         {item.isCurrent && (
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary via-accent to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-primary" />
         )}
 
         {/* Top Header Row: Status Badge, Period & Location */}
@@ -174,7 +175,7 @@ function TimelineNodeItem({
 
           <div className="flex items-center gap-3 text-xs text-outline font-medium flex-wrap">
             {item.period && (
-              <span className="font-mono bg-surface-container-low px-2 py-0.5 rounded border border-outline-variant/30">
+              <span className="font-mono bg-surface-container-low px-2 py-0.5 rounded-md border border-outline-variant/30">
                 {item.period}
               </span>
             )}
@@ -215,7 +216,7 @@ function TimelineNodeItem({
         {/* Coursework & Quantitative Modules Chips */}
         {item.modules && item.modules.length > 0 && (
           <div className="mt-5 pt-4 border-t border-outline-variant/20">
-            <div className="text-[10px] font-bold uppercase tracking-wider text-outline mb-2.5 flex items-center gap-1.5">
+            <div className="text-[11px] font-bold uppercase tracking-wider text-outline mb-2.5 flex items-center gap-1.5 font-mono">
               <Icon name="checklist" size={13} className="text-outline" />
               <span>{item.modulesTitle || "Core Curriculum & Quantitative Areas"}</span>
             </div>
