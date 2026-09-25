@@ -34,23 +34,46 @@ const KeywordHighlight: React.FC<KeywordHighlightProps> = ({ word, delay }) => {
 const academicMilestones: TimelineMilestone[] = [
   {
     id: "fsjes",
-    badge: "NOW · 2026 – Present",
-    subtitle: "First-year student",
+    badge: "CURRENT ENROLLMENT",
+    subtitle: "First-Year Undergraduate",
+    period: "2026 – Present",
+    location: "Casablanca, Morocco",
     title: "Licence in Business Administration",
-    institution: "Faculté des Sciences Juridiques, Économiques et Sociales (FSJES) Aïn Chock, Université Hassan II de Casablanca",
+    institution: "Faculté des Sciences Juridiques, Économiques et Sociales (FSJES) Aïn Chock",
+    institutionDetail: "Université Hassan II de Casablanca",
     isCurrent: true,
+    summary:
+      "Developing comprehensive foundational knowledge in enterprise management, organizational dynamics, quantitative financial modeling, and macro-level commerce. Balancing classroom theory with real-world execution discipline.",
+    modulesTitle: "Core Academic Curriculum & Quantitative Focus",
+    modules: [
+      "General Accounting (Comptabilité)",
+      "Principles of Management",
+      "Microeconomics & Macroeconomics",
+      "Descriptive Statistics",
+      "Mathematics for Economics",
+      "Business Law & Governance",
+      "Operational Workflows",
+    ],
   },
   {
     id: "bac",
-    badge: "2026",
+    badge: "COMPLETED",
+    subtitle: "English Option Bilingual Stream",
+    period: "Class of 2025",
+    location: "Casablanca, Morocco",
     title: "Baccalaureate in Physical Science (English Option)",
     institution: "Prince Moulay Abdellah High School",
     isCurrent: false,
-    content: (
-      <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed bg-surface-container-low/60 rounded-md p-3.5 border border-outline-variant/20 mt-2">
-        Graduated with a focus in Physical Science (English Option). Developed a strong quantitative, mathematical, and analytical foundation along with English bilingual proficiency.
-      </p>
-    ),
+    summary:
+      "Graduated with distinction with a specialized scientific focus in Physics and Chemistry combined with the English International Option. Cultivated rigorous mathematical problem-solving, analytical discipline, and bilingual fluency.",
+    modulesTitle: "Scientific & Analytical Foundation",
+    modules: [
+      "Advanced Mathematics & Calculus",
+      "Physical & Chemical Sciences",
+      "Scientific Problem Solving",
+      "English Bilingual Proficiency",
+      "Empirical Data Analysis",
+    ],
   },
 ];
 
@@ -293,6 +316,9 @@ export function AboutSection() {
             <h2 className="text-2xl sm:text-3xl font-bold text-on-surface tracking-tight mt-1">
               Education &amp; Quantitative Foundation
             </h2>
+            <p className="text-sm text-on-surface-variant max-w-2xl mt-2 leading-relaxed">
+              Rigorous academic preparation bridging quantitative analytical methods, scientific problem-solving, and core business administration principles.
+            </p>
           </div>
           <SystemTimeline milestones={academicMilestones} />
         </div>

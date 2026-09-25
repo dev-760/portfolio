@@ -39,6 +39,8 @@ import {
   Settings,
   LogOut,
   Sparkles,
+  GraduationCap,
+  Award,
   LucideProps,
 } from "lucide-react";
 
@@ -93,6 +95,11 @@ const iconMap: Record<string, React.ComponentType<LucideProps>> = {
   folder: Folder,
   folder_open: Folder,
   photo_library: ImageIcon,
+  school: GraduationCap,
+  graduation: GraduationCap,
+  education: GraduationCap,
+  award: Award,
+  degree: GraduationCap,
 };
 
 export interface IconProps extends Omit<LucideProps, "ref"> {
