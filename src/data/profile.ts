@@ -56,7 +56,7 @@ export type Profile = {
   personalStatement: string;
   contact: {
     email: string;
-    phone: string;
+    phone?: string;
   };
   languages: {
     name: string;
@@ -92,7 +92,6 @@ export const profile: Profile = {
     "I am an undergraduate student pursuing a Licence in Business Administration at FSJES Aïn Chock, Université Hassan II de Casablanca.\n\nMy studies focus on building strong foundations across management principles, general accounting, micro and macroeconomics, quantitative methods, and business law.\n\nAlongside my academic coursework, I have hands-on experience in production logistics and coordination from EL25 Studio, as well as community engagement through the national Motatawi3 volunteer program.\n\nI am driven by a practical mindset: understanding how organizations work, analyzing figures with precision, and using modern tools like spreadsheets and digital workflows to solve real operational problems.",
   contact: {
     email: "me@hassankarasu.dev",
-    phone: "+212 779 898 873",
   },
   languages: [
     {
