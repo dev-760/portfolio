@@ -17,7 +17,6 @@ const inquiryTypes = [
 
 export function ContactSection() {
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [copiedPhone, setCopiedPhone] = useState(false);
 
   // Form state
   const [formName, setFormName] = useState("");
@@ -35,17 +34,6 @@ export function ContactSection() {
       setTimeout(() => setCopiedEmail(false), 2400);
     } catch {
       showToast("Failed to copy email", "error");
-    }
-  };
-
-  const handleCopyPhone = async () => {
-    try {
-      await navigator.clipboard.writeText(profile.contact.phone);
-      setCopiedPhone(true);
-      showToast("Phone number copied to clipboard!", "success");
-      setTimeout(() => setCopiedPhone(false), 2400);
-    } catch {
-      showToast("Failed to copy phone number", "error");
     }
   };
 
@@ -239,68 +227,6 @@ export function ContactSection() {
 
               <p className="text-xs text-outline leading-relaxed pt-1">
                 Open for internship discussions, network connections, and endorsements.
-              </p>
-            </motion.div>
-
-            {/* Direct Phone & WhatsApp Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ delay: 0.16, duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
-              className="rounded-2xl border border-outline-variant/60 bg-surface p-5 sm:p-6 shadow-2xs hover:border-primary/50 transition-all duration-200 space-y-3"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-[11px] font-mono font-bold uppercase tracking-wider text-primary">
-                  <Icon name="location_on" size={15} />
-                  <span>LOCATION &amp; DIRECT LINE</span>
-                </div>
-                <span className="text-[11px] font-mono text-outline">Morocco</span>
-              </div>
-
-              <div className="flex items-center justify-between gap-3 pt-1">
-                <a
-                  href={`tel:${profile.contact.phone.replace(/\s+/g, "")}`}
-                  className="text-base font-bold text-on-surface hover:text-primary transition-colors font-mono"
-                >
-                  {profile.contact.phone}
-                </a>
-
-                <div className="flex items-center gap-1.5 shrink-0">
-                  <button
-                    type="button"
-                    onClick={handleCopyPhone}
-                    className="rounded-lg bg-surface-container hover:bg-surface-container-high px-2.5 py-1.5 text-xs font-mono font-medium text-on-surface border border-outline-variant/40 transition-colors cursor-pointer flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                    aria-label="Copy phone number"
-                  >
-                    {copiedPhone ? (
-                      <>
-                        <Icon name="check" size={13} className="text-emerald-600" />
-                        <span className="text-emerald-700 dark:text-emerald-300">Copied!</span>
-                      </>
-                    ) : (
-                      <>
-                        <Icon name="content_copy" size={13} className="text-outline" />
-                        <span>Copy</span>
-                      </>
-                    )}
-                  </button>
-
-                  <a
-                    href="https://wa.me/212779898873"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-lg bg-emerald-600 hover:bg-emerald-700 px-2.5 py-1.5 text-xs font-medium text-white transition-colors flex items-center gap-1 cursor-pointer"
-                    title="Message on WhatsApp"
-                  >
-                    <span>WhatsApp</span>
-                    <Icon name="arrow_outward" size={12} />
-                  </a>
-                </div>
-              </div>
-
-              <p className="text-xs text-outline leading-relaxed pt-1">
-                Casablanca, Morocco · Available for scheduled calls and inquiries.
               </p>
             </motion.div>
           </div>
