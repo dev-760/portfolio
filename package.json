@@ -9,7 +9,11 @@
     "lint": "eslint",
     "oxlint": "oxlint",
     "export": "next build",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build",
+    "studio:dev": "npm --prefix studio run dev",
+    "studio:build": "npm --prefix studio run build",
+    "studio:deploy": "npm --prefix studio run deploy",
+    "studio:type-check": "npm --prefix studio run type-check"
   },
   "dependencies": {
     "@sanity/image-url": "^2.1.1",
