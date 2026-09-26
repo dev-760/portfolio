@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { Manrope, Newsreader } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
-import { WebVitals } from "@/components/WebVitals";
 
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
+  preload: true,
 });
 
 const newsreader = Newsreader({
@@ -15,12 +15,13 @@ const newsreader = Newsreader({
   style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hassankarasu.dev"),
   title: {
-    default: "Hassan Karasu — Business Administration & Strategy",
+    default: "Hassan Karasu",
     template: "%s | Hassan Karasu",
   },
   description: "Business Administration student at FSJES Aïn Chock, Casablanca. Exploring management principles, accounting rigor, and systems-driven execution.",
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://hassankarasu.dev/",
-    title: "Hassan Karasu — Business Administration & Strategy",
+    title: "Hassan Karasu",
     description: "Business Administration student at FSJES Aïn Chock, Casablanca. Exploring management principles, accounting rigor, and systems-driven execution.",
     siteName: "Hassan Karasu",
     images: [
@@ -56,13 +57,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Hassan Karasu — Business Administration & Strategy",
+        alt: "Hassan Karasu",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hassan Karasu — Business Administration & Strategy",
+    title: "Hassan Karasu",
     description: "Business Administration student at FSJES Aïn Chock, Casablanca. Exploring management principles, accounting rigor, and systems-driven execution.",
     images: ["/og-image.png"],
     creator: "@hassankarasu",
@@ -79,9 +80,42 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      {
+        url: "/icon-light.svg",
+        type: "image/svg+xml",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/icon-dark.svg",
+        type: "image/svg+xml",
+        media: "(prefers-color-scheme: dark)",
+      },
+      {
+        url: "/favicon-light.ico",
+        sizes: "any",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/favicon-dark.ico",
+        sizes: "any",
+        media: "(prefers-color-scheme: dark)",
+      },
+      {
+        url: "/favicon.ico",
+      },
+    ],
     shortcut: "/favicon.ico",
-    apple: "/icon.svg",
+    apple: [
+      {
+        url: "/icon-light.svg",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/icon-dark.svg",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
   },
 };
 
@@ -93,15 +127,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable} ${newsreader.variable}`} suppressHydrationWarning>
       <head>
-        {/* Guard against browser extensions (e.g. Urban VPN) injecting attributes before React hydrates */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var o=Element.prototype.setAttribute;Element.prototype.setAttribute=function(n,v){if(n==='bis_skin_checked'||n==='bis_register'||(typeof n==='string'&&n.indexOf('__processed_')===0))return;return o.apply(this,arguments);};}catch(e){}})();`,
-          }}
-        />
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
-        <WebVitals />
         <ThemeProvider>
           {children}
         </ThemeProvider>

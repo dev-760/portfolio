@@ -1,64 +1,84 @@
 "use client";
 
-import React from "react";
+import React, { useSyncExternalStore } from "react";
+import { motion } from "framer-motion";
 import { useTheme } from "@/context/ThemeContext";
-import "./ThemeToggle.css";
+
+const emptySubscribe = () => () => {};
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
-  const isDark = theme === "dark";
+  const isClient = useSyncExternalStore(emptySubscribe, () => true, () => false);
+
+  const isDark = isClient && theme === "dark";
 
   return (
-    <label
-      className="theme-toggle-switch cursor-pointer"
-      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
-      title={`Switch to ${isDark ? "light" : "dark"} mode`}
+    <button
+      type="button"
+      onClick={toggleTheme}
+      className="relative size-9 rounded-full flex items-center justify-center text-foreground hover:bg-muted/80 border border-border/80 transition-colors focus-visible:outline-none cursor-pointer"
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      title={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
-      <input
-        type="checkbox"
-        className="toggle-input"
-        checked={isDark}
-        onChange={toggleTheme}
-        aria-label="Toggle theme"
-      />
-      <span className="theme-toggle-slider">
-        <span className="sun-moon">
-          <span className="light-ray" id="light-ray-1" />
-          <span className="light-ray" id="light-ray-2" />
-          <svg id="moon-dot-1" className="moon-dot" viewBox="0 0 10 10" aria-hidden="true">
-            <circle cx="5" cy="5" r="5" />
-          </svg>
-          <svg id="moon-dot-2" className="moon-dot" viewBox="0 0 10 10" aria-hidden="true">
-            <circle cx="5" cy="5" r="5" />
-          </svg>
-          <svg id="moon-dot-3" className="moon-dot" viewBox="0 0 10 10" aria-hidden="true">
-            <circle cx="5" cy="5" r="5" />
-          </svg>
-        </span>
-        <span className="stars">
-          <svg id="star-1" className="star" viewBox="0 0 20 20" aria-hidden="true">
-            <path d="M10 0 C10 6 6 10 0 10 C6 10 10 14 10 20 C10 14 14 10 20 10 C14 10 10 6 10 0 Z" />
-          </svg>
-          <svg id="star-2" className="star" viewBox="0 0 20 20" aria-hidden="true">
-            <circle cx="10" cy="10" r="8" />
-          </svg>
-          <svg id="star-3" className="star" viewBox="0 0 20 20" aria-hidden="true">
-            <path d="M10 0 C10 6 6 10 0 10 C6 10 10 14 10 20 C10 14 14 10 20 10 C14 10 10 6 10 0 Z" />
-          </svg>
-          <svg id="star-4" className="star" viewBox="0 0 20 20" aria-hidden="true">
-            <path d="M10 0 C10 6 6 10 0 10 C6 10 10 14 10 20 C10 14 14 10 20 10 C14 10 10 6 10 0 Z" />
-          </svg>
-        </span>
-        <svg id="cloud-1" className="cloud-dark" viewBox="0 0 100 50" aria-hidden="true">
-          <path d="M20,40 Q25,20 45,25 Q60,10 75,25 Q90,20 95,40 Z" />
+      <motion.div
+        initial={false}
+        animate={{
+          scale: isDark ? 0 : 1,
+          rotate: isDark ? -90 : 0,
+          opacity: isDark ? 0 : 1,
+        }}
+        transition={{ duration: 0.2, ease: "easeInOut" }}
+        className="absolute inset-0 flex items-center justify-center"
+      >
+        {/* Sun Icon */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="size-4.5 text-foreground"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
         </svg>
-        <svg id="cloud-2" className="cloud-light" viewBox="0 0 100 50" aria-hidden="true">
-          <path d="M20,40 Q25,20 45,25 Q60,10 75,25 Q90,20 95,40 Z" />
+      </motion.div>
+
+      <motion.div
+        initial={false}
+        animate={{
+          scale: isDark ? 1 : 0,
+          rotate: isDark ? 0 : 90,
+          opacity: isDark ? 1 : 0,
+        }}
+        transition={{ duration: 0.2, ease: "easeInOut" }}
+        className="absolute inset-0 flex items-center justify-center"
+      >
+        {/* Moon Icon */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="size-4 text-foreground"
+        >
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
         </svg>
-        <svg id="cloud-3" className="cloud-light" viewBox="0 0 100 50" aria-hidden="true">
-          <path d="M20,40 Q25,20 45,25 Q60,10 75,25 Q90,20 95,40 Z" />
-        </svg>
-      </span>
-    </label>
+      </motion.div>
+    </button>
   );
 }
+
+export default ThemeToggle;

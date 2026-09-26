@@ -4,32 +4,26 @@ import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { showToast } from "@/components/Toast";
 import { Icon } from "@/components/icons/Icon";
-import { MOTION_EASINGS, MOTION_DURATIONS } from "@/motion/tokens";
 
-interface ArticleContentSection {
-  heading: string;
-  paragraphs: string[];
+import {
+  getMonographs,
+  getFeaturedMonograph,
+  fallbackMonographs,
+  fallbackFeaturedMonograph,
+  isSanityConfigured,
+  type MonographData,
+  type MonographSection,
+} from "@/sanity/lib/client";
+
+export type ArticleItem = MonographData;
+export type ArticleContentSection = MonographSection;
+
+export interface WritingSectionProps {
+  initialMonographs?: MonographData[];
+  initialFeaturedMonograph?: MonographData;
 }
 
-export interface ArticleItem {
-  id: string;
-  slug: string;
-  isFeatured?: boolean;
-  category: "operations" | "management" | "finance" | "academics";
-  categoryLabel: string;
-  categoryBadgeClass: string;
-  date: string;
-  readTime: string;
-  title: string;
-  description: string;
-  thesis: string;
-  tags: string[];
-  keyTakeaways: string[];
-  academicContext: string;
-  sections: ArticleContentSection[];
-}
-
-const featuredEssay: ArticleItem = {
+const defaultFeaturedEssay: ArticleItem = {
   id: "feat-systems",
   slug: "understanding-systems-before-improving-them",
   isFeatured: true,
@@ -86,7 +80,7 @@ const featuredEssay: ArticleItem = {
   ],
 };
 
-const noteArticles: ArticleItem[] = [
+const defaultNoteArticles: ArticleItem[] = [
   {
     id: "art-1",
     slug: "why-process-improvement-starts-with-observation",
@@ -120,80 +114,6 @@ const noteArticles: ArticleItem[] = [
         heading: "Actionable Takeaway for Business Students",
         paragraphs: [
           "As business administration students, our greatest competitive advantage in internship or management roles is our willingness to perform unglamorous observation. Walk the process yourself before proposing a slide deck.",
-        ],
-      },
-    ],
-  },
-  {
-    id: "art-2",
-    slug: "connecting-theory-with-practice",
-    category: "management",
-    categoryLabel: "MANAGEMENT",
-    categoryBadgeClass: "bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border-indigo-500/25",
-    date: "OCT 12, 2026",
-    readTime: "5 MIN READ",
-    title: "The First-Year Perspective: Connecting Theory with Practice",
-    description:
-      "How linking coursework in management and accounting to hands-on experience builds compound understanding and practical intuition.",
-    thesis:
-      "Theoretical frameworks provide the vocabulary of commerce, but real project constraints provide its grammar.",
-    tags: ["Organization Theory", "Applied Management", "Student Learning", "Accountability"],
-    keyTakeaways: [
-      "Textbook models feel abstract until tested against budget caps and firm deadlines.",
-      "Clear role definitions prevent interpersonal friction in fast-paced teams.",
-      "Reflecting weekly on classroom principles transforms coursework into long-term intuition.",
-    ],
-    academicContext:
-      "Academic Synthesis: Principles of Management & Enterprise Organization.",
-    sections: [
-      {
-        heading: "Moving Beyond Rote Memorization",
-        paragraphs: [
-          "In first-year business coursework, students are introduced to foundational concepts: Mintzberg's managerial roles, Fayol's administrative principles, and double-entry accounting. It is easy to treat these as academic hurdles to be memorized for exams.",
-          "However, when you apply these concepts to real projects—such as organizing logistics for a volunteer outreach initiative or coordinating vendor timelines—the models suddenly illuminate real interpersonal dynamics. You realize that clear lines of accountability are not bureaucratic overhead; they are the emotional cushion that prevents team burnout.",
-        ],
-      },
-      {
-        heading: "Synthesizing Daily Observations",
-        paragraphs: [
-          "I have found that keeping a structured journal of operational observations bridges the gap between lecture slides and field realities. When a concept from class explains an anomaly on a project, the lesson becomes permanently ingrained.",
-        ],
-      },
-    ],
-  },
-  {
-    id: "art-3",
-    slug: "budgeting-personal-finance-university-students",
-    category: "finance",
-    categoryLabel: "FINANCE",
-    categoryBadgeClass: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/25",
-    date: "NOV 02, 2026",
-    readTime: "5 MIN READ",
-    title: "Budgeting & Personal Finance for University Students",
-    description:
-      "Practical approaches to tracking daily student expenses, establishing category spending limits, and building long-term financial habits.",
-    thesis:
-      "Student financial discipline is not about extreme austerity; it is about establishing complete cash flow visibility to avoid mid-semester crises.",
-    tags: ["Zero-Based Budgeting", "Financial Runway", "Cash Flow Modeling", "Accounting Basics"],
-    keyTakeaways: [
-      "Zero-based budgeting gives every Dirham an intentional allocation before the month starts.",
-      "Separating fixed baseline expenses from variable study costs prevents sudden deficits.",
-      "Building a modest 1-month contingency buffer protects academic focus from financial stress.",
-    ],
-    academicContext:
-      "Applied Finance Note: General Accounting (Comptabilité Générale) & Quantitative Analysis.",
-    sections: [
-      {
-        heading: "Applying General Accounting to Personal Cash Flow",
-        paragraphs: [
-          "Studying comptabilité générale introduces the beauty of the double-entry balance sheet: resources must equal employments, and liquidity must be safeguarded. Yet many university students manage their finances purely through atmospheric guesswork.",
-          "By implementing a simplified cash flow statement—categorizing fixed monthly overhead (transportation, materials, tuition reserves) vs. discretionary daily outlays—one gains immediate clarity. Financial peace of mind allows full concentration on rigorous academic studies.",
-        ],
-      },
-      {
-        heading: "The Power of the Simple Ledger",
-        paragraphs: [
-          "You do not need elaborate software. A disciplined weekly spreadsheet logging income, committed liabilities, and remaining runway provides all the quantitative feedback required to make prudent financial decisions.",
         ],
       },
     ],
@@ -237,19 +157,66 @@ const noteArticles: ArticleItem[] = [
   },
 ];
 
-const categories = [
-  { key: "all", label: "ALL DISCIPLINES", count: 4, icon: "dashboard" },
-  { key: "operations", label: "OPERATIONS", count: 1, icon: "precision_manufacturing" },
-  { key: "management", label: "MANAGEMENT", count: 1, icon: "account_balance" },
-  { key: "finance", label: "FINANCE", count: 1, icon: "calculate" },
-  { key: "academics", label: "ACADEMICS", count: 1, icon: "school" },
-] as const;
-
-export function WritingSection() {
+export function WritingSection({
+  initialMonographs,
+  initialFeaturedMonograph,
+}: WritingSectionProps = {}) {
+  const [featuredEssay, setFeaturedEssay] = useState<ArticleItem>(
+    initialFeaturedMonograph || fallbackFeaturedMonograph || defaultFeaturedEssay
+  );
+  const [noteArticles, setNoteArticles] = useState<ArticleItem[]>(
+    initialMonographs || fallbackMonographs || defaultNoteArticles
+  );
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [activeModalArticle, setActiveModalArticle] = useState<ArticleItem | null>(null);
   const [hoveredArticle, setHoveredArticle] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (isSanityConfigured) {
+      getMonographs().then((data) => {
+        if (data && data.length > 0) {
+          setNoteArticles(data);
+        }
+      });
+      getFeaturedMonograph().then((data) => {
+        if (data) {
+          setFeaturedEssay(data);
+        }
+      });
+    }
+  }, []);
+
+  const categories = useMemo(
+    () => [
+      { key: "all", label: "ALL DISCIPLINES", count: noteArticles.length, icon: "dashboard" },
+      {
+        key: "operations",
+        label: "OPERATIONS",
+        count: noteArticles.filter((a) => a.category === "operations").length,
+        icon: "precision_manufacturing",
+      },
+      {
+        key: "management",
+        label: "MANAGEMENT",
+        count: noteArticles.filter((a) => a.category === "management").length,
+        icon: "account_balance",
+      },
+      {
+        key: "finance",
+        label: "FINANCE",
+        count: noteArticles.filter((a) => a.category === "finance").length,
+        icon: "calculate",
+      },
+      {
+        key: "academics",
+        label: "ACADEMICS",
+        count: noteArticles.filter((a) => a.category === "academics").length,
+        icon: "school",
+      },
+    ],
+    [noteArticles]
+  );
 
   const handleOpenArticle = useCallback((article: ArticleItem) => {
     setActiveModalArticle(article);
@@ -308,7 +275,7 @@ export function WritingSection() {
 
       return matchesCategory && matchesText;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [selectedCategory, searchQuery, noteArticles]);
 
   const handleCopyArticleLink = useCallback((article: ArticleItem, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
@@ -325,10 +292,10 @@ export function WritingSection() {
 
   return (
     <section
-      className="py-24 border-b border-border bg-surface scroll-mt-16 relative"
+      className="section border-b border-border bg-surface scroll-mt-16 relative"
       id="writing"
     >
-      <div className="max-w-5xl mx-auto px-6 space-y-16">
+      <div className="container space-y-16">
         {/* ========================================================
             SECTION HEADER
             ======================================================== */}
@@ -340,7 +307,7 @@ export function WritingSection() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-2"
           >
-            <h2 className="text-3xl lg:text-4xl font-display font-medium tracking-tight text-foreground">
+            <h2 className="text-3xl lg:text-4xl font-display font-normal tracking-tight text-foreground">
               Ideas &amp; Observations
             </h2>
           </motion.div>
@@ -366,19 +333,16 @@ export function WritingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="relative group bg-surface border border-border hover:border-foreground/30 rounded-md p-8 lg:p-10 transition-all duration-300 overflow-hidden cursor-pointer"
+          className="relative group bg-surface border border-border hover:border-primary/30 rounded-sm p-8 lg:p-10 transition-all duration-300 overflow-hidden cursor-pointer"
           onClick={() => handleOpenArticle(featuredEssay)}
         >
           <div className="flex flex-col lg:flex-row gap-8 items-start justify-between">
             <div className="space-y-5 max-w-3xl">
               {/* Metadata row */}
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="inline-flex items-center gap-1.5 text-[10px] font-medium tracking-widest uppercase px-2 py-0.5 rounded-sm bg-accent text-white">
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-medium tracking-widest uppercase px-2 py-0.5 rounded-sm bg-primary text-on-primary">
                   <Icon name="sparkles" size={13} />
                   FEATURED
-                </span>
-                <span className="text-[10px] font-medium px-2 py-0.5 rounded-sm bg-muted text-foreground border border-border uppercase tracking-widest">
-                  {featuredEssay.categoryLabel}
                 </span>
                 <span className="text-muted-foreground text-xs">
                   {featuredEssay.date} · {featuredEssay.readTime}
@@ -387,7 +351,7 @@ export function WritingSection() {
 
               {/* Title & Subtitle */}
               <div>
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-display font-medium text-foreground leading-[1.1] tracking-tight group-hover:text-accent transition-colors">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-display font-normal text-foreground leading-[1.1] tracking-tight group-hover:text-primary transition-colors">
                   {featuredEssay.title}
                 </h3>
                 <p className="text-sm sm:text-base text-muted-foreground mt-4 leading-relaxed">
@@ -396,7 +360,7 @@ export function WritingSection() {
               </div>
 
               {/* Core Thesis Highlight Quote Box */}
-              <div className="pl-4 border-l-2 border-accent text-foreground text-sm sm:text-base italic leading-relaxed py-2 mt-2">
+              <div className="pl-4 border-l border-primary text-foreground text-sm sm:text-base italic leading-relaxed py-2 mt-2">
                 <span className="text-[10px] font-medium not-italic uppercase tracking-widest text-muted-foreground block mb-1">
                   Core Thesis:
                 </span>
@@ -412,7 +376,7 @@ export function WritingSection() {
                   e.stopPropagation();
                   handleOpenArticle(featuredEssay);
                 }}
-                className="inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 bg-foreground hover:bg-foreground/90 text-background text-xs font-medium uppercase tracking-widest transition-all cursor-pointer focus-visible:outline-none w-full lg:w-48"
+                className="inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3 bg-foreground hover:bg-foreground/90 text-background text-xs font-semibold uppercase tracking-widest transition-all cursor-pointer focus-visible:outline-none w-full lg:w-48"
               >
                 <span>Read Essay</span>
                 <Icon name="arrow_forward" size={16} />
@@ -421,7 +385,7 @@ export function WritingSection() {
               <button
                 type="button"
                 onClick={(e) => handleCopyArticleLink(featuredEssay, e)}
-                className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-3 bg-surface hover:bg-muted text-foreground text-xs font-medium uppercase tracking-widest transition-colors border border-border cursor-pointer focus-visible:outline-none w-full lg:w-48"
+                className="inline-flex items-center justify-center gap-2 rounded-sm px-4 py-3 bg-surface hover:bg-muted text-foreground text-xs font-semibold uppercase tracking-widest transition-colors border border-border cursor-pointer focus-visible:outline-none w-full lg:w-48"
               >
                 <Icon name="share" size={14} />
                 <span>Share</span>
@@ -502,23 +466,18 @@ export function WritingSection() {
                     onMouseEnter={() => setHoveredArticle(article.id)}
                     onMouseLeave={() => setHoveredArticle(null)}
                     onClick={() => handleOpenArticle(article)}
-                    className="flex flex-col justify-between p-6 sm:p-8 bg-surface border border-border hover:border-foreground/30 rounded-md transition-colors group cursor-pointer"
+                    className="flex flex-col justify-between p-6 sm:p-8 bg-surface border border-border hover:border-primary/30 rounded-sm transition-colors group cursor-pointer"
                   >
                     <div>
                       {/* Top metadata */}
                       <div className="flex items-center justify-between text-xs mb-4">
-                        <span
-                          className={`px-2 py-0.5 rounded-sm text-[10px] font-medium uppercase tracking-widest border border-border bg-muted text-foreground`}
-                        >
-                          {article.categoryLabel}
-                        </span>
                         <span className="text-muted-foreground">
                           {article.date} · {article.readTime}
                         </span>
                       </div>
 
                       {/* Title & Abstract */}
-                      <h4 className="text-lg sm:text-xl font-display font-medium text-foreground group-hover:text-accent transition-colors leading-snug mb-3">
+                      <h4 className="text-lg sm:text-xl font-display font-normal text-foreground group-hover:text-primary transition-colors leading-snug mb-3">
                         {article.title}
                       </h4>
 
@@ -529,7 +488,7 @@ export function WritingSection() {
 
                     {/* Bottom Action Footer */}
                     <div className="pt-4 border-t border-border flex items-center justify-between">
-                      <span className="text-[10px] font-medium uppercase tracking-widest text-foreground group-hover:text-accent flex items-center gap-1.5 transition-colors">
+                      <span className="text-[10px] font-medium uppercase tracking-widest text-foreground group-hover:text-primary flex items-center gap-1.5 transition-colors">
                         <span>Read Note</span>
                         <motion.div
                           animate={{ x: isHovered ? 4 : 0 }}
@@ -551,9 +510,9 @@ export function WritingSection() {
             PART 3: ACADEMIC EXCHANGE & MONOGRAPH CORRESPONDENCE
             ======================================================== */}
         <div className="pt-6">
-          <div className="p-8 sm:p-10 bg-surface border border-border rounded-md relative overflow-hidden">
+          <div className="p-8 sm:p-10 bg-surface border border-border rounded-sm relative overflow-hidden">
             <div className="max-w-2xl relative">
-              <h3 className="text-2xl sm:text-3xl font-display font-medium text-foreground mb-3 tracking-tight">
+              <h3 className="text-2xl sm:text-3xl font-display font-normal text-foreground mb-3 tracking-tight">
                 Engage with these notes
               </h3>
               <p className="text-muted-foreground text-sm mb-8 leading-relaxed">
@@ -563,7 +522,7 @@ export function WritingSection() {
               <div className="flex flex-wrap items-center gap-4">
                 <a
                   href="#contact"
-                  className="px-6 py-3 bg-foreground hover:bg-foreground/90 text-background text-xs font-medium uppercase tracking-widest rounded-md transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-2 focus-visible:outline-none"
+                  className="px-6 py-3 bg-foreground hover:bg-foreground/90 text-background text-xs font-semibold uppercase tracking-widest rounded-sm transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-2 focus-visible:outline-none"
                 >
                   <Icon name="mail" size={15} />
                   <span>Direct Correspondence</span>
@@ -572,7 +531,7 @@ export function WritingSection() {
                   href="https://linkedin.com/in/hassan-karasu-a7485336b"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-surface hover:bg-muted border border-border text-foreground text-xs font-medium uppercase tracking-widest rounded-md transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-2 focus-visible:outline-none"
+                  className="px-6 py-3 bg-surface hover:bg-muted border border-border text-foreground text-xs font-semibold uppercase tracking-widest rounded-sm transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-2 focus-visible:outline-none"
                 >
                   <Icon name="share" size={15} />
                   <span>Connect on LinkedIn</span>
@@ -600,16 +559,11 @@ export function WritingSection() {
                 exit={{ opacity: 0, scale: 0.95, y: 16 }}
                 transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-3xl bg-surface border border-border rounded-md overflow-hidden my-auto max-h-[90vh] flex flex-col"
+                className="w-full max-w-3xl bg-surface border border-border rounded-sm overflow-hidden my-auto max-h-[90vh] flex flex-col"
               >
                 {/* Modal Top Bar */}
                 <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-surface shrink-0">
                   <div className="flex items-center gap-3">
-                    <span
-                      className={`px-2 py-0.5 rounded-sm text-[10px] font-medium uppercase tracking-widest border border-border bg-muted text-foreground`}
-                    >
-                      {activeModalArticle.categoryLabel}
-                    </span>
                     <span className="text-muted-foreground text-xs">
                       {activeModalArticle.date} · {activeModalArticle.readTime}
                     </span>
@@ -641,7 +595,7 @@ export function WritingSection() {
                   <div className="space-y-4 border-b border-border pb-8">
                     <h3
                       id="modal-article-title"
-                      className="text-3xl sm:text-4xl lg:text-5xl font-display font-medium text-foreground tracking-tight leading-[1.1]"
+                      className="text-3xl sm:text-4xl lg:text-5xl font-display font-normal text-foreground tracking-tight leading-[1.1]"
                     >
                       {activeModalArticle.title}
                     </h3>
@@ -650,13 +604,11 @@ export function WritingSection() {
                       <span>By Hassan Karasu</span>
                       <span>·</span>
                       <span>Business Administration Student</span>
-                      <span>·</span>
-                      <span>FSJES Aïn Chock</span>
                     </div>
                   </div>
 
                   {/* Core Thesis / Abstract */}
-                  <div className="pl-4 border-l-2 border-accent text-foreground">
+                  <div className="pl-4 border-l-2 border-primary text-foreground">
                     <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground block mb-2">
                       Thesis Statement:
                     </span>
@@ -673,7 +625,7 @@ export function WritingSection() {
                     <ul className="space-y-2 text-sm text-muted-foreground list-none pl-0">
                       {activeModalArticle.keyTakeaways.map((takeaway, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <span className="mt-1 w-1 h-1 rounded-full bg-accent shrink-0" />
+                          <span className="mt-1 w-1 h-1 rounded-full bg-primary shrink-0" />
                           <span className="leading-relaxed">{takeaway}</span>
                         </li>
                       ))}
@@ -684,7 +636,7 @@ export function WritingSection() {
                   <div className="space-y-8 pt-4">
                     {activeModalArticle.sections.map((section, idx) => (
                       <div key={idx} className="space-y-4">
-                        <h4 className="text-xl sm:text-2xl font-display font-medium text-foreground tracking-tight">
+                        <h4 className="text-xl sm:text-2xl font-display font-normal text-foreground tracking-tight">
                           {section.heading}
                         </h4>
                         {section.paragraphs.map((p, pIdx) => (
@@ -711,7 +663,7 @@ export function WritingSection() {
                   <button
                     type="button"
                     onClick={() => handleCopyArticleLink(activeModalArticle)}
-                    className="inline-flex items-center gap-1.5 text-[10px] font-medium text-foreground hover:text-accent uppercase tracking-widest cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-1.5 text-[10px] font-medium text-foreground hover:text-primary uppercase tracking-widest cursor-pointer transition-colors"
                   >
                     <Icon name="share" size={14} />
                     <span>Copy Link</span>

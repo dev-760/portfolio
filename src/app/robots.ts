@@ -8,14 +8,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/_next/", "/static/"],
-      },
-      {
-        userAgent: "Googlebot",
-        allow: "/",
+        disallow: ["/api/", "/private/"],
       },
     ],
     sitemap: "https://hassankarasu.dev/sitemap.xml",
-    host: "https://hassankarasu.dev",
   };
 }

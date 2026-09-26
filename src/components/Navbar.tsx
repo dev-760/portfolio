@@ -7,28 +7,22 @@ import { clsx } from "clsx";
 import { useActiveSection } from "@/motion/useActiveSection";
 import { MOTION_EASINGS } from "@/motion/tokens";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { GooeyNav, GooeyNavItem } from "@/components/GooeyNav";
-import { Menu, X } from "lucide-react";
+import { DesktopNav } from "@/components/DesktopNav";
+import { Icon } from "@/components/icons/Icon";
 
 const navLinks = [
   { name: "About", href: "#about" },
   { name: "Work", href: "#work" },
   { name: "Skills", href: "#skills" },
   { name: "Experience", href: "#experience" },
-  { name: "Writing", href: "#writing" },
+  { name: "Monographs", href: "#writing" },
   { name: "Contact", href: "#contact" },
 ];
 
-const gooeyNavItems: GooeyNavItem[] = navLinks.map((link) => ({
-  label: link.name,
-  href: link.href,
-}));
-
-
 export function Navbar() {
-  const { scrollY, scrollYProgress } = useScroll();
+  const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const [activeSection] = useActiveSection(
     ["home", "about", "work", "skills", "experience", "writing", "contact"],
@@ -39,253 +33,205 @@ export function Navbar() {
     setIsScrolled(latest > 20);
   });
 
-  const toggleMobileMenu = useCallback(() => {
-    setIsMobileMenuOpen((prev) => !prev);
-  }, []);
-
-  const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith("#")) {
-      e.preventDefault();
-      const targetId = href.substring(1);
-      const targetElement = document.getElementById(targetId);
-
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" });
-        window.history.pushState(null, "", href);
-      }
-
-      setIsMobileMenuOpen(false);
-    }
-  }, []);
-
-  // Prevent body scroll when mobile menu is open
+  // Close mobile menu on Escape key
   useEffect(() => {
-    if (isMobileMenuOpen) {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mobileMenuOpen]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
-
     return () => {
       document.body.style.overflow = "";
     };
-  }, [isMobileMenuOpen]);
+  }, [mobileMenuOpen]);
 
-  // Keyboard accessibility: Escape closes mobile menu
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isMobileMenuOpen) {
-        setIsMobileMenuOpen(false);
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLElement>, href: string) => {
+      if (href.startsWith("#")) {
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth" });
+          window.history.pushState(null, "", href);
+        }
+        setMobileMenuOpen(false);
       }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isMobileMenuOpen]);
-
-  const getSectionIndex = (section: string): number => {
-    switch (section) {
-      case "home":
-        return -1;
-      case "about":
-        return 0;
-      case "work":
-      case "pillars":
-        return 1;
-      case "skills":
-        return 2;
-      case "experience":
-        return 3;
-      case "writing":
-        return 4;
-      case "contact":
-        return 5;
-      default:
-        return -1;
-    }
-  };
-
-  const activeGooeyIndex = getSectionIndex(activeSection);
-
-  const handleGooeyClick = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>, item: GooeyNavItem) => {
-      handleNavClick(e, item.href);
     },
-    [handleNavClick]
+    []
   );
-
-  // Determine active item based on single-page active section
-  const getIsActive = (linkName: string) => {
-    const key = linkName.toLowerCase();
-
-    if (key === activeSection) return true;
-
-    if (key === "work" && (activeSection === "work" || activeSection === "pillars")) return true;
-
-    return false;
-  };
 
   return (
     <>
-      {/* Top Reading & Scroll Telemetry Progress Line */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-[2.5px] bg-sky-600 dark:bg-sky-400 z-[60] origin-left pointer-events-none"
-        style={{ scaleX: scrollYProgress }}
-        aria-hidden="true"
-      />
-
       <motion.header
         className={clsx(
-          "sticky top-0 z-50 transition-all duration-300",
+          "sticky top-0 z-50 transition-all duration-300 border-b",
           isScrolled
-            ? "bg-background/95 backdrop-blur-lg border-b border-border shadow-sm"
-            : "bg-background/90 backdrop-blur-md border-b border-border/50"
+            ? "bg-background/95 backdrop-blur-md border-border/80 shadow-xs"
+            : "bg-background/80 backdrop-blur-sm border-transparent"
         )}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: MOTION_EASINGS.system }}
+        initial={{ y: -60, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: MOTION_EASINGS.system }}
       >
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
           {/* Logo */}
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, "#home")}
-            className="flex items-center group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xs"
+            className="flex items-center gap-2.5 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xs"
             aria-label="Hassan Karasu - Home"
           >
             <motion.div
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
               transition={{ duration: 0.2, ease: MOTION_EASINGS.sharp }}
-              className="flex items-center"
+              className="flex items-center gap-2.5"
             >
               <Image
-                src="/logo-light.svg"
-                alt="Hassan Karasu - Business Administration Student Logo"
-                width={160}
-                height={48}
-                className="h-7 sm:h-8 w-auto object-contain logo-light-img dark:hidden"
+                src="/icon-light.svg"
+                alt="Hassan Karasu"
+                width={30}
+                height={30}
+                className="size-7 w-auto object-contain dark:hidden"
                 priority
               />
               <Image
-                src="/logo-dark.svg"
-                alt="Hassan Karasu - Business Administration Student Logo"
-                width={160}
-                height={48}
-                className="h-7 sm:h-8 w-auto object-contain logo-dark-img hidden dark:block"
+                src="/icon-dark.svg"
+                alt="Hassan Karasu"
+                width={30}
+                height={30}
+                className="size-7 w-auto object-contain hidden dark:block"
                 priority
               />
+              <span className="font-sans font-medium text-sm tracking-tight text-foreground hidden sm:inline-block">
+                Hassan Karasu
+              </span>
             </motion.div>
           </a>
 
-          {/* Desktop Nav with GooeyNav from React Bits */}
-          <nav className="hidden lg:flex items-center" aria-label="Main navigation">
-            <div className="rounded-full bg-slate-200/70 dark:bg-slate-900/80 border border-slate-300/80 dark:border-slate-800/80 shadow-2xs dark:shadow-md backdrop-blur-md px-3 py-1 transition-colors duration-200 overflow-hidden">
-              <GooeyNav
-                items={gooeyNavItems}
-                particleCount={0}
-                initialActiveIndex={0}
-                activeIndex={activeGooeyIndex}
-                onItemClick={handleGooeyClick}
-              />
-            </div>
-          </nav>
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex items-center">
+            <DesktopNav
+              navLinks={navLinks}
+              activeSection={activeSection}
+              onNavClick={handleNavClick}
+            />
+          </div>
 
-          {/* CTA & Mobile Toggle */}
+          {/* Controls: Theme Toggle + Mobile Menu Trigger */}
           <div className="flex items-center gap-2 sm:gap-3">
             <ThemeToggle />
-            
+
+            {/* Mobile Menu Button */}
             <button
-              className="flex size-10 sm:size-9 items-center justify-center rounded-lg lg:hidden bg-muted hover:bg-muted-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              onClick={toggleMobileMenu}
-              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isMobileMenuOpen}
+              type="button"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              className="lg:hidden relative size-9 rounded-full flex items-center justify-center text-foreground hover:bg-muted/80 border border-border/80 transition-colors focus-visible:outline-none cursor-pointer"
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={mobileMenuOpen}
             >
-              <motion.div
-                animate={{ rotate: isMobileMenuOpen ? 180 : 0 }}
-                transition={{ duration: 0.2 }}
-                className="text-on-surface inline-flex items-center"
-              >
-                {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-              </motion.div>
+              {mobileMenuOpen ? (
+                <Icon name="close" size={18} />
+              ) : (
+                <Icon name="menu" size={18} />
+              )}
             </button>
           </div>
         </div>
-
-        {/* Mobile Menu Dropdown */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, x: "100%" }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: "100%" }}
-              transition={{ duration: 0.3, ease: MOTION_EASINGS.sharp }}
-              className="lg:hidden fixed inset-y-0 right-0 w-80 max-w-[85vw] bg-surface/98 backdrop-blur-xl shadow-2xl z-50 overflow-y-auto"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Navigation menu"
-            >
-              <div className="px-6 py-8 space-y-2">
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-sm font-bold tracking-wider uppercase text-primary">Menu</span>
-                  <div className="flex items-center gap-2">
-                    <ThemeToggle />
-                    <button
-                      onClick={toggleMobileMenu}
-                      className="p-2 rounded-lg hover:bg-surface-container transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                      aria-label="Close menu"
-                    >
-                      <X size={20} className="text-on-surface" />
-                    </button>
-                  </div>
-                </div>
-                
-                {navLinks.map((link, index) => {
-                  const isActive = getIsActive(link.name);
-
-                  return (
-                    <motion.a
-                      key={link.name}
-                      href={link.href}
-                      onClick={(e) => handleNavClick(e, link.href)}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05, duration: 0.2, ease: MOTION_EASINGS.sharp }}
-                      className={clsx(
-                        "flex items-center gap-3 text-base font-medium min-h-[48px] px-4 rounded-xl transition-all cursor-pointer",
-                        isActive
-                          ? "bg-primary-fixed/40 text-primary font-semibold"
-                          : "text-on-surface-variant hover:text-primary hover:bg-surface-container"
-                      )}
-                      role="menuitem"
-                      aria-current={isActive ? "page" : undefined}
-                    >
-                      {isActive && <span className="size-2 rounded-full bg-primary" aria-hidden="true" />}
-                      <span>{link.name}</span>
-                    </motion.a>
-                  );
-                })}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </motion.header>
 
-      {/* Backdrop for mobile menu */}
+      {/* Mobile Navigation Drawer Overlay */}
       <AnimatePresence>
-        {isMobileMenuOpen && (
+        {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 lg:hidden"
-            aria-hidden="true"
-          />
+            className="fixed inset-0 z-40 lg:hidden bg-background/80 backdrop-blur-md flex flex-col pt-20 px-6 pb-8"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <motion.div
+              initial={{ y: -16, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -16, opacity: 0 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="flex flex-col justify-between flex-1 max-w-sm mx-auto w-full pt-4"
+            >
+              {/* Navigation Links */}
+              <nav
+                className="flex flex-col gap-2"
+                aria-label="Mobile navigation"
+              >
+                {navLinks.map((link) => {
+                  const key = link.name.toLowerCase();
+                  const isActive =
+                    key === activeSection ||
+                    link.href === `#${activeSection}` ||
+                    (key === "work" && (activeSection === "work" || activeSection === "pillars"));
+
+                  return (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      onClick={(e) => handleNavClick(e, link.href)}
+                      className={`flex items-center justify-between px-4 py-3 rounded-md text-base font-medium transition-colors ${
+                        isActive
+                          ? "bg-foreground text-background font-semibold"
+                          : "text-foreground hover:bg-muted"
+                      }`}
+                    >
+                      <span>{link.name}</span>
+                      {isActive ? (
+                        <span className="text-xs uppercase tracking-widest font-mono text-background/80">
+                          Active
+                        </span>
+                      ) : (
+                        <Icon
+                          name="arrow_forward"
+                          size={14}
+                          className="text-muted-foreground"
+                        />
+                      )}
+                    </a>
+                  );
+                })}
+              </nav>
+
+              {/* Mobile Quick Action Footer */}
+              <div className="pt-6 border-t border-border space-y-3">
+                <a
+                  href="#contact"
+                  onClick={(e) => handleNavClick(e, "#contact")}
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 bg-foreground text-background text-xs font-semibold uppercase tracking-wider transition-colors"
+                >
+                  <Icon name="mail" size={15} />
+                  <span>Direct Correspondence</span>
+                </a>
+                <p className="text-[11px] text-center text-muted-foreground font-mono">
+                  FSJES Aïn Chock · Université Hassan II de Casablanca
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
   );
 }
+
+export default Navbar;

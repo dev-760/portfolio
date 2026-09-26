@@ -1,20 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" width="100%" height="100%">
-  <!-- Icon based on public/icon.svg -->
-  <g transform="translate(42, 40) scale(0.2)">
-    <!-- Outer Diamond -->
-    <polygon points="0,-160 160,0 0,160 -160,0" fill="#0047FF" />
-
-    <!-- Inner Triangle Cutout -->
-    <polygon points="0,-88 78,6 -78,6" fill="#ffffff" />
-  </g>
-
-  <!-- Brand Typography in Times New Roman (Light Mode) -->
-  <text 
-    x="86" 
-    y="52" 
-    fill="#0F172A" 
-    font-family="'Times New Roman', Times, 'Liberation Serif', serif" 
-    font-size="40" 
-    font-weight="700" 
-    letter-spacing="-0.2">Hassan Karasu</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 48" width="280" height="48">
+  <image href="/icon-light.svg" x="0" y="4" width="40" height="40" />
+  <text x="48" y="32" fill="#111111" font-family="'Newsreader', serif, Georgia" font-size="24" font-weight="600" letter-spacing="-0.02em">Hassan Karasu</text>
 </svg>

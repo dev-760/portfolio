@@ -18,7 +18,7 @@ export function StructuredData() {
         "@type": "ProfilePage",
         "@id": "https://hassankarasu.dev/#profilepage",
         "url": "https://hassankarasu.dev/",
-        "name": "Hassan Karasu — Business Administration & Strategy",
+        "name": "Hassan Karasu",
         "isPartOf": {
           "@id": "https://hassankarasu.dev/#website"
         },
@@ -61,7 +61,7 @@ export function StructuredData() {
         "knowsAbout": [
           "Business Administration",
           "Principles of Management",
-          "General Accounting (Comptabilité Générale)",
+          "General Accounting",
           "Cost Analysis & Budgeting",
           "Microeconomics & Macroeconomics",
           "Descriptive Statistics",
@@ -108,7 +108,7 @@ export function StructuredData() {
           {
             "@type": "ListItem",
             "position": 6,
-            "name": "Writing",
+            "name": "Monographs",
             "item": "https://hassankarasu.dev/#writing"
           },
           {
