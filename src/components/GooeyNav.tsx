@@ -243,5 +243,3 @@ export const GooeyNav = ({
     </div>
   );
 };
-
-export default GooeyNav;

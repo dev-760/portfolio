@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-export function RedirectToSection({ sectionId }: { sectionId: string }) {
+export default function RedirectToSection({ sectionId }: { sectionId: string }) {
   const router = useRouter();
 
   useEffect(() => {
@@ -20,4 +20,3 @@ export function RedirectToSection({ sectionId }: { sectionId: string }) {
   );
 }
 
-export default RedirectToSection;

@@ -1,16 +1,16 @@
-export type NavItem = {
+type NavItem = {
   id: string;
   label: string;
   href: string;
   enabled?: boolean;
 };
 
-export type SkillCategory = {
+type SkillCategory = {
   category: string;
   items: string[];
 };
 
-export type TimelineEntry = {
+type TimelineEntry = {
   organization: string;
   organizationLink?: string;
   role: string;
@@ -22,33 +22,33 @@ export type TimelineEntry = {
   closing: string;
 };
 
-export type Achievement = {
+type Achievement = {
   title: string;
   details?: string;
   dates?: string;
 };
 
-export type Project = {
+type Project = {
   title: string;
   link?: string;
   description: string;
   technologies: string[];
 };
 
-export type Highlight = {
+type Highlight = {
   label: string;
   value: string;
   description: string;
 };
 
-export type EducationItem = {
+type EducationItem = {
   institution: string;
   degree: string;
   field?: string;
   details: string;
 };
 
-export type Profile = {
+type Profile = {
   name: string;
   title: string;
   location: string;
@@ -83,7 +83,7 @@ export type Profile = {
   projects: Project[];
 };
 
-export const profile: Profile = {
+const profile: Profile = {
   name: "Hassan Karasu",
   title: "Business Administration Student",
   location: "Casablanca, Morocco",

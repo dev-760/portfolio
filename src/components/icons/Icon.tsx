@@ -117,5 +117,3 @@ export function Icon({ name, className = "", size = 18, ...props }: IconProps) {
     ...props,
   });
 }
-
-export default Icon;

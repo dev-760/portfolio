@@ -325,29 +325,23 @@ export function WritingSection() {
 
   return (
     <section
-      className="py-20 lg:py-24 border-b border-outline-variant/40 bg-surface scroll-mt-16 relative"
+      className="py-24 border-b border-border bg-surface scroll-mt-16 relative"
       id="writing"
     >
-      <div className="max-w-7xl mx-auto px-6 space-y-12">
+      <div className="max-w-5xl mx-auto px-6 space-y-16">
         {/* ========================================================
             SECTION HEADER
             ======================================================== */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-outline-variant/30 pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border pb-8">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-2"
           >
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-primary-fixed text-on-primary-fixed uppercase tracking-wider">
-                <span className="size-1.5 rounded-full bg-primary animate-pulse" />
-                Peer-Reviewed Coursework
-              </span>
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-on-surface">
-              Ideas, Observations, and Academic Notes
+            <h2 className="text-3xl lg:text-4xl font-display font-medium tracking-tight text-foreground">
+              Ideas &amp; Observations
             </h2>
           </motion.div>
 
@@ -355,17 +349,12 @@ export function WritingSection() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.15, duration: MOTION_DURATIONS.standard }}
-            className="flex flex-col items-start md:items-end gap-1.5 text-sm text-outline max-w-sm"
+            transition={{ delay: 0.15, duration: 0.5 }}
+            className="flex flex-col items-start md:items-end gap-1.5 text-sm text-muted-foreground max-w-sm"
           >
             <p className="leading-relaxed">
               Syntheses exploring business administration, operations modeling, financial discipline, and compound learning.
             </p>
-            <div className="flex items-center gap-3 text-xs font-mono text-outline/80 pt-1">
-              <span>5 Total Monographs</span>
-              <span>·</span>
-              <span>26 Min Total Read</span>
-            </div>
           </motion.div>
         </div>
 
@@ -376,57 +365,42 @@ export function WritingSection() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
-          className="relative group bg-surface-container-lowest border border-outline-variant/60 hover:border-primary/60 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-xs hover:shadow-md transition-all duration-300 overflow-hidden cursor-pointer"
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="relative group bg-surface border border-border hover:border-foreground/30 rounded-md p-8 lg:p-10 transition-all duration-300 overflow-hidden cursor-pointer"
           onClick={() => handleOpenArticle(featuredEssay)}
         >
-          {/* Subtle decorative background accent */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary-fixed/20 dark:bg-primary-dark/5 rounded-full blur-3xl -z-10 pointer-events-none transition-opacity group-hover:opacity-100 opacity-60" />
-
           <div className="flex flex-col lg:flex-row gap-8 items-start justify-between">
-            <div className="space-y-4 max-w-3xl">
+            <div className="space-y-5 max-w-3xl">
               {/* Metadata row */}
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-primary text-on-primary shadow-2xs">
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-medium tracking-widest uppercase px-2 py-0.5 rounded-sm bg-accent text-white">
                   <Icon name="sparkles" size={13} />
-                  FEATURED ESSAY
+                  FEATURED
                 </span>
-                <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-md bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/20 uppercase tracking-wider">
+                <span className="text-[10px] font-medium px-2 py-0.5 rounded-sm bg-muted text-foreground border border-border uppercase tracking-widest">
                   {featuredEssay.categoryLabel}
                 </span>
-                <span className="text-outline text-xs font-mono">
+                <span className="text-muted-foreground text-xs">
                   {featuredEssay.date} · {featuredEssay.readTime}
                 </span>
               </div>
 
               {/* Title & Subtitle */}
               <div>
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-on-surface leading-tight tracking-tight group-hover:text-primary transition-colors">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-display font-medium text-foreground leading-[1.1] tracking-tight group-hover:text-accent transition-colors">
                   {featuredEssay.title}
                 </h3>
-                <p className="text-body-md sm:text-base text-on-surface-variant mt-2 leading-relaxed">
+                <p className="text-sm sm:text-base text-muted-foreground mt-4 leading-relaxed">
                   {featuredEssay.description}
                 </p>
               </div>
 
               {/* Core Thesis Highlight Quote Box */}
-              <div className="p-4 sm:p-5 rounded-xl bg-surface-container/80 border border-primary/25 text-on-surface text-sm sm:text-base italic leading-relaxed shadow-2xs">
-                <span className="text-xs font-bold not-italic uppercase tracking-wider text-primary font-sans block mb-1">
+              <div className="pl-4 border-l-2 border-accent text-foreground text-sm sm:text-base italic leading-relaxed py-2 mt-2">
+                <span className="text-[10px] font-medium not-italic uppercase tracking-widest text-muted-foreground block mb-1">
                   Core Thesis:
                 </span>
                 &ldquo;{featuredEssay.thesis}&rdquo;
-              </div>
-
-              {/* Concept tags */}
-              <div className="flex flex-wrap items-center gap-2 pt-1">
-                {featuredEssay.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-surface-container text-on-surface-variant border border-outline-variant/40"
-                  >
-                    #{tag}
-                  </span>
-                ))}
               </div>
             </div>
 
@@ -438,19 +412,19 @@ export function WritingSection() {
                   e.stopPropagation();
                   handleOpenArticle(featuredEssay);
                 }}
-                className="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 bg-primary hover:bg-secondary text-on-primary text-xs font-semibold uppercase tracking-wider transition-all shadow-xs hover:shadow-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 w-full lg:w-48"
+                className="inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 bg-foreground hover:bg-foreground/90 text-background text-xs font-medium uppercase tracking-widest transition-all cursor-pointer focus-visible:outline-none w-full lg:w-48"
               >
-                <span>Read Full Essay</span>
+                <span>Read Essay</span>
                 <Icon name="arrow_forward" size={16} />
               </button>
 
               <button
                 type="button"
                 onClick={(e) => handleCopyArticleLink(featuredEssay, e)}
-                className="inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface text-xs font-medium tracking-wide transition-colors border border-outline-variant/50 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary w-full lg:w-48"
+                className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-3 bg-surface hover:bg-muted text-foreground text-xs font-medium uppercase tracking-widest transition-colors border border-border cursor-pointer focus-visible:outline-none w-full lg:w-48"
               >
                 <Icon name="share" size={14} />
-                <span>Share Monograph</span>
+                <span>Share</span>
               </button>
             </div>
           </div>
@@ -459,37 +433,51 @@ export function WritingSection() {
         {/* ========================================================
             PART 2: DISCIPLINE FILTER TABS & SEARCH
             ======================================================== */}
-        <div className="space-y-6 pt-2">
+        <div className="space-y-8 pt-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <span className="text-xs font-mono uppercase tracking-wider text-outline block">
-                Discipline Directory
-              </span>
-              <span className="text-xs font-mono text-outline/80">
-                Showing {filteredNoteArticles.length} of {noteArticles.length} monographs
-              </span>
+            <div className="flex flex-wrap items-center gap-2" role="group">
+              {categories.map((cat) => {
+                const isActive = selectedCategory === cat.key;
+                return (
+                  <button
+                    key={cat.key}
+                    type="button"
+                    onClick={() => setSelectedCategory(cat.key)}
+                    aria-pressed={isActive}
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-[10px] font-medium uppercase tracking-widest transition-all duration-200 cursor-pointer focus-visible:outline-none border ${
+                      isActive
+                        ? "bg-foreground text-background border-foreground"
+                        : "bg-surface text-muted-foreground hover:text-foreground border-border"
+                    }`}
+                  >
+                    <span>{cat.label}</span>
+                    <span className={`ml-0.5 opacity-60`}>
+                      ({cat.count})
+                    </span>
+                  </button>
+                );
+              })}
             </div>
 
             {/* Keyword Search Input */}
-            <div className="relative w-full sm:w-72">
+            <div className="relative w-full sm:w-64">
               <Icon
                 name="search"
                 size={16}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none"
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
               />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search notes by concept..."
-                className="w-full pl-9 pr-8 py-2 rounded-lg bg-surface-container-lowest border border-outline-variant/60 text-xs text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                placeholder="Search notes..."
+                className="w-full pl-9 pr-8 py-2 rounded-sm bg-surface border border-border text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground transition-colors"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface p-0.5 rounded cursor-pointer"
-                  aria-label="Clear search"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground p-0.5 cursor-pointer"
                 >
                   <Icon name="close" size={14} />
                 </button>
@@ -497,64 +485,8 @@ export function WritingSection() {
             </div>
           </div>
 
-          {/* Category Filter Pills */}
-          <div
-            className="flex flex-wrap items-center gap-2"
-            role="group"
-            aria-label="Filter essays by discipline"
-          >
-            {categories.map((cat) => {
-              const isActive = selectedCategory === cat.key;
-
-              return (
-                <button
-                  key={cat.key}
-                  type="button"
-                  onClick={() => setSelectedCategory(cat.key)}
-                  aria-pressed={isActive}
-                  className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
-                    isActive
-                      ? "bg-primary text-on-primary shadow-xs"
-                      : "bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface border border-outline-variant/40"
-                  }`}
-                >
-                  <Icon name={cat.icon} size={14} />
-                  <span>{cat.label}</span>
-                  <span
-                    className={`ml-0.5 font-mono text-[11px] ${
-                      isActive ? "opacity-90" : "opacity-60"
-                    }`}
-                  >
-                    ({cat.count})
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Empty search state */}
-          {filteredNoteArticles.length === 0 && (
-            <div className="p-12 text-center rounded-xl bg-surface-container-lowest border border-outline-variant/50 space-y-3">
-              <Icon name="notes" size={32} className="mx-auto text-outline" />
-              <h4 className="text-base font-bold text-on-surface">No monographs match your query</h4>
-              <p className="text-xs text-on-surface-variant max-w-md mx-auto">
-                No articles found matching &ldquo;{searchQuery}&rdquo;. Try clearing your search or choosing another discipline filter.
-              </p>
-              <button
-                type="button"
-                onClick={() => {
-                  setSearchQuery("");
-                  setSelectedCategory("all");
-                }}
-                className="mt-2 px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-xs font-semibold uppercase tracking-wider text-primary cursor-pointer transition-colors"
-              >
-                Reset Filters
-              </button>
-            </div>
-          )}
-
-          {/* Grid of Articles with Motion Transitions */}
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+          {/* Grid of Articles */}
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 pt-2">
             <AnimatePresence>
               {filteredNoteArticles.map((article) => {
                 const isHovered = hoveredArticle === article.id;
@@ -566,51 +498,39 @@ export function WritingSection() {
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.24, ease: MOTION_EASINGS.sharp }}
+                    transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
                     onMouseEnter={() => setHoveredArticle(article.id)}
                     onMouseLeave={() => setHoveredArticle(null)}
                     onClick={() => handleOpenArticle(article)}
-                    className="flex flex-col justify-between p-6 sm:p-7 bg-surface-container-lowest border border-outline-variant/50 hover:border-primary/60 rounded-xl hover:shadow-sm transition-all duration-200 group cursor-pointer"
+                    className="flex flex-col justify-between p-6 sm:p-8 bg-surface border border-border hover:border-foreground/30 rounded-md transition-colors group cursor-pointer"
                   >
                     <div>
                       {/* Top metadata */}
-                      <div className="flex items-center justify-between text-xs font-mono mb-3">
+                      <div className="flex items-center justify-between text-xs mb-4">
                         <span
-                          className={`px-2 py-0.5 rounded text-[11px] font-semibold uppercase tracking-wider border ${article.categoryBadgeClass}`}
+                          className={`px-2 py-0.5 rounded-sm text-[10px] font-medium uppercase tracking-widest border border-border bg-muted text-foreground`}
                         >
                           {article.categoryLabel}
                         </span>
-                        <span className="text-outline font-normal">
+                        <span className="text-muted-foreground">
                           {article.date} · {article.readTime}
                         </span>
                       </div>
 
                       {/* Title & Abstract */}
-                      <h4 className="text-lg sm:text-xl font-bold text-on-surface group-hover:text-primary transition-colors leading-snug mb-2.5">
+                      <h4 className="text-lg sm:text-xl font-display font-medium text-foreground group-hover:text-accent transition-colors leading-snug mb-3">
                         {article.title}
                       </h4>
 
-                      <p className="text-sm text-on-surface-variant leading-relaxed mb-4 font-normal">
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-6">
                         {article.description}
                       </p>
-
-                      {/* Concept Tags */}
-                      <div className="flex flex-wrap items-center gap-1.5 mb-5">
-                        {article.tags.slice(0, 3).map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2 py-0.5 rounded-md text-[11px] font-mono bg-surface-container text-on-surface-variant"
-                          >
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
                     </div>
 
                     {/* Bottom Action Footer */}
-                    <div className="pt-4 border-t border-outline-variant/20 flex items-center justify-between">
-                      <span className="text-xs font-semibold uppercase tracking-wider text-primary group-hover:text-secondary flex items-center gap-1.5">
-                        <span>Read Full Note</span>
+                    <div className="pt-4 border-t border-border flex items-center justify-between">
+                      <span className="text-[10px] font-medium uppercase tracking-widest text-foreground group-hover:text-accent flex items-center gap-1.5 transition-colors">
+                        <span>Read Note</span>
                         <motion.div
                           animate={{ x: isHovered ? 4 : 0 }}
                           transition={{ duration: 0.16 }}
@@ -618,9 +538,6 @@ export function WritingSection() {
                         >
                           <Icon name="arrow_forward" size={14} />
                         </motion.div>
-                      </span>
-                      <span className="text-[11px] font-mono text-outline uppercase tracking-wider">
-                        STUDENT NOTE
                       </span>
                     </div>
                   </motion.article>
@@ -634,24 +551,19 @@ export function WritingSection() {
             PART 3: ACADEMIC EXCHANGE & MONOGRAPH CORRESPONDENCE
             ======================================================== */}
         <div className="pt-6">
-          <div className="p-8 sm:p-10 bg-surface-container-lowest border border-outline-variant/60 rounded-xl relative overflow-hidden shadow-xs">
+          <div className="p-8 sm:p-10 bg-surface border border-border rounded-md relative overflow-hidden">
             <div className="max-w-2xl relative">
-              <div className="flex items-center gap-2 mb-2 text-primary font-semibold text-xs tracking-wider uppercase font-mono">
-                <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
-                <Icon name="mail" size={15} />
-                <span>ACADEMIC CORRESPONDENCE &amp; MONOGRAPHS</span>
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-on-surface mb-2 tracking-tight">
-                Engage with these research notes
+              <h3 className="text-2xl sm:text-3xl font-display font-medium text-foreground mb-3 tracking-tight">
+                Engage with these notes
               </h3>
-              <p className="text-on-surface-variant text-sm mb-6 leading-relaxed">
+              <p className="text-muted-foreground text-sm mb-8 leading-relaxed">
                 Interested in discussing coursework methodology, operational case studies, or receiving future student monographs? Reach out directly via the verified correspondence channels.
               </p>
 
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-4">
                 <a
                   href="#contact"
-                  className="px-6 py-3 bg-primary hover:bg-secondary text-on-primary text-xs font-semibold uppercase tracking-wider rounded-lg transition-colors whitespace-nowrap cursor-pointer shadow-xs inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="px-6 py-3 bg-foreground hover:bg-foreground/90 text-background text-xs font-medium uppercase tracking-widest rounded-md transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-2 focus-visible:outline-none"
                 >
                   <Icon name="mail" size={15} />
                   <span>Direct Correspondence</span>
@@ -660,20 +572,11 @@ export function WritingSection() {
                   href="https://linkedin.com/in/hassan-karasu-a7485336b"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-3 bg-surface-container hover:bg-surface-container-high border border-outline-variant text-on-surface text-xs font-semibold uppercase tracking-wider rounded-lg transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="px-6 py-3 bg-surface hover:bg-muted border border-border text-foreground text-xs font-medium uppercase tracking-widest rounded-md transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-2 focus-visible:outline-none"
                 >
                   <Icon name="share" size={15} />
                   <span>Connect on LinkedIn</span>
                 </a>
-              </div>
-
-              <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-outline font-medium">
-                <span className="flex items-center gap-1.5 font-mono">
-                  <Icon name="school" size={14} />
-                  FSJES Aïn Chock Research Track
-                </span>
-                <span>•</span>
-                <span className="font-mono">Casablanca, Morocco</span>
               </div>
             </div>
           </div>
@@ -685,7 +588,7 @@ export function WritingSection() {
         <AnimatePresence>
           {activeModalArticle && (
             <div
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-background/80 backdrop-blur-md overflow-y-auto"
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-background/80 backdrop-blur-sm overflow-y-auto"
               role="dialog"
               aria-modal="true"
               aria-labelledby="modal-article-title"
@@ -695,19 +598,19 @@ export function WritingSection() {
                 initial={{ opacity: 0, scale: 0.95, y: 16 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 16 }}
-                transition={{ duration: 0.25, ease: MOTION_EASINGS.sharp }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-3xl bg-surface-container-lowest border border-outline-variant/60 rounded-2xl shadow-2xl overflow-hidden my-auto max-h-[90vh] flex flex-col"
+                className="w-full max-w-3xl bg-surface border border-border rounded-md overflow-hidden my-auto max-h-[90vh] flex flex-col"
               >
                 {/* Modal Top Bar */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-outline-variant/40 bg-surface-container/60 shrink-0">
-                  <div className="flex items-center gap-2">
+                <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-surface shrink-0">
+                  <div className="flex items-center gap-3">
                     <span
-                      className={`px-2.5 py-0.5 rounded-md text-[11px] font-mono font-semibold uppercase tracking-wider border ${activeModalArticle.categoryBadgeClass}`}
+                      className={`px-2 py-0.5 rounded-sm text-[10px] font-medium uppercase tracking-widest border border-border bg-muted text-foreground`}
                     >
                       {activeModalArticle.categoryLabel}
                     </span>
-                    <span className="text-outline text-xs font-mono">
+                    <span className="text-muted-foreground text-xs">
                       {activeModalArticle.date} · {activeModalArticle.readTime}
                     </span>
                   </div>
@@ -716,18 +619,16 @@ export function WritingSection() {
                     <button
                       type="button"
                       onClick={() => handleCopyArticleLink(activeModalArticle)}
-                      className="p-2 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container transition-colors cursor-pointer"
+                      className="p-2 rounded-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
                       title="Copy link"
-                      aria-label="Copy article link"
                     >
                       <Icon name="share" size={16} />
                     </button>
                     <button
                       type="button"
                       onClick={handleCloseModal}
-                      className="p-2 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container transition-colors cursor-pointer"
+                      className="p-2 rounded-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
                       title="Close (Esc)"
-                      aria-label="Close reader"
                     >
                       <Icon name="close" size={18} />
                     </button>
@@ -735,17 +636,17 @@ export function WritingSection() {
                 </div>
 
                 {/* Modal Scrollable Article Body */}
-                <div className="px-6 sm:px-10 py-8 overflow-y-auto space-y-6">
+                <div className="px-6 sm:px-10 py-10 overflow-y-auto space-y-8">
                   {/* Article Title & Byline */}
-                  <div className="space-y-3 border-b border-outline-variant/30 pb-6">
+                  <div className="space-y-4 border-b border-border pb-8">
                     <h3
                       id="modal-article-title"
-                      className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-on-surface tracking-tight leading-tight"
+                      className="text-3xl sm:text-4xl lg:text-5xl font-display font-medium text-foreground tracking-tight leading-[1.1]"
                     >
                       {activeModalArticle.title}
                     </h3>
 
-                    <div className="flex flex-wrap items-center gap-3 text-xs text-outline font-mono">
+                    <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground font-mono">
                       <span>By Hassan Karasu</span>
                       <span>·</span>
                       <span>Business Administration Student</span>
@@ -755,41 +656,41 @@ export function WritingSection() {
                   </div>
 
                   {/* Core Thesis / Abstract */}
-                  <div className="p-4 sm:p-5 rounded-xl bg-surface-container/80 border border-primary/25 shadow-2xs">
-                    <span className="text-xs font-bold uppercase tracking-wider text-primary font-sans block mb-1">
+                  <div className="pl-4 border-l-2 border-accent text-foreground">
+                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground block mb-2">
                       Thesis Statement:
                     </span>
-                    <p className="text-sm sm:text-base italic text-on-surface leading-relaxed">
+                    <p className="text-sm sm:text-base italic leading-relaxed">
                       &ldquo;{activeModalArticle.thesis}&rdquo;
                     </p>
                   </div>
 
                   {/* Key Takeaways */}
-                  <div className="p-5 rounded-xl bg-primary-fixed/25 dark:bg-primary-dark/10 border border-primary/20 space-y-2.5">
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-primary block">
+                  <div className="p-6 bg-muted border border-border rounded-md space-y-3">
+                    <span className="text-[10px] font-medium uppercase tracking-widest text-foreground block mb-2">
                       Core Insights &amp; Principles:
                     </span>
-                    <ul className="space-y-2 text-xs sm:text-sm text-on-surface">
+                    <ul className="space-y-2 text-sm text-muted-foreground list-none pl-0">
                       {activeModalArticle.keyTakeaways.map((takeaway, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <Icon name="check" size={14} className="text-primary shrink-0 mt-0.5" />
-                          <span className="leading-snug">{takeaway}</span>
+                          <span className="mt-1 w-1 h-1 rounded-full bg-accent shrink-0" />
+                          <span className="leading-relaxed">{takeaway}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
                   {/* Multi-Section Article Prose */}
-                  <div className="space-y-6 pt-2">
+                  <div className="space-y-8 pt-4">
                     {activeModalArticle.sections.map((section, idx) => (
-                      <div key={idx} className="space-y-3">
-                        <h4 className="text-lg sm:text-xl font-bold text-on-surface tracking-tight">
+                      <div key={idx} className="space-y-4">
+                        <h4 className="text-xl sm:text-2xl font-display font-medium text-foreground tracking-tight">
                           {section.heading}
                         </h4>
                         {section.paragraphs.map((p, pIdx) => (
                           <p
                             key={pIdx}
-                            className="text-sm sm:text-base text-on-surface-variant leading-relaxed font-normal"
+                            className="text-sm sm:text-base text-muted-foreground leading-relaxed"
                           >
                             {p}
                           </p>
@@ -799,18 +700,18 @@ export function WritingSection() {
                   </div>
 
                   {/* Academic Context Footnote */}
-                  <div className="pt-6 border-t border-outline-variant/30 text-xs text-outline space-y-1 font-mono">
-                    <p className="font-semibold text-on-surface">Academic Citation &amp; Context:</p>
+                  <div className="pt-8 border-t border-border text-xs text-muted-foreground space-y-1">
+                    <p className="font-medium text-foreground">Academic Citation &amp; Context:</p>
                     <p>{activeModalArticle.academicContext}</p>
                   </div>
                 </div>
 
                 {/* Modal Footer */}
-                <div className="px-6 py-4 border-t border-outline-variant/40 bg-surface-container/60 flex items-center justify-between shrink-0">
+                <div className="px-6 py-4 border-t border-border bg-surface flex items-center justify-between shrink-0">
                   <button
                     type="button"
                     onClick={() => handleCopyArticleLink(activeModalArticle)}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-secondary uppercase tracking-wider cursor-pointer"
+                    className="inline-flex items-center gap-1.5 text-[10px] font-medium text-foreground hover:text-accent uppercase tracking-widest cursor-pointer transition-colors"
                   >
                     <Icon name="share" size={14} />
                     <span>Copy Link</span>
@@ -819,7 +720,7 @@ export function WritingSection() {
                   <button
                     type="button"
                     onClick={() => setActiveModalArticle(null)}
-                    className="px-5 py-2 rounded-lg bg-primary hover:bg-secondary text-on-primary text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
+                    className="px-6 py-2.5 rounded-md bg-foreground hover:bg-foreground/90 text-background text-[10px] font-medium uppercase tracking-widest transition-colors cursor-pointer"
                   >
                     Close Reader
                   </button>
@@ -832,5 +733,3 @@ export function WritingSection() {
     </section>
   );
 }
-
-export default WritingSection;

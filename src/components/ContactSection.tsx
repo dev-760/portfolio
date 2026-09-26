@@ -8,43 +8,8 @@ import { Icon } from "@/components/icons/Icon";
 import profile from "@/data/profile";
 import { MOTION_EASINGS, MOTION_DURATIONS } from "@/motion/tokens";
 
-interface TemplateInquiry {
-  id: string;
-  label: string;
-  subject: string;
-  body: string;
-}
-
-const templates: TemplateInquiry[] = [
-  {
-    id: "internship",
-    label: "Internship Opportunity",
-    subject: "[Internship] Business Administration & Operations Opportunity",
-    body: `Hello Hassan,\n\nWe have reviewed your profile and academic monographs and would like to discuss an internship opportunity with our organization.\n\nRole Focus:\nOrganization / Company:\nTimeline:`,
-  },
-  {
-    id: "operations",
-    label: "Operations & Logistics",
-    subject: "[Project] Operational Process & Workflow Inquiry",
-    body: `Hello Hassan,\n\nWe would like to connect regarding an operational challenge / production coordination project.\n\nProject Scope:\nKey Objectives:`,
-  },
-  {
-    id: "academic",
-    label: "Academic & Research",
-    subject: "[Academic] FSJES Research & Monograph Collaboration",
-    body: `Hello Hassan,\n\nI read your monograph on operational systems and would like to discuss coursework / academic research.\n\nTopic:`,
-  },
-  {
-    id: "general",
-    label: "General Discussion",
-    subject: "[General] Professional Introduction — Hassan Karasu",
-    body: `Hello Hassan,\n\nI would like to connect and discuss your background in business administration and practical execution.\n\nMessage:`,
-  },
-];
-
 export function ContactSection() {
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [selectedTemplate, setSelectedTemplate] = useState<string>("internship");
 
   const handleCopyEmail = async () => {
     try {
@@ -66,12 +31,13 @@ export function ContactSection() {
     }
   };
 
-  const handleDownloadCV = () => {
-    showToast("Opening Hassan Karasu Academic CV...", "info");
-    window.print();
-  };
 
-  const currentTemplate = templates.find((t) => t.id === selectedTemplate) ?? templates[0];
+  const currentTemplate = {
+    id: "internship",
+    label: "Internship Opportunity",
+    subject: "[Internship] Business Administration & Operations Opportunity",
+    body: `Hello Hassan,\n\nWe have reviewed your profile and academic monographs and would like to discuss an internship opportunity with our organization.\n\nRole Focus:\nOrganization / Company:\nTimeline:`,
+  };
   const mailtoUrl = `mailto:${profile.contact.email}?subject=${encodeURIComponent(
     currentTemplate.subject
   )}&body=${encodeURIComponent(currentTemplate.body)}`;
@@ -82,29 +48,24 @@ export function ContactSection() {
 
   return (
     <footer
-      className="bg-surface-container-lowest text-on-surface pt-20 pb-12 border-t border-outline-variant/40 scroll-mt-16 relative"
+      className="bg-surface text-foreground pt-24 pb-12 border-t border-border scroll-mt-16 relative"
       id="contact"
     >
-      <div className="max-w-7xl mx-auto px-6 space-y-16">
+      <div className="max-w-5xl mx-auto px-6 space-y-20">
         {/* ========================================================
             SECTION HEADER
             ======================================================== */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-outline-variant/30 pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border pb-8">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-2"
           >
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25 uppercase tracking-wider">
-                <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                Available for Internships
-              </span>
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-on-surface">
+            <h2 className="text-3xl lg:text-4xl font-display font-medium tracking-tight text-foreground flex items-center gap-3">
               Direct Correspondence
+              <span className="size-1.5 rounded-full bg-accent animate-pulse" title="Available for Internships" />
             </h2>
           </motion.div>
 
@@ -112,13 +73,13 @@ export function ContactSection() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.15, duration: MOTION_DURATIONS.standard }}
-            className="flex flex-col items-start md:items-end gap-1.5 text-sm text-outline max-w-sm"
+            transition={{ delay: 0.15, duration: 0.5 }}
+            className="flex flex-col items-start md:items-end gap-1.5 text-sm text-muted-foreground max-w-sm"
           >
             <p className="leading-relaxed">
               Open for business administration internships, operational modeling, and academic collaborations.
             </p>
-            <div className="flex items-center gap-2 text-xs font-mono text-outline/80 pt-1">
+            <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground/80 pt-1">
               <Icon name="location_on" size={13} />
               <span>Casablanca, Morocco (UTC+1)</span>
             </div>
@@ -128,68 +89,56 @@ export function ContactSection() {
         {/* ========================================================
             BALANCED DIRECT CORRESPONDENCE SUITE
             ======================================================== */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* LEFT COLUMN: DIRECT INBOX & VERIFIED CHANNELS (5 cols) */}
-          <div className="lg:col-span-5 space-y-4">
-            <h3 className="text-xs font-mono uppercase tracking-wider text-outline mb-1">
-              Verified Channels &amp; Network
-            </h3>
-
+          <div className="lg:col-span-5 space-y-6">
             {/* Direct Email Card */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
-              className="rounded-xl border border-outline-variant/60 bg-surface p-5 sm:p-6 shadow-2xs hover:border-primary/50 transition-all duration-200 space-y-3"
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="rounded-md border border-border bg-surface p-6 hover:border-foreground/30 transition-all duration-200 space-y-4"
             >
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-[11px] font-mono font-bold uppercase tracking-wider text-primary">
+                <div className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-widest text-foreground">
                   <Icon name="mail" size={15} />
                   <span>DIRECT INBOX</span>
                 </div>
-                <span className="size-2 rounded-full bg-emerald-500 animate-pulse" title="Active inbox" />
+                <span className="size-1.5 rounded-full bg-accent animate-pulse" title="Active inbox" />
               </div>
 
-              <div className="flex items-center justify-between gap-3 pt-1">
+              <div className="flex items-center justify-between gap-3 pt-2">
                 <a
                   href={`mailto:${profile.contact.email}`}
-                  className="text-base font-bold text-on-surface hover:text-primary transition-colors truncate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xs"
+                  className="text-base font-medium text-foreground hover:text-accent transition-colors truncate focus-visible:outline-none"
                 >
                   {profile.contact.email}
                 </a>
 
-                <div className="flex items-center gap-1.5 shrink-0">
+                <div className="flex items-center gap-2 shrink-0">
                   <button
                     type="button"
                     onClick={handleCopyEmail}
-                    className="rounded-md bg-surface-container hover:bg-surface-container-high px-2.5 py-1.5 text-xs font-mono font-medium text-on-surface border border-outline-variant/40 transition-colors cursor-pointer flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    className="rounded-sm bg-muted hover:bg-muted/80 px-2 py-1 text-[10px] font-medium uppercase tracking-widest text-foreground border border-border transition-colors cursor-pointer flex items-center gap-1 focus-visible:outline-none"
                     aria-label="Copy email address"
                   >
                     {copiedEmail ? (
                       <>
-                        <Icon name="check" size={13} className="text-emerald-600" />
-                        <span className="text-emerald-700 dark:text-emerald-300">Copied!</span>
+                        <Icon name="check" size={12} className="text-accent" />
+                        <span className="text-accent">Copied</span>
                       </>
                     ) : (
                       <>
-                        <Icon name="content_copy" size={13} className="text-outline" />
+                        <Icon name="content_copy" size={12} />
                         <span>Copy</span>
                       </>
                     )}
                   </button>
-
-                  <a
-                    href={`mailto:${profile.contact.email}`}
-                    className="rounded-md bg-primary hover:bg-secondary px-2.5 py-1.5 text-xs font-medium text-on-primary transition-colors flex items-center gap-1 cursor-pointer"
-                    title="Send Email"
-                  >
-                    <Icon name="arrow_outward" size={13} />
-                  </a>
                 </div>
               </div>
 
-              <p className="text-xs text-outline leading-relaxed pt-1">
+              <p className="text-xs text-muted-foreground leading-relaxed pt-2 border-t border-border mt-4">
                 Guaranteed reply within 24 hours. Monitored directly by Hassan Karasu.
               </p>
             </motion.div>
@@ -199,59 +148,39 @@ export function ContactSection() {
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
-              transition={{ delay: 0.08, duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
-              className="rounded-xl border border-outline-variant/60 bg-surface p-5 sm:p-6 shadow-2xs hover:border-primary/50 transition-all duration-200 space-y-3"
+              transition={{ delay: 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="rounded-md border border-border bg-surface p-6 hover:border-foreground/30 transition-all duration-200 space-y-4"
             >
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-[11px] font-mono font-bold uppercase tracking-wider text-primary">
+                <div className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-widest text-foreground">
                   <Icon name="share" size={15} />
                   <span>PROFESSIONAL NETWORK</span>
                 </div>
-                <span className="text-[11px] font-mono text-outline">Verified Profile</span>
+                <span className="text-[10px] uppercase tracking-widest text-muted-foreground">Verified Profile</span>
               </div>
 
-              <div className="pt-1">
+              <div className="pt-2">
                 <a
                   href="https://linkedin.com/in/hassan-karasu-a7485336b"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors group border border-outline-variant/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="flex items-center justify-between p-3 rounded-md bg-muted hover:bg-muted/80 transition-colors group border border-border focus-visible:outline-none"
                 >
-                  <span className="text-sm font-semibold text-on-surface flex items-center gap-2.5">
-                    <span className="font-mono text-xs px-2 py-0.5 rounded-sm bg-primary text-on-primary">
+                  <span className="text-sm font-medium text-foreground flex items-center gap-2.5">
+                    <span className="font-mono text-[10px] px-1.5 py-0.5 rounded-sm bg-foreground text-background">
                       in
                     </span>
-                    LinkedIn · Hassan Karasu
+                    LinkedIn
                   </span>
-                  <div className="flex items-center gap-1 text-xs font-medium text-primary group-hover:translate-x-0.5 transition-transform">
+                  <div className="flex items-center gap-1 text-[10px] font-medium uppercase tracking-widest text-foreground group-hover:text-accent transition-colors">
                     <span>Connect</span>
-                    <Icon name="arrow_outward" size={14} />
+                    <Icon name="arrow_outward" size={12} />
                   </div>
                 </a>
               </div>
 
-              <p className="text-xs text-outline leading-relaxed pt-1">
+              <p className="text-xs text-muted-foreground leading-relaxed pt-2 border-t border-border mt-4">
                 Open for internship discussions, network connections, and endorsements.
-              </p>
-            </motion.div>
-
-            {/* Academic Coordinates Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ delay: 0.12, duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
-              className="rounded-xl border border-outline-variant/60 bg-surface p-5 sm:p-6 shadow-2xs space-y-2"
-            >
-              <div className="flex items-center gap-2 text-[11px] font-mono font-bold uppercase tracking-wider text-primary">
-                <Icon name="school" size={15} />
-                <span>INSTITUTIONAL LOCATION</span>
-              </div>
-              <p className="text-xs font-semibold text-on-surface">
-                FSJES Aïn Chock, Université Hassan II de Casablanca
-              </p>
-              <p className="text-xs text-outline">
-                Route d&apos;El Jadida, B.P. 8110 Oasis, Casablanca, Morocco
               </p>
             </motion.div>
           </div>
@@ -262,120 +191,71 @@ export function ContactSection() {
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
-              transition={{ delay: 0.12, duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
-              className="rounded-xl border border-outline-variant/60 bg-surface-container-lowest p-6 sm:p-8 lg:p-9 shadow-xs space-y-6"
+              transition={{ delay: 0.12, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="rounded-md border border-border bg-surface p-8 lg:p-10 space-y-8"
             >
               <div>
-                <div className="flex items-center gap-2 mb-2 text-primary font-semibold text-xs tracking-wider uppercase font-mono">
-                  <Icon name="notes" size={16} />
-                  <span>TRANSPARENT DIRECT DISPATCH</span>
-                </div>
-                <h3 className="text-2xl font-bold text-on-surface">
+                <h3 className="text-2xl font-display font-medium text-foreground">
                   Initiate Correspondence
                 </h3>
-                <p className="text-sm text-on-surface-variant mt-1 leading-relaxed">
+                <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
                   Direct communication without intermediary forms. Choose your subject to generate an immediate, pre-formatted proposal draft in your preferred mail client.
                 </p>
               </div>
 
-              {/* Inquiry Reason Selector Pills */}
-              <div className="space-y-3">
-                <label className="text-xs font-sans font-semibold uppercase tracking-wider text-on-surface-variant block">
-                  Select Inquiry Topic
-                </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {templates.map((template) => {
-                    const isSelected = selectedTemplate === template.id;
-
-                    return (
-                      <button
-                        key={template.id}
-                        type="button"
-                        onClick={() => setSelectedTemplate(template.id)}
-                        className={`p-3 rounded-lg text-left text-xs font-medium transition-all duration-150 cursor-pointer flex items-center justify-between border ${
-                          isSelected
-                            ? "bg-primary text-on-primary border-primary shadow-2xs font-semibold"
-                            : "bg-surface-container hover:bg-surface-container-high text-on-surface-variant border-outline-variant/40"
-                        }`}
-                      >
-                        <span>{template.label}</span>
-                        {isSelected ? (
-                          <Icon name="check" size={14} className="text-on-primary" />
-                        ) : (
-                          <Icon name="arrow_outward" size={13} className="text-outline" />
-                        )}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
               {/* Draft Preview Box */}
-              <div className="p-4 sm:p-5 rounded-lg bg-surface border border-outline-variant/40 space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono text-outline pb-2 border-b border-outline-variant/20">
+              <div className="p-5 rounded-md bg-muted border border-border space-y-4">
+                <div className="flex items-center justify-between text-[10px] font-medium uppercase tracking-widest text-muted-foreground pb-3 border-b border-border">
                   <span className="flex items-center gap-1.5">
                     <Icon name="edit_note" size={14} />
                     <span>PREVIEW SUBJECT &amp; OUTLINE</span>
                   </span>
-                  <span className="text-[11px] text-primary font-semibold uppercase">Direct Draft</span>
+                  <span className="text-foreground">Direct Draft</span>
                 </div>
 
-                <div className="text-xs font-mono space-y-1.5 text-on-surface">
+                <div className="text-xs font-mono space-y-2 text-foreground">
                   <p>
-                    <span className="text-outline">To:</span> {profile.contact.email}
+                    <span className="text-muted-foreground">To:</span> {profile.contact.email}
                   </p>
-                  <p className="font-semibold text-primary truncate">
-                    <span className="text-outline font-normal">Subject:</span> {currentTemplate.subject}
+                  <p className="font-medium truncate">
+                    <span className="text-muted-foreground font-normal">Subject:</span> {currentTemplate.subject}
                   </p>
                 </div>
 
-                <pre className="text-xs font-mono text-on-surface-variant bg-surface-container-low p-3 rounded border border-outline-variant/20 whitespace-pre-wrap leading-relaxed">
+                <pre className="text-xs font-mono text-muted-foreground bg-surface p-4 rounded-sm border border-border whitespace-pre-wrap leading-relaxed">
                   {currentTemplate.body}
                 </pre>
               </div>
 
               {/* Action Buttons Row */}
-              <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+              <div className="flex flex-col sm:flex-row items-center gap-3 pt-4">
                 <a
                   href={mailtoUrl}
-                  className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 bg-primary hover:bg-secondary text-on-primary text-xs font-semibold uppercase tracking-wider transition-all shadow-xs hover:shadow-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 bg-foreground hover:bg-foreground/90 text-background text-[10px] font-medium uppercase tracking-widest transition-colors cursor-pointer focus-visible:outline-none"
                 >
-                  <Icon name="mail" size={16} />
+                  <Icon name="mail" size={14} />
                   <span>Open in Mail Client</span>
                 </a>
 
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 bg-surface-container hover:bg-surface-container-high border border-outline-variant text-on-surface text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 bg-surface hover:bg-muted border border-border text-foreground text-[10px] font-medium uppercase tracking-widest transition-colors cursor-pointer focus-visible:outline-none"
                 >
                   {copiedEmail ? (
                     <>
-                      <Icon name="check" size={15} className="text-emerald-600" />
-                      <span className="text-emerald-700 dark:text-emerald-300">Email Copied!</span>
+                      <Icon name="check" size={14} className="text-accent" />
+                      <span className="text-accent">Copied!</span>
                     </>
                   ) : (
                     <>
-                      <Icon name="content_copy" size={15} />
+                      <Icon name="content_copy" size={14} />
                       <span>Copy Address</span>
                     </>
                   )}
                 </button>
-
-                <button
-                  type="button"
-                  onClick={handleDownloadCV}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 bg-surface-container-low hover:bg-surface-container border border-outline-variant/60 text-secondary text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                  title="Print / Save Academic CV"
-                >
-                  <Icon name="article" size={15} />
-                  <span>Curriculum Vitae</span>
-                </button>
               </div>
 
-              <p className="text-[11px] text-outline leading-tight">
-                No third-party forms, tracking pixels, or data collection. All inquiries are received directly in Hassan Karasu&apos;s personal inbox.
-              </p>
             </motion.div>
           </div>
         </div>
@@ -383,10 +263,10 @@ export function ContactSection() {
         {/* ========================================================
             FOOTER DIRECTORY & CITATIONS
             ======================================================== */}
-        <div className="pt-12 border-t border-outline-variant/30 space-y-8">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="pt-16 border-t border-border space-y-10">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             {/* Logo & Academic Byline */}
-            <div className="space-y-1.5">
+            <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <Image
                   src="/logo-light.svg"
@@ -405,31 +285,31 @@ export function ContactSection() {
                   loading="lazy"
                 />
               </div>
-              <p className="text-xs text-outline font-mono">
+              <p className="text-xs text-muted-foreground font-mono">
                 Licence in Business Administration · FSJES Aïn Chock, Université Hassan II de Casablanca
               </p>
             </div>
 
             {/* Quick Navigation Directory */}
-            <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-medium text-on-surface-variant" aria-label="Footer navigation">
-              <a href="#home" className="hover:text-primary transition-colors">Home</a>
-              <a href="#about" className="hover:text-primary transition-colors">About</a>
-              <a href="#work" className="hover:text-primary transition-colors">Work</a>
-              <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
-              <a href="#experience" className="hover:text-primary transition-colors">Experience</a>
-              <a href="#writing" className="hover:text-primary transition-colors">Writing</a>
-              <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
+            <nav className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[10px] font-medium uppercase tracking-widest text-muted-foreground" aria-label="Footer navigation">
+              <a href="#home" className="hover:text-foreground transition-colors">Home</a>
+              <a href="#about" className="hover:text-foreground transition-colors">About</a>
+              <a href="#work" className="hover:text-foreground transition-colors">Work</a>
+              <a href="#skills" className="hover:text-foreground transition-colors">Skills</a>
+              <a href="#experience" className="hover:text-foreground transition-colors">Experience</a>
+              <a href="#writing" className="hover:text-foreground transition-colors">Writing</a>
+              <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
             </nav>
           </div>
 
           {/* Bottom Copyright & Back to Top */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-outline-variant/20 text-xs text-outline font-mono">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-border text-[10px] uppercase tracking-widest text-muted-foreground font-medium">
             <p>© {new Date().getFullYear()} Hassan Karasu. All rights reserved.</p>
             
             <button
               type="button"
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 hover:text-primary transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors cursor-pointer"
             >
               <span>Back to Top</span>
               <Icon name="arrow_upward" size={13} />
@@ -440,5 +320,3 @@ export function ContactSection() {
     </footer>
   );
 }
-
-export default ContactSection;

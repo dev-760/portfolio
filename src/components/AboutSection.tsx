@@ -79,21 +79,18 @@ const academicMilestones: TimelineMilestone[] = [
 
 const operatingPrinciples = [
   {
-    num: "01",
     title: "Understand the Context",
     track: "Diagnosis & Fundamentals",
     icon: "search_insights",
     desc: "Take the time to examine organizational context, figures, and constraints before proposing changes or jumping into execution.",
   },
   {
-    num: "02",
     title: "Structure the Process",
     track: "Organization & Clarity",
     icon: "account_tree",
     desc: "Break down complex projects into clear, manageable steps with organized schedules, documentation, and tools like Excel.",
   },
   {
-    num: "03",
     title: "Deliver with Discipline",
     track: "Execution & Consistency",
     icon: "precision_manufacturing",
@@ -105,8 +102,8 @@ export function AboutSection() {
   const [hoveredPrinciple, setHoveredPrinciple] = useState<number | null>(null);
 
   return (
-    <section className="py-20 lg:py-24 border-b border-outline-variant/40 bg-surface scroll-mt-16" id="about">
-      <div className="max-w-7xl mx-auto px-6 space-y-20">
+    <section className="py-24 border-b border-border bg-surface scroll-mt-16" id="about">
+      <div className="max-w-5xl mx-auto px-6 space-y-24">
         
         {/* ========================================================
             PART 1: Editorial Introduction Statement
@@ -120,12 +117,12 @@ export function AboutSection() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{
                 delay: 0.1,
-                duration: MOTION_DURATIONS.section,
-                ease: MOTION_EASINGS.system,
+                duration: 0.5,
+                ease: [0.16, 1, 0.3, 1],
               }}
-              className="lg:col-span-7"
+              className="lg:col-span-8"
             >
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-on-surface leading-[1.2]">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-medium tracking-tight text-foreground leading-[1.1]">
                 “I&apos;m Hassan, a Business Administration student interested in understanding how{" "}
                 <KeywordHighlight word="people" delay={0.35} />,{" "}
                 <KeywordHighlight word="organizations" delay={0.6} />, and{" "}
@@ -134,35 +131,25 @@ export function AboutSection() {
             </motion.div>
 
             {/* Right Divider & Supporting Paragraphs */}
-            <div className="lg:col-span-5 lg:pl-10 relative flex flex-col gap-6 text-on-surface-variant">
-              {/* Architectural Vertical Divider Line */}
-              <motion.div
-                initial={{ scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: MOTION_DURATIONS.section, ease: MOTION_EASINGS.system }}
-                style={{ originY: 0 }}
-                className="hidden lg:block absolute left-0 top-0 bottom-0 w-px bg-outline-variant/40"
-              />
-
+            <div className="lg:col-span-4 relative flex flex-col gap-6 text-muted-foreground">
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.25, duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
-                className="text-body-md text-on-surface-variant leading-relaxed"
+                transition={{ delay: 0.25, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="text-sm leading-relaxed"
               >
-                First-year undergraduate pursuing a Licence in Business Administration at FSJES Aïn Chock (Université Hassan II de Casablanca), building a strong foundation in management, accounting, economics, and quantitative methods.
+                First-year undergraduate pursuing a Licence in Business Administration at FSJES Aïn Chock, building a strong foundation in management, accounting, economics, and quantitative methods.
               </motion.p>
 
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.38, duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
-                className="text-body-md text-on-surface-variant leading-relaxed"
+                transition={{ delay: 0.35, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="text-sm leading-relaxed"
               >
-                Balancing university studies with practical experience from commercial production coordination at EL25 Studio and youth education with the Motatawi3 volunteer program.
+                Balancing university studies with practical experience from commercial production coordination at EL25 Studio.
               </motion.p>
             </div>
           </div>
@@ -171,100 +158,79 @@ export function AboutSection() {
         {/* ========================================================
             PART 2: Narrative Bio vs. At a Glance Card
             ======================================================== */}
-        <div className="pt-10 border-t border-outline-variant/30">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-            {/* Left: Narrative Bio (7 cols) */}
+        <div className="pt-16 border-t border-border">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Left: Narrative Bio */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7 flex flex-col gap-6"
             >
-              <div className="flex items-center gap-3">
-                <Icon name="article" size={20} className="text-primary" />
-                <h3 className="text-on-surface text-xl sm:text-2xl font-bold tracking-tight">Narrative Bio</h3>
-              </div>
+              <h3 className="text-foreground font-display text-2xl font-medium tracking-tight">Narrative Bio</h3>
 
-              <div className="text-on-surface-variant text-base leading-relaxed space-y-4 font-normal">
+              <div className="text-muted-foreground text-sm leading-relaxed space-y-4">
                 <p>
-                  I am a first-year Licence in Business Administration student at the <span className="font-medium text-on-surface">Faculté des Sciences Juridiques, Économiques et Sociales (FSJES) Aïn Chock</span>, Université Hassan II de Casablanca. I have a genuine interest in understanding how businesses function from the inside out—how management decisions are structured, how accounting keeps companies grounded, and how day-to-day operations deliver results.
+                  I am a first-year Licence in Business Administration student at the <span className="font-medium text-foreground">Faculté des Sciences Juridiques, Économiques et Sociales (FSJES) Aïn Chock</span>, Université Hassan II de Casablanca. I have a genuine interest in understanding how businesses function from the inside out—how management decisions are structured, how accounting keeps companies grounded, and how day-to-day operations deliver results.
                 </p>
                 <p>
                   My university program establishes the core fundamentals of modern business: micro and macroeconomics, general accounting (comptabilité générale), cost analysis, descriptive statistics, and commercial law. I focus on developing solid analytical rigor and connecting classroom theory to practical problem-solving.
                 </p>
                 <p>
-                  Beyond academics, working as a Production Trainee at <span className="font-medium text-on-surface">EL25 Studio</span> taught me how to manage real client deadlines, logistical coordination, and on-set workflows under pressure. Additionally, participating in the national <span className="font-medium text-on-surface">Motatawi3</span> volunteer initiative helped me develop communication and teamwork skills.
+                  Beyond academics, working as a Production Trainee at <span className="font-medium text-foreground">EL25 Studio</span> taught me how to manage real client deadlines, logistical coordination, and on-set workflows under pressure. Additionally, participating in the national <span className="font-medium text-foreground">Motatawi3</span> volunteer initiative helped me develop communication and teamwork skills.
                 </p>
-                <blockquote className="italic text-on-surface p-4 rounded-xl bg-surface-container-low/80 border border-outline-variant/40 text-sm sm:text-base leading-relaxed">
+                <blockquote className="italic text-foreground p-4 border-l-2 border-accent bg-surface-container/50 text-sm leading-relaxed mt-4">
                   “Sound business practice starts with understanding the figures and the people behind them, followed by consistent, disciplined execution.”
                 </blockquote>
               </div>
             </motion.div>
 
-            {/* Right: At a Glance Card (5 cols) */}
+            {/* Right: At a Glance Property List */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ delay: 0.15, duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
+              transition={{ delay: 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5"
             >
-              <div className="rounded-xl bg-surface-container-lowest border border-outline-variant/60 shadow-xs p-6 sm:p-7 space-y-5">
-                <div className="flex items-center justify-between pb-3 border-b border-outline-variant/40">
-                  <div className="flex items-center gap-2">
-                    <Icon name="badge" size={18} className="text-primary" />
-                    <h4 className="text-xs font-bold tracking-widest uppercase text-on-surface">At a Glance</h4>
-                  </div>
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-primary-fixed text-on-primary-fixed uppercase tracking-wide">
+              <div className="rounded-md border border-border bg-surface p-6">
+                <div className="flex items-center justify-between pb-4 border-b border-border">
+                  <h4 className="text-sm font-medium text-foreground">At a Glance</h4>
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-medium bg-muted text-foreground uppercase tracking-widest border border-border">
                     Active
                   </span>
                 </div>
 
-                <dl className="space-y-3.5 text-xs sm:text-sm">
-                  <div className="flex flex-col gap-0.5 pb-2.5 border-b border-outline-variant/20">
-                    <dt className="text-[11px] font-semibold uppercase tracking-wider text-outline font-mono">Name</dt>
-                    <dd className="text-on-surface font-bold text-base">Hassan Karasu</dd>
+                <dl className="mt-4 space-y-4 text-sm">
+                  <div className="flex flex-col gap-1">
+                    <dt className="text-xs text-muted-foreground uppercase tracking-wider">Name</dt>
+                    <dd className="text-foreground font-medium">Hassan Karasu</dd>
                   </div>
 
-                  <div className="flex flex-col gap-0.5 pb-2.5 border-b border-outline-variant/20">
-                    <dt className="text-[11px] font-semibold uppercase tracking-wider text-outline font-mono">Degree &amp; Institution</dt>
-                    <dd className="text-on-surface font-medium">Licence in Business Administration · FSJES Aïn Chock</dd>
+                  <div className="flex flex-col gap-1">
+                    <dt className="text-xs text-muted-foreground uppercase tracking-wider">Degree</dt>
+                    <dd className="text-foreground">Licence in Business Administration</dd>
                   </div>
 
-                  <div className="flex flex-col gap-0.5 pb-2.5 border-b border-outline-variant/20">
-                    <dt className="text-[11px] font-semibold uppercase tracking-wider text-outline font-mono">Location</dt>
-                    <dd className="text-on-surface flex items-center gap-1.5 font-medium">
-                      <Icon name="location_on" size={16} className="text-primary" />
+                  <div className="flex flex-col gap-1">
+                    <dt className="text-xs text-muted-foreground uppercase tracking-wider">Location</dt>
+                    <dd className="text-foreground flex items-center gap-1.5">
+                      <Icon name="location_on" size={14} className="text-muted-foreground" />
                       Casablanca, Morocco
                     </dd>
                   </div>
 
-                  <div className="flex flex-col gap-0.5 pb-2.5 border-b border-outline-variant/20">
-                    <dt className="text-[11px] font-semibold uppercase tracking-wider text-outline font-mono">Current Status</dt>
-                    <dd className="text-on-surface font-medium flex items-center gap-2">
-                      <span className="size-2 rounded-full bg-emerald-500 inline-block animate-pulse" />
-                      First-year student
-                    </dd>
-                  </div>
-
-                  <div className="flex flex-col gap-0.5 pb-2.5 border-b border-outline-variant/20">
-                    <dt className="text-[11px] font-semibold uppercase tracking-wider text-outline font-mono">Core Focus</dt>
-                    <dd className="text-secondary font-semibold leading-snug">
-                      Management, Accounting &amp; Practical Execution
-                    </dd>
-                  </div>
-
-                  <div className="flex flex-col gap-1 pb-2.5 border-b border-outline-variant/20">
-                    <dt className="text-[11px] font-semibold uppercase tracking-wider text-outline font-mono">Languages</dt>
-                    <dd className="text-on-surface-variant font-normal space-y-1 pt-1">
+                  <div className="flex flex-col gap-1">
+                    <dt className="text-xs text-muted-foreground uppercase tracking-wider">Languages</dt>
+                    <dd className="text-foreground flex flex-col gap-1 mt-1">
                       <div className="flex justify-between items-center text-xs">
-                        <span className="font-medium text-on-surface">Arabic</span>
-                        <span className="text-outline text-[11px] font-mono">Native</span>
+                        <span>Arabic</span>
+                        <span className="text-muted-foreground">Native</span>
                       </div>
                       <div className="flex justify-between items-center text-xs">
-                        <span className="font-medium text-on-surface">English</span>
-                        <span className="text-outline text-[11px] font-mono">Full Professional</span>
+                        <span>English</span>
+                        <span className="text-muted-foreground">Professional</span>
                       </div>
                     </dd>
                   </div>
@@ -275,14 +241,14 @@ export function AboutSection() {
         </div>
 
         {/* ========================================================
-            PART 3: Education & Formation Timeline (SYSTEM FLOW Active Progress)
+            PART 3: Education & Formation Timeline
             ======================================================== */}
-        <div className="pt-10 border-t border-outline-variant/30">
-          <div className="pb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-on-surface tracking-tight">
+        <div className="pt-16 border-t border-border">
+          <div className="pb-10">
+            <h2 className="text-2xl sm:text-3xl font-display font-medium text-foreground tracking-tight">
               Education &amp; Quantitative Foundation
             </h2>
-            <p className="text-sm text-on-surface-variant max-w-2xl mt-2 leading-relaxed">
+            <p className="text-sm text-muted-foreground max-w-2xl mt-3 leading-relaxed">
               Rigorous academic preparation bridging quantitative analytical methods, scientific problem-solving, and core business administration principles.
             </p>
           </div>
@@ -290,62 +256,44 @@ export function AboutSection() {
         </div>
 
         {/* ========================================================
-            PART 4: Operating Principles
+            PART 4: Operating Principles (Asymmetric Bento)
             ======================================================== */}
-        <div className="pt-10 border-t border-outline-variant/30">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-on-surface tracking-tight">
-                Operating Principles
-              </h2>
-            </div>
-            <p className="text-xs text-outline font-medium">
-              3 Guiding Principles
-            </p>
+        <div className="pt-16 border-t border-border">
+          <div className="mb-10">
+            <h2 className="text-2xl sm:text-3xl font-display font-medium text-foreground tracking-tight">
+              Operating Principles
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
             {operatingPrinciples.map((item, index) => {
-              const isHovered = hoveredPrinciple === index;
-
+              const isFirst = index === 0;
               return (
                 <motion.div
-                  key={item.num}
+                  key={item.title}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-30px" }}
-                  transition={{ delay: index * 0.1, duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
+                  transition={{ delay: index * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   onMouseEnter={() => setHoveredPrinciple(index)}
                   onMouseLeave={() => setHoveredPrinciple(null)}
-                  className="group relative rounded-xl border border-outline-variant/40 bg-surface-container-lowest p-6 hover:border-primary/60 transition-all duration-300 shadow-xs flex flex-col justify-between"
+                  className={`group relative rounded-md border border-border bg-surface p-6 flex flex-col justify-between ${isFirst ? 'md:col-span-8' : 'md:col-span-4'}`}
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-5">
-                      <span className="text-xs font-bold font-mono tracking-wider text-primary px-2.5 py-1 rounded-md bg-primary-fixed">
-                        {item.num}
+                    <div className="flex items-center gap-3 mb-4 text-muted-foreground">
+                      <Icon name={item.icon} size={20} />
+                      <span className="text-[10px] uppercase tracking-widest font-medium border border-border/50 px-2 py-0.5 rounded-sm">
+                        {item.track}
                       </span>
-                      <motion.div
-                        animate={{ rotate: isHovered ? 8 : 0, scale: isHovered ? 1.08 : 1 }}
-                        transition={{ duration: 0.22 }}
-                        className="text-outline group-hover:text-primary transition-colors inline-flex items-center"
-                      >
-                        <Icon name={item.icon} size={22} />
-                      </motion.div>
                     </div>
 
-                    <h4 className="text-lg font-bold text-on-surface tracking-tight mb-2 group-hover:text-primary transition-colors">
+                    <h4 className={`font-medium text-foreground tracking-tight mb-2 ${isFirst ? 'text-2xl' : 'text-lg'}`}>
                       {item.title}
                     </h4>
 
-                    <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
                       {item.desc}
                     </p>
-                  </div>
-
-                  {/* Internal divider extension */}
-                  <div className="mt-6 pt-4 border-t border-outline-variant/20 flex items-center justify-between text-[11px] uppercase tracking-wider text-outline font-medium">
-                    <span>{item.track}</span>
-                    <Icon name="arrow_forward" size={13} className="text-outline group-hover:translate-x-1 group-hover:text-primary transition-all" />
                   </div>
                 </motion.div>
               );
@@ -357,5 +305,3 @@ export function AboutSection() {
     </section>
   );
 }
-
-export default AboutSection;

@@ -1,19 +1,18 @@
 import type { Metadata } from "next";
-import { Open_Sans, Poppins } from "next/font/google";
+import { Manrope, Newsreader } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { WebVitals } from "@/components/WebVitals";
 
-const openSans = Open_Sans({
+const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const poppins = Poppins({
+const newsreader = Newsreader({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
@@ -92,7 +91,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${openSans.variable} ${poppins.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${manrope.variable} ${newsreader.variable}`} suppressHydrationWarning>
       <head>
         {/* Guard against browser extensions (e.g. Urban VPN) injecting attributes before React hydrates */}
         <script

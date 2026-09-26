@@ -75,12 +75,12 @@ export function SystemTimeline({
         {/* System Timeline Track */}
         <div className="relative pl-8 sm:pl-10 space-y-8 sm:space-y-10">
           {/* Base Neutral Vertical Track */}
-          <div className="absolute left-[13px] sm:left-[17px] top-6 bottom-6 w-[2px] bg-outline-variant/40" />
+          <div className="absolute left-[7px] top-6 bottom-6 w-[2px] bg-outline-variant/30" />
 
           {/* Active Progress Path */}
           <motion.div
             style={{ scaleY: smoothProgress, originY: 0 }}
-            className="absolute left-[13px] sm:left-[17px] top-6 bottom-6 w-[2px] bg-primary origin-top"
+            className="absolute left-[7px] top-6 bottom-6 w-[2px] bg-primary origin-top"
           />
 
           {/* Render Milestones */}
@@ -127,19 +127,12 @@ function TimelineNodeItem({
       {/* Timeline Node Marker */}
       <motion.div
         style={{ scale: nodeScale }}
-        className={`absolute -left-[32px] sm:-left-[40px] top-6 size-6 rounded-full border-2 bg-background flex items-center justify-center shadow-xs transition-colors duration-200 z-10 ${
-          item.isCurrent
-            ? "border-primary text-primary"
-            : "border-outline-variant text-outline"
-        }`}
+        className="absolute -left-[32px] sm:-left-[40px] top-6 size-4 rounded-full bg-background flex items-center justify-center z-10"
       >
         {item.isCurrent ? (
-          <>
-            <span className="size-2.5 rounded-full bg-primary" />
-            <span className="absolute inset-0 rounded-full bg-primary/30 animate-ping" />
-          </>
+          <span className="size-2.5 rounded-full bg-primary ring-4 ring-primary/10" />
         ) : (
-          <span className="size-2 rounded-full bg-outline/60" />
+          <span className="size-1.5 rounded-full bg-outline-variant/60 transition-colors group-hover:bg-outline-variant" />
         )}
       </motion.div>
 
@@ -243,5 +236,3 @@ function TimelineNodeItem({
     </div>
   );
 }
-
-export default SystemTimeline;

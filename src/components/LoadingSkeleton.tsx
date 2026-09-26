@@ -10,7 +10,7 @@ interface SkeletonProps {
   variant?: "text" | "circular" | "rectangular";
 }
 
-export function Skeleton({ 
+function Skeleton({ 
   className = "", 
   width = "100%", 
   height = "1rem", 
@@ -41,7 +41,7 @@ export function Skeleton({
   );
 }
 
-export function CardSkeleton() {
+function CardSkeleton() {
   return (
     <div className="rounded-lg border border-outline-variant/40 bg-surface-container-lowest p-6 space-y-4">
       <div className="flex items-center justify-between">

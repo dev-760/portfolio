@@ -98,8 +98,8 @@ export function SkillsSection() {
   const isAllExpanded = expandedIds.length === problemSolvingSkills.length;
 
   return (
-    <section className="py-20 lg:py-24 border-b border-outline-variant/40 bg-surface scroll-mt-16" id="skills">
-      <div className="max-w-7xl mx-auto px-6 space-y-16">
+    <section className="py-24 border-b border-border bg-surface scroll-mt-16" id="skills">
+      <div className="max-w-5xl mx-auto px-6 space-y-20">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -107,18 +107,18 @@ export function SkillsSection() {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-on-surface">
-              Tools for Thinking, Organizing, and Solving
+            <h2 className="text-3xl lg:text-4xl font-display font-medium tracking-tight text-foreground">
+              Tools for Thinking &amp; Solving
             </h2>
           </motion.div>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.15, duration: MOTION_DURATIONS.standard }}
-            className="text-sm text-outline max-w-sm"
+            transition={{ delay: 0.15, duration: 0.5 }}
+            className="text-sm text-muted-foreground max-w-sm"
           >
             A calibrated toolkit balancing quantitative business foundations with practical software and operational skills.
           </motion.p>
@@ -128,26 +128,22 @@ export function SkillsSection() {
             CATEGORY 1: Problem Solving (Interactive Accordion)
             ======================================================== */}
         <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-outline-variant/60 pb-3">
-            <div className="flex items-center gap-2">
-              <Icon name="psychology" size={20} className="text-primary" />
-              <h3 className="text-on-surface text-sm font-bold tracking-wider uppercase">
-                Problem Solving
-              </h3>
-            </div>
+          <div className="flex items-center justify-between border-b border-border pb-3">
+            <h3 className="text-foreground text-sm font-medium uppercase tracking-widest flex items-center gap-2">
+              <Icon name="psychology" size={18} className="text-muted-foreground" />
+              Problem Solving
+            </h3>
             
             <div className="flex items-center gap-3">
               <button
                 type="button"
                 onClick={toggleAll}
-                className="text-xs font-mono font-medium text-primary hover:text-secondary underline underline-offset-2 cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="text-xs font-medium text-foreground hover:text-muted-foreground underline underline-offset-4 cursor-pointer transition-colors focus-visible:outline-none"
                 aria-expanded={isAllExpanded}
                 aria-controls="problem-solving-accordion"
               >
                 {isAllExpanded ? "Collapse All" : "Expand All"}
               </button>
-              <span className="text-outline-variant font-light" aria-hidden="true">•</span>
-              <span className="text-on-surface-variant text-xs font-mono" aria-label="6 modules available">06 Modules</span>
             </div>
           </div>
 
@@ -161,38 +157,33 @@ export function SkillsSection() {
                   initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-30px" }}
-                  transition={{ delay: index * 0.05, duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
-                  className={`bg-surface-container-lowest border rounded p-4.5 transition-all duration-200 ${
-                    isExpanded
-                      ? "border-primary/70 shadow-xs"
-                      : "border-outline-variant/40 hover:border-primary/40"
+                  transition={{ delay: index * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className={`bg-surface border rounded-md p-5 transition-all duration-200 ${
+                    isExpanded ? "border-foreground" : "border-border hover:border-foreground/50"
                   }`}
                 >
                   <button
                     onClick={() => toggleExpand(skill.id)}
-                    className="w-full flex items-center justify-between text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-xs cursor-pointer py-1"
+                    className="w-full flex items-center justify-between text-left focus-visible:outline-none cursor-pointer"
                     aria-expanded={isExpanded}
                     aria-controls={`desc-${skill.id}`}
                   >
                     <div className="flex items-center gap-3">
-                      <span className={`size-2 rounded-full inline-block transition-colors duration-200 shrink-0 ${
-                        isExpanded ? "bg-primary" : "bg-outline-variant"
+                      <span className={`size-1.5 rounded-full inline-block transition-colors duration-200 shrink-0 ${
+                        isExpanded ? "bg-foreground" : "bg-muted-foreground"
                       }`} />
-                      <span className="text-on-surface font-semibold text-sm hover:text-primary transition-colors">
+                      <span className="text-foreground font-medium text-sm">
                         {skill.name}
                       </span>
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className="text-[11px] font-mono text-outline uppercase hidden sm:inline">
-                        {skill.metric}
-                      </span>
                       <motion.div
                         animate={{ rotate: isExpanded ? 45 : 0 }}
-                        transition={{ duration: 0.2, ease: MOTION_EASINGS.sharp }}
-                        className="text-outline hover:text-primary transition-colors inline-flex items-center"
+                        transition={{ duration: 0.2 }}
+                        className="text-muted-foreground"
                       >
-                        <Icon name="add" size={18} />
+                        <Icon name="add" size={16} />
                       </motion.div>
                     </div>
                   </button>
@@ -206,10 +197,10 @@ export function SkillsSection() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.25, ease: MOTION_EASINGS.system }}
+                        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <div className="mt-3 pt-3 border-t border-surface-container text-xs leading-relaxed text-on-surface-variant bg-surface-container-low/60 p-3 rounded-lg">
+                        <div className="mt-4 pt-3 border-t border-border text-sm leading-relaxed text-muted-foreground">
                           {skill.description}
                         </div>
                       </motion.div>
@@ -224,15 +215,12 @@ export function SkillsSection() {
         {/* ========================================================
             CATEGORY 2: Business & Productivity Stacks
             ======================================================== */}
-        <div className="space-y-6 pt-4">
-          <div className="flex items-center justify-between border-b border-outline-variant/60 pb-3">
-            <div className="flex items-center gap-2">
-              <Icon name="work" size={20} className="text-primary" />
-              <h3 className="text-on-surface text-sm font-bold tracking-wider uppercase">
-                Business &amp; Productivity
-              </h3>
-            </div>
-            <span className="text-on-surface-variant text-xs font-mono">04 Stacks</span>
+        <div className="space-y-6 pt-10 border-t border-border">
+          <div className="flex items-center justify-between border-b border-border pb-3">
+            <h3 className="text-foreground text-sm font-medium uppercase tracking-widest flex items-center gap-2">
+              <Icon name="work" size={18} className="text-muted-foreground" />
+              Business &amp; Productivity
+            </h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -242,26 +230,26 @@ export function SkillsSection() {
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-30px" }}
-                transition={{ delay: index * 0.08, duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
-                className="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-5 flex flex-col justify-between hover:border-primary/50 transition-colors shadow-2xs group"
+                transition={{ delay: index * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="bg-surface border border-border rounded-md p-6 flex flex-col justify-between hover:border-foreground/30 transition-colors group"
               >
                 <div>
-                  <div className="flex items-center justify-between pb-2.5">
-                    <h4 className="font-semibold text-sm text-on-surface group-hover:text-primary transition-colors">
+                  <div className="flex items-center justify-between pb-3">
+                    <h4 className="font-medium text-foreground tracking-tight">
                       {stack.title}
                     </h4>
-                    <span className="text-[11px] font-mono font-medium px-2 py-0.5 rounded-md bg-primary-fixed text-on-primary-fixed">
+                    <span className="text-[10px] font-medium px-2 py-0.5 rounded-sm bg-muted text-foreground border border-border uppercase tracking-widest">
                       {stack.badge}
                     </span>
                   </div>
-                  <p className="text-xs text-on-surface-variant leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed mt-1">
                     {stack.desc}
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-2 pt-3 mt-4 border-t border-surface-container-low">
+                <div className="flex flex-wrap gap-2 pt-4 mt-4 border-t border-border">
                   {stack.tags.map((tag) => (
-                    <span key={tag} className="text-[11px] font-mono text-outline">
+                    <span key={tag} className="text-xs text-muted-foreground font-mono">
                       {tag}
                     </span>
                   ))}
@@ -275,5 +263,3 @@ export function SkillsSection() {
     </section>
   );
 }
-
-export default SkillsSection;

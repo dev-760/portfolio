@@ -7,7 +7,6 @@ import { MOTION_EASINGS, MOTION_DURATIONS } from "@/motion/tokens";
 
 interface PillarItem {
   id: string;
-  number: string;
   title: string;
   icon: string;
   description: string;
@@ -17,165 +16,95 @@ interface PillarItem {
 const pillars: PillarItem[] = [
   {
     id: "management",
-    number: "01",
-    title: "MANAGEMENT & STRATEGY",
+    title: "Management & Strategy",
     icon: "account_balance",
     description: "Studying organization theory, human resource fundamentals, and operational workflows to understand how enterprises coordinate teams and achieve objectives.",
     items: ["Principles of Management", "Organization Theory", "Operational Workflows"],
   },
   {
     id: "accounting",
-    number: "02",
-    title: "ACCOUNTING & ECONOMICS",
+    title: "Accounting & Economics",
     icon: "calculate",
     description: "Building quantitative rigor through general accounting (comptabilité générale), cost analysis, descriptive statistics, and micro/macroeconomics.",
     items: ["General Accounting (Comptabilité)", "Cost Analysis & Budgeting", "Descriptive Statistics"],
   },
   {
     id: "execution",
-    number: "03",
-    title: "PRACTICAL EXECUTION",
+    title: "Practical Execution",
     icon: "checklist",
     description: "Applying classroom concepts to tangible outcomes—commercial production coordination at EL25 Studio, Excel modeling, and structured problem-solving.",
     items: ["Production Coordination", "Excel Modeling & Analysis", "Practical Discipline"],
   },
 ];
 
-const PillarCard: React.FC<{ pillar: PillarItem; index: number }> = ({ pillar, index }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{
-        delay: 0.12 + index * 0.1,
-        duration: MOTION_DURATIONS.standard,
-        ease: MOTION_EASINGS.system,
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="group relative bg-surface-container-lowest p-8 rounded-xl border transition-colors duration-300 flex flex-col justify-between h-full border-outline-variant/50 hover:border-primary/70 shadow-xs"
-    >
-      <div>
-        {/* Top Header: Metadata Number & Icon */}
-        <div className="flex items-center justify-between pb-8">
-          <span
-            className={`font-mono text-2xl font-bold transition-colors duration-200 ${
-              isHovered ? "text-primary" : "text-outline-variant"
-            }`}
-          >
-            {pillar.number}
-          </span>
-          <motion.div
-            animate={{
-              rotate: isHovered ? 6 : 0,
-              y: isHovered ? -1 : 0,
-            }}
-            transition={{ duration: 0.24, ease: MOTION_EASINGS.sharp }}
-            className={`transition-colors duration-200 inline-flex items-center ${
-              isHovered ? "text-primary" : "text-outline"
-            }`}
-          >
-            <Icon name={pillar.icon} size={24} />
-          </motion.div>
-        </div>
-
-        {/* Title & Description with subtle 2px spatial response */}
-        <h3
-          className={`text-xl font-bold text-on-surface mb-3 tracking-tight transition-transform duration-200 ${
-            isHovered ? "translate-x-0.5 text-primary" : ""
-          }`}
-        >
-          {pillar.title}
-        </h3>
-        <p className="text-sm text-on-surface-variant leading-relaxed mb-6">
-          {pillar.description}
-        </p>
-      </div>
-
-      {/* Internal Divider with Extension Animation */}
-      <div>
-        <div className="relative h-px w-full bg-outline-variant/30 overflow-hidden mb-5">
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: isHovered ? 1 : 0 }}
-            transition={{ duration: 0.35, ease: MOTION_EASINGS.system }}
-            style={{ originX: 0 }}
-            className="absolute inset-0 bg-primary/70"
-          />
-        </div>
-
-        {/* Sequential List Markers */}
-        <ul className="space-y-2 text-xs font-mono text-outline">
-          {pillar.items.map((item, itemIdx) => (
-            <li key={item} className="flex items-center gap-2">
-              <motion.span
-                animate={{
-                  scale: isHovered ? [1, 1.4, 1] : 1,
-                }}
-                transition={{
-                  delay: isHovered ? itemIdx * 0.06 : 0,
-                  duration: 0.22,
-                  ease: MOTION_EASINGS.sharp,
-                }}
-                className={`w-1.5 h-1.5 rounded-full inline-block transition-colors duration-200 ${
-                  isHovered ? "bg-accent" : "bg-primary"
-                }`}
-              />
-              <span
-                className={`transition-colors duration-200 ${
-                  isHovered ? "text-on-surface" : "text-outline"
-                }`}
-              >
-                {item}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </motion.div>
-  );
-};
-
 export function WorkSection() {
   return (
-    <section className="py-20 lg:py-24 border-b border-outline-variant/40 bg-surface-container-low scroll-mt-16" id="work">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Core Pillars */}
-        <div>
-          <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 gap-4">
+    <section className="py-24 border-b border-border bg-surface scroll-mt-16" id="work">
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+          
+          {/* Left: Sticky Header */}
+          <div className="lg:col-span-4 lg:sticky lg:top-32">
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: MOTION_DURATIONS.standard, ease: MOTION_EASINGS.system }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-on-surface">
-                Core Academic &amp; Practical Disciplines
+              <h2 className="text-3xl lg:text-4xl font-display font-medium tracking-tight text-foreground text-balance">
+                Core Disciplines
               </h2>
+              <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-sm">
+                A grounded foundation combining business management, accounting, and execution.
+              </p>
             </motion.div>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.15, duration: MOTION_DURATIONS.standard }}
-              className="text-sm text-outline max-w-sm"
-            >
-              A grounded foundation combining business management, accounting and economics, and practical execution.
-            </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6" role="list" aria-label="Core pillars of work">
+          {/* Right: Vertical Ledger List */}
+          <div className="lg:col-span-8 flex flex-col">
             {pillars.map((pillar, index) => (
-              <PillarCard key={pillar.id} pillar={pillar} index={index} />
+              <motion.div
+                key={pillar.id}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{
+                  delay: index * 0.1,
+                  duration: 0.5,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="group border-t border-border py-8 first:border-t-0 lg:first:pt-0"
+              >
+                <div className="flex flex-col sm:flex-row gap-6 sm:gap-8">
+                  <div className="shrink-0 text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                    <Icon name={pillar.icon} size={24} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-medium text-foreground tracking-tight mb-2">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed max-w-md mb-6">
+                      {pillar.description}
+                    </p>
+                    
+                    <ul className="flex flex-wrap gap-2">
+                      {pillar.items.map((item) => (
+                        <li 
+                          key={item} 
+                          className="px-3 py-1 bg-surface-container text-xs font-medium text-foreground rounded-md border border-border/50"
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
             ))}
           </div>
+
         </div>
       </div>
     </section>
   );
 }
-
-export default WorkSection;

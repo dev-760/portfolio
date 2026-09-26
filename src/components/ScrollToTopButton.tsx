@@ -38,7 +38,7 @@ export function ScrollToTopButton() {
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
           transition={{ duration: 0.3, ease: MOTION_EASINGS.sharp }}
           onClick={scrollToTop}
-          className="group fixed bottom-8 right-8 z-50 flex h-[50px] w-[50px] hover:w-[140px] focus-visible:w-[140px] items-center justify-center rounded-full bg-primary hover:bg-accent text-on-primary hover:text-white shadow-lg hover:shadow-xl hover:shadow-accent/25 ring-4 ring-primary/15 dark:ring-accent/25 cursor-pointer overflow-hidden transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          className="group fixed bottom-8 right-8 z-50 flex h-[50px] w-[50px] hover:w-[140px] focus-visible:w-[140px] items-center justify-center rounded-full bg-primary hover:bg-accent text-on-primary hover:text-white shadow-md hover:shadow-lg cursor-pointer overflow-hidden transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           aria-label="Scroll to top"
         >
           {/* Arrow Icon - Moves up and fades out on hover */}
@@ -55,5 +55,3 @@ export function ScrollToTopButton() {
     </AnimatePresence>
   );
 }
-
-export default ScrollToTopButton;

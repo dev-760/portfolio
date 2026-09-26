@@ -22,30 +22,3 @@ export const MOTION_EASINGS = {
   linear: [0, 0, 1, 1] as const,
 } as const;
 
-export const SYSTEM_TRANSITIONS = {
-  // Standard UI transition
-  ui: {
-    duration: MOTION_DURATIONS.ui,
-    ease: MOTION_EASINGS.sharp,
-  },
-  // Structural assembly transition
-  structure: {
-    duration: MOTION_DURATIONS.standard,
-    ease: MOTION_EASINGS.system,
-  },
-  // Section entrance transition
-  section: {
-    duration: MOTION_DURATIONS.section,
-    ease: MOTION_EASINGS.system,
-  },
-  // Full system equilibrium transition
-  system: {
-    duration: MOTION_DURATIONS.system,
-    ease: MOTION_EASINGS.system,
-  },
-  // Fast tactile interaction
-  micro: {
-    duration: MOTION_DURATIONS.fast,
-    ease: MOTION_EASINGS.sharp,
-  },
-} as const;
