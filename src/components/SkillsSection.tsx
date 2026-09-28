@@ -106,7 +106,7 @@ export function SkillsSection() {
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
               <Icon name="work" size={16} />
-              Software I Use Weekly
+              Software I Use
             </h3>
           </div>
 

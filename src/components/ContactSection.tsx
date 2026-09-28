@@ -68,7 +68,7 @@ export function ContactSection() {
               Casablanca, Morocco (UTC+1)
             </span>
             <span className="text-muted-foreground/80">
-              I read this inbox myself and reply within a couple of days
+              I read this inbox myself and reply within 24 hours
             </span>
           </motion.div>
         </div>

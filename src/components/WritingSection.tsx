@@ -33,7 +33,6 @@ export function WritingSection({
   const [noteArticles, setNoteArticles] = useState<ArticleItem[]>(
     initialMonographs || fallbackMonographs
   );
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [activeModalArticle, setActiveModalArticle] = useState<ArticleItem | null>(null);
   const [hoveredArticle, setHoveredArticle] = useState<string | null>(null);
@@ -52,37 +51,6 @@ export function WritingSection({
       });
     }
   }, []);
-
-  const categories = useMemo(
-    () => [
-      { key: "all", label: "ALL DISCIPLINES", count: noteArticles.length, icon: "dashboard" },
-      {
-        key: "operations",
-        label: "OPERATIONS",
-        count: noteArticles.filter((a) => a.category === "operations").length,
-        icon: "precision_manufacturing",
-      },
-      {
-        key: "management",
-        label: "MANAGEMENT",
-        count: noteArticles.filter((a) => a.category === "management").length,
-        icon: "account_balance",
-      },
-      {
-        key: "finance",
-        label: "FINANCE",
-        count: noteArticles.filter((a) => a.category === "finance").length,
-        icon: "calculate",
-      },
-      {
-        key: "academics",
-        label: "ACADEMICS",
-        count: noteArticles.filter((a) => a.category === "academics").length,
-        icon: "school",
-      },
-    ],
-    [noteArticles]
-  );
 
   const handleOpenArticle = useCallback((article: ArticleItem) => {
     setActiveModalArticle(article);
@@ -125,23 +93,19 @@ export function WritingSection({
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  // Filter and search
   const filteredNoteArticles = useMemo(() => {
-    return noteArticles.filter((item) => {
-      const matchesCategory = selectedCategory === "all" || item.category === selectedCategory;
-      const query = searchQuery.trim().toLowerCase();
+    const query = searchQuery.trim().toLowerCase();
 
-      if (!query) return matchesCategory;
+    if (!query) return noteArticles;
 
-      const matchesText =
+    return noteArticles.filter(
+      (item) =>
         item.title.toLowerCase().includes(query) ||
         item.description.toLowerCase().includes(query) ||
         item.tags.some((tag) => tag.toLowerCase().includes(query)) ||
-        item.categoryLabel.toLowerCase().includes(query);
-
-      return matchesCategory && matchesText;
-    });
-  }, [selectedCategory, searchQuery, noteArticles]);
+        item.categoryLabel.toLowerCase().includes(query)
+    );
+  }, [searchQuery, noteArticles]);
 
   const handleCopyArticleLink = useCallback((article: ArticleItem, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
@@ -261,51 +225,39 @@ export function WritingSection({
         </motion.article>
 
         {/* ========================================================
-            PART 2: DISCIPLINE FILTER TABS & SEARCH
+            PART 2: NOTE SEARCH
             ======================================================== */}
         <div className="space-y-8 pt-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="flex flex-wrap items-center gap-2" role="group">
-              {categories.filter((cat) => cat.key === "all" || cat.count > 0).map((cat) => {
-                const isActive = selectedCategory === cat.key;
-                return (
-                  <button
-                    key={cat.key}
-                    type="button"
-                    onClick={() => setSelectedCategory(cat.key)}
-                    aria-pressed={isActive}
-                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-[10px] font-medium uppercase tracking-widest transition-all duration-200 cursor-pointer focus-visible:outline-none border ${isActive
-                      ? "bg-foreground text-background border-foreground"
-                      : "bg-surface text-muted-foreground hover:text-foreground border-border"
-                      }`}
-                  >
-                    <span>{cat.label}</span>
-                    <span className={`ml-0.5 opacity-60`}>
-                      ({cat.count})
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              {searchQuery.trim()
+                ? `${filteredNoteArticles.length} of ${noteArticles.length + 1} notes`
+                : `${noteArticles.length + 1} notes`}
+            </h3>
 
             {/* Keyword Search Input */}
             <div className="relative w-full sm:w-64">
+              <label htmlFor="notes-search" className="sr-only">
+                Search notes by title, summary, or tag
+              </label>
               <Icon
                 name="search"
                 size={16}
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
               />
               <input
+                id="notes-search"
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search notes..."
+                placeholder="Search notes"
                 className="w-full pl-9 pr-8 py-2 rounded-sm bg-surface border border-border text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground transition-colors"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery("")}
+                  aria-label="Clear note search"
                   className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground p-0.5 cursor-pointer"
                 >
                   <Icon name="close" size={14} />
@@ -313,6 +265,22 @@ export function WritingSection({
               )}
             </div>
           </div>
+
+          {filteredNoteArticles.length === 0 && (
+            <div className="border border-border bg-card p-8 text-center">
+              <p className="text-sm text-foreground font-medium">No notes match &ldquo;{searchQuery.trim()}&rdquo;.</p>
+              <p className="text-sm text-muted-foreground mt-2">
+                Clear the search to see all {noteArticles.length + 1} notes.
+              </p>
+              <button
+                type="button"
+                onClick={() => setSearchQuery("")}
+                className="mt-4 inline-flex items-center justify-center rounded-sm px-4 py-2 bg-foreground hover:bg-foreground/90 text-background text-xs font-semibold uppercase tracking-widest cursor-pointer"
+              >
+                Clear search
+              </button>
+            </div>
+          )}
 
           {/* Grid of Articles */}
           <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 pt-2">

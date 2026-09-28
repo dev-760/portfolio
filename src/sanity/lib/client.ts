@@ -227,7 +227,7 @@ export const fallbackFeaturedMonograph: MonographData = {
   categoryLabel: "OPERATIONS & SYSTEMS",
   categoryBadgeClass: "bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/25",
   date: "SEP 2026",
-  readTime: "6 MIN READ",
+  readTime: "3 MIN READ",
   title: "Understanding Systems Before Improving Them",
   description:
     "A reflection on why process changes should begin with observation, based on notes from commercial shoots and first-year management coursework.",
@@ -285,7 +285,7 @@ export const fallbackMonographs: MonographData[] = [
     categoryLabel: "OPERATIONS",
     categoryBadgeClass: "bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/25",
     date: "SEP 24, 2026",
-    readTime: "6 MIN READ",
+    readTime: "4 MIN READ",
     title: "Why Process Improvement Starts With Observation",
     description:
       "Before restructuring workflows or introducing new tools, spend dedicated time observing how work actually happens in real settings.",
@@ -322,7 +322,7 @@ export const fallbackMonographs: MonographData[] = [
     categoryLabel: "ACADEMICS",
     categoryBadgeClass: "bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/25",
     date: "SEP 2026",
-    readTime: "4 MIN READ",
+    readTime: "3 MIN READ",
     title: "From Physical Science to Economics: Continuity of Analytical Thinking",
     description:
       "A reflection on links between physical science coursework and quantitative business subjects.",
