@@ -154,7 +154,7 @@ function TimelineNodeItem({
               }`}
             >
               {item.isCurrent && (
-                <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="size-1.5 rounded-full bg-foreground/60" />
               )}
               {item.badge}
             </span>

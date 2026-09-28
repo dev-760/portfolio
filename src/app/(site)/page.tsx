@@ -31,8 +31,8 @@ export default function Home() {
               transition={{ delay: 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="text-4xl sm:text-5xl lg:text-7xl font-display font-normal tracking-tight leading-[1.05] text-foreground text-balance"
             >
-              Building strong business foundations.<br />
-              <span className="italic text-foreground/85">Solving problems with discipline.</span>
+              Building foundations in business administration.<br />
+              <span className="italic text-foreground/85">Learning through data, systems, and field practice.</span>
             </motion.h1>
 
             {/* Description */}
@@ -42,13 +42,12 @@ export default function Home() {
               transition={{ delay: 0.2, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="text-base sm:text-lg text-muted-foreground max-w-xl font-normal leading-relaxed text-pretty"
             >
-              First-year Business Administration student at FSJES Aïn Chock, Université Hassan II de Casablanca. Exploring how{" "}
+              Undergraduate in Business Administration at FSJES Aïn Chock, Casablanca. Bridging academic principles with hands-on practice in{" "}
               <TypingEffect
-                words={["management principles", "accounting & finance", "practical execution"]}
+                words={["operations coordination", "cost modeling", "workflow analysis"]}
                 className="text-foreground font-medium underline underline-offset-4 decoration-border"
                 pauseDuration={4000}
-              />{" "}
-              create tangible organizational value.
+              />.
             </motion.p>
 
             {/* Action Affordances */}
@@ -63,15 +62,15 @@ export default function Home() {
                 className="inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 bg-foreground hover:bg-foreground/90 text-background text-xs font-semibold uppercase tracking-wider transition-colors focus-visible:outline-none"
               >
                 <Icon name="mail" size={15} />
-                <span>Direct Correspondence</span>
+                <span>Get in Touch</span>
               </a>
 
               <a
                 href="#work"
-                className="inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 bg-card hover:bg-muted border border-border text-foreground text-xs font-semibold uppercase tracking-wider transition-colors focus-visible:outline-none"
+                className="inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 bg-card hover:bg-muted border border-border hover:border-foreground/40 text-foreground text-xs font-semibold uppercase tracking-wider transition-colors focus-visible:outline-none"
               >
                 <Icon name="checklist" size={15} />
-                <span>Explore Pillars</span>
+                <span>Applied Competencies</span>
               </a>
 
               <a

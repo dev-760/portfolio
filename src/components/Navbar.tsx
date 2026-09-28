@@ -220,7 +220,7 @@ export function Navbar() {
                   className="w-full inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 bg-foreground text-background text-xs font-semibold uppercase tracking-wider transition-colors"
                 >
                   <Icon name="mail" size={15} />
-                  <span>Direct Correspondence</span>
+                  <span>Get in Touch</span>
                 </a>
                 <p className="text-[11px] text-center text-muted-foreground font-mono">
                   FSJES Aïn Chock · Université Hassan II de Casablanca

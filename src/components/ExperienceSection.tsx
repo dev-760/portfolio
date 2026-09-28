@@ -44,8 +44,8 @@ export function ExperienceSection({ initialExperience }: ExperienceSectionProps 
             <h2 className="text-3xl lg:text-4xl font-display font-normal tracking-tight text-foreground">
               Experience &amp; Community Service
             </h2>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Real-world execution discipline gained through commercial media production coordination and civic youth initiatives.
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
+              Hands-on coordination in commercial media production and volunteer facilitation for civic youth programs.
             </p>
           </motion.div>
 
@@ -66,9 +66,9 @@ export function ExperienceSection({ initialExperience }: ExperienceSectionProps 
             ({ id, company, role, period, location, status, stack, description }) => ({
               index: id,
               content: (
-                <div className="space-y-4">
+                <div className="rounded-md border border-border bg-card p-6 sm:p-7 shadow-xs hover:border-foreground/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 space-y-4">
                   <div className="mb-2 flex gap-3 sm:items-center">
-                    <div className="bg-muted flex size-11 shrink-0 items-center justify-center rounded">
+                    <div className="icon-chip size-11 shrink-0">
                       <Icon name="work" size={20} className="text-foreground" />
                     </div>
                     <div>
@@ -101,7 +101,7 @@ export function ExperienceSection({ initialExperience }: ExperienceSectionProps 
                       {stack.map((tech) => (
                         <span
                           key={tech}
-                          className="inline-flex items-center rounded px-2.5 py-0.5 text-[11px] font-medium border border-border bg-muted/60 text-foreground"
+                          className="inline-flex items-center rounded px-2.5 py-0.5 text-[11px] font-medium border border-border bg-muted/80 text-foreground font-mono"
                         >
                           {tech}
                         </span>
@@ -109,7 +109,7 @@ export function ExperienceSection({ initialExperience }: ExperienceSectionProps 
                     </div>
                   </div>
 
-                  <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
+                  <p className="text-muted-foreground text-sm leading-relaxed max-w-2xl">{description}</p>
                 </div>
               ),
             })

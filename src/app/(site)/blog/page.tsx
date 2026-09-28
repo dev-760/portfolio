@@ -95,7 +95,7 @@ export default function Blog() {
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
         <div className="space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted/80 border border-border text-[11px] font-mono text-muted-foreground w-fit">
-            <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="size-1.5 rounded-full bg-foreground/60" />
             <span>Dispatches &amp; Field Notes</span>
           </div>
 

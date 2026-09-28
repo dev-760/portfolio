@@ -25,56 +25,45 @@ export interface WritingSectionProps {
 
 const defaultFeaturedEssay: ArticleItem = {
   id: "feat-systems",
-  slug: "understanding-systems-before-improving-them",
+  slug: "what-commercial-sets-taught-me-about-process-optimization",
   isFeatured: true,
   category: "operations",
-  categoryLabel: "OPERATIONS & SYSTEMS",
-  categoryBadgeClass: "bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/25",
+  categoryLabel: "OPERATIONS & FIELD PRACTICE",
+  categoryBadgeClass: "bg-muted text-foreground border-border",
   date: "SEP 2026",
-  readTime: "6 MIN READ",
-  title: "Understanding Systems Before Improving Them",
+  readTime: "5 MIN READ",
+  title: "What Commercial Sets Taught Me About Process Optimization",
   description:
-    "Why the instinctive urge to optimize processes often causes second-order chaos when underlying behavioral feedback loops are misunderstood. A case for rigorous observation before restructuring.",
+    "Observations from commercial shoots at EL25 Studio: why rigid theoretical schedules fail without informal crew coordination, and how physical staging mirrors assembly logistics.",
   thesis:
-    "Optimizing a workflow before diagnosing informal feedback loops almost always accelerates friction rather than throughput. True operational leverage begins with quiet, disciplined observation.",
-  tags: ["Systems Thinking", "Operations Management", "Workflow Design", "Chesterton's Fence"],
+    "Workflow efficiency on dynamic sets relies on informal coordination bridges and physical staging discipline rather than rigid theoretical spreadsheets.",
+  tags: ["Field Operations", "Process Observation", "Commercial Media", "Workflow Coordination"],
   keyTakeaways: [
-    "Premature automation digitizes flawed habits instead of eliminating unnecessary friction.",
-    "Bottlenecks frequently exist to solve a historical safety or quality issue that formal SOPs fail to record.",
-    "Real-world coordination happens across informal human bridges, not formal organizational pyramids.",
+    "Unplanned micro-delays compound exponentially when equipment handoffs lack designated physical staging zones.",
+    "Crew members solve friction through informal glancing signals, not formal hierarchy charts.",
+    "Observing frontline habits before drafting standardized procedures prevents costly operational friction.",
   ],
   academicContext:
-    "Monograph drafted in connection with coursework in Principles of Management, Production Operations, and Quantitative Analytical Methods.",
+    "Reflective essay connecting commercial media production coordination at EL25 Studio with foundational operations management principles at FSJES Aïn Chock.",
   sections: [
     {
-      heading: "1. The Premature Optimization Trap",
+      heading: "1. The Disconnect Between Schedule and Floor",
       paragraphs: [
-        "In modern business environments, there is a nearly universal bias toward intervention. When a team encounters delays, handoff errors, or rising operational costs, the standard executive reflex is immediate restructuring: introduce a new software tool, mandate daily status meetings, or redraw reporting hierarchies.",
-        "Yet in systems theory, premature intervention is recognized as one of the most reliable accelerators of instability. When you intervene in a complex, multi-agent process without first understanding its informal stabilization mechanisms, you inevitably solve one local symptom while generating two distant, systemic failures.",
+        "In production planning, call sheets look immaculate: timestamps down to five-minute increments, equipment lists mapped to vehicles, and designated roles for every technician. Yet within the first hour on set, delays almost always emerge.",
+        "The breakdown rarely stems from unmotivated crew or faulty equipment. It happens at handoff boundaries: a lens kit placed outside line-of-sight, a battery charger missing a labeled power outlet, or an audio engineer waiting on a director's verbal cue that never arrives.",
       ],
     },
     {
-      heading: "2. Mapping the Informal Highway",
+      heading: "2. Physical Staging as Inventory Control",
       paragraphs: [
-        "Every functioning organization operates on two parallel planes: the formal organizational chart (the theoretical workflow described in handbooks) and the informal highway (the direct human relationships, ad-hoc WhatsApp groups, and tacit agreements that actually move work forward).",
-        "During my coordination work on dynamic commercial media sets at EL25 Studio, I observed this phenomenon directly. When shoot schedules tightened, the crew did not consult formal contingency binders; they relied on nuanced glance signals between camera operators, gaffers, and directors. If an overzealous coordinator attempted to force strict adherence to a rigid theoretical spreadsheet, production cadence immediately collapsed.",
+        "The single most effective fix we tested was not rewriting the schedule, but physically standardizing the camera cart and media offload table. Camera operators knew exactly where exposed CFast cards were placed, and checksum ingest began instantly upon receipt.",
+        "This is basic 5S and lean inventory control in practice: reducing search time and handoff ambiguity eliminates more wasted minutes than pushing people to work faster.",
       ],
     },
     {
-      heading: "3. Chesterton's Fence in Business Operations",
+      heading: "3. Lessons for Future Business Administration",
       paragraphs: [
-        "The philosopher G.K. Chesterton formulated a famous operational rule: if you encounter a fence in the middle of a road and cannot discern why it was erected, the one thing you must never do is tear it down. First discover why the fence was put there in the first place; once you understand its purpose, you may judge whether it is obsolete.",
-        "In enterprise operations, process 'bottlenecks' often serve as Chesterton's fences. A tedious two-person signoff step that appears to slow down invoicing may actually be the sole barrier preventing costly billing discrepancies. Removing the friction without understanding the vulnerability invites catastrophe.",
-      ],
-    },
-    {
-      heading: "4. The 3-Step Observation Protocol",
-      paragraphs: [
-        "Before altering any workflow, managers and analysts should follow a disciplined three-phase diagnostic protocol:",
-        "1. Gemba Shadowing: Spend dedicated, non-evaluative hours sitting directly with the operators. Observe where work stalls, where papers are stacked, and where digital tools are circumvented.",
-        "2. Friction Logging: Ask frontline team members: 'What single task in your morning feels most unnecessarily exhausting?' The answer almost never matches what leadership suspects.",
-        "3. Structural Interrogation: Map the feedback loops. When variable X increases, what dampens it? What amplifies it? Only after this causal loop diagram is clear should tool evaluation begin.",
-        "True managerial excellence is not measured by the speed with which changes are decreed, but by the quiet durability with which improved systems thrive without continuous firefighting.",
+        "As a first-year student studying management frameworks, this field experience was invaluable. Management theories are essential compasses, but operational reality is shaped by physical layout, informal communication, and continuous quiet observation.",
       ],
     },
   ],
@@ -86,7 +75,7 @@ const defaultNoteArticles: ArticleItem[] = [
     slug: "why-process-improvement-starts-with-observation",
     category: "operations",
     categoryLabel: "OPERATIONS",
-    categoryBadgeClass: "bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/25",
+    categoryBadgeClass: "border border-border bg-muted/80 text-foreground",
     date: "SEP 24, 2026",
     readTime: "6 MIN READ",
     title: "Why Process Improvement Starts With Observation",
@@ -123,7 +112,7 @@ const defaultNoteArticles: ArticleItem[] = [
     slug: "from-physical-science-to-economics",
     category: "academics",
     categoryLabel: "ACADEMICS",
-    categoryBadgeClass: "bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/25",
+    categoryBadgeClass: "border border-border bg-muted/80 text-foreground",
     date: "NOV 18, 2026",
     readTime: "4 MIN READ",
     title: "From Physical Science to Economics: Continuity of Analytical Thinking",
@@ -171,6 +160,7 @@ export function WritingSection({
   const [searchQuery, setSearchQuery] = useState("");
   const [activeModalArticle, setActiveModalArticle] = useState<ArticleItem | null>(null);
   const [hoveredArticle, setHoveredArticle] = useState<string | null>(null);
+  const [copiedArticleId, setCopiedArticleId] = useState<string | null>(null);
 
   useEffect(() => {
     if (isSanityConfigured) {
@@ -188,33 +178,34 @@ export function WritingSection({
   }, []);
 
   const categories = useMemo(
-    () => [
-      { key: "all", label: "ALL DISCIPLINES", count: noteArticles.length, icon: "dashboard" },
-      {
-        key: "operations",
-        label: "OPERATIONS",
-        count: noteArticles.filter((a) => a.category === "operations").length,
-        icon: "precision_manufacturing",
-      },
-      {
-        key: "management",
-        label: "MANAGEMENT",
-        count: noteArticles.filter((a) => a.category === "management").length,
-        icon: "account_balance",
-      },
-      {
-        key: "finance",
-        label: "FINANCE",
-        count: noteArticles.filter((a) => a.category === "finance").length,
-        icon: "calculate",
-      },
-      {
-        key: "academics",
-        label: "ACADEMICS",
-        count: noteArticles.filter((a) => a.category === "academics").length,
-        icon: "school",
-      },
-    ],
+    () =>
+      [
+        { key: "all", label: "ALL DISCIPLINES", count: noteArticles.length, icon: "dashboard" },
+        {
+          key: "operations",
+          label: "OPERATIONS",
+          count: noteArticles.filter((a) => a.category === "operations").length,
+          icon: "precision_manufacturing",
+        },
+        {
+          key: "management",
+          label: "MANAGEMENT",
+          count: noteArticles.filter((a) => a.category === "management").length,
+          icon: "account_balance",
+        },
+        {
+          key: "finance",
+          label: "FINANCE",
+          count: noteArticles.filter((a) => a.category === "finance").length,
+          icon: "calculate",
+        },
+        {
+          key: "academics",
+          label: "ACADEMICS",
+          count: noteArticles.filter((a) => a.category === "academics").length,
+          icon: "school",
+        },
+      ].filter((cat) => cat.key === "all" || cat.count > 0),
     [noteArticles]
   );
 
@@ -281,6 +272,11 @@ export function WritingSection({
     if (e) e.stopPropagation();
     const url = `${window.location.origin}/#writing-${article.slug}`;
 
+    setCopiedArticleId(article.id);
+    setTimeout(() => {
+      setCopiedArticleId((current) => (current === article.id ? null : current));
+    }, 2500);
+
     if (navigator.clipboard) {
       navigator.clipboard.writeText(url).then(() => {
         showToast("Monograph link copied to clipboard!", "success");
@@ -333,35 +329,35 @@ export function WritingSection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="relative group bg-surface border border-border hover:border-primary/30 rounded-sm p-8 lg:p-10 transition-all duration-300 overflow-hidden cursor-pointer"
+          className="relative group bg-card border border-border hover:border-foreground/50 rounded-md p-8 lg:p-10 transition-all duration-300 shadow-xs hover:shadow-md hover:-translate-y-1 overflow-hidden cursor-pointer"
           onClick={() => handleOpenArticle(featuredEssay)}
         >
           <div className="flex flex-col lg:flex-row gap-8 items-start justify-between">
             <div className="space-y-5 max-w-3xl">
               {/* Metadata row */}
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="inline-flex items-center gap-1.5 text-[10px] font-medium tracking-widest uppercase px-2 py-0.5 rounded-sm bg-primary text-on-primary">
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-medium tracking-widest uppercase px-2 py-0.5 rounded-sm bg-foreground text-background font-mono">
                   <Icon name="sparkles" size={13} />
                   FEATURED
                 </span>
-                <span className="text-muted-foreground text-xs">
+                <span className="text-muted-foreground text-xs font-mono">
                   {featuredEssay.date} · {featuredEssay.readTime}
                 </span>
               </div>
 
               {/* Title & Subtitle */}
               <div>
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-display font-normal text-foreground leading-[1.1] tracking-tight group-hover:text-primary transition-colors">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-display font-normal text-foreground leading-[1.1] tracking-tight group-hover:text-foreground transition-colors">
                   {featuredEssay.title}
                 </h3>
-                <p className="text-sm sm:text-base text-muted-foreground mt-4 leading-relaxed">
+                <p className="text-sm sm:text-base text-muted-foreground mt-4 leading-relaxed max-w-2xl">
                   {featuredEssay.description}
                 </p>
               </div>
 
               {/* Core Thesis Highlight Quote Box */}
-              <div className="pl-4 border-l border-primary text-foreground text-sm sm:text-base italic leading-relaxed py-2 mt-2">
-                <span className="text-[10px] font-medium not-italic uppercase tracking-widest text-muted-foreground block mb-1">
+              <div className="pl-4 border-l-2 border-foreground/70 text-foreground text-sm sm:text-base italic leading-relaxed py-2 mt-2 max-w-2xl">
+                <span className="text-[10px] font-medium not-italic uppercase tracking-widest text-muted-foreground block mb-1 font-mono">
                   Core Thesis:
                 </span>
                 &ldquo;{featuredEssay.thesis}&rdquo;
@@ -376,7 +372,7 @@ export function WritingSection({
                   e.stopPropagation();
                   handleOpenArticle(featuredEssay);
                 }}
-                className="inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3 bg-foreground hover:bg-foreground/90 text-background text-xs font-semibold uppercase tracking-widest transition-all cursor-pointer focus-visible:outline-none w-full lg:w-48"
+                className="inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 bg-foreground hover:bg-foreground/90 text-background text-xs font-semibold uppercase tracking-widest transition-all cursor-pointer focus-visible:outline-none w-full lg:w-48"
               >
                 <span>Read Essay</span>
                 <Icon name="arrow_forward" size={16} />
@@ -385,10 +381,10 @@ export function WritingSection({
               <button
                 type="button"
                 onClick={(e) => handleCopyArticleLink(featuredEssay, e)}
-                className="inline-flex items-center justify-center gap-2 rounded-sm px-4 py-3 bg-surface hover:bg-muted text-foreground text-xs font-semibold uppercase tracking-widest transition-colors border border-border cursor-pointer focus-visible:outline-none w-full lg:w-48"
+                className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-3 bg-muted/70 hover:bg-muted text-foreground text-xs font-semibold uppercase tracking-widest transition-colors border border-border cursor-pointer focus-visible:outline-none w-full lg:w-48"
               >
-                <Icon name="share" size={14} />
-                <span>Share</span>
+                <Icon name={copiedArticleId === featuredEssay.id ? "check" : "share"} size={14} />
+                <span>{copiedArticleId === featuredEssay.id ? "Copied!" : "Share"}</span>
               </button>
             </div>
           </div>
@@ -466,18 +462,21 @@ export function WritingSection({
                     onMouseEnter={() => setHoveredArticle(article.id)}
                     onMouseLeave={() => setHoveredArticle(null)}
                     onClick={() => handleOpenArticle(article)}
-                    className="flex flex-col justify-between p-6 sm:p-8 bg-surface border border-border hover:border-primary/30 rounded-sm transition-colors group cursor-pointer"
+                    className="flex flex-col justify-between p-6 sm:p-8 bg-card border border-border hover:border-foreground/50 rounded-md transition-all duration-300 shadow-xs hover:shadow-md hover:-translate-y-1 group cursor-pointer"
                   >
                     <div>
                       {/* Top metadata */}
                       <div className="flex items-center justify-between text-xs mb-4">
-                        <span className="text-muted-foreground">
+                        <span className="text-muted-foreground font-mono">
                           {article.date} · {article.readTime}
+                        </span>
+                        <span className="inline-flex items-center rounded px-2 py-0.5 text-[10px] font-mono border border-border bg-muted/80 text-foreground">
+                          {article.categoryLabel}
                         </span>
                       </div>
 
                       {/* Title & Abstract */}
-                      <h4 className="text-lg sm:text-xl font-display font-normal text-foreground group-hover:text-primary transition-colors leading-snug mb-3">
+                      <h4 className="text-lg sm:text-xl font-display font-normal text-foreground group-hover:text-foreground transition-colors leading-snug mb-3">
                         {article.title}
                       </h4>
 
@@ -488,7 +487,7 @@ export function WritingSection({
 
                     {/* Bottom Action Footer */}
                     <div className="pt-4 border-t border-border flex items-center justify-between">
-                      <span className="text-[10px] font-medium uppercase tracking-widest text-foreground group-hover:text-primary flex items-center gap-1.5 transition-colors">
+                      <span className="text-[10px] font-medium uppercase tracking-widest text-foreground flex items-center gap-1.5 transition-colors font-mono">
                         <span>Read Note</span>
                         <motion.div
                           animate={{ x: isHovered ? 4 : 0 }}
@@ -510,28 +509,28 @@ export function WritingSection({
             PART 3: ACADEMIC EXCHANGE & MONOGRAPH CORRESPONDENCE
             ======================================================== */}
         <div className="pt-6">
-          <div className="p-8 sm:p-10 bg-surface border border-border rounded-sm relative overflow-hidden">
+          <div className="p-8 sm:p-10 bg-card border border-border rounded-md shadow-xs relative overflow-hidden">
             <div className="max-w-2xl relative">
               <h3 className="text-2xl sm:text-3xl font-display font-normal text-foreground mb-3 tracking-tight">
                 Engage with these notes
               </h3>
               <p className="text-muted-foreground text-sm mb-8 leading-relaxed">
-                Interested in discussing coursework methodology, operational case studies, or receiving future student monographs? Reach out directly via the verified correspondence channels.
+                Interested in discussing coursework methodology, operational observations, or business research? Reach out directly via email or LinkedIn.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
                 <a
                   href="#contact"
-                  className="px-6 py-3 bg-foreground hover:bg-foreground/90 text-background text-xs font-semibold uppercase tracking-widest rounded-sm transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-2 focus-visible:outline-none"
+                  className="px-6 py-3 bg-foreground hover:bg-foreground/90 text-background text-xs font-semibold uppercase tracking-widest rounded-md transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-2 focus-visible:outline-none"
                 >
                   <Icon name="mail" size={15} />
-                  <span>Direct Correspondence</span>
+                  <span>Get in Touch</span>
                 </a>
                 <a
                   href="https://linkedin.com/in/hassan-karasu-a7485336b"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-surface hover:bg-muted border border-border text-foreground text-xs font-semibold uppercase tracking-widest rounded-sm transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-2 focus-visible:outline-none"
+                  className="px-6 py-3 bg-muted/70 hover:bg-muted border border-border text-foreground text-xs font-semibold uppercase tracking-widest rounded-md transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-2 focus-visible:outline-none"
                 >
                   <Icon name="share" size={15} />
                   <span>Connect on LinkedIn</span>
@@ -559,12 +558,12 @@ export function WritingSection({
                 exit={{ opacity: 0, scale: 0.95, y: 16 }}
                 transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-3xl bg-surface border border-border rounded-sm overflow-hidden my-auto max-h-[90vh] flex flex-col"
+                className="w-full max-w-3xl bg-card border border-border rounded-md overflow-hidden my-auto max-h-[90vh] flex flex-col shadow-xl"
               >
                 {/* Modal Top Bar */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-surface shrink-0">
+                <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-card shrink-0">
                   <div className="flex items-center gap-3">
-                    <span className="text-muted-foreground text-xs">
+                    <span className="text-muted-foreground text-xs font-mono">
                       {activeModalArticle.date} · {activeModalArticle.readTime}
                     </span>
                   </div>
@@ -574,9 +573,9 @@ export function WritingSection({
                       type="button"
                       onClick={() => handleCopyArticleLink(activeModalArticle)}
                       className="p-2 rounded-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
-                      title="Copy link"
+                      title={copiedArticleId === activeModalArticle.id ? "Copied!" : "Copy link"}
                     >
-                      <Icon name="share" size={16} />
+                      <Icon name={copiedArticleId === activeModalArticle.id ? "check" : "share"} size={16} />
                     </button>
                     <button
                       type="button"
@@ -590,7 +589,7 @@ export function WritingSection({
                 </div>
 
                 {/* Modal Scrollable Article Body */}
-                <div className="px-6 sm:px-10 py-10 overflow-y-auto space-y-8">
+                <div className="px-6 sm:px-10 py-10 overflow-y-auto space-y-8 bg-card">
                   {/* Article Title & Byline */}
                   <div className="space-y-4 border-b border-border pb-8">
                     <h3
@@ -608,8 +607,8 @@ export function WritingSection({
                   </div>
 
                   {/* Core Thesis / Abstract */}
-                  <div className="pl-4 border-l-2 border-primary text-foreground">
-                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground block mb-2">
+                  <div className="pl-4 border-l-2 border-foreground/80 text-foreground max-w-2xl">
+                    <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground block mb-2 font-mono">
                       Thesis Statement:
                     </span>
                     <p className="text-sm sm:text-base italic leading-relaxed">
@@ -618,14 +617,14 @@ export function WritingSection({
                   </div>
 
                   {/* Key Takeaways */}
-                  <div className="p-6 bg-muted border border-border rounded-md space-y-3">
-                    <span className="text-[10px] font-medium uppercase tracking-widest text-foreground block mb-2">
+                  <div className="p-6 bg-muted/60 border border-border rounded-md space-y-3 max-w-2xl">
+                    <span className="text-[10px] font-medium uppercase tracking-widest text-foreground block mb-2 font-mono">
                       Core Insights &amp; Principles:
                     </span>
                     <ul className="space-y-2 text-sm text-muted-foreground list-none pl-0">
                       {activeModalArticle.keyTakeaways.map((takeaway, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <span className="mt-1 w-1 h-1 rounded-full bg-primary shrink-0" />
+                          <span className="mt-1 w-1.5 h-1.5 rounded-full bg-foreground/60 shrink-0" />
                           <span className="leading-relaxed">{takeaway}</span>
                         </li>
                       ))}
@@ -642,7 +641,7 @@ export function WritingSection({
                         {section.paragraphs.map((p, pIdx) => (
                           <p
                             key={pIdx}
-                            className="text-sm sm:text-base text-muted-foreground leading-relaxed"
+                            className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl"
                           >
                             {p}
                           </p>
@@ -652,21 +651,21 @@ export function WritingSection({
                   </div>
 
                   {/* Academic Context Footnote */}
-                  <div className="pt-8 border-t border-border text-xs text-muted-foreground space-y-1">
+                  <div className="pt-8 border-t border-border text-xs text-muted-foreground space-y-1 max-w-2xl font-mono">
                     <p className="font-medium text-foreground">Academic Citation &amp; Context:</p>
                     <p>{activeModalArticle.academicContext}</p>
                   </div>
                 </div>
 
                 {/* Modal Footer */}
-                <div className="px-6 py-4 border-t border-border bg-surface flex items-center justify-between shrink-0">
+                <div className="px-6 py-4 border-t border-border bg-card flex items-center justify-between shrink-0">
                   <button
                     type="button"
                     onClick={() => handleCopyArticleLink(activeModalArticle)}
-                    className="inline-flex items-center gap-1.5 text-[10px] font-medium text-foreground hover:text-primary uppercase tracking-widest cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-1.5 text-[10px] font-medium text-foreground hover:text-muted-foreground uppercase tracking-widest cursor-pointer transition-colors font-mono"
                   >
-                    <Icon name="share" size={14} />
-                    <span>Copy Link</span>
+                    <Icon name={copiedArticleId === activeModalArticle.id ? "check" : "share"} size={14} />
+                    <span>{copiedArticleId === activeModalArticle.id ? "Copied!" : "Copy Link"}</span>
                   </button>
 
                   <button

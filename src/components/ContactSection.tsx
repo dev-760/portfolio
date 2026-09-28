@@ -46,13 +46,13 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="space-y-2"
+            className="space-y-2 max-w-2xl"
           >
             <h2 className="text-3xl lg:text-4xl font-display font-normal tracking-tight text-foreground">
-              Direct Correspondence
+              Contact &amp; Availability
             </h2>
-            <p className="text-sm text-muted-foreground">
-              Direct communication channels for recruiters, professors, and business collaborators.
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Seeking a summer internship in operations, general accounting, or project coordination in Casablanca (available July – September). Open to discussing academic research, business coursework, and student initiatives.
             </p>
           </motion.div>
 
@@ -61,7 +61,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15, duration: 0.5 }}
-            className="flex flex-col items-start md:items-end gap-1.5 text-xs text-muted-foreground"
+            className="flex flex-col items-start md:items-end gap-1.5 text-xs text-muted-foreground shrink-0"
           >
             <span className="font-mono flex items-center gap-1.5">
               <Icon name="location_on" size={13} />
@@ -83,16 +83,16 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="rounded-md border border-border bg-card p-6 sm:p-7 hover:border-foreground/30 transition-all duration-200 flex flex-col justify-between space-y-5"
+            className="rounded-md border border-border bg-card p-6 sm:p-7 hover:border-foreground/50 transition-all duration-300 shadow-xs hover:shadow-md hover:-translate-y-1 flex flex-col justify-between space-y-5"
           >
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
+                <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5 font-mono">
                   <Icon name="mail" size={14} />
                   Direct Email
                 </span>
-                <span className="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
-                  <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground border border-border bg-muted/80 px-2 py-0.5 rounded">
+                  <span className="size-1.5 rounded-full bg-foreground/60" />
                   Active
                 </span>
               </div>
@@ -100,7 +100,7 @@ export function ContactSection() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
                 <a
                   href={`mailto:${profile.contact.email}`}
-                  className="text-base font-medium text-foreground hover:text-accent transition-colors truncate focus-visible:outline-none"
+                  className="text-base font-medium text-foreground hover:text-muted-foreground transition-colors truncate focus-visible:outline-none"
                 >
                   {profile.contact.email}
                 </a>
@@ -113,8 +113,8 @@ export function ContactSection() {
                 >
                   {copiedEmail ? (
                     <>
-                      <Icon name="check" size={13} className="text-emerald-600" />
-                      <span className="text-emerald-600">Copied</span>
+                      <Icon name="check" size={13} className="text-foreground" />
+                      <span className="text-foreground font-semibold">Copied</span>
                     </>
                   ) : (
                     <>
@@ -127,7 +127,7 @@ export function ContactSection() {
             </div>
 
             <p className="text-xs text-muted-foreground leading-relaxed pt-3 border-t border-border">
-              Monitored directly by Hassan Karasu.
+              Direct inbox monitored daily by Hassan Karasu.
             </p>
           </motion.div>
 
@@ -137,15 +137,15 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ delay: 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="rounded-md border border-border bg-card p-6 sm:p-7 hover:border-foreground/30 transition-all duration-200 flex flex-col justify-between space-y-5"
+            className="rounded-md border border-border bg-card p-6 sm:p-7 hover:border-foreground/50 transition-all duration-300 shadow-xs hover:shadow-md hover:-translate-y-1 flex flex-col justify-between space-y-5"
           >
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
+                <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5 font-mono">
                   <Icon name="share" size={14} />
                   Professional Network
                 </span>
-                <span className="text-[10px] uppercase tracking-widest text-muted-foreground">
+                <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-mono">
                   Verified
                 </span>
               </div>
@@ -155,13 +155,13 @@ export function ContactSection() {
                   href="https://linkedin.com/in/hassan-karasu-a7485336b"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3.5 rounded-md bg-muted hover:bg-muted/80 transition-colors group border border-border focus-visible:outline-none"
+                  className="flex items-center justify-between p-3.5 rounded-md bg-muted/70 hover:bg-muted transition-colors group border border-border focus-visible:outline-none"
                 >
                   <span className="text-sm font-semibold text-foreground flex items-center gap-2.5">
                     <LinkedinIcon size={16} color="currentColor" strokeWidth={2} />
                     Hassan Karasu on LinkedIn
                   </span>
-                  <div className="flex items-center gap-1 text-[11px] font-medium uppercase tracking-wider text-foreground group-hover:text-accent transition-colors">
+                  <div className="flex items-center gap-1 text-[11px] font-medium uppercase tracking-wider text-foreground group-hover:text-muted-foreground transition-colors">
                     <span>Connect</span>
                     <Icon name="arrow_outward" size={13} />
                   </div>

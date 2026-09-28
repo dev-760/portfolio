@@ -87,11 +87,11 @@ const profile: Profile = {
   name: "Hassan Karasu",
   title: "Business Administration Student",
   location: "Casablanca, Morocco",
-  tagline: "First-year Business Administration student at FSJES Aïn Chock, passionate about management, accounting, and practical execution.",
+  tagline: "First-year undergraduate at FSJES Aïn Chock, Université Hassan II de Casablanca. Developing foundational discipline in management, general accounting, and quantitative methods.",
   personalStatement:
-    "I am an undergraduate student pursuing a Licence in Business Administration at FSJES Aïn Chock, Université Hassan II de Casablanca.\n\nMy studies focus on building strong foundations across management principles, general accounting, micro and macroeconomics, quantitative methods, and business law.\n\nAlongside my academic coursework, I have hands-on experience in commercial ad production, on-set filming, video editing, and client collaboration from EL25 Studio, as well as community engagement through the national Motatawi3 volunteer program.\n\nI am driven by a practical mindset: understanding how organizations work, analyzing figures with precision, and using modern tools like spreadsheets and digital workflows to solve real operational problems.",
+    "I am an undergraduate student in Business Administration at FSJES Aïn Chock, Université Hassan II de Casablanca.\n\nMy studies combine core management principles, general accounting, micro and macroeconomics, and descriptive statistics with hands-on coordination experience gained on commercial media sets at EL25 Studio and civic youth outreach with the Motatawi3 program.\n\nHaving completed a bilingual Baccalaureate in Physical Science, I approach business questions with an empirical mindset: examining raw figures, verifying balance sheet records, and using spreadsheets to model practical workflows.",
   contact: {
-    email: "me@hassankarasu.dev",
+    email: "mail@hasankarasu.me",
   },
   languages: [
     {
@@ -100,7 +100,7 @@ const profile: Profile = {
     },
     {
       name: "English",
-      level: "Full Professional",
+      level: "Full Professional (Bilingual Baccalaureate)",
     },
   ],
   links: [
@@ -115,19 +115,19 @@ const profile: Profile = {
       label: "Academic Foundation",
       value: "Management & Economics",
       description:
-        "Building core competencies in microeconomics, organizational theory, general accounting, and quantitative methods at FSJES Aïn Chock.",
+        "Building core foundations in microeconomics, organizational theory, general accounting, and quantitative methods at FSJES Aïn Chock.",
     },
     {
       label: "Financial & Quantitative",
       value: "Accounting & Analysis",
       description:
-        "Mastering general accounting, cost analysis, descriptive statistics, and financial modeling in Excel.",
+        "Working through double-entry bookkeeping, cost accounting basics, descriptive statistics, and spreadsheet modeling.",
     },
     {
-      label: "Operational Experience",
-      value: "Ad Production & Media",
+      label: "Field Coordination",
+      value: "Production Logistics",
       description:
-        "Commercial ad production, on-set filming, post-production video editing, and client delivery gained through traineeship at EL25 Studio.",
+        "On-location camera and lighting support, media ingest in Premiere Pro, and call sheet tracking gained at EL25 Studio.",
     },
   ],
   navigation: [
@@ -142,11 +142,10 @@ const profile: Profile = {
   sections: {
     about: [
       "I am a first-year student pursuing a Licence in Business Administration at the Faculté des Sciences Juridiques, Économiques et Sociales (FSJES) Aïn Chock, Université Hassan II de Casablanca.",
-      "My academic program covers the essential pillars of modern commerce: management principles, general accounting, micro and macroeconomics, mathematics for economics, statistics, and business law.",
-      "Before starting university, I completed my Baccalaureate in Physical Science (English Option) at Prince Moulay Abdellah High School, which gave me strong quantitative discipline and fluency in English.",
-      "Outside the lecture hall, I have worked as a Production Trainee at EL25 Studio in Casablanca, supporting commercial ad production across on-set filming, video editing, and working directly with clients under tight deadlines.",
-      "I also volunteered with the national Motatawi3 youth empowerment program under the Ministry of Youth, Culture and Communication, organizing community workshops and mentoring local youth.",
-      "I enjoy combining academic business concepts with practical tools like Microsoft Excel, digital organization systems, and structured workflows to solve real-world problems.",
+      "My transition from a high school background in physical science into business administration was intentional: I wanted to bring mathematical skepticism and empirical habits to management and financial accounting questions.",
+      "In commercial media production at EL25 Studio, I assisted camera setups and managed raw footage ingest, learning firsthand how communication and schedule clarity keep dynamic teams moving forward.",
+      "Through the national Motatawi3 volunteer program, I co-facilitated community workshops for secondary students in Casablanca, organizing discussion stations and attendance tracking.",
+      "I focus on connecting university lecture theory with practical tools like Microsoft Excel formulas and structured data tables.",
     ],
     education: [
       {
@@ -158,52 +157,38 @@ const profile: Profile = {
       {
         institution: "Prince Moulay Abdellah High School",
         degree: "Baccalaureate in Physical Science (English Option)",
-        details: "2026",
+        details: "Class of 2026",
       },
     ],
     skills: [
       {
-        category: "Management & Business",
+        category: "Quantitative & Accounting",
         items: [
-          "Principles of Management",
-          "Organization Theory",
-          "Operational Logistics",
-          "Human Resource Basics",
-          "Business Law Fundamentals",
-          "Project Coordination",
-        ],
-      },
-      {
-        category: "Accounting & Finance",
-        items: [
-          "General Accounting",
-          "Cost Analysis (Comptabilité Analytique)",
-          "Descriptive Statistics",
+          "General Accounting (Journal & Ledger)",
+          "Cost Accounting Basics (Comptabilité Analytique)",
+          "Descriptive Statistics & Data Tables",
           "Mathematics for Economics",
-          "Personal Budgeting & Expense Tracking",
-          "Financial Reporting Basics",
+          "Cash Flow & Budget Tracking",
         ],
       },
       {
         category: "Productivity & Software",
         items: [
-          "Microsoft Excel (Formulas, Tables, Modeling)",
+          "Microsoft Excel (Formulas, Pivot Tables, Lookups)",
+          "Google Workspace (Docs, Sheets, Drive)",
           "Microsoft PowerPoint (Presentations)",
-          "Microsoft Word (Reports & Documentation)",
-          "Google Workspace",
-          "Notion & Digital Workspaces",
-          "Digital Skills & Collaboration Tools",
+          "Notion (Knowledge & Workspace Archives)",
+          "Digital File Hygiene & Backups",
         ],
       },
       {
-        category: "Analytical & Professional Skills",
+        category: "Operational Coordination",
         items: [
-          "Quantitative Problem Solving",
-          "Attention to Detail & Accuracy",
-          "Schedule & Deadline Management",
-          "Team Collaboration",
-          "Public Speaking & Debating",
-          "Independent Research",
+          "Call Sheet Scheduling & Timing",
+          "Digital Asset Ingest & Audio Sync",
+          "Equipment Staging & Checklist Management",
+          "Workshop Logistics & Group Coordination",
+          "Bilingual Documentation (FR / EN / AR)",
         ],
       },
     ],
@@ -213,35 +198,33 @@ const profile: Profile = {
         role: "Production Trainee — Commercial Ad Production",
         dates: "Jul – Sep 2023",
         location: "Casablanca, Morocco",
-        tagline: "Commercial ad production, on-set filming, post-production video editing, and client delivery.",
+        tagline: "Commercial ad production logistics, on-set camera assistance, and post-production ingest.",
         bullets: [
-          "Supported commercial ad production for brand campaigns, assisting camera, audio, and lighting setups during live filming",
-          "Conducted post-production video editing, footage assembly, and visual continuity checks tailored to client briefs",
-          "Collaborated directly with clients, creative directors, and crew on set to align deliverables with broadcast timelines",
-          "Coordinated call sheets, equipment preparation, and asset delivery under tight commercial deadlines",
+          "Assisted camera and lighting technicians during on-location commercial shoots in Casablanca, staging reflectors, cabling, and lens kits under senior crew direction.",
+          "Handled daily digital asset ingest in Premiere Pro: offloaded raw camera cards, verified checksums, synced external audio tracks, and assembled preliminary rough cuts.",
+          "Maintained daily call sheet schedules and gear checklists across shoot days to prevent equipment delays between location changes.",
         ],
         closing:
-          "Ad production instilled rigorous client accountability, fast-paced technical coordination, and execution discipline under hard deadlines.",
+          "Media production coordination instilled accountability, technical precision, and practical discipline under hard broadcast deadlines.",
       },
     ],
     volunteering: {
       organization: "Ministry of Youth, Culture and Communication (MJCC)",
       role: "Volunteer, Motatawi3 Program",
       dates: "Jul – Aug 2024",
-      skillTags: ["Mentorship", "Youth Education"],
+      skillTags: ["Civic Outreach", "Youth Mentorship"],
       bullets: [
-        "Took part in a national volunteer initiative for youth empowerment and community outreach",
-        "Helped plan and run workshops, mentorship activities, and awareness campaigns in underserved communities",
-        "Worked with local organizations and volunteers to deliver programs on civic responsibility and skill development",
-        "Supported youth in learning, creative thinking, and career exploration",
+        "Co-facilitated 4 civic engagement workshops for groups of 20–30 secondary students in Casablanca, preparing printed activity handouts and organizing discussion stations.",
+        "Managed on-site student registration and logistics alongside regional program coordinators across weekend sessions.",
+        "Led small peer discussion circles on study habits, basic digital tools, and transitioning into university programs.",
       ],
       closing: "",
     },
     achievements: [],
     contactMessage:
-      "Open to business administration internships, project inquiries, and academic or professional collaborations. Feel free to get in touch.",
+      "Seeking a summer 2025/2026 internship in operations, general accounting, or project coordination in Casablanca (available July – September). Open to discussing academic research and business projects.",
     projectsMessage:
-      "Practical tools and applications built to solve everyday student and operational problems.",
+      "Coursework models, operational coordination, and structured writing produced during my first year.",
   },
   projects: [],
 };

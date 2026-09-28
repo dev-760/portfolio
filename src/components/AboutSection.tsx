@@ -38,25 +38,18 @@ const KeywordHighlight: React.FC<KeywordHighlightProps> = ({ word, delay }) => {
 
 const operatingPrinciples = [
   {
-    tag: "DIAGNOSIS",
+    tag: "EMPIRICAL DISCIPLINE",
+    icon: "calculate",
+    title: "Data Before Assumptions",
+    description:
+      "Verify ledger records, unit costs, and raw figures in accounting and economics coursework before jumping to conclusions or preparing summary reports.",
+  },
+  {
+    tag: "FIELD OBSERVATION",
     icon: "search_insights",
-    title: "Understand the Context",
+    title: "Observe Informal Habits First",
     description:
-      "Examine organizational reality, underlying figures, and operational constraints before proposing changes or jumping into execution.",
-  },
-  {
-    tag: "ORGANIZATION",
-    icon: "account_tree",
-    title: "Structure the Process",
-    description:
-      "Deconstruct complex projects into clear, manageable phases with organized schedules, documentation, and tools like Microsoft Excel.",
-  },
-  {
-    tag: "EXECUTION",
-    icon: "precision_manufacturing",
-    title: "Deliver with Discipline",
-    description:
-      "Focus on meeting deadlines, communicating with complete transparency across team members, and taking personal responsibility for output quality.",
+      "On media shoots at EL25 Studio and in group projects, watch how teams coordinate informally before attempting to introduce new tools or restructure schedules.",
   },
 ];
 
@@ -100,31 +93,22 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
               className="lg:col-span-8"
             >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-normal tracking-tight text-foreground leading-[1.15]">
-                &ldquo;I&rsquo;m Hassan, a Business Administration student exploring how{" "}
-                <KeywordHighlight word="people" delay={0.35} />,{" "}
-                <KeywordHighlight word="organizations" delay={0.6} />, and{" "}
-                <KeywordHighlight word="numbers" delay={0.85} /> align to produce durable results.&rdquo;
+                &ldquo;I study business administration in Casablanca, focusing on how{" "}
+                <KeywordHighlight word="figures" delay={0.35} />,{" "}
+                <KeywordHighlight word="workflows" delay={0.6} />, and{" "}
+                <KeywordHighlight word="communication" delay={0.85} /> connect in practice.&rdquo;
               </h2>
             </motion.div>
 
-            {/* Right Supporting Paragraphs */}
-            <div className="lg:col-span-4 flex flex-col gap-5 text-muted-foreground text-sm sm:text-base leading-relaxed">
+            {/* Right Supporting Paragraph */}
+            <div className="lg:col-span-4 flex flex-col gap-4 text-muted-foreground text-sm sm:text-base leading-relaxed">
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.25, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                First-year undergraduate pursuing a Licence in Business Administration at FSJES Aïn Chock, building strong foundations in management, accounting, economics, and quantitative analysis.
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.35, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              >
-                Bridging university coursework with execution discipline gained from commercial ad production, filming, editing, and client management at EL25 Studio.
+                Undergraduate at FSJES Aïn Chock, Université Hassan II de Casablanca. Combining academic discipline in management and accounting with commercial media coordination.
               </motion.p>
             </div>
           </div>
@@ -149,22 +133,13 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
 
               <div className="text-muted-foreground text-sm sm:text-base leading-relaxed space-y-4">
                 <p>
-                  I am a first-year student pursuing a Licence in Business Administration at the{" "}
-                  <span className="font-medium text-foreground">
-                    Faculté des Sciences Juridiques, Économiques et Sociales (FSJES) Aïn Chock
-                  </span>
-                  , Université Hassan II de Casablanca. My objective is to master how businesses operate systematically: how management decisions are made, how financial accounting ensures organizational integrity, and how operational workflows deliver measurable outcomes.
+                  My academic path started in the sciences. Completing a bilingual Baccalaureate in Physical Science gave me an appreciation for mathematical modeling, hypothesis testing, and empirical verification. When I chose to pursue business administration at FSJES Aïn Chock, it was to apply that analytical discipline to commercial operations and accounting questions.
                 </p>
                 <p>
-                  My academic program establishes the core pillars of modern commerce: micro and macroeconomics, general accounting, cost analysis, descriptive statistics, and business law. I place particular value on developing analytical discipline and connecting classroom theory to practical problem-solving.
-                </p>
-                <p>
-                  Outside academia, serving as a Production Trainee in commercial ad production at{" "}
-                  <span className="font-medium text-foreground">EL25 Studio</span> gave me hands-on experience across on-set filming, post-production video editing, and working directly with clients to deliver brand campaigns under tight deadlines. In addition, volunteering in the national{" "}
-                  <span className="font-medium text-foreground">Motatawi3</span> youth initiative strengthened my communication and team coordination skills.
+                  Rather than treating management as purely theoretical, I look for how organizations function on the ground. Assisting commercial shoots at EL25 Studio showed me that even the tightest production schedule depends on clear communication and real-time adjustment. I am spending my undergraduate years building competence across general accounting, cost structures, and operational workflows.
                 </p>
                 <blockquote className="italic text-foreground p-4 border-l-2 border-foreground/30 bg-muted/40 rounded-r text-sm sm:text-base leading-relaxed mt-2">
-                  “Sound business practice starts with understanding the figures and the people behind them, followed by consistent, disciplined execution.”
+                  “Sound business practice starts with understanding the figures and the people behind them, followed by consistent execution.”
                 </blockquote>
               </div>
             </motion.div>
@@ -177,11 +152,11 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
               transition={{ delay: 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5"
             >
-              <div className="rounded-md border border-border bg-card p-6 space-y-4 shadow-xs">
+              <div className="rounded-md border border-border bg-card p-6 space-y-4 shadow-xs hover:border-foreground/50 hover:shadow-md transition-all duration-300">
                 <div className="flex items-center justify-between pb-3 border-b border-border">
                   <h4 className="text-sm font-semibold text-foreground">Overview &amp; Profile</h4>
-                  <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 uppercase tracking-wider">
-                    <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-muted text-foreground border border-border uppercase tracking-wider">
+                    <span className="size-1.5 rounded-full bg-foreground/60" />
                     Enrolled
                   </span>
                 </div>
@@ -213,18 +188,21 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
                     </dd>
                   </div>
 
-                  <div className="flex flex-col gap-0.5 pt-2 border-t border-border">
+                  <div className="flex flex-col gap-1.5 pt-2 border-t border-border">
                     <dt className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold mb-1">
                       Languages
                     </dt>
-                    <dd className="text-foreground flex flex-col gap-1.5">
-                      <div className="flex justify-between items-center text-xs">
+                    <dd className="text-foreground flex flex-col gap-2">
+                      <div className="flex justify-between items-baseline text-xs">
                         <span className="font-medium">Arabic</span>
-                        <span className="text-muted-foreground font-mono">Native</span>
+                        <span className="text-muted-foreground font-mono text-[11px]">Native</span>
                       </div>
-                      <div className="flex justify-between items-center text-xs">
-                        <span className="font-medium">English</span>
-                        <span className="text-muted-foreground font-mono">Full Professional (Bilingual Baccalaureate)</span>
+                      <div className="flex flex-col gap-0.5 text-xs">
+                        <div className="flex justify-between items-baseline">
+                          <span className="font-medium">English</span>
+                          <span className="text-muted-foreground font-mono text-[11px]">Full Professional</span>
+                        </div>
+                        <span className="text-[11px] text-muted-foreground">Bilingual Baccalaureate Option</span>
                       </div>
                     </dd>
                   </div>
@@ -243,7 +221,7 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
               Education &amp; Quantitative Foundation
             </h2>
             <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">
-              Rigorous academic preparation bridging quantitative analytical methods, scientific problem-solving, and core business administration principles.
+              Academic preparation bridging quantitative analytical methods, scientific problem-solving, and core business administration principles.
             </p>
           </div>
 
@@ -251,9 +229,9 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
             data={education.map(({ id, company, role, period, status, stack, description }) => ({
               index: id,
               content: (
-                <div className="space-y-4">
+                <div className="rounded-md border border-border bg-card p-6 sm:p-7 shadow-xs hover:border-foreground/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 space-y-4">
                   <div className="mb-2 flex gap-3 sm:items-center">
-                    <div className="bg-muted flex size-11 shrink-0 items-center justify-center rounded">
+                    <div className="icon-chip size-11 shrink-0">
                       <Icon name="graduation" size={20} className="text-foreground" />
                     </div>
                     <div>
@@ -279,7 +257,7 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
                       {stack.map((tech) => (
                         <span
                           key={tech}
-                          className="inline-flex items-center rounded px-2.5 py-0.5 text-[11px] font-medium border border-border bg-muted/60 text-foreground"
+                          className="inline-flex items-center rounded px-2.5 py-0.5 text-[11px] font-medium border border-border bg-muted/80 text-foreground font-mono"
                         >
                           {tech}
                         </span>
@@ -287,7 +265,7 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
                     </div>
                   </div>
 
-                  <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
+                  <p className="text-muted-foreground text-sm leading-relaxed max-w-2xl">{description}</p>
                 </div>
               ),
             }))}
@@ -295,19 +273,19 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
         </div>
 
         {/* ========================================================
-            PART 4: Operating Principles & Mindset (Crisp 3-Column Grid)
+            PART 4: Operating Habits & Methods (Disciplined 2-Column Grid)
             ======================================================== */}
         <div className="pt-12 border-t border-border space-y-8">
           <div className="space-y-2">
             <h2 className="text-2xl sm:text-3xl font-display font-normal text-foreground tracking-tight">
-              Operating Principles
+              Practical Habits
             </h2>
             <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">
-              Three disciplined rules guiding analysis, workflow organization, and consistent delivery.
+              Approaches developed across scientific coursework and field media production.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {operatingPrinciples.map((principle, index) => (
               <motion.div
                 key={principle.tag}
@@ -319,14 +297,14 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
                   duration: 0.5,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="rounded-md border border-border bg-card p-6 sm:p-7 flex flex-col justify-between hover:border-foreground/30 transition-all duration-300 shadow-xs group"
+                className="rounded-md border border-border bg-card p-6 sm:p-7 flex flex-col justify-between hover:border-foreground/50 transition-all duration-300 shadow-xs hover:shadow-md hover:-translate-y-1 group"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <div className="size-10 rounded bg-muted flex items-center justify-center text-foreground group-hover:scale-105 transition-transform duration-200">
+                    <div className="icon-chip size-10 group-hover:scale-105 transition-transform duration-200">
                       <Icon name={principle.icon} size={20} />
                     </div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground font-semibold px-2 py-0.5 rounded bg-muted/60 border border-border">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground font-semibold px-2 py-0.5 rounded bg-muted/80 border border-border">
                       {principle.tag}
                     </span>
                   </div>

@@ -107,14 +107,14 @@ export const fallbackExperience: ExperienceData[] = [
     period: "Jul — Sep 2023",
     location: "Casablanca, Morocco",
     stack: [
-      "Commercial Ad Production",
-      "On-Set Filming",
-      "Video Editing",
-      "Client Collaboration",
-      "Timeline Delivery",
+      "Commercial Ad Logistics",
+      "Camera & Lighting Staging",
+      "Premiere Pro Ingest",
+      "Audio Sync",
+      "Call Sheet Scheduling",
     ],
     description:
-      "Hands-on experience in commercial ad production for brand campaigns. Assisted in on-set filming and camera logistics, carried out post-production video editing, and worked directly with clients to ensure creative deliverables matched campaign briefs under tight broadcast deadlines.",
+      "Assisted camera and lighting technicians during on-location commercial shoots in Casablanca, staging reflectors, cabling, and lens kits under senior crew direction. Handled daily digital asset ingest in Premiere Pro: offloaded raw camera cards, verified checksums, synced external audio tracks, and assembled preliminary rough cuts.",
     order: 1,
   },
   {
@@ -122,16 +122,16 @@ export const fallbackExperience: ExperienceData[] = [
     company: "Ministry of Youth, Culture and Communication (MJCC)",
     role: "Volunteer, Motatawi3 National Program",
     period: "Jul — Aug 2024",
-    location: "Morocco",
+    location: "Casablanca, Morocco",
     status: "Civic Outreach",
     stack: [
-      "Youth Mentorship",
-      "Community Outreach",
-      "Workshop Planning",
-      "Civic Engagement",
+      "Workshop Logistics",
+      "Youth Outreach",
+      "Attendance Tracking",
+      "Peer Facilitation",
     ],
     description:
-      "Participated in a national volunteer initiative for youth empowerment and community engagement. Organized workshops, mentorship activities, and awareness sessions in local communities. Collaborated with organizations to deliver practical skill development programs.",
+      "Co-facilitated 4 civic engagement workshops for groups of 20–30 secondary students in Casablanca, preparing printed activity handouts and organizing discussion stations. Managed on-site student registration and logistics alongside regional program coordinators across weekend sessions.",
     order: 2,
   },
 ];
@@ -139,56 +139,46 @@ export const fallbackExperience: ExperienceData[] = [
 // Fallback Featured Monograph
 export const fallbackFeaturedMonograph: MonographData = {
   id: "feat-systems",
-  slug: "understanding-systems-before-improving-them",
+  slug: "what-commercial-sets-taught-me-about-process-optimization",
   isFeatured: true,
   category: "operations",
-  categoryLabel: "OPERATIONS & SYSTEMS",
-  categoryBadgeClass: "bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/25",
+  categoryLabel: "OPERATIONS & FIELD OBSERVATION",
+  categoryBadgeClass: "bg-muted text-foreground border-border",
   date: "SEP 2026",
   readTime: "6 MIN READ",
-  title: "Understanding Systems Before Improving Them",
+  title: "What Commercial Sets Taught Me About Process Optimization",
   description:
-    "Why the instinctive urge to optimize processes often causes second-order chaos when underlying behavioral feedback loops are misunderstood. A case for rigorous observation before restructuring.",
+    "Why informal habits keep production crews moving faster than rigid spreadsheets, and what business students should observe before proposing new systems.",
   thesis:
-    "Optimizing a workflow before diagnosing informal feedback loops almost always accelerates friction rather than throughput. True operational leverage begins with quiet, disciplined observation.",
-  tags: ["Systems Thinking", "Operations Management", "Workflow Design", "Chesterton's Fence"],
+    "Operational leverage begins with observing informal human coordination rather than decreeing new software tools. On a fast-paced set or in a warehouse, unglamorous observation reveals the micro-friction that summary dashboards obscure.",
+  tags: ["Systems Thinking", "Operations Management", "Workflow Design", "Field Observation"],
   keyTakeaways: [
-    "Premature automation digitizes flawed habits instead of eliminating unnecessary friction.",
-    "Bottlenecks frequently exist to solve a historical safety or quality issue that formal SOPs fail to record.",
-    "Real-world coordination happens across informal human bridges, not formal organizational pyramids.",
+    "Premature tool introduction digitizes existing bottlenecks instead of resolving them.",
+    "Frontline teams rely on informal glance signals and direct trust when deadlines tighten.",
+    "Understanding the reason behind an existing habit prevents costly restructuring errors.",
   ],
   academicContext:
-    "Monograph drafted in connection with coursework in Principles of Management, Production Operations, and Quantitative Analytical Methods.",
+    "Field reflection connecting coursework in Principles of Management with media coordination at EL25 Studio.",
   sections: [
     {
-      heading: "1. The Premature Optimization Trap",
+      heading: "1. The Premature Tool Trap",
       paragraphs: [
-        "In modern business environments, there is a nearly universal bias toward intervention. When a team encounters delays, handoff errors, or rising operational costs, the standard executive reflex is immediate restructuring: introduce a new software tool, mandate daily status meetings, or redraw reporting hierarchies.",
-        "Yet in systems theory, premature intervention is recognized as one of the most reliable accelerators of instability. When you intervene in a complex, multi-agent process without first understanding its informal stabilization mechanisms, you inevitably solve one local symptom while generating two distant, systemic failures.",
+        "In management coursework, we study flowcharting and standardized procedures. But in real operations, there is an instinctive urge to solve friction by introducing another tool—a new spreadsheet, a messaging channel, or extra signoffs.",
+        "On commercial production sets, premature intervention is one of the quickest ways to stall momentum. When a process involves multiple people under time pressure, adding software layers before understanding why delays happen only increases friction.",
       ],
     },
     {
-      heading: "2. Mapping the Informal Highway",
+      heading: "2. The Informal Coordination Highway",
       paragraphs: [
-        "Every functioning organization operates on two parallel planes: the formal organizational chart (the theoretical workflow described in handbooks) and the informal highway (the direct human relationships, ad-hoc WhatsApp groups, and tacit agreements that actually move work forward).",
-        "During my coordination work on dynamic commercial media sets at EL25 Studio, I observed this phenomenon directly. When shoot schedules tightened, the crew did not consult formal contingency binders; they relied on nuanced glance signals between camera operators, gaffers, and directors. If an overzealous coordinator attempted to force strict adherence to a rigid theoretical spreadsheet, production cadence immediately collapsed.",
+        "Every working team operates on two levels: the formal process described in handbooks, and the informal habits that actually keep tasks moving.",
+        "During commercial shoots at EL25 Studio, when call sheet schedules tightened before sunset, the crew did not stop to re-format spreadsheets. They relied on quick hand signals and direct trust between camera assistants, gaffers, and directors. A coordinator's job was not to impose artificial complexity, but to ensure equipment and batteries were physically ready where needed.",
       ],
     },
     {
-      heading: "3. Chesterton's Fence in Business Operations",
+      heading: "3. Observing Before Proposing Changes",
       paragraphs: [
-        "The philosopher G.K. Chesterton formulated a famous operational rule: if you encounter a fence in the middle of a road and cannot discern why it was erected, the one thing you must never do is tear it down. First discover why the fence was put there in the first place; once you understand its purpose, you may judge whether it is obsolete.",
-        "In enterprise operations, process 'bottlenecks' often serve as Chesterton's fences. A tedious two-person signoff step that appears to slow down invoicing may actually be the sole barrier preventing costly billing discrepancies. Removing the friction without understanding the vulnerability invites catastrophe.",
-      ],
-    },
-    {
-      heading: "4. The 3-Step Observation Protocol",
-      paragraphs: [
-        "Before altering any workflow, managers and analysts should follow a disciplined three-phase diagnostic protocol:",
-        "1. Gemba Shadowing: Spend dedicated, non-evaluative hours sitting directly with the operators. Observe where work stalls, where papers are stacked, and where digital tools are circumvented.",
-        "2. Friction Logging: Ask frontline team members: 'What single task in your morning feels most unnecessarily exhausting?' The answer almost never matches what leadership suspects.",
-        "3. Structural Interrogation: Map the feedback loops. When variable X increases, what dampens it? What amplifies it? Only after this causal loop diagram is clear should tool evaluation begin.",
-        "True managerial excellence is not measured by the speed with which changes are decreed, but by the quiet durability with which improved systems thrive without continuous firefighting.",
+        "Chesterton's principle reminds us that if you encounter an apparent bottleneck in a workflow, you must first learn why it was put there before deciding to remove it. An extra verification step may seem tedious until you realize it prevents expensive reshoots or billing discrepancies.",
+        "As business administration students, our priority during internships should be quiet, rigorous observation. We learn more by tracking where handoffs fail and asking operators about their daily friction than by preparing theoretical slide decks from behind a desk.",
       ],
     },
   ],
@@ -201,7 +191,7 @@ export const fallbackMonographs: MonographData[] = [
     slug: "why-process-improvement-starts-with-observation",
     category: "operations",
     categoryLabel: "OPERATIONS",
-    categoryBadgeClass: "bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/25",
+    categoryBadgeClass: "border border-border bg-muted/80 text-foreground",
     date: "SEP 24, 2026",
     readTime: "6 MIN READ",
     title: "Why Process Improvement Starts With Observation",
@@ -238,7 +228,7 @@ export const fallbackMonographs: MonographData[] = [
     slug: "from-physical-science-to-economics",
     category: "academics",
     categoryLabel: "ACADEMICS",
-    categoryBadgeClass: "bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/25",
+    categoryBadgeClass: "border border-border bg-muted/80 text-foreground",
     date: "NOV 18, 2026",
     readTime: "4 MIN READ",
     title: "From Physical Science to Economics: Continuity of Analytical Thinking",
@@ -318,16 +308,5 @@ export async function getFeaturedMonograph(): Promise<MonographData> {
 }
 
 export function getCategoryBadgeClass(category: string): string {
-  switch (category) {
-    case "operations":
-      return "bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/25";
-    case "management":
-      return "bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/25";
-    case "finance":
-      return "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/25";
-    case "academics":
-      return "bg-purple-500/10 text-purple-700 dark:text-purple-300 border-purple-500/25";
-    default:
-      return "bg-muted text-muted-foreground border-border";
-  }
+  return "border border-border bg-muted/80 text-foreground";
 }

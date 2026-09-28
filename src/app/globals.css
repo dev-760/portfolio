@@ -4,7 +4,7 @@
 @import "../motion/motion.css";
 
 @theme {
-  /* Professional Editorial System - Crafted Monochrome + Terracotta */
+  /* Professional Editorial System - Strict Pure Monochrome */
   --color-primary: #1A1A1A;
   --color-primary-container: #F2F2F0;
   --color-on-primary: #FFFFFF;
@@ -12,7 +12,7 @@
   --color-on-primary-fixed: #1A1A1A;
   --color-secondary: #4A4A4A;
   --color-on-secondary: #FFFFFF;
-  --color-accent: #B33A1F;
+  --color-accent: #111111;
   --color-on-accent: #FFFFFF;
   --color-background: #F9F9F8;
   --color-foreground: #111111;
@@ -21,7 +21,7 @@
   --color-muted: #F2F2F0;
   --color-muted-foreground: #666666;
   --color-border: #E5E5E3;
-  --color-destructive: #990000;
+  --color-destructive: #222222;
   --color-on-destructive: #FFFFFF;
   --color-ring: #1A1A1A;
   
@@ -35,21 +35,21 @@
   --color-outline: #888888;
   --color-outline-variant: #E5E5E3;
   
-  /* Dark mode colors - Deep charcoal and muted rust */
+  /* Dark mode colors - Pure Monochrome Grayscale */
   --color-primary-dark: #F2F2F0;
   --color-on-primary-dark: #111111;
   --color-secondary-dark: #888888;
   --color-on-secondary-dark: #1A1A1A;
-  --color-accent-dark: #E06D53;
+  --color-accent-dark: #F2F2F0;
   --color-on-accent-dark: #111111;
   --color-background-dark: #0A0A0A;
   --color-foreground-dark: #F2F2F0;
   --color-card-dark: #141414;
   --color-card-foreground-dark: #F2F2F0;
-  --color-muted-dark: #1A1A1A;
-  --color-muted-foreground-dark: #888888;
-  --color-border-dark: #222222;
-  --color-destructive-dark: #FF6666;
+  --color-muted-dark: #1E1E1E;
+  --color-muted-foreground-dark: #999999;
+  --color-border-dark: #2E2E2E;
+  --color-destructive-dark: #CCCCCC;
   --color-on-destructive-dark: #111111;
   --color-ring-dark: #F2F2F0;
   --color-surface-dark: #0A0A0A;
@@ -57,9 +57,9 @@
   --color-surface-container-low-dark: #0D0D0D;
   --color-surface-container-lowest-dark: #080808;
   --color-on-surface-dark: #F2F2F0;
-  --color-on-surface-variant-dark: #888888;
-  --color-outline-dark: #444444;
-  --color-outline-variant-dark: #222222;
+  --color-on-surface-variant-dark: #999999;
+  --color-outline-dark: #555555;
+  --color-outline-variant-dark: #2E2E2E;
   
   /* Typography - Editorial Scale */
   --font-sans: var(--font-sans), sans-serif;
@@ -352,5 +352,9 @@
 
   .max-w-145 {
     max-width: var(--max-width-145);
+  }
+
+  .icon-chip {
+    @apply flex items-center justify-center rounded border border-border bg-muted/80 text-foreground transition-colors;
   }
 }

@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Icon } from "@/components/icons/Icon";
 
-interface PillarItem {
+interface DeliverableItem {
   id: string;
   tag: string;
   title: string;
@@ -13,47 +13,47 @@ interface PillarItem {
   items: string[];
 }
 
-const pillars: PillarItem[] = [
+const deliverables: DeliverableItem[] = [
   {
-    id: "management",
-    tag: "DISCIPLINE 01",
-    title: "Management & Strategy",
-    icon: "account_balance",
-    description:
-      "Studying organization theory, managerial economics, and operational workflows to understand how enterprises organize personnel and execute strategy.",
-    items: [
-      "Principles of Management",
-      "Organization Theory",
-      "Operational Workflows",
-      "Human Resource Basics",
-    ],
-  },
-  {
-    id: "accounting",
-    tag: "DISCIPLINE 02",
-    title: "Accounting & Economics",
+    id: "finance-models",
+    tag: "DELIVERABLE 01",
+    title: "Financial Ledgers & Cost Models",
     icon: "calculate",
     description:
-      "Developing financial literacy and quantitative precision through general accounting, cost analysis, and macroeconomic principles.",
+      "Built double-entry journal templates, balance sheet balancing sheets, and personal expense tracking models in Microsoft Excel with clean formula structures.",
     items: [
-      "General Accounting",
-      "Cost Analysis & Budgeting",
-      "Descriptive Statistics",
-      "Mathematics for Economics",
+      "Double-Entry Journal & Ledger Sheets",
+      "Income Statement & Balance Reconciliations",
+      "Cost Allocation Worksheets (Comptabilité Analytique)",
+      "Documented Lookup & Summary Formulas",
     ],
   },
   {
-    id: "execution",
-    tag: "DISCIPLINE 03",
-    title: "Practical Execution",
+    id: "production-logistics",
+    tag: "DELIVERABLE 02",
+    title: "Commercial Production Logistics",
     icon: "checklist",
     description:
-      "Applying academic concepts to tangible outcomes: commercial ad production, filming, editing, and client delivery at EL25 Studio, Excel modeling, and structured project control.",
+      "Coordinated call sheet timing, equipment checklists, and daily camera card ingest during commercial media production at EL25 Studio under broadcast turnarounds.",
     items: [
-      "Ad Production & Filming",
-      "Post-Production Video Editing",
-      "Client & Schedule Delivery",
-      "Excel Workflow Modeling",
+      "Daily Multi-Location Call Sheet Schedules",
+      "Camera & Lighting Gear Staging Checklists",
+      "Premiere Pro Media Ingest & Checksum Verification",
+      "Multi-Track External Audio Syncing",
+    ],
+  },
+  {
+    id: "analytical-writing",
+    tag: "DELIVERABLE 03",
+    title: "Applied Analytical Writing",
+    icon: "article",
+    description:
+      "Authored structured monographs analyzing real-world workflows, process bottlenecks, and the continuity between physical science principles and microeconomics.",
+    items: [
+      "Field Notes: Informal Habits vs. Software Tools",
+      "Analysis: Physical Sciences into Economics",
+      "Operational Study: Chesterton's Fence in Business",
+      "Quantitative Argument Synthesis",
     ],
   },
 ];
@@ -72,10 +72,10 @@ export function WorkSection() {
             className="space-y-2 max-w-xl"
           >
             <h2 className="text-3xl lg:text-4xl font-display font-normal tracking-tight text-foreground">
-              Foundational Areas of Study
+              Applied Work &amp; Deliverables
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Three pillars combining management theory, accounting rigor, and real-world execution discipline.
+              Tangible models, field coordination schedules, and analytical writing produced during my first year.
             </p>
           </motion.div>
 
@@ -86,15 +86,15 @@ export function WorkSection() {
             transition={{ delay: 0.15, duration: 0.5 }}
             className="text-xs font-mono text-muted-foreground flex items-center gap-2"
           >
-            <span>FSJES Aïn Chock · Curriculum Framework</span>
+            <span>Student Portfolio · Tangible Outputs</span>
           </motion.div>
         </div>
 
         {/* 3-Column Pillar Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {pillars.map((pillar, index) => (
+          {deliverables.map((item, index) => (
             <motion.div
-              key={pillar.id}
+              key={item.id}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
@@ -103,40 +103,40 @@ export function WorkSection() {
                 duration: 0.5,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="rounded-md border border-border bg-card p-6 sm:p-7 flex flex-col justify-between hover:border-foreground/30 transition-all duration-300 shadow-xs hover:shadow-sm group"
+              className="rounded-md border border-border bg-card p-6 sm:p-7 flex flex-col justify-between hover:border-foreground/50 transition-all duration-300 shadow-xs hover:shadow-md hover:-translate-y-1.5 group"
             >
               <div className="space-y-5">
                 {/* Header with Icon and Tag */}
                 <div className="flex items-center justify-between">
-                  <div className="size-11 rounded bg-muted flex items-center justify-center text-primary group-hover:scale-105 transition-transform duration-200">
-                    <Icon name={pillar.icon} size={22} className="text-foreground" />
+                  <div className="icon-chip size-11 group-hover:scale-105 transition-transform duration-200">
+                    <Icon name={item.icon} size={22} className="text-foreground" />
                   </div>
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground font-semibold px-2 py-0.5 rounded bg-muted/70 border border-border/80">
-                    {pillar.tag}
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground font-semibold px-2 py-0.5 rounded bg-muted/80 border border-border">
+                    {item.tag}
                   </span>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-display font-normal text-foreground tracking-tight group-hover:text-primary transition-colors">
-                  {pillar.title}
+                <h3 className="text-2xl font-display font-normal text-foreground tracking-tight transition-colors">
+                  {item.title}
                 </h3>
 
                 {/* Description */}
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  {pillar.description}
+                  {item.description}
                 </p>
               </div>
 
               {/* Focus Areas List */}
               <div className="pt-6 mt-6 border-t border-border/70 space-y-2.5">
-                <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest block">
-                  Core Competencies
+                <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest block font-mono">
+                  Tangible Components
                 </span>
                 <ul className="space-y-1.5 text-xs text-foreground">
-                  {pillar.items.map((item) => (
-                    <li key={item} className="flex items-center gap-2">
+                  {item.items.map((subItem) => (
+                    <li key={subItem} className="flex items-center gap-2">
                       <span className="size-1 rounded-full bg-foreground/60 shrink-0" />
-                      <span>{item}</span>
+                      <span>{subItem}</span>
                     </li>
                   ))}
                 </ul>
