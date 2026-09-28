@@ -189,7 +189,7 @@ export function ContactSection() {
                   className="size-6 object-contain hidden dark:block"
                   loading="lazy"
                 />
-                <span className="font-sans font-medium text-sm tracking-tight text-foreground">
+                <span className="font-display text-base font-normal tracking-tight text-foreground">
                   Hassan Karasu
                 </span>
               </div>

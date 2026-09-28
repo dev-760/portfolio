@@ -130,7 +130,7 @@ export function Navbar() {
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, "#home")}
-            className="font-sans font-medium text-sm tracking-tight text-foreground cursor-pointer"
+            className="font-display text-base font-normal tracking-tight text-foreground cursor-pointer"
           >
             Hassan Karasu
           </a>
