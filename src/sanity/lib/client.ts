@@ -111,10 +111,9 @@ export const fallbackExperience: ExperienceData[] = [
       "On-Set Filming",
       "Video Editing",
       "Client Collaboration",
-      "Timeline Delivery",
     ],
     description:
-      "Supported commercial shoots for brand campaigns over one summer: preparing call sheets and equipment before filming, assisting camera, audio, and lighting setup on set, then cutting assembly edits in post to match each client's brief and its broadcast deadline.",
+      "What it was: a production traineeship at EL25 Studio in Casablanca from Jul — Sep 2023. My role: support commercial ad production across filming, editing, and client collaboration. What I did: assisted on set, edited video, and worked with clients on production deliverables. Outcome: TODO(hassan): What specific deliverable, responsibility, or result can you verify from this traineeship?",
     order: 1,
   },
   {
@@ -131,7 +130,7 @@ export const fallbackExperience: ExperienceData[] = [
       "Civic Engagement",
     ],
     description:
-      "Volunteered with the national Motatawi3 program under the Ministry of Youth, Culture and Communication: helped plan and run workshops and awareness sessions in underserved communities, alongside local organizations, on civic responsibility and practical skills.",
+      "What it was: volunteer work in the national Motatawi3 program under the Ministry of Youth, Culture and Communication from Jul — Aug 2024. My role: support youth empowerment and community outreach activities. What I did: helped organize workshops and worked with local organizers and volunteers. Outcome: TODO(hassan): Which workshop, activity, or participant outcome can you verify?",
     order: 2,
   },
 ];

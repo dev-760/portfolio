@@ -87,9 +87,9 @@ const profile: Profile = {
   name: "Hassan Karasu",
   title: "Business Administration Student",
   location: "Casablanca, Morocco",
-  tagline: "First-year Business Administration student at FSJES Aïn Chock, passionate about management, accounting, and practical execution.",
+  tagline: "First-year Business Administration student at FSJES Aïn Chock, studying management, accounting, and practical execution.",
   personalStatement:
-    "I am an undergraduate student pursuing a Licence in Business Administration at FSJES Aïn Chock, Université Hassan II de Casablanca.\n\nMy studies focus on building strong foundations across management principles, general accounting, micro and macroeconomics, quantitative methods, and business law.\n\nAlongside my academic coursework, I have hands-on experience in commercial ad production, on-set filming, video editing, and client collaboration from EL25 Studio, as well as community engagement through the national Motatawi3 volunteer program.\n\nI am driven by a practical mindset: understanding how organizations work, analyzing figures with precision, and using modern tools like spreadsheets and digital workflows to solve real operational problems.",
+    "I am an undergraduate student pursuing a Licence in Business Administration at FSJES Aïn Chock, Université Hassan II de Casablanca.\n\nMy studies focus on management principles, general accounting, micro and macroeconomics, quantitative methods, and business law.\n\nAlongside my coursework, I have experience in commercial ad production, on-set filming, video editing, and client collaboration from EL25 Studio, plus community work through the national Motatawi3 volunteer program.\n\nI work from concrete questions: how organizations make decisions, how accounting records them, and how daily work gets coordinated. I use spreadsheets and digital workflows to study those questions.",
   contact: {
     email: "me@hassankarasu.dev",
   },
@@ -213,15 +213,14 @@ const profile: Profile = {
         role: "Production Trainee — Commercial Ad Production",
         dates: "Jul – Sep 2023",
         location: "Casablanca, Morocco",
-        tagline: "Commercial ad production, on-set filming, post-production video editing, and client delivery.",
+        tagline: "Commercial ad production, on-set filming, video editing, and client collaboration.",
         bullets: [
-          "Supported commercial ad production for brand campaigns, assisting camera, audio, and lighting setups during live filming",
-          "Conducted post-production video editing, footage assembly, and visual continuity checks tailored to client briefs",
-          "Collaborated directly with clients, creative directors, and crew on set to align deliverables with broadcast timelines",
-          "Coordinated call sheets, equipment preparation, and asset delivery under tight commercial deadlines",
+          "What it was: a production traineeship at EL25 Studio in Casablanca from Jul – Sep 2023",
+          "My role: support commercial ad production across filming, editing, and client collaboration",
+          "What I did: assisted on set, edited video, and worked with clients on production deliverables",
+          "Outcome: TODO(hassan): What specific deliverable, responsibility, or result can you verify from this traineeship?",
         ],
-        closing:
-          "Ad production instilled rigorous client accountability, fast-paced technical coordination, and execution discipline under hard deadlines.",
+        closing: "TODO(hassan): What did the studio or client receive because of your contribution?",
       },
     ],
     volunteering: {
@@ -230,12 +229,12 @@ const profile: Profile = {
       dates: "Jul – Aug 2024",
       skillTags: ["Mentorship", "Youth Education"],
       bullets: [
-        "Took part in a national volunteer initiative for youth empowerment and community outreach",
-        "Helped plan and run workshops, mentorship activities, and awareness campaigns in underserved communities",
-        "Worked with local organizations and volunteers to deliver programs on civic responsibility and skill development",
-        "Supported youth in learning, creative thinking, and career exploration",
+        "What it was: volunteer work in the national Motatawi3 program under the Ministry of Youth, Culture and Communication from Jul – Aug 2024",
+        "My role: support youth empowerment and community outreach activities",
+        "What I did: helped organize workshops and worked with local organizers and volunteers",
+        "Outcome: TODO(hassan): Which workshop, activity, or participant outcome can you verify?",
       ],
-      closing: "",
+      closing: "TODO(hassan): What changed for the participants or organizers because of your work?",
     },
     achievements: [],
     contactMessage:
