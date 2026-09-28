@@ -24,7 +24,7 @@
   --color-destructive: #990000;
   --color-on-destructive: #FFFFFF;
   --color-ring: #1A1A1A;
-  
+
   /* Light mode surface colors */
   --color-surface: #F9F9F8;
   --color-surface-container: #F2F2F0;
@@ -34,7 +34,7 @@
   --color-on-surface-variant: #666666;
   --color-outline: #888888;
   --color-outline-variant: #E5E5E3;
-  
+
   /* Dark mode colors - Deep charcoal and muted rust */
   --color-primary-dark: #F2F2F0;
   --color-on-primary-dark: #111111;
@@ -60,19 +60,19 @@
   --color-on-surface-variant-dark: #888888;
   --color-outline-dark: #555555;
   --color-outline-variant-dark: #222222;
-  
+
   /* Typography - Editorial Scale */
   --font-sans: var(--font-sans), sans-serif;
   --font-display: var(--font-display), serif;
   --text-body-lg: 1.125rem;
   --text-body-md: 0.9375rem;
-  
+
   /* Custom Border Radii - Sharper, less generic rounded-lg everywhere */
   --radius-default: 0.125rem;
   --radius-lg: 0.25rem;
   --radius-xl: 0.5rem;
   --radius-full: 9999px;
-  
+
   /* Enhanced Spacing Scale */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
@@ -157,7 +157,12 @@
   }
 
   /* Typography hierarchy improvements */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply text-foreground;
     font-weight: 400;
   }
@@ -194,7 +199,7 @@
   p {
     max-width: 65ch;
   }
-  
+
   /* Dark mode styles */
   .dark {
     --color-primary: var(--color-primary-dark);
@@ -240,10 +245,11 @@
   .dark .logo-light-img {
     display: none !important;
   }
+
   html:not(.dark) .logo-dark-img {
     display: none !important;
   }
-  
+
   /* Material Symbols Outlined font styling */
   .material-symbols-outlined {
     font-family: 'Material Symbols Outlined';
@@ -265,7 +271,7 @@
 
   .grid-lines {
     background-size: 28px 28px;
-    background-image: 
+    background-image:
       linear-gradient(to right, rgba(196, 197, 217, 0.22) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(196, 197, 217, 0.22) 1px, transparent 1px);
   }
@@ -292,6 +298,7 @@
 
   /* Enhanced reduced motion support */
   @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -317,6 +324,16 @@
 
   .section {
     @apply py-16 sm:py-20 lg:py-32;
+  }
+
+  @media (max-width: 374px) {
+    .container {
+      @apply px-3;
+    }
+
+    .section {
+      @apply py-12;
+    }
   }
 
   .section-sm {

@@ -274,11 +274,10 @@ export function WritingSection({
                     type="button"
                     onClick={() => setSelectedCategory(cat.key)}
                     aria-pressed={isActive}
-                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-[10px] font-medium uppercase tracking-widest transition-all duration-200 cursor-pointer focus-visible:outline-none border ${
-                      isActive
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-[10px] font-medium uppercase tracking-widest transition-all duration-200 cursor-pointer focus-visible:outline-none border ${isActive
                         ? "bg-foreground text-background border-foreground"
                         : "bg-surface text-muted-foreground hover:text-foreground border-border"
-                    }`}
+                      }`}
                   >
                     <span>{cat.label}</span>
                     <span className={`ml-0.5 opacity-60`}>
@@ -376,7 +375,7 @@ export function WritingSection({
             PART 3: ACADEMIC EXCHANGE & MONOGRAPH CORRESPONDENCE
             ======================================================== */}
         <div className="pt-6">
-          <div className="p-8 sm:p-10 bg-surface border border-border rounded-sm relative overflow-hidden">
+          <div className="p-6 sm:p-10 bg-surface border border-border rounded-sm relative overflow-hidden">
             <div className="max-w-2xl relative">
               <h3 className="text-2xl sm:text-3xl font-display font-normal text-foreground mb-3 tracking-tight">
                 Discuss These Notes
@@ -385,10 +384,10 @@ export function WritingSection({
                 If you have worked a floor longer than I have, I would rather hear where these notes are wrong. The channels below reach me directly.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4">
                 <a
                   href="#contact"
-                  className="px-6 py-3 bg-foreground hover:bg-foreground/90 text-background text-xs font-semibold uppercase tracking-widest rounded-sm transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-2 focus-visible:outline-none"
+                  className="w-full justify-center px-6 py-3 bg-foreground hover:bg-foreground/90 text-background text-xs font-semibold uppercase tracking-widest rounded-sm transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-2 focus-visible:outline-none sm:w-auto"
                 >
                   <Icon name="mail" size={15} />
                   <span>Get in Touch</span>
@@ -397,7 +396,7 @@ export function WritingSection({
                   href="https://linkedin.com/in/hassan-karasu-a7485336b"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-surface hover:bg-muted border border-border text-foreground text-xs font-semibold uppercase tracking-widest rounded-sm transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-2 focus-visible:outline-none"
+                  className="w-full justify-center px-6 py-3 bg-surface hover:bg-muted border border-border text-foreground text-xs font-semibold uppercase tracking-widest rounded-sm transition-colors whitespace-nowrap cursor-pointer inline-flex items-center gap-2 focus-visible:outline-none sm:w-auto"
                 >
                   <Icon name="share" size={15} />
                   <span>Connect on LinkedIn</span>
