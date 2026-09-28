@@ -32,7 +32,7 @@ export function generatePageMetadata(
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: `${title} — Hassan Karasu`,
+          alt: `${title}, Hassan Karasu`,
         },
       ],
     },

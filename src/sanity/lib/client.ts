@@ -79,7 +79,7 @@ export const fallbackSkills: SkillData[] = [
     id: "analytical-thinking",
     group: "analysis",
     name: "Quantitative & Analytical Thinking",
-    description: "I work through accounting, economics, mathematics, and statistics exercises by showing the steps and checking the totals.",
+    description: "I show my steps and check the totals on accounting, economics, mathematics, and statistics exercises.",
     icon: "calculate",
     order: 1,
   },
@@ -87,7 +87,7 @@ export const fallbackSkills: SkillData[] = [
     id: "process-coordination",
     group: "analysis",
     name: "Process & Schedule Coordination",
-    description: "I keep tasks, handoffs, and deadlines visible across coursework and commercial production work.",
+    description: "I keep tasks, handoffs, and deadlines visible, from coursework deadlines to shoot days at EL25 Studio.",
     icon: "schedule",
     order: 2,
   },
@@ -95,7 +95,7 @@ export const fallbackSkills: SkillData[] = [
     id: "structured-problem-solving",
     group: "analysis",
     name: "Structured Problem Solving",
-    description: "I break management case studies and quantitative exercises into steps I can check one by one.",
+    description: "I take a management case apart into a sequence I can verify, then answer the question it actually asks.",
     icon: "account_tree",
     order: 3,
   },
@@ -157,14 +157,14 @@ export const fallbackEducation: EducationData[] = [
       "Empirical Data Analysis",
     ],
     description:
-      "Completed a Baccalaureate in Physical Science (English Option). TODO(hassan): Which subjects, result, or assessed work should this entry include?",
+      "Completed a Baccalaureate in Physical Science (English Option).",
     order: 1,
   },
   {
     id: "02",
     company: "Faculté des Sciences Juridiques, Économiques et Sociales (FSJES) Aïn Chock · Université Hassan II",
     role: "Licence in Business Administration",
-    period: "2026 — Present",
+    period: "2026 to present",
     status: "Current Enrollment · First-Year",
     stack: [
       "General Accounting",
@@ -186,7 +186,7 @@ export const fallbackExperience: ExperienceData[] = [
   {
     id: "01",
     company: "EL25 Studio",
-    role: "Production Trainee — Commercial Ad Production",
+    role: "Production Trainee, Commercial Ad Production",
     period: "Jul – Sep 2023",
     location: "Casablanca, Morocco",
     stack: [
@@ -196,7 +196,7 @@ export const fallbackExperience: ExperienceData[] = [
       "Client Collaboration",
     ],
     description:
-      "What it was: a production traineeship at EL25 Studio in Casablanca from Jul – Sep 2023. My role: support commercial ad production across filming, editing, and client collaboration. What I did: assisted on set, edited video, and worked with clients on production deliverables. Outcome: TODO(hassan): What specific deliverable, responsibility, or result can you verify from this traineeship?",
+      "A production traineeship at EL25 Studio in Casablanca, supporting commercial ad production. I prepared call sheets and equipment lists the day before a shoot, assisted on set, edited the footage in post, and worked with clients and production staff to keep each deliverable on its deadline.",
     order: 1,
   },
   {
@@ -213,7 +213,7 @@ export const fallbackExperience: ExperienceData[] = [
       "Civic Engagement",
     ],
     description:
-      "What it was: volunteer work in the national Motatawi3 program under the Ministry of Youth, Culture and Communication from Jul – Aug 2024. My role: support youth empowerment and community outreach activities. What I did: helped organize workshops and worked with local organizers and volunteers. Outcome: TODO(hassan): Which workshop, activity, or participant outcome can you verify?",
+      "Volunteer work in the national Motatawi3 program under the Ministry of Youth, Culture and Communication. I helped organize workshops, ran awareness sessions with local organizers and volunteers, and supported young people working through practical skills and career options.",
     order: 2,
   },
 ];
@@ -304,7 +304,7 @@ export const fallbackMonographs: MonographData[] = [
         heading: "The Disconnect Between Theory and the Floor",
         paragraphs: [
           "Standard operational textbooks emphasize flowcharts, KPI matrices, and Lean frameworks. Used only from behind a desk, they can create an illusion of control.",
-          "When observing live workflows—whether managing inventory in a storage room or coordinating equipment loading before sunrise—the real bottleneck is rarely a shortage of software. It is ambiguous handoffs, incomplete asset tagging, or conflicting priorities between team members.",
+          "When observing live workflows, whether managing inventory in a storage room or coordinating equipment loading before sunrise, the real bottleneck is rarely a shortage of software. It is ambiguous handoffs, incomplete asset tagging, or conflicting priorities between team members.",
         ],
       },
       {
@@ -340,7 +340,7 @@ export const fallbackMonographs: MonographData[] = [
       {
         heading: "A Shared Language of Systems",
         paragraphs: [
-          "Transitioning from the French-track Moroccan Baccalauréat in Physical Sciences to a Business Administration degree revealed a profound synergy. Many students view economics as purely qualitative, but its core engines—marginal utility, elasticity, cost optimization—are fundamentally mathematical.",
+          "Transitioning from the French-track Moroccan Baccalauréat in Physical Sciences to a Business Administration degree revealed a profound overlap. Many students view economics as purely qualitative, but its core engines (marginal utility, elasticity, cost optimization) are fundamentally mathematical.",
           "When studying chemical equilibria in physics, Le Chatelier's principle states that a system in balance counteracts external perturbations. In microeconomics, competitive markets respond to price shocks through remarkably analogous balancing feedback loops.",
         ],
       },

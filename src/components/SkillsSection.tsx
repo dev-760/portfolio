@@ -28,28 +28,28 @@ export function SkillsSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border pb-8">
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-2 max-w-xl"
           >
             <h2 className="text-3xl lg:text-4xl font-display font-normal tracking-tight text-foreground">
-              Tools for Thinking &amp; Solving
+              Tools I Work With
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Coursework and tools I use for analysis, organization, and communication.
+              How I study, how I organize, and what I use to do both.
             </p>
           </motion.div>
 
           <motion.p
-            initial={{ opacity: 0 }}
+            initial={false}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15, duration: 0.5 }}
             className="text-xs font-mono text-muted-foreground"
           >
-            Quantitative · Operational · Digital
+            Accounting · Analysis · Software
           </motion.p>
         </div>
 
@@ -68,7 +68,7 @@ export function SkillsSection() {
             {problemSolvingSkills.map((skill, index) => (
               <motion.div
                 key={skill.id}
-                initial={{ opacity: 0, y: 14 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{
@@ -114,7 +114,7 @@ export function SkillsSection() {
             {productivityStacks.map((stack, index) => (
               <motion.div
                 key={stack.id}
-                initial={{ opacity: 0, y: 14 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{

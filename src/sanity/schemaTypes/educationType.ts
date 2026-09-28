@@ -23,7 +23,7 @@ export const educationType = defineType({
       name: "period",
       title: "Academic Period",
       type: "string",
-      description: "e.g., 2026 — Present or Class of 2026",
+      description: "e.g., 2026 to present or Class of 2026",
       validation: (Rule) => Rule.required(),
     }),
     defineField({

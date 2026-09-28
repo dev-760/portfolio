@@ -40,7 +40,7 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             {/* Left Headline */}
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{
@@ -58,7 +58,7 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
             {/* Right Supporting Paragraphs */}
             <div className="lg:col-span-4 flex flex-col gap-5 text-muted-foreground text-sm sm:text-base leading-relaxed">
               <motion.p
-                initial={{ opacity: 0, y: 10 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.35, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -76,7 +76,7 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             {/* Left: Narrative Bio */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -106,7 +106,7 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
 
             {/* Right: At a Glance Property List */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -115,10 +115,6 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
               <div className="rounded-md border border-border bg-card p-6 space-y-4 shadow-xs">
                 <div className="flex items-center justify-between pb-3 border-b border-border">
                   <h4 className="text-sm font-semibold text-foreground">Overview &amp; Profile</h4>
-                  <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-semibold bg-muted text-muted-foreground border border-border uppercase tracking-wider">
-                    <span className="size-1.5 rounded-full bg-foreground animate-pulse" />
-                    Enrolled
-                  </span>
                 </div>
 
                 <dl className="space-y-4 text-xs sm:text-sm">

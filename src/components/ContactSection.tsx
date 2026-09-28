@@ -42,7 +42,7 @@ export function ContactSection() {
             ======================================================== */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border pb-8">
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -52,12 +52,12 @@ export function ContactSection() {
               Get in Touch
             </h2>
             <p className="text-sm text-muted-foreground">
-              I am looking for a first internship &mdash; summer 2027, ideally in accounting or operations, Casablanca or remote.
+              I am looking for a first internship, summer 2027, ideally in accounting or operations, Casablanca or remote.
             </p>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={false}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15, duration: 0.5 }}
@@ -79,23 +79,17 @@ export function ContactSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
           {/* Direct Email Card */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="rounded-md border border-border bg-card p-6 sm:p-7 hover:border-foreground/30 transition-all duration-200 flex flex-col justify-between space-y-5"
           >
             <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
-                  <Icon name="mail" size={14} />
-                  Direct Email
-                </span>
-                <span className="inline-flex items-center gap-1 text-[10px] font-medium text-muted-foreground">
-                  <span className="size-1.5 rounded-full bg-foreground animate-pulse" />
-                  Active
-                </span>
-              </div>
+              <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
+                <Icon name="mail" size={14} />
+                Direct Email
+              </span>
 
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
                 <a
@@ -113,8 +107,8 @@ export function ContactSection() {
                 >
                   {copiedEmail ? (
                     <>
-                      <Icon name="check" size={13} className="text-emerald-600" />
-                      <span className="text-emerald-600">Copied</span>
+                      <Icon name="check" size={13} />
+                      <span>Copied</span>
                     </>
                   ) : (
                     <>
@@ -131,7 +125,7 @@ export function ContactSection() {
 
           {/* LinkedIn Network Card */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ delay: 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -216,16 +210,16 @@ export function ContactSection() {
                 About
               </a>
               <a href="#work" className="hover:text-foreground transition-colors">
-                Work
+                Studies
               </a>
               <a href="#skills" className="hover:text-foreground transition-colors">
-                Skills
+                Tools
               </a>
               <a href="#experience" className="hover:text-foreground transition-colors">
                 Experience
               </a>
               <a href="#writing" className="hover:text-foreground transition-colors">
-                Monographs
+                Notes
               </a>
               <a href="#contact" className="hover:text-foreground transition-colors">
                 Contact

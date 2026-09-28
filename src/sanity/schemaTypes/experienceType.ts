@@ -23,7 +23,7 @@ export const experienceType = defineType({
       name: "period",
       title: "Dates / Period",
       type: "string",
-      description: "e.g., Jul — Sep 2023",
+      description: "e.g., Jul to Sep 2023",
       validation: (Rule) => Rule.required(),
     }),
     defineField({

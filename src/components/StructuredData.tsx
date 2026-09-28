@@ -90,13 +90,13 @@ export function StructuredData() {
           {
             "@type": "ListItem",
             "position": 3,
-            "name": "Work",
+            "name": "Studies",
             "item": "https://hassankarasu.dev/#work"
           },
           {
             "@type": "ListItem",
             "position": 4,
-            "name": "Skills",
+            "name": "Tools",
             "item": "https://hassankarasu.dev/#skills"
           },
           {
@@ -108,7 +108,7 @@ export function StructuredData() {
           {
             "@type": "ListItem",
             "position": 6,
-            "name": "Monographs",
+            "name": "Notes",
             "item": "https://hassankarasu.dev/#writing"
           },
           {

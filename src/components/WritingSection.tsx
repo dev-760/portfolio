@@ -131,26 +131,26 @@ export function WritingSection({
             ======================================================== */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border pb-8">
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-2"
           >
             <h2 className="text-3xl lg:text-4xl font-display font-normal tracking-tight text-foreground">
-              Ideas &amp; Observations
+              Notes
             </h2>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={false}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15, duration: 0.5 }}
             className="flex flex-col items-start md:items-end gap-1.5 text-sm text-muted-foreground max-w-sm"
           >
             <p className="leading-relaxed">
-              Short notes on management, operations, finance, and quantitative study.
+              Short pieces on management, accounting, and quantitative study, written while I am still learning them.
             </p>
           </motion.div>
         </div>
@@ -159,7 +159,7 @@ export function WritingSection({
             PART 1: FEATURED FLAGSHIP ESSAY CARD
             ======================================================== */}
         <motion.article
-          initial={{ opacity: 0, y: 16 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -292,7 +292,7 @@ export function WritingSection({
                   <motion.article
                     key={article.id}
                     layout
-                    initial={{ opacity: 0, scale: 0.98 }}
+                    initial={false}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
                     transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
@@ -387,7 +387,7 @@ export function WritingSection({
               onClick={handleCloseModal}
             >
               <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 16 }}
+                initial={false}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 16 }}
                 transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}

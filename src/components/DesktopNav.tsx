@@ -13,15 +13,11 @@ export function DesktopNav({ navLinks, activeSection, onNavClick }: DesktopNavPr
   return (
     <nav
       aria-label="Primary navigation"
-      className="relative flex items-center p-1 rounded-full bg-muted/60 dark:bg-muted/40 border border-border/80 backdrop-blur-md shadow-xs"
+      className="relative flex items-center p-1 rounded-full bg-muted/60 dark:bg-muted/40 border border-border"
     >
       {navLinks.map((link) => {
-        const key = link.name.toLowerCase();
-        let isActive = false;
-        if (key === activeSection || link.href === `#${activeSection}`) isActive = true;
-        if (key === "work" && (activeSection === "work" || activeSection === "pillars")) {
-          isActive = true;
-        }
+        // Match on href so visible labels can differ from section ids.
+        const isActive = link.href === `#${activeSection}`;
 
         return (
           <a
@@ -29,11 +25,10 @@ export function DesktopNav({ navLinks, activeSection, onNavClick }: DesktopNavPr
             href={link.href}
             onClick={(e) => onNavClick(e, link.href)}
             aria-current={isActive ? "page" : undefined}
-            className={`relative px-3.5 py-1.5 text-xs font-medium transition-colors rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground select-none ${
-              isActive
-                ? "text-background font-semibold"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
+            className={`relative px-3.5 py-2 text-xs font-medium transition-colors rounded-full select-none ${isActive
+              ? "text-background font-semibold"
+              : "text-muted-foreground hover:text-foreground"
+              }`}
           >
             {isActive && (
               <motion.span

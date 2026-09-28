@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import { clsx } from "clsx";
 import { useActiveSection } from "@/motion/useActiveSection";
 import { MOTION_EASINGS } from "@/motion/tokens";
@@ -12,10 +11,10 @@ import { Icon } from "@/components/icons/Icon";
 
 const navLinks = [
   { name: "About", href: "#about" },
-  { name: "Work", href: "#work" },
-  { name: "Skills", href: "#skills" },
+  { name: "Studies", href: "#work" },
+  { name: "Tools", href: "#skills" },
   { name: "Experience", href: "#experience" },
-  { name: "Monographs", href: "#writing" },
+  { name: "Notes", href: "#writing" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -23,6 +22,8 @@ export function Navbar() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
 
   const [activeSection] = useActiveSection(
     ["home", "about", "work", "skills", "experience", "writing", "contact"],
@@ -33,15 +34,50 @@ export function Navbar() {
     setIsScrolled(latest > 20);
   });
 
-  // Close mobile menu on Escape key
+  // Escape closes the menu and returns focus to the trigger. Tab is trapped
+  // inside the drawer so focus cannot reach the obscured page behind it.
   useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const focusableSelector =
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    const drawer = drawerRef.current;
+    drawer?.querySelector<HTMLElement>(focusableSelector)?.focus();
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && mobileMenuOpen) {
+      if (e.key === "Escape") {
         setMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+        return;
+      }
+
+      if (e.key !== "Tab" || !drawer) return;
+
+      const items = Array.from(drawer.querySelectorAll<HTMLElement>(focusableSelector));
+      if (items.length === 0) return;
+
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement;
+
+      if (e.shiftKey && active === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
       }
     };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [mobileMenuOpen]);
+
+  // Returning focus on close is handled above for Escape; this covers the
+  // click-outside and link-click paths, where the event target is not focused.
+  useEffect(() => {
+    if (!mobileMenuOpen) menuButtonRef.current?.focus({ preventScroll: true });
   }, [mobileMenuOpen]);
 
   // Lock body scroll when mobile menu is open
@@ -75,55 +111,32 @@ export function Navbar() {
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-xs focus:bg-foreground focus:px-4 focus:py-2 focus:text-background focus:text-xs focus:font-semibold focus:uppercase focus:tracking-wider"
+      >
+        Skip to content
+      </a>
       <motion.header
         className={clsx(
-          "sticky top-0 z-50 transition-all duration-300 border-b",
+          "sticky top-0 z-50 transition-colors duration-300 border-b",
           isScrolled
-            ? "bg-background/95 backdrop-blur-md border-border/80 shadow-xs"
-            : "bg-background/80 backdrop-blur-sm border-transparent"
+            ? "bg-background/95 backdrop-blur-md border-border"
+            : "bg-background border-transparent"
         )}
-        initial={{ y: -60, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: MOTION_EASINGS.system }}
       >
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-          {/* Logo */}
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+          {/* Text wordmark */}
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, "#home")}
-            className="flex items-center gap-2.5 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xs"
-            aria-label="Hassan Karasu - Home"
+            className="font-sans font-medium text-sm tracking-tight text-foreground cursor-pointer"
           >
-            <motion.div
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              transition={{ duration: 0.2, ease: MOTION_EASINGS.sharp }}
-              className="flex items-center gap-2.5"
-            >
-              <Image
-                src="/icon-light.svg"
-                alt="Hassan Karasu"
-                width={30}
-                height={30}
-                className="size-7 w-auto object-contain dark:hidden"
-                priority
-              />
-              <Image
-                src="/icon-dark.svg"
-                alt="Hassan Karasu"
-                width={30}
-                height={30}
-                className="size-7 w-auto object-contain hidden dark:block"
-                priority
-              />
-              <span className="font-sans font-medium text-sm tracking-tight text-foreground hidden sm:inline-block">
-                Hassan Karasu
-              </span>
-            </motion.div>
+            Hassan Karasu
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center">
+          <div className="hidden md:flex items-center">
             <DesktopNav
               navLinks={navLinks}
               activeSection={activeSection}
@@ -132,16 +145,18 @@ export function Navbar() {
           </div>
 
           {/* Controls: Theme Toggle + Mobile Menu Trigger */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-1 sm:gap-2">
             <ThemeToggle />
 
             {/* Mobile Menu Button */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className="lg:hidden relative size-9 rounded-full flex items-center justify-center text-foreground hover:bg-muted/80 border border-border/80 transition-colors focus-visible:outline-none cursor-pointer"
-              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              className="md:hidden relative size-11 rounded-full flex items-center justify-center text-foreground hover:bg-muted border border-border transition-colors cursor-pointer"
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Menu"}
               aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
+              ref={menuButtonRef}
             >
               {mobileMenuOpen ? (
                 <Icon name="close" size={18} />
@@ -161,70 +176,60 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 lg:hidden bg-background/80 backdrop-blur-md flex flex-col pt-20 px-6 pb-8"
+            className="fixed inset-0 z-40 md:hidden bg-background flex flex-col pt-20 px-6 pb-8"
             onClick={() => setMobileMenuOpen(false)}
           >
             <motion.div
               initial={{ y: -16, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -16, opacity: 0 }}
-              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.25, ease: MOTION_EASINGS.sharp }}
               onClick={(e) => e.stopPropagation()}
+              ref={drawerRef}
+              id="mobile-menu"
               className="flex flex-col justify-between flex-1 max-w-sm mx-auto w-full pt-4"
             >
               {/* Navigation Links */}
               <nav
-                className="flex flex-col gap-2"
+                className="flex flex-col gap-1"
                 aria-label="Mobile navigation"
               >
                 {navLinks.map((link) => {
-                  const key = link.name.toLowerCase();
-                  const isActive =
-                    key === activeSection ||
-                    link.href === `#${activeSection}` ||
-                    (key === "work" && (activeSection === "work" || activeSection === "pillars"));
+                  // Match on href so visible labels can differ from section ids.
+                  const isActive = link.href === `#${activeSection}`;
 
                   return (
                     <a
                       key={link.name}
                       href={link.href}
                       onClick={(e) => handleNavClick(e, link.href)}
-                      className={`flex items-center justify-between px-4 py-3 rounded-md text-base font-medium transition-colors ${
-                        isActive
-                          ? "bg-foreground text-background font-semibold"
-                          : "text-foreground hover:bg-muted"
-                      }`}
+                      aria-current={isActive ? "true" : undefined}
+                      className={`flex min-h-11 items-center justify-between px-4 py-3 rounded-md text-base font-medium transition-colors ${isActive
+                        ? "bg-foreground text-background font-semibold"
+                        : "text-foreground hover:bg-muted"
+                        }`}
                     >
                       <span>{link.name}</span>
                       {isActive ? (
                         <span className="text-xs uppercase tracking-widest font-mono text-background/80">
                           Active
                         </span>
-                      ) : (
-                        <Icon
-                          name="arrow_forward"
-                          size={14}
-                          className="text-muted-foreground"
-                        />
-                      )}
+                      ) : null}
                     </a>
                   );
                 })}
               </nav>
 
               {/* Mobile Quick Action Footer */}
-              <div className="pt-6 border-t border-border space-y-3">
+              <div className="pt-6 border-t border-border">
                 <a
                   href="#contact"
                   onClick={(e) => handleNavClick(e, "#contact")}
                   className="w-full inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 bg-foreground text-background text-xs font-semibold uppercase tracking-wider transition-colors"
                 >
                   <Icon name="mail" size={15} />
-                  <span>Get in Touch</span>
+                  <span>Email me</span>
                 </a>
-                <p className="text-[11px] text-center text-muted-foreground font-mono">
-                  FSJES Aïn Chock · Université Hassan II de Casablanca
-                </p>
               </div>
             </motion.div>
           </motion.div>

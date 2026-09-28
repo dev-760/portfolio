@@ -26,34 +26,34 @@ export default function Home() {
           <div className="max-w-3xl flex flex-col gap-6 sm:gap-8">
             {/* Headline: Editorial serif */}
             <motion.h1
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="text-4xl sm:text-5xl lg:text-7xl font-display font-normal tracking-tight leading-[1.05] text-foreground text-balance"
             >
               Studying how organizations actually work.<br />
-              <span className="italic text-foreground/85">From the ledger to the film set.</span>
+              <span className="italic text-foreground/85">Then checking whether the numbers agree.</span>
             </motion.h1>
 
             {/* Description */}
             <motion.p
-              initial={{ opacity: 0, y: 10 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="text-base sm:text-lg text-muted-foreground max-w-xl font-normal leading-relaxed text-pretty"
             >
-              First-year Business Administration student at FSJES Aïn Chock, Université Hassan II de Casablanca &mdash; working through{" "}
+              First-year Business Administration student at FSJES Aïn Chock, Université Hassan II de Casablanca. I am working through{" "}
               <TypingEffect
                 words={["general accounting", "microeconomics", "management principles"]}
                 className="text-foreground font-medium underline underline-offset-4 decoration-border"
                 pauseDuration={4000}
               />{" "}
-              and writing down what I notice along the way.
+              this year, and I write down what I am still trying to understand.
             </motion.p>
 
             {/* Action Affordances */}
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-wrap items-center gap-3 pt-2"
@@ -63,7 +63,7 @@ export default function Home() {
                 className="inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 bg-foreground hover:bg-foreground/90 text-background text-xs font-semibold uppercase tracking-wider transition-colors focus-visible:outline-none"
               >
                 <Icon name="mail" size={15} />
-                <span>Get in Touch</span>
+                <span>Email me</span>
               </a>
 
               <a
@@ -71,7 +71,7 @@ export default function Home() {
                 className="inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 bg-card hover:bg-muted border border-border text-foreground text-xs font-semibold uppercase tracking-wider transition-colors focus-visible:outline-none"
               >
                 <Icon name="checklist" size={15} />
-                <span>What I&rsquo;m Studying</span>
+                <span>My Studies</span>
               </a>
 
               <a
@@ -79,7 +79,7 @@ export default function Home() {
                 className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 bg-transparent hover:bg-muted text-muted-foreground hover:text-foreground text-xs font-semibold uppercase tracking-wider transition-colors focus-visible:outline-none"
               >
                 <Icon name="article" size={15} />
-                <span>Read Monographs</span>
+                <span>Read the notes</span>
               </a>
             </motion.div>
           </div>

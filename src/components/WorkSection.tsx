@@ -65,7 +65,7 @@ export function WorkSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border pb-8">
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -75,12 +75,12 @@ export function WorkSection() {
               What I&rsquo;m Studying
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              First-year coursework grouped around management, accounting, and communication.
+              My first-year coursework, grouped the way I actually use it.
             </p>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={false}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15, duration: 0.5 }}
@@ -95,7 +95,7 @@ export function WorkSection() {
           {pillars.map((pillar, index) => (
             <motion.div
               key={pillar.id}
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{

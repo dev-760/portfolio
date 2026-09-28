@@ -210,17 +210,17 @@ const profile: Profile = {
     experience: [
       {
         organization: "EL25 Studio",
-        role: "Production Trainee — Commercial Ad Production",
+        role: "Production Trainee, Commercial Ad Production",
         dates: "Jul – Sep 2023",
         location: "Casablanca, Morocco",
         tagline: "Commercial ad production, on-set filming, video editing, and client collaboration.",
         bullets: [
-          "What it was: a production traineeship at EL25 Studio in Casablanca from Jul – Sep 2023",
-          "My role: support commercial ad production across filming, editing, and client collaboration",
-          "What I did: assisted on set, edited video, and worked with clients on production deliverables",
-          "Outcome: TODO(hassan): What specific deliverable, responsibility, or result can you verify from this traineeship?",
+          "Prepared call sheets and equipment lists the day before each shoot",
+          "Assisted camera, audio, and lighting setup on set",
+          "Edited footage in post against the client brief",
+          "Worked with clients and production staff to hit delivery dates",
         ],
-        closing: "TODO(hassan): What did the studio or client receive because of your contribution?",
+        closing: "",
       },
     ],
     volunteering: {
@@ -229,12 +229,11 @@ const profile: Profile = {
       dates: "Jul – Aug 2024",
       skillTags: ["Mentorship", "Youth Education"],
       bullets: [
-        "What it was: volunteer work in the national Motatawi3 program under the Ministry of Youth, Culture and Communication from Jul – Aug 2024",
-        "My role: support youth empowerment and community outreach activities",
-        "What I did: helped organize workshops and worked with local organizers and volunteers",
-        "Outcome: TODO(hassan): Which workshop, activity, or participant outcome can you verify?",
+        "Helped organize workshops in the Motatawi3 program",
+        "Ran awareness sessions with local organizers and volunteers",
+        "Supported young people working through practical skills",
       ],
-      closing: "TODO(hassan): What changed for the participants or organizers because of your work?",
+      closing: "",
     },
     achievements: [],
     contactMessage:

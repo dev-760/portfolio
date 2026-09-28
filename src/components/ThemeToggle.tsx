@@ -4,7 +4,7 @@ import React, { useSyncExternalStore } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/context/ThemeContext";
 
-const emptySubscribe = () => () => {};
+const emptySubscribe = () => () => { };
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
@@ -16,7 +16,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="relative size-9 rounded-full flex items-center justify-center text-foreground hover:bg-muted/80 border border-border/80 transition-colors focus-visible:outline-none cursor-pointer"
+      className="relative size-11 rounded-full flex items-center justify-center text-foreground hover:bg-muted border border-border transition-colors cursor-pointer"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >

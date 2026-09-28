@@ -40,7 +40,9 @@ const TimelineAnimateRow = ({ index, content, isLast, rowRef, indexRef }: Timeli
   })
 
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 20, mass: 0.5 })
-  const opacity = useTransform(progress, [0, 1], [0, 1])
+  // Content is always readable; the scroll progress only lifts it into place,
+  // so a short entry or reduced-motion setup never leaves text invisible.
+  const opacity = useTransform(progress, [0, 1], [1, 1])
   const y = useTransform(progress, [0, 1], [32, 0])
   const contentY = useTransform(progress, [0, 1], [32 - CONTENT_LIFT, -CONTENT_LIFT])
 
