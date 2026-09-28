@@ -3,7 +3,7 @@ import { generatePageMetadata } from "@/lib/metadata";
 
 export const metadata = generatePageMetadata(
   "Skills & Competencies",
-  "Tools for thinking, organizing, and solving. A calibrated toolkit balancing systemic problem solving with modern business productivity software.",
+  "Coursework and software Hassan uses for analysis, organization, and communication.",
   "/skills"
 );
 

@@ -186,7 +186,7 @@ export function WritingSection({
             className="flex flex-col items-start md:items-end gap-1.5 text-sm text-muted-foreground max-w-sm"
           >
             <p className="leading-relaxed">
-              Syntheses exploring business administration, operations modeling, financial discipline, and compound learning.
+              Short notes on management, operations, finance, and quantitative study.
             </p>
           </motion.div>
         </div>
@@ -275,8 +275,8 @@ export function WritingSection({
                     onClick={() => setSelectedCategory(cat.key)}
                     aria-pressed={isActive}
                     className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-[10px] font-medium uppercase tracking-widest transition-all duration-200 cursor-pointer focus-visible:outline-none border ${isActive
-                        ? "bg-foreground text-background border-foreground"
-                        : "bg-surface text-muted-foreground hover:text-foreground border-border"
+                      ? "bg-foreground text-background border-foreground"
+                      : "bg-surface text-muted-foreground hover:text-foreground border-border"
                       }`}
                   >
                     <span>{cat.label}</span>

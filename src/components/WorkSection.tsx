@@ -75,7 +75,7 @@ export function WorkSection() {
               What I&rsquo;m Studying
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              The first-year curriculum, organized around the three directions I care most about.
+              First-year coursework grouped around management, accounting, and communication.
             </p>
           </motion.div>
 

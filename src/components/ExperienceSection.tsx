@@ -45,7 +45,7 @@ export function ExperienceSection({ initialExperience }: ExperienceSectionProps 
               Experience &amp; Community Service
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Real-world execution discipline gained through commercial media production coordination and civic youth initiatives.
+              Commercial production and community work alongside first-year business coursework.
             </p>
           </motion.div>
 

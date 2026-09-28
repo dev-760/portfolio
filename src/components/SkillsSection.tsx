@@ -1,69 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Icon } from "@/components/icons/Icon";
-
-const problemSolvingSkills = [
-  {
-    id: "analytical-thinking",
-    name: "Quantitative & Analytical Thinking",
-    description:
-      "Working through accounting and economics problems the way the courses demand: show the steps, check the total.",
-    icon: "calculate",
-  },
-  {
-    id: "process-coordination",
-    name: "Process & Schedule Coordination",
-    description:
-      "Preparing call sheets and equipment lists the day before a shoot so filming started on time; planning assignments the same way.",
-    icon: "schedule",
-  },
-  {
-    id: "structured-problem-solving",
-    name: "Structured Problem Solving",
-    description:
-      "Breaking management case studies into steps small enough to check one by one.",
-    icon: "account_tree",
-  },
-  {
-    id: "communication-teamwork",
-    name: "Communication & Academic Debate",
-    description:
-      "Debating and presenting in class; on set, taking briefs from directors and clients and asking until the requirement is clear.",
-    icon: "forum",
-  },
-  {
-    id: "research-learning",
-    name: "Academic Research & Synthesis",
-    description:
-      "Reading across economics and management, and keeping notes organized well enough to find again at exam time.",
-    icon: "menu_book",
-  },
-  {
-    id: "attention-detail",
-    name: "Attention to Detail & Accuracy",
-    description:
-      "A journal entry that does not balance is wrong; I treat tables, filenames, and citations the same way.",
-    icon: "check_circle",
-  },
-];
-
-const productivityStacks = [
-  {
-    title: "Microsoft 365 Suite",
-    desc: "Excel formulas and data tables for budgets and analysis, Word for academic reports, and PowerPoint for structured executive presentations.",
-    tags: ["Excel Formulas", "Data Tables", "PowerPoint", "Word Documentation"],
-  },
-  {
-    title: "Digital Workspaces & Productivity",
-    badge: "SYSTEMS",
-    desc: "Notion knowledge organization, Google Workspace collaboration, digital skills, and structured folder taxonomies.",
-    tags: ["Notion Workspaces", "Google Workspace", "Digital Archive", "Structured Files"],
-  },
-];
+import {
+  fallbackSkills,
+  getSkills,
+  isSanityConfigured,
+  type SkillData,
+} from "@/sanity/lib/client";
 
 export function SkillsSection() {
+  const [skills, setSkills] = useState<SkillData[]>(fallbackSkills);
+
+  useEffect(() => {
+    if (isSanityConfigured) {
+      getSkills().then(setSkills);
+    }
+  }, []);
+
+  const problemSolvingSkills = skills.filter((skill) => skill.group === "analysis");
+  const productivityStacks = skills.filter((skill) => skill.group === "software");
+
   return (
     <section className="section border-b border-border bg-surface scroll-mt-16" id="skills">
       <div className="container space-y-16">
@@ -80,7 +38,7 @@ export function SkillsSection() {
               Tools for Thinking &amp; Solving
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              A disciplined toolkit balancing analytical problem-solving with practical software execution.
+              Coursework and tools I use for analysis, organization, and communication.
             </p>
           </motion.div>
 
@@ -123,7 +81,7 @@ export function SkillsSection() {
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <div className="size-9 rounded bg-muted border border-border flex items-center justify-center text-foreground group-hover:scale-105 transition-transform">
-                      <Icon name={skill.icon} size={18} />
+                      <Icon name={skill.icon ?? "check_circle"} size={18} />
                     </div>
                     <span className="size-1.5 rounded-full bg-foreground/30 group-hover:bg-foreground transition-colors" />
                   </div>
@@ -155,7 +113,7 @@ export function SkillsSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {productivityStacks.map((stack, index) => (
               <motion.div
-                key={stack.title}
+                key={stack.id}
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-30px" }}
@@ -169,17 +127,17 @@ export function SkillsSection() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <h4 className="text-xl font-display font-normal text-foreground tracking-tight">
-                      {stack.title}
+                      {stack.name}
                     </h4>
                   </div>
 
                   <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                    {stack.desc}
+                    {stack.description}
                   </p>
                 </div>
 
                 <div className="flex flex-wrap gap-1.5 pt-5 mt-5 border-t border-border/70">
-                  {stack.tags.map((tag) => (
+                  {(stack.tags ?? []).map((tag) => (
                     <span
                       key={tag}
                       className="text-[11px] font-medium px-2 py-0.5 rounded bg-muted/60 text-muted-foreground border border-border/60"

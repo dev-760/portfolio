@@ -1,6 +1,12 @@
 import { createClient } from "next-sanity";
 import { apiVersion, dataset, projectId, useCdn } from "../env";
-import { educationQuery, experienceQuery, monographsQuery, featuredMonographQuery } from "./queries";
+import {
+  educationQuery,
+  experienceQuery,
+  monographsQuery,
+  featuredMonographQuery,
+  skillsQuery,
+} from "./queries";
 
 export const isSanityConfigured = Boolean(projectId && projectId.trim() !== "");
 
@@ -58,6 +64,83 @@ export interface MonographData {
   order?: number;
 }
 
+export interface SkillData {
+  id: string;
+  group: "analysis" | "software";
+  name: string;
+  description: string;
+  icon?: string;
+  tags?: string[];
+  order?: number;
+}
+
+export const fallbackSkills: SkillData[] = [
+  {
+    id: "analytical-thinking",
+    group: "analysis",
+    name: "Quantitative & Analytical Thinking",
+    description: "I work through accounting, economics, mathematics, and statistics exercises by showing the steps and checking the totals.",
+    icon: "calculate",
+    order: 1,
+  },
+  {
+    id: "process-coordination",
+    group: "analysis",
+    name: "Process & Schedule Coordination",
+    description: "I keep tasks, handoffs, and deadlines visible across coursework and commercial production work.",
+    icon: "schedule",
+    order: 2,
+  },
+  {
+    id: "structured-problem-solving",
+    group: "analysis",
+    name: "Structured Problem Solving",
+    description: "I break management case studies and quantitative exercises into steps I can check one by one.",
+    icon: "account_tree",
+    order: 3,
+  },
+  {
+    id: "communication-teamwork",
+    group: "analysis",
+    name: "Communication & Academic Debate",
+    description: "I practice debate and presentations in class and work with clients and production staff when a brief needs clarification.",
+    icon: "forum",
+    order: 4,
+  },
+  {
+    id: "research-learning",
+    group: "analysis",
+    name: "Academic Research & Synthesis",
+    description: "I read management and economics material, then turn notes into short monographs and coursework reflections.",
+    icon: "menu_book",
+    order: 5,
+  },
+  {
+    id: "attention-detail",
+    group: "analysis",
+    name: "Accuracy and Checking",
+    description: "I check totals, tables, filenames, and citations before treating an assignment or document as finished.",
+    icon: "check_circle",
+    order: 6,
+  },
+  {
+    id: "microsoft-365",
+    group: "software",
+    name: "Microsoft 365",
+    description: "I use Excel for formulas and tables, Word for reports, and PowerPoint for structured presentations.",
+    tags: ["Excel Formulas", "Data Tables", "PowerPoint", "Word Documentation"],
+    order: 7,
+  },
+  {
+    id: "digital-workspaces",
+    group: "software",
+    name: "Digital Workspaces",
+    description: "I use Notion and Google Workspace to organize notes, files, and shared work.",
+    tags: ["Notion", "Google Workspace", "Digital Files"],
+    order: 8,
+  },
+];
+
 // Fallback Education Data (Default Verified Content)
 export const fallbackEducation: EducationData[] = [
   {
@@ -74,7 +157,7 @@ export const fallbackEducation: EducationData[] = [
       "Empirical Data Analysis",
     ],
     description:
-      "Graduated with distinction with a specialized scientific focus in Physics and Chemistry combined with the English International Option. Cultivated rigorous mathematical problem-solving, analytical discipline, and bilingual fluency.",
+      "Completed a Baccalaureate in Physical Science (English Option). TODO(hassan): Which subjects, result, or assessed work should this entry include?",
     order: 1,
   },
   {
@@ -93,7 +176,7 @@ export const fallbackEducation: EducationData[] = [
       "Operational Workflows",
     ],
     description:
-      "Developing foundational rigor across enterprise management, organizational dynamics, quantitative financial modeling, and commerce. Balancing academic theory with real-world execution discipline.",
+      "Current first-year Licence in Business Administration. Coursework includes management, general accounting, microeconomics, macroeconomics, statistics, mathematics for economics, and business law.",
     order: 2,
   },
 ];
@@ -104,7 +187,7 @@ export const fallbackExperience: ExperienceData[] = [
     id: "01",
     company: "EL25 Studio",
     role: "Production Trainee — Commercial Ad Production",
-    period: "Jul — Sep 2023",
+    period: "Jul – Sep 2023",
     location: "Casablanca, Morocco",
     stack: [
       "Commercial Ad Production",
@@ -113,14 +196,14 @@ export const fallbackExperience: ExperienceData[] = [
       "Client Collaboration",
     ],
     description:
-      "What it was: a production traineeship at EL25 Studio in Casablanca from Jul — Sep 2023. My role: support commercial ad production across filming, editing, and client collaboration. What I did: assisted on set, edited video, and worked with clients on production deliverables. Outcome: TODO(hassan): What specific deliverable, responsibility, or result can you verify from this traineeship?",
+      "What it was: a production traineeship at EL25 Studio in Casablanca from Jul – Sep 2023. My role: support commercial ad production across filming, editing, and client collaboration. What I did: assisted on set, edited video, and worked with clients on production deliverables. Outcome: TODO(hassan): What specific deliverable, responsibility, or result can you verify from this traineeship?",
     order: 1,
   },
   {
     id: "02",
     company: "Ministry of Youth, Culture and Communication (MJCC)",
     role: "Volunteer, Motatawi3 National Program",
-    period: "Jul — Aug 2024",
+    period: "Jul – Aug 2024",
     location: "Morocco",
     status: "Civic Outreach",
     stack: [
@@ -130,7 +213,7 @@ export const fallbackExperience: ExperienceData[] = [
       "Civic Engagement",
     ],
     description:
-      "What it was: volunteer work in the national Motatawi3 program under the Ministry of Youth, Culture and Communication from Jul — Aug 2024. My role: support youth empowerment and community outreach activities. What I did: helped organize workshops and worked with local organizers and volunteers. Outcome: TODO(hassan): Which workshop, activity, or participant outcome can you verify?",
+      "What it was: volunteer work in the national Motatawi3 program under the Ministry of Youth, Culture and Communication from Jul – Aug 2024. My role: support youth empowerment and community outreach activities. What I did: helped organize workshops and worked with local organizers and volunteers. Outcome: TODO(hassan): Which workshop, activity, or participant outcome can you verify?",
     order: 2,
   },
 ];
@@ -147,14 +230,14 @@ export const fallbackFeaturedMonograph: MonographData = {
   readTime: "6 MIN READ",
   title: "Understanding Systems Before Improving Them",
   description:
-    "On the urge to fix processes before understanding them, and what I noticed about informal workarounds while assisting on commercial shoots.",
+    "A reflection on why process changes should begin with observation, based on notes from commercial shoots and first-year management coursework.",
   thesis:
-    "Most workflows get improved too early and understood too late. This is my case for watching a process carefully before touching it.",
+    "Before changing a workflow, observe how people use it and why its steps exist.",
   tags: ["Systems Thinking", "Operations Management", "Workflow Design", "Chesterton's Fence"],
   keyTakeaways: [
-    "Premature automation digitizes flawed habits instead of eliminating unnecessary friction.",
-    "Bottlenecks frequently exist to solve a historical safety or quality issue that formal SOPs fail to record.",
-    "Real-world coordination happens across informal human bridges, not formal organizational pyramids.",
+    "Observe a process before proposing a new tool.",
+    "Ask what a workaround protects before removing it.",
+    "Record informal handoffs alongside the formal workflow.",
   ],
   academicContext:
     "Written alongside first-year coursework: Principles of Management and Descriptive Statistics, FSJES Aïn Chock.",
@@ -242,14 +325,14 @@ export const fallbackMonographs: MonographData[] = [
     readTime: "4 MIN READ",
     title: "From Physical Science to Economics: Continuity of Analytical Thinking",
     description:
-      "How an analytical foundation in high school physical science translates into quantitative reasoning for microeconomics, statistics, and business.",
+      "A reflection on links between physical science coursework and quantitative business subjects.",
     thesis:
-      "The mathematical discipline honed in physical sciences—deriving equilibrium, modeling rates of change, and testing hypotheses—provides an extraordinary mental model for economics.",
+      "Physical science and economics both ask how systems respond to changing conditions. This note compares the questions, not the subjects themselves.",
     tags: ["Quantitative Rigor", "Microeconomics", "Mathematical Modeling", "Scientific Method"],
     keyTakeaways: [
-      "Physical equilibrium concepts directly mirror market clearing prices and supply/demand curves.",
-      "Marginal analysis in economics is rate-of-change calculus applied to human incentives.",
-      "Scientific hypothesis testing prevents managers from mistaking correlation for causality.",
+      "Equilibrium is a useful comparison point when studying supply and demand.",
+      "Rates of change help explain why marginal analysis matters.",
+      "Testing a claim is different from assuming that two events are related.",
     ],
     academicContext:
       "Academic Monograph: Bridging Baccalauréat Physical Sciences with University Microeconomics & Statistics.",
@@ -313,6 +396,17 @@ export async function getFeaturedMonograph(): Promise<MonographData> {
   } catch (error) {
     console.warn("Failed to fetch featured monograph from Sanity, falling back to static data:", error);
     return fallbackFeaturedMonograph;
+  }
+}
+
+export async function getSkills(): Promise<SkillData[]> {
+  if (!isSanityConfigured) return fallbackSkills;
+  try {
+    const data = await client.fetch<SkillData[]>(skillsQuery);
+    return data && data.length > 0 ? data : fallbackSkills;
+  } catch (error) {
+    console.warn("Failed to fetch skills from Sanity, falling back to static data:", error);
+    return fallbackSkills;
   }
 }
 

@@ -11,31 +11,6 @@ import {
   type EducationData,
 } from "@/sanity/lib/client";
 
-interface KeywordHighlightProps {
-  word: string;
-  delay: number;
-}
-
-const KeywordHighlight: React.FC<KeywordHighlightProps> = ({ word, delay }) => {
-  return (
-    <span className="relative inline-block text-foreground font-medium">
-      <span>{word}</span>
-      <motion.span
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{
-          delay,
-          duration: 0.38,
-          ease: [0.16, 1, 0.3, 1],
-        }}
-        style={{ originX: 0 }}
-        className="absolute left-0 -bottom-[2px] w-full h-[1.5px] bg-foreground/50"
-      />
-    </span>
-  );
-};
-
 export interface AboutSectionProps {
   initialEducation?: EducationData[];
 }
@@ -76,10 +51,7 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
               className="lg:col-span-8"
             >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-normal tracking-tight text-foreground leading-[1.15]">
-                &ldquo;I&rsquo;m Hassan, a Business Administration student trying to understand how{" "}
-                <KeywordHighlight word="people" delay={0.35} />,{" "}
-                <KeywordHighlight word="organizations" delay={0.6} />, and{" "}
-                <KeywordHighlight word="numbers" delay={0.85} /> fit together &mdash; and what happens when they don&rsquo;t.&rdquo;
+                I&rsquo;m Hassan. I study how decisions become records, schedules, and daily work.
               </h2>
             </motion.div>
 
@@ -91,7 +63,7 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
                 viewport={{ once: true }}
                 transition={{ delay: 0.35, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                Before university, I spent two months on commercial sets at EL25 Studio in Casablanca &mdash; a useful counterweight to classroom theory.
+                From Jul &ndash; Sep 2023, I trained at EL25 Studio in Casablanca, supporting commercial ad production, filming, video editing, and client collaboration.
               </motion.p>
             </div>
           </div>
@@ -120,18 +92,15 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
                   <span className="font-medium text-foreground">
                     Faculté des Sciences Juridiques, Économiques et Sociales (FSJES) Aïn Chock
                   </span>
-                  , Université Hassan II de Casablanca. What I want from the degree is a working picture of how organizations actually run: how decisions get made, how accounting keeps track of whether they were good ones, and how the daily work gets coordinated.
+                  , Université Hassan II de Casablanca. I am building a foundation in management, accounting, economics, statistics, mathematics, and business law.
                 </p>
                 <p>
-                  The first year covers the basics: micro and macroeconomics, general accounting, cost analysis, descriptive statistics, and business law. The part I keep coming back to is the accounting &mdash; it is the one subject where an answer is either right or it is not.
+                  My first-year coursework covers microeconomics, macroeconomics, general accounting, cost analysis, descriptive statistics, mathematics for economics, and business law.
                 </p>
                 <p>
-                  Outside class, volunteering with the national{" "}
-                  <span className="font-medium text-foreground">Motatawi3</span> youth program meant planning workshops and working with local organizers in communities that do not get many of them. Both experiences point the same way as my coursework: keep the records straight, meet the deadline, leave things tidy for whoever comes next.
+                  Outside class, I volunteered with the national{" "}
+                  <span className="font-medium text-foreground">Motatawi3</span> program under the Ministry of Youth, Culture and Communication. I helped organize workshops and worked with local organizers and volunteers.
                 </p>
-                <blockquote className="italic text-foreground p-4 border-l-2 border-foreground/30 bg-muted/40 rounded-r text-sm sm:text-base leading-relaxed mt-2">
-                  Two months on a film set taught me more about deadlines than any syllabus has: someone is always waiting on your part of the work.
-                </blockquote>
               </div>
             </motion.div>
 
@@ -209,7 +178,7 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
               Education &amp; Quantitative Foundation
             </h2>
             <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">
-              Rigorous academic preparation bridging quantitative analytical methods, scientific problem-solving, and core business administration principles.
+              Education and coursework in physical science and business administration.
             </p>
           </div>
 
@@ -266,16 +235,16 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
         <div className="pt-12 border-t border-border space-y-8">
           <div className="space-y-2">
             <h2 className="text-2xl sm:text-3xl font-display font-normal text-foreground tracking-tight">
-              How I try to work
+              How I approach the work
             </h2>
           </div>
 
           <div className="max-w-prose text-muted-foreground text-sm sm:text-base leading-relaxed space-y-4">
             <p>
-              I read the figures before I propose anything, and I keep files and call sheets the way I keep journal entries &mdash; dated and balanced.
+              I start with the question or brief, write down the steps, and check the figures before I present the work.
             </p>
             <p>
-              I am still early in all of this. The plan is to let the coursework, and whatever internships come next, keep correcting me.
+              I am a first-year student. Coursework, production work, and future internships will keep testing these habits.
             </p>
           </div>
         </div>

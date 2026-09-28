@@ -69,3 +69,15 @@ export const featuredMonographQuery = groq`
     sections
   }
 `;
+
+export const skillsQuery = groq`
+  *[_type == "skill"] | order(order asc) {
+    "id": _id,
+    group,
+    name,
+    description,
+    icon,
+    tags,
+    order
+  }
+`;
