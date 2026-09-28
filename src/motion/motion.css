@@ -1,0 +1,65 @@
+/* SYSTEM FLOW - Custom Motion Engine Styles */
+
+@layer utilities {
+  /* Line extension animation for architectural reveals */
+  .line-draw-x {
+    transform-origin: left center;
+    transition: transform var(--motion-section) var(--ease-system);
+  }
+
+  .line-draw-x-center {
+    transform-origin: center;
+    transition: transform var(--motion-section) var(--ease-system);
+  }
+
+  /* Coordinate pulse for nodes */
+  @keyframes coordinate-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.15);
+      opacity: 1;
+    }
+  }
+
+  .animate-coordinate-pulse {
+    animation: coordinate-pulse 2.4s var(--ease-system) infinite;
+  }
+
+  /* Network signal travel */
+  @keyframes signal-flow {
+    0% {
+      stroke-dashoffset: 24;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .animate-signal-flow {
+    animation: signal-flow 1.8s linear infinite;
+  }
+
+  /* Tactile boundary reveal */
+  .border-reveal {
+    transition: border-color var(--motion-ui) var(--ease-sharp),
+                box-shadow var(--motion-ui) var(--ease-sharp),
+                transform var(--motion-ui) var(--ease-sharp);
+  }
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  .animate-coordinate-pulse,
+  .animate-signal-flow {
+    animation: none !important;
+  }
+  
+  .line-draw-x,
+  .line-draw-x-center {
+    transform: none !important;
+    transition: none !important;
+  }
+}

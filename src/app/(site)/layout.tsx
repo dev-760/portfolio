@@ -1,0 +1,19 @@
+import type { ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
+import { Navbar } from "@/components/Navbar";
+import { StructuredData } from "@/components/StructuredData";
+import Toast from "@/components/Toast";
+
+export default function SiteLayout({ children }: { children: ReactNode }) {
+  return (
+    <>
+      <StructuredData />
+      <Analytics />
+      <Navbar />
+      <Toast />
+      <main id="main-content" className="min-h-screen">
+        {children}
+      </main>
+    </>
+  );
+}
