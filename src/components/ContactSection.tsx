@@ -194,7 +194,8 @@ export function ContactSection() {
                 </span>
               </div>
               <p className="text-xs text-muted-foreground font-mono">
-                Licence in Business Administration · FSJES Aïn Chock, Université Hassan II de Casablanca
+                Bachelor&rsquo;s degree in Business Administration · FSJES Aïn Chock, Hassan II
+                University of Casablanca
               </p>
             </div>
 
