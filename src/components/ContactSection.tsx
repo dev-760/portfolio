@@ -51,8 +51,19 @@ export function ContactSection() {
             <h2 className="text-3xl lg:text-4xl font-display font-normal tracking-tight text-foreground">
               Get in Touch
             </h2>
-            <p className="text-sm text-muted-foreground">
-              I am looking for a first internship, summer 2027, ideally in accounting or operations, Casablanca or remote.
+            <p className="text-sm text-muted-foreground max-w-prose">
+              I&rsquo;m looking for a first internship for{" "}
+              <strong className="font-semibold text-foreground">summer 2027</strong>, with a
+              particular interest in{" "}
+              <strong className="font-semibold text-foreground">accounting and operations</strong>.
+              I&rsquo;m based in Casablanca and open to remote opportunities as well.
+            </p>
+            <p className="text-sm text-muted-foreground max-w-prose">
+              I read my messages myself and will get back to you as soon as I can.
+            </p>
+            <p className="text-sm text-muted-foreground max-w-prose">
+              If you&rsquo;re working in one of these areas, have an internship opportunity, or
+              simply want to talk, you can reach me directly.
             </p>
           </motion.div>
 
@@ -66,9 +77,6 @@ export function ContactSection() {
             <span className="font-mono flex items-center gap-1.5">
               <Icon name="location_on" size={13} />
               Casablanca, Morocco (UTC+1)
-            </span>
-            <span className="text-muted-foreground/80">
-              I read this inbox myself and reply within 24 hours
             </span>
           </motion.div>
         </div>
@@ -88,7 +96,7 @@ export function ContactSection() {
             <div className="space-y-4">
               <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
                 <Icon name="mail" size={14} />
-                Direct Email
+                Email
               </span>
 
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
@@ -113,7 +121,7 @@ export function ContactSection() {
                   ) : (
                     <>
                       <Icon name="content_copy" size={13} />
-                      <span>Copy</span>
+                      <span>Copy email</span>
                     </>
                   )}
                 </button>
@@ -135,10 +143,9 @@ export function ContactSection() {
               <div className="flex items-center justify-between">
                 <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
                   <Icon name="share" size={14} />
-                  Professional Network
-                </span>
-
-              </div>
+                    LinkedIn
+                  </span>
+                </div>
 
               <div className="pt-1">
                 <a
@@ -149,19 +156,15 @@ export function ContactSection() {
                 >
                   <span className="text-sm font-semibold text-foreground flex items-center gap-2.5">
                     <LinkedinIcon size={16} color="currentColor" strokeWidth={2} />
-                    Hassan Karasu on LinkedIn
+                    Hassan Karasu
                   </span>
                   <div className="flex items-center gap-1 text-[11px] font-medium uppercase tracking-wider text-foreground group-hover:text-accent transition-colors">
-                    <span>Connect</span>
+                    <span>Connect on LinkedIn</span>
                     <Icon name="arrow_outward" size={13} />
                   </div>
                 </a>
               </div>
             </div>
-
-            <p className="text-xs text-muted-foreground leading-relaxed pt-3 border-t border-border">
-              Open to internship conversations and student networking.
-            </p>
           </motion.div>
         </div>
 

@@ -179,6 +179,6 @@ Because the project uses Next.js Static HTML Export (`output: "export"`), it can
 ## 📬 Contact
 
 - **Name**: Hassan Karasu
-- **Email**: [me@hassankarasu.dev](mailto:me@hassankarasu.dev)
+- **Email**: [mail@hasankarasu.me](mailto:mail@hasankarasu.me)
 - **GitHub**: [@dev-760](https://github.com/dev-760)
 - **LinkedIn**: [Hassan Karasu](https://linkedin.com/in/hassan-karasu-a7485336b)

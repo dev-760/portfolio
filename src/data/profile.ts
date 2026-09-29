@@ -91,7 +91,7 @@ const profile: Profile = {
   personalStatement:
     "I am an undergraduate student pursuing a Licence in Business Administration at FSJES Aïn Chock, Université Hassan II de Casablanca.\n\nMy studies focus on management principles, general accounting, micro and macroeconomics, quantitative methods, and business law.\n\nAlongside my coursework, I have experience in commercial ad production, on-set filming, video editing, and client collaboration from EL25 Studio, plus community work through the national Motatawi3 volunteer program.\n\nI work from concrete questions: how organizations make decisions, how accounting records them, and how daily work gets coordinated. I use spreadsheets and digital workflows to study those questions.",
   contact: {
-    email: "me@hassankarasu.dev",
+    email: "mail@hasankarasu.me",
   },
   languages: [
     {
