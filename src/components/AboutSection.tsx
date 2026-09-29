@@ -51,7 +51,8 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
               className="lg:col-span-8"
             >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-normal tracking-tight text-foreground leading-[1.15]">
-                I&rsquo;m Hassan. I study how decisions become records, schedules, and daily work.
+                I&rsquo;m Hassan. I study how a decision turns into a budget, a record, and a
+                routine someone else has to follow.
               </h2>
             </motion.div>
 
@@ -63,7 +64,7 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
                 viewport={{ once: true }}
                 transition={{ delay: 0.35, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                From Jul &ndash; Sep 2023, I trained at EL25 Studio in Casablanca, supporting commercial ad production, filming, video editing, and client collaboration.
+                Between July and September 2023 I trained at EL25 Studio in Casablanca, preparing call sheets the day before each shoot, assisting on set, editing the footage, and coordinating with clients.
               </motion.p>
             </div>
           </div>
@@ -83,23 +84,27 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
               className="lg:col-span-7 flex flex-col gap-6"
             >
               <h3 className="text-foreground font-display text-2xl font-normal tracking-tight">
-                Academic Background &amp; Intent
+                Background
               </h3>
 
               <div className="text-muted-foreground text-sm sm:text-base leading-relaxed space-y-4 max-w-prose">
                 <p>
-                  I am a first-year student pursuing a Licence in Business Administration at the{" "}
+                  I study for a Licence in Business Administration at the{" "}
                   <span className="font-medium text-foreground">
                     Faculté des Sciences Juridiques, Économiques et Sociales (FSJES) Aïn Chock
                   </span>
-                  , Université Hassan II de Casablanca. I am building a foundation in management, accounting, economics, statistics, mathematics, and business law.
+                  , Université Hassan II de Casablanca.
                 </p>
                 <p>
-                  My first-year coursework covers microeconomics, macroeconomics, general accounting, cost analysis, descriptive statistics, mathematics for economics, and business law.
+                  This year my coursework covers general accounting, cost analysis, micro and
+                  macroeconomics, descriptive statistics, mathematics for economics, business law,
+                  and principles of management.
                 </p>
                 <p>
                   Outside class, I volunteered with the national{" "}
-                  <span className="font-medium text-foreground">Motatawi3</span> program under the Ministry of Youth, Culture and Communication. I helped organize workshops and worked with local organizers and volunteers.
+                  <span className="font-medium text-foreground">Motatawi3</span> program under the
+                  Ministry of Youth, Culture and Communication, helping to run workshops alongside
+                  local organizers and other volunteers.
                 </p>
               </div>
             </motion.div>
@@ -232,16 +237,18 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
         <div className="pt-12 border-t border-border space-y-8">
           <div className="space-y-2">
             <h2 className="text-2xl sm:text-3xl font-display font-normal text-foreground tracking-tight">
-              How I approach the work
+              How I work
             </h2>
           </div>
 
           <div className="max-w-prose text-muted-foreground text-sm sm:text-base leading-relaxed space-y-4">
             <p>
-              I start with the question or brief, write down the steps, and check the figures before I present the work.
+              I start with the brief, write down the steps before I begin, and re-check the
+              figures against the source before I hand anything over.
             </p>
             <p>
-              I am a first-year student. Coursework, production work, and future internships will keep testing these habits.
+              I am early in my studies, so I treat every piece of coursework and production work as
+              practice for the next one.
             </p>
           </div>
         </div>
