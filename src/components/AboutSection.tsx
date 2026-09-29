@@ -171,10 +171,11 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
         <div className="pt-12 border-t border-border space-y-8">
           <div className="space-y-2">
             <h2 className="text-2xl sm:text-3xl font-display font-normal text-foreground tracking-tight">
-              Education &amp; Quantitative Foundation
+              Education
             </h2>
             <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">
-              Education and coursework in physical science and business administration.
+              A Baccalaureate in Physical Science, then a first-year Licence in Business
+              Administration at FSJES Aïn Chock.
             </p>
           </div>
 
