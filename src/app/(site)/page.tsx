@@ -42,7 +42,7 @@ export default function Home() {
               className="text-base sm:text-lg text-muted-foreground max-w-xl font-normal leading-relaxed text-pretty"
             >
               First-year Business Administration student at FSJES Aïn Chock, Casablanca.
-              Currently studying{" "}
+              Currently exploring{" "}
               <TypingEffect
                 words={[
                   "Mathematics for Economics",
