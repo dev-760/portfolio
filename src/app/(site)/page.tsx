@@ -9,6 +9,7 @@ import { ExperienceSection } from "@/components/ExperienceSection";
 import { WritingSection } from "@/components/WritingSection";
 import { ContactSection } from "@/components/ContactSection";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
+import { TypingEffect } from "@/components/TypingEffect";
 import { Icon } from "@/components/icons/Icon";
 
 export default function Home() {
@@ -42,9 +43,18 @@ export default function Home() {
               className="text-base sm:text-lg text-muted-foreground max-w-xl font-normal leading-relaxed text-pretty"
             >
               First-year Business Administration student at FSJES Aïn Chock, Casablanca.
-              Currently studying Mathematics for Economics / Microeconomics / Management
-              Principles / Business Law Fundamentals, and working through the concepts,
-              questions, and connections between them.
+              Currently studying{" "}
+              <TypingEffect
+                words={[
+                  "Mathematics for Economics",
+                  "Microeconomics",
+                  "Management Principles",
+                  "Business Law Fundamentals",
+                ]}
+                className="text-foreground font-medium underline underline-offset-4 decoration-border"
+                pauseDuration={4000}
+              />
+              , and working through the concepts, questions, and connections between them.
             </motion.p>
 
             {/* Action Affordances */}
