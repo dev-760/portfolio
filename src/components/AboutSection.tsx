@@ -147,11 +147,11 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
 
                   <div className="flex flex-col gap-0.5">
                     <dt className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold">
-                      Location &amp; Timezone
+                      Location
                     </dt>
                     <dd className="text-foreground flex items-center gap-1.5">
                       <Icon name="location_on" size={14} className="text-muted-foreground" />
-                      Casablanca, Morocco (UTC+1)
+                      Casablanca, Morocco
                     </dd>
                   </div>
 

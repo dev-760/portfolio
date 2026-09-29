@@ -66,19 +66,6 @@ export function ContactSection() {
               simply want to talk, you can reach me directly.
             </p>
           </motion.div>
-
-          <motion.div
-            initial={false}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15, duration: 0.5 }}
-            className="flex flex-col items-start md:items-end gap-1.5 text-xs text-muted-foreground"
-          >
-            <span className="font-mono flex items-center gap-1.5">
-              <Icon name="location_on" size={13} />
-              Casablanca, Morocco (UTC+1)
-            </span>
-          </motion.div>
         </div>
 
         {/* ========================================================
@@ -182,10 +169,6 @@ export function ContactSection() {
               Based in Casablanca, and happy to work remotely.
             </p>
             <span className="font-mono text-sm text-foreground">Casablanca, Morocco</span>
-            <span className="mt-4 self-start inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
-              <Icon name="schedule" size={13} />
-              UTC+1
-            </span>
           </motion.div>
         </div>
 

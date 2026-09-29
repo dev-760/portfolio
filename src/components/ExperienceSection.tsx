@@ -51,16 +51,6 @@ export function ExperienceSection({ initialExperience }: ExperienceSectionProps 
               responsibilities outside the classroom.
             </p>
           </motion.div>
-
-          <motion.div
-            initial={false}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15, duration: 0.5 }}
-            className="text-xs font-mono text-muted-foreground"
-          >
-            Casablanca · 2023 to 2024
-          </motion.div>
         </div>
 
         {/* Timeline */}

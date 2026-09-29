@@ -63,7 +63,6 @@ const iconMap = new Map<string, React.ComponentType<LucideProps>>([
 
   // Location & Identity
   ["location_on", MapPin],
-  ["schedule", Calendar],
   ["map_pin", MapPin],
   ["badge", BadgeCheck],
   ["verified", BadgeCheck],
