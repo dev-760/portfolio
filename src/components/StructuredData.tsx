@@ -96,7 +96,7 @@ export function StructuredData() {
           {
             "@type": "ListItem",
             "position": 4,
-            "name": "Tools",
+            "name": "Practice",
             "item": "https://hassankarasu.dev/#skills"
           },
           {

@@ -11,9 +11,10 @@ import { DesktopNav } from "@/components/DesktopNav";
 import { Icon } from "@/components/icons/Icon";
 
 const navLinks = [
+  { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Education", href: "#education" },
-  { name: "Tools", href: "#skills" },
+  { name: "Practice", href: "#skills" },
   { name: "Experience", href: "#experience" },
   { name: "Notes", href: "#writing" },
   { name: "Contact", href: "#contact" },
@@ -223,17 +224,12 @@ export function Navbar() {
                       href={link.href}
                       onClick={(e) => handleNavClick(e, link.href)}
                       aria-current={isActive ? "true" : undefined}
-                      className={`flex min-h-11 items-center justify-between px-4 py-3 rounded-md text-base font-medium transition-colors ${isActive
+                      className={`flex min-h-11 items-center px-4 py-3 rounded-md text-base font-medium transition-colors ${isActive
                         ? "bg-foreground text-background font-semibold"
                         : "text-foreground hover:bg-muted"
                         }`}
                     >
                       <span>{link.name}</span>
-                      {isActive ? (
-                        <span className="text-xs uppercase tracking-widest font-mono text-background/80">
-                          Active
-                        </span>
-                      ) : null}
                     </a>
                   );
                 })}

@@ -214,7 +214,7 @@ export function ContactSection() {
                 Education
               </a>
               <a href="#skills" className="hover:text-foreground transition-colors">
-                Tools
+                Practice
               </a>
               <a href="#experience" className="hover:text-foreground transition-colors">
                 Experience
