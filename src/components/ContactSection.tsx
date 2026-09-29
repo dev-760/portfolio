@@ -82,89 +82,110 @@ export function ContactSection() {
         </div>
 
         {/* ========================================================
-            DIRECT CORRESPONDENCE CARDS
+            DIRECT CORRESPONDENCE PANEL
             ======================================================== */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
-          {/* Direct Email Card */}
+        <div className="grid w-full grid-cols-1 gap-1 rounded-md border border-border bg-muted p-1 *:rounded-sm *:border *:border-border *:bg-card *:p-6 sm:grid-cols-3">
+          {/* Email */}
           <motion.div
             initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="rounded-md border border-border bg-card p-6 sm:p-7 hover:border-foreground/30 transition-all duration-200 flex flex-col justify-between space-y-5"
+            className="flex flex-col"
           >
-            <div className="space-y-4">
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
-                <Icon name="mail" size={14} />
-                Email
-              </span>
-
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
-                <a
-                  href={`mailto:${profile.contact.email}`}
-                  className="text-base font-medium text-foreground hover:text-accent transition-colors truncate focus-visible:outline-none"
-                >
-                  {profile.contact.email}
-                </a>
-
-                <button
-                  type="button"
-                  onClick={handleCopyEmail}
-                  className="rounded px-2.5 py-1.5 text-[11px] font-medium uppercase tracking-wider text-foreground bg-muted hover:bg-muted/80 border border-border transition-colors cursor-pointer flex items-center justify-center gap-1.5 focus-visible:outline-none shrink-0"
-                  aria-label="Copy email address"
-                >
-                  {copiedEmail ? (
-                    <>
-                      <Icon name="check" size={13} />
-                      <span>Copied</span>
-                    </>
-                  ) : (
-                    <>
-                      <Icon name="content_copy" size={13} />
-                      <span>Copy email</span>
-                    </>
-                  )}
-                </button>
-              </div>
+            <div className="flex h-12 w-12 items-center justify-center rounded-md border border-border bg-muted text-foreground">
+              <Icon name="mail" size={20} />
             </div>
-
-
+            <h3 className="mt-6 font-display text-xl font-normal tracking-tight text-foreground">
+              Email
+            </h3>
+            <p className="my-2.5 text-sm text-muted-foreground">
+              The quickest way to reach me. I read messages myself.
+            </p>
+            <a
+              href={`mailto:${profile.contact.email}`}
+              className="font-medium text-accent hover:underline break-all focus-visible:outline-none"
+            >
+              {profile.contact.email}
+            </a>
+            <button
+              type="button"
+              onClick={handleCopyEmail}
+              className="mt-4 self-start rounded-sm px-2.5 py-1.5 text-[11px] font-medium uppercase tracking-wider text-foreground bg-muted hover:bg-muted/80 border border-border transition-colors cursor-pointer flex items-center justify-center gap-1.5 focus-visible:outline-none"
+              aria-label="Copy email address"
+            >
+              {copiedEmail ? (
+                <>
+                  <Icon name="check" size={13} />
+                  <span>Copied</span>
+                </>
+              ) : (
+                <>
+                  <Icon name="content_copy" size={13} />
+                  <span>Copy email</span>
+                </>
+              )}
+            </button>
           </motion.div>
 
-          {/* LinkedIn Network Card */}
+          {/* LinkedIn */}
           <motion.div
             initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ delay: 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="rounded-md border border-border bg-card p-6 sm:p-7 hover:border-foreground/30 transition-all duration-200 flex flex-col justify-between space-y-5"
+            className="flex flex-col"
           >
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
-                  <Icon name="share" size={14} />
-                    LinkedIn
-                  </span>
-                </div>
-
-              <div className="pt-1">
-                <a
-                  href="https://linkedin.com/in/hassan-karasu-a7485336b"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3.5 rounded-md bg-muted hover:bg-muted/80 transition-colors group border border-border focus-visible:outline-none"
-                >
-                  <span className="text-sm font-semibold text-foreground flex items-center gap-2.5">
-                    <LinkedinIcon size={16} color="currentColor" strokeWidth={2} />
-                    Hassan Karasu
-                  </span>
-                  <div className="flex items-center gap-1 text-[11px] font-medium uppercase tracking-wider text-foreground group-hover:text-accent transition-colors">
-                    <span>Connect on LinkedIn</span>
-                    <Icon name="arrow_outward" size={13} />
-                  </div>
-                </a>
-              </div>
+            <div className="flex h-12 w-12 items-center justify-center rounded-md border border-border bg-muted text-foreground">
+              <LinkedinIcon size={20} color="currentColor" strokeWidth={2} />
             </div>
+            <h3 className="mt-6 font-display text-xl font-normal tracking-tight text-foreground">
+              LinkedIn
+            </h3>
+            <p className="my-2.5 text-sm text-muted-foreground">
+              Open to student networking and conversations about operations.
+            </p>
+            <a
+              href="https://linkedin.com/in/hassan-karasu-a7485336b"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-accent hover:underline focus-visible:outline-none"
+            >
+              Hassan Karasu
+            </a>
+            <a
+              href="https://linkedin.com/in/hassan-karasu-a7485336b"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 self-start inline-flex items-center gap-1 text-[11px] font-medium uppercase tracking-wider text-foreground bg-muted hover:bg-muted/80 border border-border rounded-sm px-2.5 py-1.5 transition-colors focus-visible:outline-none"
+            >
+              <span>Connect on LinkedIn</span>
+              <Icon name="arrow_outward" size={13} />
+            </a>
+          </motion.div>
+
+          {/* Location */}
+          <motion.div
+            initial={false}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ delay: 0.16, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col"
+          >
+            <div className="flex h-12 w-12 items-center justify-center rounded-md border border-border bg-muted text-foreground">
+              <Icon name="location_on" size={20} />
+            </div>
+            <h3 className="mt-6 font-display text-xl font-normal tracking-tight text-foreground">
+              Location
+            </h3>
+            <p className="my-2.5 text-sm text-muted-foreground">
+              Based in Casablanca, and happy to work remotely.
+            </p>
+            <span className="font-mono text-sm text-foreground">Casablanca, Morocco</span>
+            <span className="mt-4 self-start inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+              <Icon name="schedule" size={13} />
+              UTC+1
+            </span>
           </motion.div>
         </div>
 
