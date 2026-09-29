@@ -71,7 +71,7 @@ export function ContactSection() {
         {/* ========================================================
             DIRECT CORRESPONDENCE PANEL
             ======================================================== */}
-        <div className="grid w-full grid-cols-1 gap-1 rounded-md border border-border bg-muted p-1 *:rounded-sm *:border *:border-border *:bg-card *:p-6 sm:grid-cols-3">
+        <div className="grid w-full grid-cols-1 gap-1 rounded-md border border-border bg-muted p-1 *:rounded-sm *:border *:border-border *:bg-card *:p-6 sm:grid-cols-2">
           {/* Email */}
           <motion.div
             initial={false}
@@ -149,26 +149,6 @@ export function ContactSection() {
               <span>Connect on LinkedIn</span>
               <Icon name="arrow_outward" size={13} />
             </a>
-          </motion.div>
-
-          {/* Location */}
-          <motion.div
-            initial={false}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-30px" }}
-            transition={{ delay: 0.16, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col"
-          >
-            <div className="flex h-12 w-12 items-center justify-center rounded-md border border-border bg-muted text-foreground">
-              <Icon name="location_on" size={20} />
-            </div>
-            <h3 className="mt-6 font-display text-xl font-normal tracking-tight text-foreground">
-              Location
-            </h3>
-            <p className="my-2.5 text-sm text-muted-foreground">
-              Based in Casablanca, and happy to work remotely.
-            </p>
-            <span className="font-mono text-sm text-foreground">Casablanca, Morocco</span>
           </motion.div>
         </div>
 
