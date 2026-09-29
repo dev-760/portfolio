@@ -64,7 +64,9 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
                 viewport={{ once: true }}
                 transition={{ delay: 0.35, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                Between July and September 2023 I trained at EL25 Studio in Casablanca, preparing call sheets the day before each shoot, assisting on set, editing the footage, and coordinating with clients.
+                I&rsquo;m interested in what happens once a plan meets the reality of getting
+                things done. Priorities shift, problems come up, and people have to figure out
+                what to do next.
               </motion.p>
             </div>
           </div>
