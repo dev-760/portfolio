@@ -42,13 +42,14 @@ export default function Home() {
               transition={{ delay: 0.2, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="text-base sm:text-lg text-muted-foreground max-w-xl font-normal leading-relaxed text-pretty"
             >
-              First-year Business Administration student at FSJES Aïn Chock, Université Hassan II de Casablanca. I am working through{" "}
+              First-year Business Administration student at FSJES Aïn Chock, Casablanca. This
+              term I am working through{" "}
               <TypingEffect
                 words={["general accounting", "microeconomics", "management principles"]}
                 className="text-foreground font-medium underline underline-offset-4 decoration-border"
                 pauseDuration={4000}
-              />{" "}
-              this year, and I write down what I am still trying to understand.
+              />
+              . I write up what I still do not understand.
             </motion.p>
 
             {/* Action Affordances */}
