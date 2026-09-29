@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { TimelineAnimate } from "@/components/ui/timeline-animate";
-import { Icon } from "@/components/icons/Icon";
 import {
   getExperience,
   fallbackExperience,
@@ -45,8 +43,8 @@ export function ExperienceSection({ initialExperience }: ExperienceSectionProps 
               Experience
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              One production traineeship and one volunteering program, both completed before I
-              started university.
+              Experiences that gave me an early look at working with people, deadlines, and
+              responsibilities outside the classroom.
             </p>
           </motion.div>
 
@@ -61,61 +59,49 @@ export function ExperienceSection({ initialExperience }: ExperienceSectionProps 
           </motion.div>
         </div>
 
-        {/* Timeline */}
-        <TimelineAnimate
-          data={experience.map(
-            ({ id, company, role, period, location, status, stack, description }) => ({
-              index: id,
-              content: (
-                <div className="space-y-4">
-                  <div className="mb-2 flex gap-3 sm:items-center">
-                    <div className="bg-muted border border-border flex size-11 shrink-0 items-center justify-center rounded">
-                      <Icon name="work" size={20} className="text-foreground" />
-                    </div>
-                    <div>
-                      <p className="text-muted-foreground text-xs sm:text-sm">{company}</p>
-                      <h3 className="text-base sm:text-xl font-semibold text-foreground">{role}</h3>
-                    </div>
-                  </div>
+        {/* Entries */}
+        <div className="space-y-10">
+          {experience.map(({ company, role, period, location, stack, description }, index) => (
+            <motion.div
+              key={company}
+              initial={false}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{
+                delay: index * 0.08,
+                duration: 0.5,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="space-y-3"
+            >
+              <h3 className="text-xl sm:text-2xl font-display font-normal text-foreground tracking-tight">
+                {company}
+              </h3>
 
-                  <div className="space-y-3 text-xs sm:text-sm">
-                    <p className="flex items-center gap-2">
-                      <Icon name="calendar_today" size={14} className="text-muted-foreground" />
-                      <span>
-                        {period}
-                        {status && (
-                          <span className="ml-1.5 font-medium text-foreground">
-                            · {status}
-                          </span>
-                        )}
-                      </span>
-                    </p>
+              <p className="text-base font-medium text-foreground">{role}</p>
 
-                    {location && (
-                      <p className="flex items-center gap-2 text-muted-foreground">
-                        <Icon name="location_on" size={14} />
-                        <span>{location}</span>
-                      </p>
-                    )}
+              <p className="text-xs sm:text-sm text-muted-foreground">
+                {period}
+                {location ? ` · ${location}` : ""}
+              </p>
 
-                    <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                      {stack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="inline-flex items-center rounded px-2.5 py-0.5 text-[11px] font-medium border border-border bg-muted/60 text-foreground"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-prose">
+                {description}
+              </p>
 
-                  <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
-                </div>
-              ),
-            })
-          )}
-        />
+              <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                {stack.map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex items-center rounded px-2.5 py-0.5 text-[11px] font-medium border border-border bg-muted/60 text-foreground"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
