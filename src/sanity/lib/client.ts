@@ -343,27 +343,27 @@ export const fallbackMonographs: MonographData[] = [
     description:
       "Some thoughts on the similarities I’ve noticed between studying physical science and working through quantitative subjects in business.",
     thesis:
-      "Physical science and economics both ask how systems respond to changing conditions. This note compares the questions, not the subjects themselves.",
+      "Changing subjects did not mean starting from zero. Some ways of thinking stayed with me.",
     tags: ["Quantitative Rigor", "Microeconomics", "Mathematical Modeling", "Scientific Method"],
-    keyTakeaways: [
-      "Equilibrium is a useful comparison point when studying supply and demand.",
-      "Rates of change help explain why marginal analysis matters.",
-      "Testing a claim is different from assuming that two events are related.",
+    intro: [
+      "Moving from the French-track Moroccan Baccalauréat in Physical Sciences to Business Administration changed what I was studying, but not everything about how I approached a problem.",
+      "In physical science, I was used to breaking a problem into variables, looking at how they affect each other, and asking what would happen if one of them changed. I started noticing a similar habit in economics, even though the systems and questions are different.",
     ],
-    academicContext:
-      "Academic Monograph: Bridging Baccalauréat Physical Sciences with University Microeconomics & Statistics.",
     sections: [
       {
-        heading: "A Shared Language of Systems",
+        heading: "Looking at What Changes",
         paragraphs: [
-          "Transitioning from the French-track Moroccan Baccalauréat in Physical Sciences to a Business Administration degree revealed a profound overlap. Many students view economics as purely qualitative, but its core engines (marginal utility, elasticity, cost optimization) are fundamentally mathematical.",
-          "When studying chemical equilibria in physics, Le Chatelier's principle states that a system in balance counteracts external perturbations. In microeconomics, competitive markets respond to price shocks through remarkably analogous balancing feedback loops.",
+          "Supply and demand gave me one of the first clear examples. A change in price, supply, or demand does not happen in isolation. Something changes, other parts of the system respond, and the result depends on the relationships between them.",
+          "That way of thinking felt familiar.",
+          "The comparison has limits, of course. A market is not a physical system, and people do not behave like particles or chemical reactions. The useful part of the comparison is the habit of asking what changes, what responds, and what assumptions are being made.",
         ],
       },
       {
-        heading: "The Quantitative Edge in Management",
+        heading: "From Calculations to Questions",
         paragraphs: [
-          "A scientist's habit of asking how you would test a claim is a useful check against anecdotal optimism in business decisions. I am still building that toolkit; this essay is partly about why I bother.",
+          "The quantitative side of business also felt less unfamiliar than I expected. Mathematics and statistics are used differently from physics, but they still require me to work carefully with variables, relationships, and evidence.",
+          "That has made me more interested in the question behind a calculation. What is being measured? What does the result actually tell me? What would make the conclusion change?",
+          "I’m still developing this way of thinking through economics, statistics, accounting, and mathematics. For now, the main connection I see is not between the subjects themselves, but between the habits they ask me to develop.",
         ],
       },
     ],
