@@ -18,6 +18,22 @@ import {
 export type ArticleItem = MonographData;
 export type ArticleContentSection = MonographSection;
 
+/**
+ * Renders a paragraph string, converting **bold** spans into <strong>.
+ * The data layer stores plain text, so emphasis is expressed inline.
+ */
+function renderInlineEmphasis(text: string): React.ReactNode[] {
+  return text.split(/(\*\*[^*]+\*\*)/g).filter(Boolean).map((chunk, i) =>
+    chunk.startsWith("**") && chunk.endsWith("**") ? (
+      <strong key={i} className="font-semibold text-foreground">
+        {chunk.slice(2, -2)}
+      </strong>
+    ) : (
+      <span key={i}>{chunk}</span>
+    )
+  );
+}
+
 export interface WritingSectionProps {
   initialMonographs?: MonographData[];
   initialFeaturedMonograph?: MonographData;
@@ -476,7 +492,7 @@ export function WritingSection({
                           key={pIdx}
                           className="text-sm sm:text-base text-muted-foreground leading-relaxed"
                         >
-                          {p}
+                          {renderInlineEmphasis(p)}
                         </p>
                       ))}
                     </div>
@@ -494,7 +510,7 @@ export function WritingSection({
                             key={pIdx}
                             className="text-sm sm:text-base text-muted-foreground leading-relaxed"
                           >
-                            {p}
+                            {renderInlineEmphasis(p)}
                           </p>
                         ))}
                         {section.bullets && (
@@ -502,7 +518,7 @@ export function WritingSection({
                             {section.bullets.map((b, bIdx) => (
                               <li key={bIdx} className="flex items-start gap-2">
                                 <span className="mt-1.5 w-1 h-1 rounded-full bg-primary shrink-0" />
-                                <span className="leading-relaxed">{b}</span>
+                                <span className="leading-relaxed">{renderInlineEmphasis(b)}</span>
                               </li>
                             ))}
                           </ul>
@@ -514,7 +530,7 @@ export function WritingSection({
                                 key={tIdx}
                                 className="text-sm sm:text-base text-muted-foreground leading-relaxed"
                               >
-                                {p}
+                                {renderInlineEmphasis(p)}
                               </p>
                             ))}
                           </>

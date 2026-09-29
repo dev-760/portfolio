@@ -298,27 +298,35 @@ export const fallbackMonographs: MonographData[] = [
     description:
       "A short note on why it helps to watch how work actually happens before changing the process around it.",
     thesis:
-      "Summary dashboards smooth away the micro-delays that only show up when you watch the work happen.",
+      "A report can tell you where a process is slow. Watching the work can show you why.",
     tags: ["Process Mapping", "Gemba Walks", "Workflow Triage", "Operational Discipline"],
-    keyTakeaways: [
-      "Summary dashboards abstract away human micro-hesitations and workarounds.",
-      "Frontline workers develop brilliant local hacks that should inform future systems.",
-      "Diagnostic interviews with the people doing the work make later changes easier to accept.",
+    intro: [
+      "When I first started studying process improvement, I naturally looked for the things that could be measured: time, output, costs, errors. Those numbers are useful, but they only show part of what is happening.",
+      "A process can look efficient in a report and still be frustrating to the person doing the work.",
     ],
-    academicContext:
-      "Coursework reflection connected to Principles of Management, FSJES Aïn Chock.",
     sections: [
       {
-        heading: "The Disconnect Between Theory and the Floor",
+        heading: "What the Numbers Leave Out",
         paragraphs: [
-          "Standard operational textbooks emphasize flowcharts, KPI matrices, and Lean frameworks. Used only from behind a desk, they can create an illusion of control.",
-          "When observing live workflows, whether managing inventory in a storage room or coordinating equipment loading before sunrise, the real bottleneck is rarely a shortage of software. It is ambiguous handoffs, incomplete asset tagging, or conflicting priorities between team members.",
+          "A dashboard might show that a task takes ten minutes. It does not necessarily show that the person doing it spends two of those minutes looking for missing information, waiting for a response, or figuring out which version of a file to use.",
+          "Those small delays are easy to overlook because they rarely appear as their own category in a report.",
+          "This is why I find direct observation useful. It adds details that are difficult to capture in a summary.",
         ],
       },
       {
-        heading: "Actionable Takeaway for Business Students",
+        heading: "The Workarounds Are Information",
         paragraphs: [
-          "The one thing a first-year student can offer on an internship is unglamorous observation. Walk the process yourself before proposing the slide deck.",
+          "People also adapt to the systems they work with.",
+          "They create shortcuts, keep their own notes, send a quick message instead of using a formal channel, or maintain a second way of doing something because the first one is inconvenient.",
+          "I used to see these workarounds mainly as signs that a process was not being followed properly. I now think they can also tell you something about the process itself. If several people have developed the same workaround, there may be a reason worth understanding.",
+        ],
+      },
+      {
+        heading: "A Simple Lesson",
+        paragraphs: [
+          "For me, the lesson is straightforward: **look at the work before trying to redesign it.**",
+          "Ask the people doing it where they lose time. Watch what happens between the steps. Notice what gets written down, what gets remembered, and what gets communicated informally.",
+          "The goal is not to replace measurement with observation. It is to use both. Numbers can show where to look. Observation can help explain what you find.",
         ],
       },
     ],
