@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Building2, Calendar, Clapperboard, Users } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import {
   getExperience,
   fallbackExperience,
@@ -12,6 +14,8 @@ import {
 export interface ExperienceSectionProps {
   initialExperience?: ExperienceData[];
 }
+
+const entryIcons = [Clapperboard, Users, Building2];
 
 export function ExperienceSection({ initialExperience }: ExperienceSectionProps = {}) {
   const [experience, setExperience] = useState<ExperienceData[]>(
@@ -59,48 +63,69 @@ export function ExperienceSection({ initialExperience }: ExperienceSectionProps 
           </motion.div>
         </div>
 
-        {/* Entries */}
-        <div className="space-y-10">
-          {experience.map(({ company, role, period, location, stack, description }, index) => (
-            <motion.div
-              key={company}
-              initial={false}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{
-                delay: index * 0.08,
-                duration: 0.5,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="space-y-3"
-            >
-              <h3 className="text-xl sm:text-2xl font-display font-normal text-foreground tracking-tight">
-                {company}
-              </h3>
+        {/* Timeline */}
+        <div className="relative ml-4">
+          {/* Timeline line */}
+          <div className="absolute inset-y-0 left-0 border-l-2 border-border" />
 
-              <p className="text-base font-medium text-foreground">{role}</p>
+          {experience.map(
+            ({ company, role, period, location, stack, description }, index) => {
+              const Icon = entryIcons[index % entryIcons.length];
+              return (
+                <motion.div
+                  key={company}
+                  initial={false}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{
+                    delay: index * 0.08,
+                    duration: 0.5,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="relative pb-12 pl-10 last:pb-0"
+                >
+                  {/* Timeline Icon */}
+                  <div className="absolute left-px flex h-9 w-9 -translate-x-1/2 items-center justify-center rounded-full bg-accent ring-8 ring-surface">
+                    <Icon className="h-5 w-5 text-background" strokeWidth={2} />
+                  </div>
 
-              <p className="text-xs sm:text-sm text-muted-foreground">
-                {period}
-                {location ? ` · ${location}` : ""}
-              </p>
+                  {/* Content */}
+                  <div className="space-y-3 pt-2 sm:pt-1">
+                    <p className="text-base font-medium text-foreground">{company}</p>
 
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-prose">
-                {description}
-              </p>
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-display font-normal tracking-tight text-foreground">
+                        {role}
+                      </h3>
+                      <div className="mt-2 flex flex-wrap items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+                        <Calendar className="h-4 w-4 shrink-0" strokeWidth={2} />
+                        <span>
+                          {period}
+                          {location ? ` · ${location}` : ""}
+                        </span>
+                      </div>
+                    </div>
 
-              <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                {stack.map((tag) => (
-                  <span
-                    key={tag}
-                    className="inline-flex items-center rounded px-2.5 py-0.5 text-[11px] font-medium border border-border bg-muted/60 text-foreground"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                    <p className="text-pretty text-sm sm:text-base text-muted-foreground leading-relaxed max-w-prose">
+                      {description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {stack.map((tag) => (
+                        <Badge
+                          key={tag}
+                          variant="outline"
+                          className="rounded-full border-border bg-muted/60 font-medium text-foreground hover:bg-muted"
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            }
+          )}
         </div>
       </div>
     </section>
