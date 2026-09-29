@@ -51,8 +51,8 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
               className="lg:col-span-8"
             >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-normal tracking-tight text-foreground leading-[1.15]">
-                I&rsquo;m Hassan. I study how a decision turns into a budget, a record, and a
-                routine someone else has to follow.
+                I&rsquo;m Hassan. I&rsquo;m interested in what happens between having a plan and
+                getting the work done.
               </h2>
             </motion.div>
 
