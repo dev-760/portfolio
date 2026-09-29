@@ -91,22 +91,26 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
 
               <div className="text-muted-foreground text-sm sm:text-base leading-relaxed space-y-4 max-w-prose">
                 <p>
-                  I study for a Licence in Business Administration at the{" "}
+                  I&rsquo;m pursuing a Bachelor&rsquo;s degree in Business Administration at the{" "}
                   <span className="font-medium text-foreground">
-                    Faculté des Sciences Juridiques, Économiques et Sociales (FSJES) Aïn Chock
+                    Faculty of Legal, Economic and Social Sciences (FSJES) Aïn Chock
                   </span>
-                  , Université Hassan II de Casablanca.
+                  , Hassan II University of Casablanca.
                 </p>
                 <p>
-                  This year my coursework covers general accounting, cost analysis, micro and
-                  macroeconomics, descriptive statistics, mathematics for economics, business law,
-                  and principles of management.
+                  Studying business has gradually changed the way I look at an organization. I&rsquo;ve
+                  learned to look beyond what a company does on the surface and pay attention to
+                  what is happening underneath: the market around it, the way its activity is
+                  recorded, how resources are managed, how people and decisions affect its
+                  direction, and the rules it has to work within.
                 </p>
                 <p>
-                  Outside class, I volunteered with the national{" "}
-                  <span className="font-medium text-foreground">Motatawi3</span> program under the
-                  Ministry of Youth, Culture and Communication, helping to run workshops alongside
-                  local organizers and other volunteers.
+                  As I move further into the degree, those different sides start to overlap. Strategy
+                  connects with finance, data becomes part of decision-making, and areas like
+                  auditing, business intelligence, entrepreneurship, and international management add
+                  more context to how a business operates. Rather than looking at each subject
+                  separately, I&rsquo;m learning to see how one part of a business can affect
+                  another.
                 </p>
               </div>
             </motion.div>
