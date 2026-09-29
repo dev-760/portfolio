@@ -90,8 +90,8 @@ export function StructuredData() {
           {
             "@type": "ListItem",
             "position": 3,
-            "name": "Studies",
-            "item": "https://hassankarasu.dev/#about"
+            "name": "Education",
+            "item": "https://hassankarasu.dev/#education"
           },
           {
             "@type": "ListItem",

@@ -175,7 +175,7 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
         {/* ========================================================
             PART 3: Education & Formation Timeline
             ======================================================== */}
-        <div className="pt-12 border-t border-border space-y-8">
+        <div className="pt-12 border-t border-border space-y-8" id="education">
           <div className="space-y-2">
             <h2 className="text-2xl sm:text-3xl font-display font-normal text-foreground tracking-tight">
               Education

@@ -12,6 +12,7 @@ import { Icon } from "@/components/icons/Icon";
 
 const navLinks = [
   { name: "About", href: "#about" },
+  { name: "Education", href: "#education" },
   { name: "Tools", href: "#skills" },
   { name: "Experience", href: "#experience" },
   { name: "Notes", href: "#writing" },
@@ -26,7 +27,7 @@ export function Navbar() {
   const drawerRef = useRef<HTMLDivElement>(null);
 
   const [activeSection] = useActiveSection(
-    ["home", "about", "skills", "experience", "writing", "contact"],
+    ["home", "about", "education", "skills", "experience", "writing", "contact"],
     "home"
   );
 
