@@ -185,8 +185,9 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
               Education
             </h2>
             <p className="text-sm text-muted-foreground max-w-2xl leading-relaxed">
-              A Baccalaureate in Physical Science, then a first-year Licence in Business
-              Administration at FSJES Aïn Chock.
+              A Baccalaureate in Physical Science, then a first-year Bachelor&rsquo;s degree in
+              Business Administration at the Faculty of Legal, Economic and Social Sciences
+              (FSJES) Aïn Chock.
             </p>
           </div>
 

@@ -168,7 +168,8 @@ export const fallbackEducation: EducationData[] = [
   },
   {
     id: "02",
-    company: "Faculté des Sciences Juridiques, Économiques et Sociales (FSJES) Aïn Chock · Université Hassan II",
+    company:
+      "Faculty of Legal, Economic and Social Sciences (FSJES) Aïn Chock, Hassan II University of Casablanca.",
     role: "Licence in Business Administration",
     period: "2026 to present",
     status: "Current Enrollment · First-Year",
