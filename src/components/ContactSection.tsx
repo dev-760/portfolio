@@ -209,7 +209,7 @@ export function ContactSection() {
               <a href="#about" className="hover:text-foreground transition-colors">
                 About
               </a>
-              <a href="#work" className="hover:text-foreground transition-colors">
+              <a href="#about" className="hover:text-foreground transition-colors">
                 Studies
               </a>
               <a href="#skills" className="hover:text-foreground transition-colors">

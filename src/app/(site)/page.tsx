@@ -3,7 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { AboutSection } from "@/components/AboutSection";
-import { WorkSection } from "@/components/WorkSection";
 import { SkillsSection } from "@/components/SkillsSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
 import { WritingSection } from "@/components/WritingSection";
@@ -73,7 +72,7 @@ export default function Home() {
               </a>
 
               <a
-                href="#work"
+                href="#about"
                 className="inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 bg-card hover:bg-muted border border-border text-foreground text-xs font-semibold uppercase tracking-wider transition-colors focus-visible:outline-none"
               >
                 <Icon name="checklist" size={15} />
@@ -98,12 +97,7 @@ export default function Home() {
       <AboutSection />
 
       {/* ========================================================
-          Section 02: WORK
-          ======================================================== */}
-      <WorkSection />
-
-      {/* ========================================================
-          Section 03: SKILLS
+          Section 02: SKILLS
           ======================================================== */}
       <SkillsSection />
 

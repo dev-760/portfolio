@@ -133,7 +133,6 @@ const profile: Profile = {
   navigation: [
     { id: "home", label: "Home", href: "/#home" },
     { id: "about", label: "About", href: "/#about" },
-    { id: "work", label: "Work", href: "/#work" },
     { id: "skills", label: "Skills", href: "/#skills" },
     { id: "experience", label: "Experience", href: "/#experience" },
     { id: "writing", label: "Monographs", href: "/#writing" },

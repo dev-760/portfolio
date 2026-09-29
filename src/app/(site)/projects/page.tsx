@@ -1,5 +1,5 @@
 import RedirectToSection from "@/components/RedirectToSection";
 
 export default function ProjectsPage() {
-  return <RedirectToSection sectionId="work" />;
+  return <RedirectToSection sectionId="about" />;
 }

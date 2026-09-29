@@ -91,7 +91,7 @@ export function StructuredData() {
             "@type": "ListItem",
             "position": 3,
             "name": "Studies",
-            "item": "https://hassankarasu.dev/#work"
+            "item": "https://hassankarasu.dev/#about"
           },
           {
             "@type": "ListItem",
