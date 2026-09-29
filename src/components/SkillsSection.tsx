@@ -1,27 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Icon } from "@/components/icons/Icon";
-import {
-  fallbackSkills,
-  getSkills,
-  isSanityConfigured,
-  type SkillData,
-} from "@/sanity/lib/client";
 
 export function SkillsSection() {
-  const [skills, setSkills] = useState<SkillData[]>(fallbackSkills);
-
-  useEffect(() => {
-    if (isSanityConfigured) {
-      getSkills().then(setSkills);
-    }
-  }, []);
-
-  const problemSolvingSkills = skills.filter((skill) => skill.group === "analysis");
-  const productivityStacks = skills.filter((skill) => skill.group === "software");
-
   return (
     <section className="section border-b border-border bg-surface scroll-mt-16" id="skills">
       <div className="container space-y-16">
@@ -35,11 +18,11 @@ export function SkillsSection() {
             className="space-y-2 max-w-xl"
           >
             <h2 className="text-3xl lg:text-4xl font-display font-normal tracking-tight text-foreground">
-              How I Work
+              What I Do
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              The habits I bring to coursework and production work, and the software I use to
-              apply them.
+              Most of my time goes into studying, working on assignments, and making things that
+              help me understand what I&rsquo;m learning.
             </p>
           </motion.div>
 
@@ -50,106 +33,104 @@ export function SkillsSection() {
             transition={{ delay: 0.15, duration: 0.5 }}
             className="text-xs font-mono text-muted-foreground"
           >
-            Study · Production · Tools
+            Study · Assignments · Projects
           </motion.p>
         </div>
 
         {/* ========================================================
-            PART 1: Quantitative & Problem Solving (3x2 Grid)
+            PART 1: Studying Business
             ======================================================== */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
-              <Icon name="psychology" size={16} />
-              How I Think
+              <Icon name="graduation" size={16} />
+              Studying Business
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {problemSolvingSkills.map((skill, index) => (
-              <motion.div
-                key={skill.id}
-                initial={false}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-30px" }}
-                transition={{
-                  delay: index * 0.05,
-                  duration: 0.45,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="rounded-md border border-border bg-card p-6 flex flex-col justify-between hover:border-foreground/30 transition-all duration-200 shadow-xs group"
-              >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="size-9 rounded bg-muted border border-border flex items-center justify-center text-foreground group-hover:scale-105 transition-transform">
-                      <Icon name={skill.icon ?? "check_circle"} size={18} />
-                    </div>
-                    <span className="size-1.5 rounded-full bg-foreground/30 group-hover:bg-foreground transition-colors" />
-                  </div>
+          <div className="max-w-prose text-muted-foreground text-sm sm:text-base leading-relaxed space-y-4">
+            <p>
+              My degree moves between subjects that look at business from very different angles. I
+              might spend one week working through an accounting problem, then move to an
+              economics question, a management case, or a presentation. Over time, I&rsquo;m
+              starting to see how these subjects relate to the same situations from different
+              sides.
+            </p>
+          </div>
 
-                  <h4 className="text-lg font-display font-medium text-foreground tracking-tight leading-snug">
-                    {skill.name}
-                  </h4>
+          <p className="text-xs font-medium text-foreground">
+            Accounting · Economics · Management · Finance · Marketing · Law · Data
+          </p>
+        </div>
 
-                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                    {skill.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+        {/* ========================================================
+            PART 2: Working on Ideas
+            ======================================================== */}
+        <div className="space-y-4 pt-6 border-t border-border">
+          <div className="flex items-center justify-between">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
+              <Icon name="lightbulb_tip" size={16} />
+              Working on Ideas
+            </h3>
+          </div>
+
+          <div className="max-w-prose text-muted-foreground text-sm sm:text-base leading-relaxed space-y-4">
+            <p>
+              I like taking something I&rsquo;m given and working out what to do with it. That
+              might mean researching a topic, breaking down a case, organizing information,
+              writing a report, or preparing something to present. The final result matters, but
+              so does the process of getting there.
+            </p>
+          </div>
+
+          <p className="text-xs font-medium text-foreground">
+            Research · Analysis · Writing · Presentations
+          </p>
+        </div>
+
+        {/* ========================================================
+            PART 3: Learning Through Projects
+            ======================================================== */}
+        <div className="space-y-4 pt-6 border-t border-border">
+          <div className="flex items-center justify-between">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
+              <Icon name="rocket" size={16} />
+              Learning Through Projects
+            </h3>
+          </div>
+
+          <div className="max-w-prose text-muted-foreground text-sm sm:text-base leading-relaxed">
+            <p>
+              Projects give me a reason to use what I study instead of leaving it in a notebook. I
+              use them to test ideas, learn unfamiliar tools, and get better at explaining
+              something clearly.
+            </p>
           </div>
         </div>
 
         {/* ========================================================
-            PART 2: Software & Applied Business Stacks (2x2 Grid)
+            PART 4: The Tools I Use
             ======================================================== */}
-        <div className="space-y-6 pt-6 border-t border-border">
+        <div className="space-y-4 pt-6 border-t border-border">
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
-              <Icon name="work" size={16} />
-              Software I Use
+              <Icon name="wrench" size={16} />
+              The Tools I Use
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {productivityStacks.map((stack, index) => (
-              <motion.div
-                key={stack.id}
-                initial={false}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-30px" }}
-                transition={{
-                  delay: index * 0.08,
-                  duration: 0.45,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="rounded-md border border-border bg-card p-6 sm:p-7 flex flex-col justify-between hover:border-foreground/30 transition-all duration-200 shadow-xs group"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <h4 className="text-xl font-display font-normal text-foreground tracking-tight">
-                      {stack.name}
-                    </h4>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                    {stack.description}
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-1.5 pt-5 mt-5 border-t border-border/70">
-                  {(stack.tags ?? []).map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[11px] font-medium px-2 py-0.5 rounded bg-muted/60 text-muted-foreground border border-border/60"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+          <div className="max-w-prose text-muted-foreground text-sm sm:text-base leading-relaxed">
+            <p>
+              I keep the setup fairly simple. Excel is useful when I need to work with numbers or
+              organize information. Word and PowerPoint handle most of my written and
+              presentation work, while Google Workspace and Notion help me keep everything
+              together.
+            </p>
           </div>
+
+          <p className="text-xs font-medium text-foreground">
+            Excel · Word · PowerPoint · Google Workspace · Notion
+          </p>
         </div>
       </div>
     </section>

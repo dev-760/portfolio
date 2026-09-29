@@ -41,6 +41,8 @@ import {
   Sparkles,
   GraduationCap,
   Award,
+  Rocket,
+  Wrench,
   LucideProps,
 } from "lucide-react";
 
@@ -100,6 +102,9 @@ const iconMap = new Map<string, React.ComponentType<LucideProps>>([
   ["education", GraduationCap],
   ["award", Award],
   ["degree", GraduationCap],
+  ["lightbulb_tip", Lightbulb],
+  ["rocket", Rocket],
+  ["wrench", Wrench],
 ]);
 
 export interface IconProps extends Omit<LucideProps, "ref"> {
