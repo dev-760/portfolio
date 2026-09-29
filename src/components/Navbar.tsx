@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { clsx } from "clsx";
 import { useActiveSection } from "@/motion/useActiveSection";
 import { MOTION_EASINGS } from "@/motion/tokens";
@@ -130,9 +131,27 @@ export function Navbar() {
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, "#home")}
-            className="font-display text-base font-normal tracking-tight text-foreground cursor-pointer"
+            className="flex items-center gap-2.5 cursor-pointer"
           >
-            Hassan Karasu
+            <Image
+              src="/icon-light.svg"
+              alt=""
+              width={28}
+              height={28}
+              className="size-7 w-auto object-contain dark:hidden"
+              priority
+            />
+            <Image
+              src="/icon-dark.svg"
+              alt=""
+              width={28}
+              height={28}
+              className="size-7 w-auto object-contain hidden dark:block"
+              priority
+            />
+            <span className="font-display text-base font-normal tracking-tight text-foreground">
+              Hassan Karasu
+            </span>
           </a>
 
           {/* Desktop Nav */}
