@@ -42,10 +42,11 @@ export function ExperienceSection({ initialExperience }: ExperienceSectionProps 
             className="space-y-2 max-w-xl"
           >
             <h2 className="text-3xl lg:text-4xl font-display font-normal tracking-tight text-foreground">
-              Experience &amp; Community Service
+              Experience
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Commercial production and community work alongside first-year business coursework.
+              One production traineeship and one volunteering program, both completed before I
+              started university.
             </p>
           </motion.div>
 
@@ -56,7 +57,7 @@ export function ExperienceSection({ initialExperience }: ExperienceSectionProps 
             transition={{ delay: 0.15, duration: 0.5 }}
             className="text-xs font-mono text-muted-foreground"
           >
-            Casablanca · Field Experience
+            Casablanca · 2023 to 2024
           </motion.div>
         </div>
 

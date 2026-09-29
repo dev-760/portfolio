@@ -79,7 +79,8 @@ export const fallbackSkills: SkillData[] = [
     id: "analytical-thinking",
     group: "analysis",
     name: "Quantitative & Analytical Thinking",
-    description: "I show my steps and check the totals on accounting, economics, mathematics, and statistics exercises.",
+    description:
+      "I write out my steps before I trust a result, and re-check the figures on accounting, economics, mathematics, and statistics exercises.",
     icon: "calculate",
     order: 1,
   },
@@ -87,7 +88,8 @@ export const fallbackSkills: SkillData[] = [
     id: "process-coordination",
     group: "analysis",
     name: "Process & Schedule Coordination",
-    description: "I keep tasks, handoffs, and deadlines visible, from coursework deadlines to shoot days at EL25 Studio.",
+    description:
+      "I keep tasks, handoffs, and deadlines visible to everyone involved, from coursework deadlines to shoot days at EL25 Studio.",
     icon: "schedule",
     order: 2,
   },
@@ -95,7 +97,8 @@ export const fallbackSkills: SkillData[] = [
     id: "structured-problem-solving",
     group: "analysis",
     name: "Structured Problem Solving",
-    description: "I take a management case apart into a sequence I can verify, then answer the question it actually asks.",
+    description:
+      "I take a management case apart into steps I can verify one at a time, then answer the question it is actually asking.",
     icon: "account_tree",
     order: 3,
   },
@@ -103,7 +106,8 @@ export const fallbackSkills: SkillData[] = [
     id: "communication-teamwork",
     group: "analysis",
     name: "Communication & Academic Debate",
-    description: "I practice debate and presentations in class and work with clients and production staff when a brief needs clarification.",
+    description:
+      "I practice debate and presentations in class, and I have worked with clients and production staff when a brief needed clarifying.",
     icon: "forum",
     order: 4,
   },
@@ -111,7 +115,8 @@ export const fallbackSkills: SkillData[] = [
     id: "research-learning",
     group: "analysis",
     name: "Academic Research & Synthesis",
-    description: "I read management and economics material, then turn notes into short monographs and coursework reflections.",
+    description:
+      "I read management and economics material, then turn my notes into short written pieces instead of leaving them scattered.",
     icon: "menu_book",
     order: 5,
   },
@@ -119,7 +124,8 @@ export const fallbackSkills: SkillData[] = [
     id: "attention-detail",
     group: "analysis",
     name: "Accuracy and Checking",
-    description: "I check totals, tables, filenames, and citations before treating an assignment or document as finished.",
+    description:
+      "I check totals, tables, filenames, and citations before I treat any assignment or document as finished.",
     icon: "check_circle",
     order: 6,
   },
@@ -196,7 +202,7 @@ export const fallbackExperience: ExperienceData[] = [
       "Client Collaboration",
     ],
     description:
-      "A production traineeship at EL25 Studio in Casablanca, supporting commercial ad production. I prepared call sheets and equipment lists the day before a shoot, assisted on set, edited the footage in post, and worked with clients and production staff to keep each deliverable on its deadline.",
+      "A three-month traineeship on commercial ad production. I prepared call sheets and equipment lists the day before each shoot, assisted on set, edited the footage in post, and coordinated with clients and production staff to land every deliverable on its deadline.",
     order: 1,
   },
   {
@@ -213,7 +219,7 @@ export const fallbackExperience: ExperienceData[] = [
       "Civic Engagement",
     ],
     description:
-      "Volunteer work in the national Motatawi3 program under the Ministry of Youth, Culture and Communication. I helped organize workshops, ran awareness sessions with local organizers and volunteers, and supported young people working through practical skills and career options.",
+      "Volunteer work on a national youth program. I helped organize workshops, ran awareness sessions alongside local organizers and other volunteers, and supported young people working through practical skills and career options.",
     order: 2,
   },
 ];

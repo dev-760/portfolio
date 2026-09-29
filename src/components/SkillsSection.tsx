@@ -35,10 +35,11 @@ export function SkillsSection() {
             className="space-y-2 max-w-xl"
           >
             <h2 className="text-3xl lg:text-4xl font-display font-normal tracking-tight text-foreground">
-              Tools I Work With
+              How I Work
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              How I study, how I organize, and what I use to do both.
+              The habits I bring to coursework and production work, and the software I use to
+              apply them.
             </p>
           </motion.div>
 
@@ -49,7 +50,7 @@ export function SkillsSection() {
             transition={{ delay: 0.15, duration: 0.5 }}
             className="text-xs font-mono text-muted-foreground"
           >
-            Accounting · Analysis · Software
+            Study · Production · Tools
           </motion.p>
         </div>
 
@@ -60,7 +61,7 @@ export function SkillsSection() {
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
               <Icon name="psychology" size={16} />
-              Analytical &amp; Problem-Solving
+              How I Think
             </h3>
           </div>
 
