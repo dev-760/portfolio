@@ -2,7 +2,44 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Icon } from "@/components/icons/Icon";
+import { GraduationCap, Lightbulb, Rocket, Wrench, type LucideIcon } from "lucide-react";
+
+interface PracticeArea {
+  title: string;
+  description: string;
+  tags?: string[];
+  icon: LucideIcon;
+}
+
+const practiceAreas: PracticeArea[] = [
+  {
+    title: "Studying Business",
+    description:
+      "My degree moves between subjects that look at business from very different angles. I might spend one week working through an accounting problem, then move to an economics question, a management case, or a presentation. Over time, I’m starting to see how these subjects relate to the same situations from different sides.",
+    tags: ["Accounting", "Economics", "Management", "Finance", "Marketing", "Law", "Data"],
+    icon: GraduationCap,
+  },
+  {
+    title: "Working on Ideas",
+    description:
+      "I like taking something I’m given and working out what to do with it. That might mean researching a topic, breaking down a case, organizing information, writing a report, or preparing something to present. The final result matters, but so does the process of getting there.",
+    tags: ["Research", "Analysis", "Writing", "Presentations"],
+    icon: Lightbulb,
+  },
+  {
+    title: "Learning Through Projects",
+    description:
+      "Projects give me a reason to use what I study instead of leaving it in a notebook. I use them to test ideas, learn unfamiliar tools, and get better at explaining something clearly.",
+    icon: Rocket,
+  },
+  {
+    title: "The Tools I Use",
+    description:
+      "I keep the setup fairly simple. Excel is useful when I need to work with numbers or organize information. Word and PowerPoint handle most of my written and presentation work, while Google Workspace and Notion help me keep everything together.",
+    tags: ["Excel", "Word", "PowerPoint", "Google Workspace", "Notion"],
+    icon: Wrench,
+  },
+];
 
 export function SkillsSection() {
   return (
@@ -37,100 +74,37 @@ export function SkillsSection() {
           </motion.p>
         </div>
 
-        {/* ========================================================
-            PART 1: Studying Business
-            ======================================================== */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
-              <Icon name="graduation" size={16} />
-              Studying Business
-            </h3>
-          </div>
+        {/* Practice Area Cards */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {practiceAreas.map(({ title, description, tags, icon: AreaIcon }, index) => (
+            <motion.article
+              key={title}
+              initial={false}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{
+                delay: index * 0.08,
+                duration: 0.5,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="rounded-md border border-border bg-card p-6 sm:p-7 hover:border-foreground/30 transition-colors duration-200 flex flex-col gap-4"
+            >
+              <div className="flex items-center gap-3">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-sm bg-accent/10 text-accent">
+                  <AreaIcon className="h-4 w-4" strokeWidth={2} />
+                </div>
+                <h3 className="text-lg font-medium tracking-tight text-foreground">{title}</h3>
+              </div>
 
-          <div className="max-w-prose text-muted-foreground text-sm sm:text-base leading-relaxed space-y-4">
-            <p>
-              My degree moves between subjects that look at business from very different angles. I
-              might spend one week working through an accounting problem, then move to an
-              economics question, a management case, or a presentation. Over time, I&rsquo;m
-              starting to see how these subjects relate to the same situations from different
-              sides.
-            </p>
-          </div>
+              <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
+                {description}
+              </p>
 
-          <p className="text-xs font-medium text-foreground">
-            Accounting · Economics · Management · Finance · Marketing · Law · Data
-          </p>
-        </div>
-
-        {/* ========================================================
-            PART 2: Working on Ideas
-            ======================================================== */}
-        <div className="space-y-4 pt-6 border-t border-border">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
-              <Icon name="lightbulb_tip" size={16} />
-              Working on Ideas
-            </h3>
-          </div>
-
-          <div className="max-w-prose text-muted-foreground text-sm sm:text-base leading-relaxed space-y-4">
-            <p>
-              I like taking something I&rsquo;m given and working out what to do with it. That
-              might mean researching a topic, breaking down a case, organizing information,
-              writing a report, or preparing something to present. The final result matters, but
-              so does the process of getting there.
-            </p>
-          </div>
-
-          <p className="text-xs font-medium text-foreground">
-            Research · Analysis · Writing · Presentations
-          </p>
-        </div>
-
-        {/* ========================================================
-            PART 3: Learning Through Projects
-            ======================================================== */}
-        <div className="space-y-4 pt-6 border-t border-border">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
-              <Icon name="rocket" size={16} />
-              Learning Through Projects
-            </h3>
-          </div>
-
-          <div className="max-w-prose text-muted-foreground text-sm sm:text-base leading-relaxed">
-            <p>
-              Projects give me a reason to use what I study instead of leaving it in a notebook. I
-              use them to test ideas, learn unfamiliar tools, and get better at explaining
-              something clearly.
-            </p>
-          </div>
-        </div>
-
-        {/* ========================================================
-            PART 4: The Tools I Use
-            ======================================================== */}
-        <div className="space-y-4 pt-6 border-t border-border">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
-              <Icon name="wrench" size={16} />
-              The Tools I Use
-            </h3>
-          </div>
-
-          <div className="max-w-prose text-muted-foreground text-sm sm:text-base leading-relaxed">
-            <p>
-              I keep the setup fairly simple. Excel is useful when I need to work with numbers or
-              organize information. Word and PowerPoint handle most of my written and
-              presentation work, while Google Workspace and Notion help me keep everything
-              together.
-            </p>
-          </div>
-
-          <p className="text-xs font-medium text-foreground">
-            Excel · Word · PowerPoint · Google Workspace · Notion
-          </p>
+              {tags && (
+                <p className="text-xs font-medium text-foreground mt-auto pt-2">{tags.join(" · ")}</p>
+              )}
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>
