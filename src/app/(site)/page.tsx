@@ -9,7 +9,6 @@ import { ExperienceSection } from "@/components/ExperienceSection";
 import { WritingSection } from "@/components/WritingSection";
 import { ContactSection } from "@/components/ContactSection";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
-import { TypingEffect } from "@/components/TypingEffect";
 import { Icon } from "@/components/icons/Icon";
 
 export default function Home() {
@@ -32,7 +31,7 @@ export default function Home() {
               className="text-4xl sm:text-5xl lg:text-7xl font-display font-normal tracking-tight leading-[1.05] text-foreground text-balance"
             >
               Studying how organizations actually work.<br />
-              <span className="italic text-foreground/85">Then checking whether the numbers agree.</span>
+              <span className="italic text-foreground/85">Then learning how decisions get made.</span>
             </motion.h1>
 
             {/* Description */}
@@ -42,19 +41,10 @@ export default function Home() {
               transition={{ delay: 0.2, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="text-base sm:text-lg text-muted-foreground max-w-xl font-normal leading-relaxed text-pretty"
             >
-              First-year Business Administration student at FSJES Aïn Chock, Casablanca. This
-              term I am working through{" "}
-              <TypingEffect
-                words={[
-                  "mathematics for economics",
-                  "microeconomics",
-                  "management principles",
-                  "business law fundamentals",
-                ]}
-                className="text-foreground font-medium underline underline-offset-4 decoration-border"
-                pauseDuration={4000}
-              />
-              . I write about the concepts, questions, and connections between them.
+              First-year Business Administration student at FSJES Aïn Chock, Casablanca.
+              Currently studying Mathematics for Economics / Microeconomics / Management
+              Principles / Business Law Fundamentals, and working through the concepts,
+              questions, and connections between them.
             </motion.p>
 
             {/* Action Affordances */}
