@@ -236,9 +236,9 @@ export const fallbackFeaturedMonograph: MonographData = {
   readTime: "3 MIN READ",
   title: "Understanding Systems Before Improving Them",
   description:
-    "A reflection on why process changes should begin with observation, based on notes from commercial shoots and first-year management coursework.",
+    "A look at process changes through two things I’ve encountered so far: commercial production and management coursework. The question behind the note is simple: what do you miss when you try to improve something before understanding how it already works?",
   thesis:
-    "Before changing a workflow, observe how people use it and why its steps exist.",
+    "Before changing a workflow, understand why people work the way they do.",
   tags: ["Systems Thinking", "Operations Management", "Workflow Design", "Chesterton's Fence"],
   keyTakeaways: [
     "Observe a process before proposing a new tool.",
@@ -294,7 +294,7 @@ export const fallbackMonographs: MonographData[] = [
     readTime: "4 MIN READ",
     title: "Why Process Improvement Starts With Observation",
     description:
-      "Before restructuring workflows or introducing new tools, spend dedicated time observing how work actually happens in real settings.",
+      "A short note on why it helps to watch how work actually happens before changing the process around it.",
     thesis:
       "Summary dashboards smooth away the micro-delays that only show up when you watch the work happen.",
     tags: ["Process Mapping", "Gemba Walks", "Workflow Triage", "Operational Discipline"],
@@ -331,7 +331,7 @@ export const fallbackMonographs: MonographData[] = [
     readTime: "3 MIN READ",
     title: "From Physical Science to Economics: Continuity of Analytical Thinking",
     description:
-      "A reflection on links between physical science coursework and quantitative business subjects.",
+      "Some thoughts on the similarities I’ve noticed between studying physical science and working through quantitative subjects in business.",
     thesis:
       "Physical science and economics both ask how systems respond to changing conditions. This note compares the questions, not the subjects themselves.",
     tags: ["Quantitative Rigor", "Microeconomics", "Mathematical Modeling", "Scientific Method"],

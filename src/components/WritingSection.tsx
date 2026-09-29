@@ -150,7 +150,8 @@ export function WritingSection({
             className="flex flex-col items-start md:items-end gap-1.5 text-sm text-muted-foreground max-w-sm"
           >
             <p className="leading-relaxed">
-              Short pieces on management, accounting, and quantitative study, written while I am still learning them.
+              Things I write down when a subject, problem, or idea stays with me longer than the
+              lecture does.
             </p>
           </motion.div>
         </div>
@@ -192,7 +193,7 @@ export function WritingSection({
               {/* Core Thesis Highlight Quote Box */}
               <div className="pl-4 border-l border-primary text-foreground text-sm sm:text-base italic leading-relaxed py-2 mt-2">
                 <span className="text-[10px] font-medium not-italic uppercase tracking-widest text-muted-foreground block mb-1">
-                  Core Thesis:
+                  Core Thesis
                 </span>
                 &ldquo;{featuredEssay.thesis}&rdquo;
               </div>
@@ -230,9 +231,7 @@ export function WritingSection({
         <div className="space-y-8 pt-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              {searchQuery.trim()
-                ? `${filteredNoteArticles.length} of ${noteArticles.length + 1} notes`
-                : `${noteArticles.length + 1} notes`}
+              Other Notes
             </h3>
 
             {/* Keyword Search Input */}
@@ -346,10 +345,12 @@ export function WritingSection({
           <div className="p-6 sm:p-10 bg-surface border border-border rounded-sm relative overflow-hidden">
             <div className="max-w-2xl relative">
               <h3 className="text-2xl sm:text-3xl font-display font-normal text-foreground mb-3 tracking-tight">
-                Discuss These Notes
+                Have Something to Add?
               </h3>
               <p className="text-muted-foreground text-sm mb-8 leading-relaxed">
-                If you have worked a floor longer than I have, I would rather hear where these notes are wrong. The channels below reach me directly.
+                These notes are written while I&rsquo;m still learning, so I expect some of them to
+                change. If you&rsquo;ve worked with these subjects or problems longer than I have,
+                I&rsquo;m interested in hearing another way of looking at them.
               </p>
 
               <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4">
