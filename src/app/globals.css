@@ -4,59 +4,59 @@
 @import "../motion/motion.css";
 
 @theme {
-  /* Professional Editorial System - Crafted Monochrome + Terracotta */
+  /* Monochrome - strictly greyscale, no hue anywhere */
   --color-primary: #1A1A1A;
-  --color-primary-container: #F2F2F0;
+  --color-primary-container: #F2F2F2;
   --color-on-primary: #FFFFFF;
-  --color-primary-fixed: #EFECE6;
+  --color-primary-fixed: #ECECEC;
   --color-on-primary-fixed: #1A1A1A;
   --color-secondary: #4A4A4A;
   --color-on-secondary: #FFFFFF;
-  --color-accent: #B33A1F;
+  --color-accent: #1A1A1A;
   --color-on-accent: #FFFFFF;
-  --color-background: #F9F9F8;
+  --color-background: #F9F9F9;
   --color-foreground: #111111;
   --color-card: #FFFFFF;
   --color-card-foreground: #111111;
-  --color-muted: #F2F2F0;
+  --color-muted: #F2F2F2;
   --color-muted-foreground: #666666;
-  --color-border: #D8D8D5;
-  --color-destructive: #990000;
+  --color-border: #D8D8D8;
+  --color-destructive: #3D3D3D;
   --color-on-destructive: #FFFFFF;
   --color-ring: #1A1A1A;
 
   /* Light mode surface colors */
-  --color-surface: #F9F9F8;
-  --color-surface-container: #F2F2F0;
-  --color-surface-container-low: #F9F9F8;
+  --color-surface: #F9F9F9;
+  --color-surface-container: #F2F2F2;
+  --color-surface-container-low: #F9F9F9;
   --color-surface-container-lowest: #FFFFFF;
   --color-on-surface: #111111;
   --color-on-surface-variant: #666666;
   --color-outline: #888888;
-  --color-outline-variant: #E5E5E3;
+  --color-outline-variant: #E5E5E5;
 
-  /* Dark mode colors - Deep charcoal and muted rust */
-  --color-primary-dark: #F2F2F0;
+  /* Dark mode - greyscale only */
+  --color-primary-dark: #F2F2F2;
   --color-on-primary-dark: #111111;
   --color-secondary-dark: #888888;
   --color-on-secondary-dark: #1A1A1A;
-  --color-accent-dark: #E06D53;
+  --color-accent-dark: #F2F2F2;
   --color-on-accent-dark: #111111;
   --color-background-dark: #0A0A0A;
-  --color-foreground-dark: #F2F2F0;
+  --color-foreground-dark: #F2F2F2;
   --color-card-dark: #141414;
-  --color-card-foreground-dark: #F2F2F0;
+  --color-card-foreground-dark: #F2F2F2;
   --color-muted-dark: #1A1A1A;
   --color-muted-foreground-dark: #888888;
   --color-border-dark: #2E2E2E;
-  --color-destructive-dark: #FF6666;
+  --color-destructive-dark: #E5E5E5;
   --color-on-destructive-dark: #111111;
-  --color-ring-dark: #F2F2F0;
+  --color-ring-dark: #F2F2F2;
   --color-surface-dark: #0A0A0A;
   --color-surface-container-dark: #141414;
   --color-surface-container-low-dark: #0D0D0D;
   --color-surface-container-lowest-dark: #080808;
-  --color-on-surface-dark: #F2F2F0;
+  --color-on-surface-dark: #F2F2F2;
   --color-on-surface-variant-dark: #888888;
   --color-outline-dark: #555555;
   --color-outline-variant-dark: #222222;

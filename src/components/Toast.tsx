@@ -66,13 +66,10 @@ const Toast = () => {
           >
             <div className="flex items-center gap-2.5">
               <span
-                className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${
-                  toast.type === "success"
-                    ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400"
-                    : toast.type === "error"
-                    ? "bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400"
-                    : "bg-sky-50 dark:bg-sky-950/40 text-sky-600 dark:text-sky-400"
-                }`}
+                className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${toast.type === "error"
+                    ? "bg-foreground/10 text-foreground"
+                    : "bg-muted text-muted-foreground"
+                  }`}
               >
                 {toast.type === "success" ? (
                   <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>

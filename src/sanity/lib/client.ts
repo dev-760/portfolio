@@ -234,7 +234,7 @@ export const fallbackFeaturedMonograph: MonographData = {
   isFeatured: true,
   category: "operations",
   categoryLabel: "OPERATIONS & SYSTEMS",
-  categoryBadgeClass: "bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/25",
+  categoryBadgeClass: "border-border bg-muted/60 text-foreground",
   date: "SEP 2026",
   readTime: "3 MIN READ",
   title: "Understanding Systems Before Improving Them",
@@ -291,7 +291,7 @@ export const fallbackMonographs: MonographData[] = [
     slug: "why-process-improvement-starts-with-observation",
     category: "operations",
     categoryLabel: "OPERATIONS",
-    categoryBadgeClass: "bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/25",
+    categoryBadgeClass: "border-border bg-muted/60 text-foreground",
     date: "SEP 24, 2026",
     readTime: "4 MIN READ",
     title: "Why Process Improvement Starts With Observation",
@@ -336,7 +336,7 @@ export const fallbackMonographs: MonographData[] = [
     slug: "from-physical-science-to-economics",
     category: "academics",
     categoryLabel: "ACADEMICS",
-    categoryBadgeClass: "bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/25",
+    categoryBadgeClass: "border-border bg-muted/60 text-foreground",
     date: "SEP 2026",
     readTime: "3 MIN READ",
     title: "From Physical Science to Economics: Continuity of Analytical Thinking",
@@ -423,20 +423,5 @@ export async function getSkills(): Promise<SkillData[]> {
   } catch (error) {
     console.warn("Failed to fetch skills from Sanity, falling back to static data:", error);
     return fallbackSkills;
-  }
-}
-
-export function getCategoryBadgeClass(category: string): string {
-  switch (category) {
-    case "operations":
-      return "bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/25";
-    case "management":
-      return "bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/25";
-    case "finance":
-      return "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/25";
-    case "academics":
-      return "bg-purple-500/10 text-purple-700 dark:text-purple-300 border-purple-500/25";
-    default:
-      return "bg-muted text-muted-foreground border-border";
   }
 }
