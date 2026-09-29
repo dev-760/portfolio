@@ -162,7 +162,7 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
                       </div>
                       <div className="flex justify-between items-center text-xs">
                         <span className="font-medium">English</span>
-                        <span className="text-muted-foreground font-mono">Full Professional (Bilingual Baccalaureate)</span>
+                        <span className="text-muted-foreground font-mono">Full Professional</span>
                       </div>
                     </dd>
                   </div>
