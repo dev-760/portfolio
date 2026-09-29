@@ -237,28 +237,6 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
             }))}
           />
         </div>
-
-        {/* ========================================================
-            PART 4: Operating Principles & Mindset (Crisp 3-Column Grid)
-            ======================================================== */}
-        <div className="pt-12 border-t border-border space-y-8">
-          <div className="space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-display font-normal text-foreground tracking-tight">
-              How I work
-            </h2>
-          </div>
-
-          <div className="max-w-prose text-muted-foreground text-sm sm:text-base leading-relaxed space-y-4">
-            <p>
-              I start with the brief, write down the steps before I begin, and re-check the
-              figures against the source before I hand anything over.
-            </p>
-            <p>
-              I am early in my studies, so I treat every piece of coursework and production work as
-              practice for the next one.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );
