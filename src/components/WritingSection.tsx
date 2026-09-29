@@ -444,7 +444,7 @@ export function WritingSection({
                   {/* Core Thesis / Abstract */}
                   <div className="pl-4 border-l-2 border-primary text-foreground">
                     <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground block mb-2">
-                      Thesis Statement:
+                      Thesis
                     </span>
                     <p className="text-sm sm:text-base italic leading-relaxed">
                       &ldquo;{activeModalArticle.thesis}&rdquo;
@@ -452,22 +452,38 @@ export function WritingSection({
                   </div>
 
                   {/* Key Takeaways */}
-                  <div className="p-6 bg-muted border border-border rounded-md space-y-3">
-                    <span className="text-[10px] font-medium uppercase tracking-widest text-foreground block mb-2">
-                      Core Insights &amp; Principles:
-                    </span>
-                    <ul className="space-y-2 text-sm text-muted-foreground list-none pl-0">
-                      {activeModalArticle.keyTakeaways.map((takeaway, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <span className="mt-1 w-1 h-1 rounded-full bg-primary shrink-0" />
-                          <span className="leading-relaxed">{takeaway}</span>
-                        </li>
+                  {activeModalArticle.keyTakeaways && (
+                    <div className="p-6 bg-muted border border-border rounded-md space-y-3">
+                      <span className="text-[10px] font-medium uppercase tracking-widest text-foreground block mb-2">
+                        Core Insights &amp; Principles:
+                      </span>
+                      <ul className="space-y-2 text-sm text-muted-foreground list-none pl-0">
+                        {activeModalArticle.keyTakeaways.map((takeaway, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <span className="mt-1 w-1 h-1 rounded-full bg-primary shrink-0" />
+                            <span className="leading-relaxed">{takeaway}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Article Intro */}
+                  {activeModalArticle.intro && (
+                    <div className="space-y-4">
+                      {activeModalArticle.intro.map((p, pIdx) => (
+                        <p
+                          key={pIdx}
+                          className="text-sm sm:text-base text-muted-foreground leading-relaxed"
+                        >
+                          {p}
+                        </p>
                       ))}
-                    </ul>
-                  </div>
+                    </div>
+                  )}
 
                   {/* Multi-Section Article Prose */}
-                  <div className="space-y-8 pt-4">
+                  <div className="space-y-8">
                     {activeModalArticle.sections.map((section, idx) => (
                       <div key={idx} className="space-y-4">
                         <h4 className="text-xl sm:text-2xl font-display font-normal text-foreground tracking-tight">
@@ -481,15 +497,39 @@ export function WritingSection({
                             {p}
                           </p>
                         ))}
+                        {section.bullets && (
+                          <ul className="space-y-2 text-sm sm:text-base text-muted-foreground list-none pl-0">
+                            {section.bullets.map((b, bIdx) => (
+                              <li key={bIdx} className="flex items-start gap-2">
+                                <span className="mt-1.5 w-1 h-1 rounded-full bg-primary shrink-0" />
+                                <span className="leading-relaxed">{b}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        {section.trailing && (
+                          <>
+                            {section.trailing.map((p, tIdx) => (
+                              <p
+                                key={tIdx}
+                                className="text-sm sm:text-base text-muted-foreground leading-relaxed"
+                              >
+                                {p}
+                              </p>
+                            ))}
+                          </>
+                        )}
                       </div>
                     ))}
                   </div>
 
                   {/* Academic Context Footnote */}
-                  <div className="pt-8 border-t border-border text-xs text-muted-foreground space-y-1">
-                    <p className="font-medium text-foreground">Academic Citation &amp; Context:</p>
-                    <p>{activeModalArticle.academicContext}</p>
-                  </div>
+                  {activeModalArticle.academicContext && (
+                    <div className="pt-8 border-t border-border text-xs text-muted-foreground space-y-1">
+                      <p className="font-medium text-foreground">Academic Citation &amp; Context:</p>
+                      <p>{activeModalArticle.academicContext}</p>
+                    </div>
+                  )}
                 </div>
 
                 {/* Modal Footer */}

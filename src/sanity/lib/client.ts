@@ -43,6 +43,8 @@ export interface ExperienceData {
 export interface MonographSection {
   heading: string;
   paragraphs: string[];
+  bullets?: string[];
+  trailing?: string[];
 }
 
 export interface MonographData {
@@ -58,8 +60,9 @@ export interface MonographData {
   description: string;
   thesis: string;
   tags: string[];
-  keyTakeaways: string[];
-  academicContext: string;
+  keyTakeaways?: string[];
+  academicContext?: string;
+  intro?: string[];
   sections: MonographSection[];
   order?: number;
 }
@@ -238,45 +241,44 @@ export const fallbackFeaturedMonograph: MonographData = {
   description:
     "A look at process changes through two things I’ve encountered so far: commercial production and management coursework. The question behind the note is simple: what do you miss when you try to improve something before understanding how it already works?",
   thesis:
-    "Before changing a workflow, understand why people work the way they do.",
+    "Before changing a workflow, observe how people use it and why its steps exist.",
   tags: ["Systems Thinking", "Operations Management", "Workflow Design", "Chesterton's Fence"],
-  keyTakeaways: [
-    "Observe a process before proposing a new tool.",
-    "Ask what a workaround protects before removing it.",
-    "Record informal handoffs alongside the formal workflow.",
+  intro: [
+    "I keep coming back to this idea when I study management. It is easy to look at a process from the outside and immediately see things that could be changed. A meeting seems unnecessary. A form takes too long. Two people are involved where one might be enough.",
+    "But seeing a step does not always mean understanding it.",
   ],
-  academicContext:
-    "Written alongside first-year coursework: Principles of Management and Descriptive Statistics, FSJES Aïn Chock.",
   sections: [
     {
-      heading: "1. The Premature Optimization Trap",
+      heading: "Look at the Work Before the Process",
       paragraphs: [
-        "Management writing has a bias toward intervention. When a team hits delays, handoff errors, or rising costs, the standard reflex, one I recognize in myself, is to restructure immediately: add a software tool, mandate daily meetings, redraw the reporting lines.",
-        "Systems writing warns about the opposite: intervening in a complex process before understanding its informal stabilizers tends to fix one local symptom while creating two new problems somewhere else.",
+        "A workflow on paper can look very different from the way people actually use it.",
+        "During my time in commercial production, I noticed that work did not always move according to the sequence written down beforehand. People communicated directly, adjusted to what was happening on set, and sometimes found quicker ways to pass information between each other.",
+        "That made me think differently about process design. A workaround is not automatically a sign that a system is badly designed. Sometimes it exists because the official process does not account for something that happens in real work.",
       ],
     },
     {
-      heading: "2. Mapping the Informal Highway",
+      heading: "The Reason Behind the Extra Step",
       paragraphs: [
-        "Every functioning organization operates on two parallel planes: the formal organizational chart (the theoretical workflow described in handbooks) and the informal highway (the direct human relationships, ad-hoc WhatsApp groups, and tacit agreements that actually move work forward).",
-        "While assisting on commercial shoots at EL25 Studio, I watched this happen. When shoot schedules tightened, the crew did not consult formal contingency binders; they relied on nuanced glance signals between camera operators, gaffers, and directors. If an overzealous coordinator attempted to force strict adherence to a rigid theoretical spreadsheet, production cadence immediately collapsed.",
+        "This is where I find the idea behind Chesterton’s Fence useful.",
+        "If a step looks unnecessary, the first question should be why it is there. A second approval might slow something down, but it could also exist because an earlier mistake was expensive. A manual check might seem outdated, but it may catch something that an automated process does not.",
+        "That does not mean every old process should stay in place. It means the reason for a process should be understood before deciding what to remove.",
       ],
     },
     {
-      heading: "3. Chesterton's Fence in Business Operations",
+      heading: "What I’m Learning to Look For",
       paragraphs: [
-        "The philosopher G.K. Chesterton formulated a famous operational rule: if you encounter a fence in the middle of a road and cannot discern why it was erected, the one thing you must never do is tear it down. First discover why the fence was put there in the first place; once you understand its purpose, you may judge whether it is obsolete.",
-        "In operations, process 'bottlenecks' often serve as Chesterton's fences. A tedious two-person signoff step that appears to slow down invoicing may actually be the sole barrier preventing costly billing discrepancies. Removing the friction without understanding the vulnerability invites catastrophe.",
+        "When I work through a management case or observe a real workflow, I’m starting to pay attention to a few things:",
       ],
-    },
-    {
-      heading: "4. An Observation Checklist I'm Testing",
-      paragraphs: [
-        "Before changing a workflow, this is the checklist I would try, borrowed from the Gemba walk literature:",
-        "1. Gemba Shadowing: Spend dedicated, non-evaluative hours sitting directly with the operators. Observe where work stalls, where papers are stacked, and where digital tools are circumvented.",
-        "2. Friction Logging: Ask frontline team members: 'What single task in your morning feels most unnecessarily exhausting?' The answer almost never matches what leadership suspects.",
-        "3. Structural Interrogation: Map the feedback loops. When variable X increases, what dampens it? What amplifies it? Only after this causal loop diagram is clear should tool evaluation begin.",
-        "The test I would apply: does the improved system still work a month later, without someone firefighting it every day?",
+      bullets: [
+        "Where does the work actually slow down?",
+        "Which steps are written down, and which ones happen through informal communication?",
+        "What do people do when the normal process does not work?",
+        "Why does a particular check or handoff exist?",
+        "Does a proposed improvement solve the original problem without creating another one?",
+      ],
+      trailing: [
+        "I’m not treating these as a finished method. They are questions I’m learning to ask.",
+        "For me, that is the more interesting part of process improvement. Before trying to make a system faster or simpler, I want to understand what the people inside that system are already doing and what the existing process is trying to achieve.",
       ],
     },
   ],

@@ -45,6 +45,7 @@ export const monographsQuery = groq`
     tags,
     keyTakeaways,
     academicContext,
+    intro,
     sections,
     order
   }
@@ -66,6 +67,7 @@ export const featuredMonographQuery = groq`
     tags,
     keyTakeaways,
     academicContext,
+    intro,
     sections
   }
 `;
