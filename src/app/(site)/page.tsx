@@ -45,11 +45,16 @@ export default function Home() {
               First-year Business Administration student at FSJES Aïn Chock, Casablanca. This
               term I am working through{" "}
               <TypingEffect
-                words={["general accounting", "microeconomics", "management principles"]}
+                words={[
+                  "mathematics for economics",
+                  "microeconomics",
+                  "management principles",
+                  "business law fundamentals",
+                ]}
                 className="text-foreground font-medium underline underline-offset-4 decoration-border"
                 pauseDuration={4000}
               />
-              . I write up what I still do not understand.
+              . I write about the concepts, questions, and connections between them.
             </motion.p>
 
             {/* Action Affordances */}
