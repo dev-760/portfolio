@@ -9,24 +9,17 @@
     "lint": "eslint",
     "oxlint": "oxlint",
     "export": "next build",
-    "analyze": "ANALYZE=true next build",
-    "studio:dev": "npm --prefix studio run dev",
-    "studio:build": "npm --prefix studio run build",
-    "studio:deploy": "npm --prefix studio run deploy",
-    "studio:type-check": "npm --prefix studio run type-check"
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
-    "@sanity/image-url": "^2.1.1",
     "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "framer-motion": "^13.2.0",
     "lucide-react": "^1.48.0",
     "motion": "^13.4.4",
     "next": "^16.3.4",
-    "next-sanity": "^13.3.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "sanity": "^6.16.0",
     "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {

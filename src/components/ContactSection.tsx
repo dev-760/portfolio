@@ -206,9 +206,6 @@ export function ContactSection() {
               <a href="#experience" className="hover:text-foreground transition-colors">
                 Experience
               </a>
-              <a href="#writing" className="hover:text-foreground transition-colors">
-                Notes
-              </a>
               <a href="#contact" className="hover:text-foreground transition-colors">
                 Contact
               </a>

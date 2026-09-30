@@ -1,34 +1,17 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { TimelineAnimate } from "@/components/ui/timeline-animate";
 import { Icon } from "@/components/icons/Icon";
-import {
-  getEducation,
-  fallbackEducation,
-  isSanityConfigured,
-  type EducationData,
-} from "@/sanity/lib/client";
+import { education, type EducationData } from "@/data/content";
 
 export interface AboutSectionProps {
   initialEducation?: EducationData[];
 }
 
 export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
-  const [education, setEducation] = useState<EducationData[]>(
-    initialEducation || fallbackEducation
-  );
-
-  useEffect(() => {
-    if (isSanityConfigured) {
-      getEducation().then((data) => {
-        if (data && data.length > 0) {
-          setEducation(data);
-        }
-      });
-    }
-  }, []);
+  const educationEntries = initialEducation || education;
 
   return (
     <section className="section border-b border-border bg-surface scroll-mt-16" id="about">
@@ -192,7 +175,7 @@ export function AboutSection({ initialEducation }: AboutSectionProps = {}) {
           </div>
 
           <TimelineAnimate
-            data={education.map(({ id, company, role, period, status, stack, description }) => ({
+            data={educationEntries.map(({ id, company, role, period, status, stack, description }) => ({
               index: id,
               content: (
                 <div className="space-y-4">

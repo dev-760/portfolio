@@ -1,15 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Building2, Calendar, Clapperboard, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import {
-  getExperience,
-  fallbackExperience,
-  isSanityConfigured,
-  type ExperienceData,
-} from "@/sanity/lib/client";
+import { experience, type ExperienceData } from "@/data/content";
 
 export interface ExperienceSectionProps {
   initialExperience?: ExperienceData[];
@@ -18,19 +13,8 @@ export interface ExperienceSectionProps {
 const entryIcons = [Clapperboard, Users, Building2];
 
 export function ExperienceSection({ initialExperience }: ExperienceSectionProps = {}) {
-  const [experience, setExperience] = useState<ExperienceData[]>(
-    initialExperience || fallbackExperience
-  );
+  const experienceEntries = initialExperience || experience;
 
-  useEffect(() => {
-    if (isSanityConfigured) {
-      getExperience().then((data) => {
-        if (data && data.length > 0) {
-          setExperience(data);
-        }
-      });
-    }
-  }, []);
   return (
     <section className="section border-b border-border bg-surface scroll-mt-16" id="experience">
       <div className="container space-y-12">
@@ -58,7 +42,7 @@ export function ExperienceSection({ initialExperience }: ExperienceSectionProps 
           {/* Timeline line */}
           <div className="absolute inset-y-0 left-0 border-l-2 border-border" />
 
-          {experience.map(
+          {experienceEntries.map(
             ({ company, role, period, location, stack, description }, index) => {
               const Icon = entryIcons[index % entryIcons.length];
               return (

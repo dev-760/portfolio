@@ -16,7 +16,6 @@ const navLinks = [
   { name: "Education", href: "#education" },
   { name: "Practice", href: "#skills" },
   { name: "Experience", href: "#experience" },
-  { name: "Notes", href: "#writing" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -28,7 +27,7 @@ export function Navbar() {
   const drawerRef = useRef<HTMLDivElement>(null);
 
   const [activeSection] = useActiveSection(
-    ["home", "about", "education", "skills", "experience", "writing", "contact"],
+    ["home", "about", "education", "skills", "experience", "contact"],
     "home"
   );
 

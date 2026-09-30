@@ -108,12 +108,6 @@ export function StructuredData() {
           {
             "@type": "ListItem",
             "position": 6,
-            "name": "Notes",
-            "item": "https://hassankarasu.dev/#writing"
-          },
-          {
-            "@type": "ListItem",
-            "position": 7,
             "name": "Contact",
             "item": "https://hassankarasu.dev/#contact"
           }

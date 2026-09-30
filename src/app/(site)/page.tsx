@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { AboutSection } from "@/components/AboutSection";
 import { SkillsSection } from "@/components/SkillsSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
-import { WritingSection } from "@/components/WritingSection";
 import { ContactSection } from "@/components/ContactSection";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 import { TypingEffect } from "@/components/TypingEffect";
@@ -78,14 +77,6 @@ export default function Home() {
                 <Icon name="checklist" size={15} />
                 <span>My Studies</span>
               </a>
-
-              <a
-                href="#writing"
-                className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 bg-transparent hover:bg-muted text-muted-foreground hover:text-foreground text-xs font-semibold uppercase tracking-wider transition-colors focus-visible:outline-none"
-              >
-                <Icon name="article" size={15} />
-                <span>Read the notes</span>
-              </a>
             </motion.div>
           </div>
         </div>
@@ -107,12 +98,7 @@ export default function Home() {
       <ExperienceSection />
 
       {/* ========================================================
-          Section 05: WRITING
-          ======================================================== */}
-      <WritingSection />
-
-      {/* ========================================================
-          Section 06: CONTACT
+          Section 05: CONTACT
           ======================================================== */}
       <ContactSection />
 

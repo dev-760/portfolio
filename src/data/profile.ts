@@ -135,7 +135,6 @@ const profile: Profile = {
     { id: "about", label: "About", href: "/#about" },
     { id: "skills", label: "Skills", href: "/#skills" },
     { id: "experience", label: "Experience", href: "/#experience" },
-    { id: "writing", label: "Monographs", href: "/#writing" },
     { id: "contact", label: "Contact", href: "/#contact" },
   ],
   sections: {

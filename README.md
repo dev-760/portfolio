@@ -1,21 +1,19 @@
-# Hassan Karasu — Personal Portfolio & Digital Resume
+# Hassan Karasu — Personal Portfolio
 
-A modern, high-performance portfolio and digital resume for **Hassan Karasu** (Software Builder & Business Administration Student based in Casablanca, Morocco).
+A static, single-page portfolio for **Hassan Karasu**, a Business Administration undergraduate at FSJES Aïn Chock, Université Hassan II de Casablanca.
 
-Built with **Next.js 16**, **React 19**, **TypeScript**, **Tailwind CSS v4**, and **Framer Motion 12**, configured for zero-overhead static HTML export.
+Built with **Next.js 16**, **React 19**, **TypeScript**, **Tailwind CSS v4**, and **Framer Motion 13**, configured for zero-runtime static HTML export.
 
 ---
 
 ## ✨ Features
 
-- **Centralized Data Model**: All content, projects, experience, skills, and links are managed in a single source of truth (`src/data/profile.ts`).
-- **Modern Dark Aesthetic**: Deep violet dark mode theme (`#050208`) with ambient glow accents, glassmorphism cards, and Geist typography.
-- **Interactive Command Palette**: Press <kbd>⌘K</kbd> / <kbd>Ctrl+K</kbd> anywhere to trigger quick fuzzy search across navigation and social links.
-- **Keyboard Shortcuts**: Quick modal cheat sheet accessible via shortcut or floating action trigger.
-- **Optimized Motion & Parallax**: Buttery smooth, responsive Framer Motion scroll and entry animations without reading-interruption fadeouts.
-- **High-Performance Ambient Glow**: Direct DOM `requestAnimationFrame` cursor tracking with zero React re-render overhead.
-- **Non-blocking Toast System**: Event-driven toast notifications anchored at the top-right with custom styling for copy actions and contact submissions.
-- **Full SEO & Static Export**: Includes custom branded SVG favicon, OpenGraph metadata, Twitter cards, `robots.txt`, and `sitemap.xml`.
+- **Single-page anchor architecture**: five content sections on one page, with dedicated routes that redirect to their section anchor.
+- **Editorial monochrome aesthetic**: deep charcoal, off-white paper, and terracotta accents. Newsreader (display) paired with Manrope (body).
+- **Light & dark themes**: system-aware with manual toggle and persistence.
+- **Scrollspy navigation**: the active section is tracked as you scroll, with a keyboard-accessible mobile drawer and focus trapping.
+- **Reduced-motion support**: `prefers-reduced-motion` is honored across transitions.
+- **SEO & structured data**: OpenGraph, Twitter cards, canonical URLs, `robots.txt`, `sitemap.xml`, and JSON-LD (`WebSite`, `ProfilePage`, `Person`, `BreadcrumbList`).- **Static export**: every route is prerendered to HTML at build time — no Node.js runtime required to host.
 
 ---
 
@@ -27,8 +25,9 @@ Built with **Next.js 16**, **React 19**, **TypeScript**, **Tailwind CSS v4**, an
 | **React 19** | Core UI library |
 | **TypeScript 5** | Strict type safety |
 | **Tailwind CSS v4** | Utility-first CSS engine with inline theme configuration |
-| **Framer Motion 12** | Layout transitions and scroll-driven micro-interactions |
+| **Framer Motion 13** | Layout transitions and scroll-driven micro-interactions |
 | **Vercel Analytics** | Privacy-focused web analytics |
+| **ESLint 9 / Oxlint** | Linting |
 
 ---
 
@@ -36,49 +35,61 @@ Built with **Next.js 16**, **React 19**, **TypeScript**, **Tailwind CSS v4**, an
 
 ```text
 portfolio/
-├── public/
-│   ├── favicon.svg          # Branded SVG favicon (HK monogram)
-│   ├── robots.txt           # Search engine crawling rules
-│   └── sitemap.xml          # Static XML sitemap
+├── public/                        # Favicons and light/dark logo + theme icons
 ├── src/
 │   ├── app/
 │   │   ├── (site)/
-│   │   │   ├── about/       # Dedicated /about page
-│   │   │   ├── contact/     # Dedicated /contact page
-│   │   │   ├── experience/  # Dedicated /experience page
-│   │   │   ├── projects/    # Dedicated /projects page
-│   │   │   ├── layout.tsx   # Site layout wrapper
-│   │   │   └── page.tsx     # Homepage (all-in-one view)
-│   │   ├── globals.css      # Tailwind CSS v4 & custom scrollbar styles
-│   │   ├── icon.svg         # App Router branded favicon route
-│   │   └── layout.tsx       # Root layout, fonts, and metadataBase
+│   │   │   ├── about/             # Redirects to /#about
+│   │   │   ├── competencies/      # Redirects to /#skills
+│   │   │   ├── contact/           # Redirects to /#contact
+│   │   │   ├── education/         # Redirects to /#education
+│   │   │   ├── experience/        # Redirects to /#experience
+│   │   │   ├── projects/          # Redirects to /#about
+│   │   │   ├── skills/            # Redirects to /#skills
+│   │   │   ├── work/              # Redirects to /#about
+│   │   │   ├── layout.tsx         # Site layout wrapper
+│   │   │   ├── page.tsx           # Homepage (all sections)
+│   │   │   ├── error.tsx          # Route error boundary
+│   │   │   ├── loading.tsx        # Route loading state
+│   │   │   └── template.tsx       # Per-navigation template
+│   │   ├── globals.css            # Tailwind CSS v4 theme & global styles
+│   │   ├── icon.ico               # App Router favicon
+│   │   ├── layout.tsx             # Root layout, fonts, metadataBase
+│   │   ├── not-found.tsx          # 404 page
+│   │   ├── robots.ts              # Crawling rules
+│   │   └── sitemap.ts             # Route sitemap
 │   ├── components/
-│   │   ├── About.tsx        # Bio & spoken languages
-│   │   ├── Achievements.tsx # Competition awards & milestones
-│   │   ├── CommandPalette.tsx # ⌘K spotlight search modal
-│   │   ├── Contact.tsx      # Contact info, copy email & message form
-│   │   ├── Education.tsx    # Academic background
-│   │   ├── Experience.tsx   # Work & software builder history
-│   │   ├── Footer.tsx       # Site footer & copyright
-│   │   ├── Hero.tsx         # Interactive hero section with tech grid
-│   │   ├── Highlights.tsx   # Core domain highlights
-│   │   ├── KeyboardShortcuts.tsx # Shortcut modal dialog
-│   │   ├── Layout.tsx       # Global overlay host (glow, progress, toasts)
-│   │   ├── MouseGlow.tsx    # Ref-based cursor ambient glow
-│   │   ├── Navbar.tsx       # Fixed glass navbar with scrollspy & mobile drawer
-│   │   ├── PersonalStatement.tsx # Narrative & philosophy card
-│   │   ├── Projects.tsx     # Software showcase cards & tech tags
-│   │   ├── ScrollProgress.tsx # Top gradient scroll indicator
-│   │   ├── ScrollToTop.tsx  # Floating scroll-to-top button
-│   │   ├── Section.tsx      # Reusable animated section wrapper
-│   │   ├── Skills.tsx       # Categorized skill pills
-│   │   ├── Toast.tsx        # Notification toast manager
-│   │   └── Volunteering.tsx # Community & STEM mentorship
-│   ├── config/
-│   │   └── site.ts          # Feature flags (e.g. SHOW_PROJECTS_PAGE)
-│   └── data/
-│       └── profile.ts       # Profile single source of truth
-├── next.config.ts           # Next.js static export & trailingSlash config
+│   │   ├── AboutSection.tsx       # Intro statement + education timeline
+│   │   ├── ContactSection.tsx     # Contact panel & footer navigation
+│   │   ├── DesktopNav.tsx         # Presentational desktop nav
+│   │   ├── ExperienceSection.tsx  # Vertical experience timeline
+│   │   ├── LoadingSkeleton.tsx    # Skeleton loading placeholder
+│   │   ├── Navbar.tsx             # Fixed navbar with scrollspy & mobile drawer
+│   │   ├── RedirectToSection.tsx  # Client-side anchor redirect helper
+│   │   ├── ScrollToTopButton.tsx  # Floating scroll-to-top button
+│   │   ├── SkillsSection.tsx      # "What I Do" practice card grid
+│   │   ├── StructuredData.tsx     # JSON-LD graph
+│   │   ├── SystemTimeline.tsx     # Animated timeline primitive
+│   │   ├── ThemeToggle.tsx        # Light/dark switch
+│   │   ├── Toast.tsx              # Toast notification manager
+│   │   ├── TypingEffect.tsx       # Hero typing animation
+│   │   ├── WebVitals.tsx          # Analytics web-vitals reporter
+│   │   ├── icons/                 # Icon registry & brand icons
+│   │   └── ui/                    # Shared primitives (badge, button, timeline)
+│   ├── context/
+│   │   └── ThemeContext.tsx       # Theme provider
+│   ├── data/
+│   │   ├── content.ts             # Education & experience entries
+│   │   └── profile.ts             # Identity, contact, and narrative copy
+│   ├── lib/
+│   │   ├── metadata.ts            # Page metadata helper
+│   │   └── utils.ts               # Class-name utility
+│   └── motion/
+│       ├── motion.css             # Shared motion styles
+│       ├── tokens.ts              # Easing & duration tokens
+│       ├── useActiveSection.ts    # Scrollspy hook
+│       └── useReducedMotion.ts    # Reduced-motion hook
+├── next.config.ts                 # Static export & image config
 ├── package.json
 └── tsconfig.json
 ```
@@ -120,6 +131,12 @@ Run ESLint checks:
 npm run lint
 ```
 
+### Type Check
+
+```bash
+npx tsc --noEmit
+```
+
 ### Static Production Build
 
 Build the static production export:
@@ -134,34 +151,34 @@ The compiled, prerendered static assets will be output to the [`out/`](out) dire
 
 ## ⚙️ Customization
 
-### Updating Profile & Content
+### Identity & Narrative Copy
 
-To update bio information, skills, work experience, achievements, or projects, edit [`src/data/profile.ts`](src/data/profile.ts):
+Identity, contact details, and long-form narrative copy live in [`src/data/profile.ts`](src/data/profile.ts).
 
-```typescript
-export const profile: Profile = {
-  name: "Hassan Karasu",
-  title: "Software Builder | Business Administration Student",
-  location: "Casablanca, Morocco",
-  // ...
-  projects: [
-    {
-      title: "Project Name",
-      link: "https://github.com/...",
-      description: "Brief overview of what this project solves.",
-      technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-    },
-  ],
-};
-```
+### Education & Experience Entries
 
-### Feature Toggles
-
-To toggle the dedicated `/projects` page route, update [`src/config/site.ts`](src/config/site.ts):
+The education and experience timelines are driven by [`src/data/content.ts`](src/data/content.ts):
 
 ```typescript
-export const SHOW_PROJECTS_PAGE = true;
+export const education: EducationData[] = [
+  {
+    id: "01",
+    company: "Institution name",
+    role: "Degree or programme",
+    period: "Class of 2026",
+    status: "Completed",
+    stack: ["Coursework area", "…"],
+    description: "One-line summary of what this covered.",
+    order: 1,
+  },
+];
 ```
+
+Both `AboutSection` and `ExperienceSection` read from this module and accept an optional override prop, so entries can be supplied from elsewhere later without editing the components.
+
+### Sections & Navigation
+
+Section order lives in [`src/app/(site)/page.tsx`](src/app/(site)/page.tsx). Navigation labels and the scrollspy section list are defined together in [`src/components/Navbar.tsx`](src/components/Navbar.tsx) — visible labels are matched to section ids by `href`, so a label can differ from its anchor.
 
 ---
 
